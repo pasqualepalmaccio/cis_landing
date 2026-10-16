@@ -101,7 +101,7 @@ export function RegistrationForm({ lang, t }: { lang: Lang; t: RegistrationCopy 
       </FormSection>
 
       <FormSection title={t.message.title} sub={t.message.sub}>
-        <p className="rounded-2xl border border-terracotta/50 bg-terracotta/10 px-5 py-4 text-sm text-cream/90">{t.message.warning}</p>
+        <p className="rounded-2xl border border-bordeaux bg-bordeaux/25 px-5 py-4 text-sm text-cream/90">{t.message.warning}</p>
         <div>
           <textarea name="message" rows={5} maxLength={MESSAGE_MAX} onChange={(e) => setMessageLength(e.target.value.length)} aria-label={t.message.title} className={`${control} resize-y`} />
           <p className="mt-1 text-right text-xs tabular-nums text-mist">

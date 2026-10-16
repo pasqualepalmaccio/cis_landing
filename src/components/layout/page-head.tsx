@@ -8,7 +8,7 @@ export function PageHead({ eyebrow, title, titleEm, lead }: { eyebrow: string; t
   return (
     <header className="relative overflow-hidden pb-20 pt-40 sm:pb-28 sm:pt-48">
       <div aria-hidden className="absolute -right-40 -top-40 size-[40rem] rounded-full bg-gold-500/10 blur-[120px]" />
-      <div aria-hidden className="absolute inset-0 bg-[repeating-linear-gradient(115deg,rgb(232_196_106/0.04)_0px,rgb(232_196_106/0.04)_1px,transparent_1px,transparent_90px)]" />
+      <div aria-hidden className="absolute inset-0 bg-[repeating-linear-gradient(115deg,color-mix(in_oklab,var(--color-gold-500)_4%,transparent)_0px,color-mix(in_oklab,var(--color-gold-500)_4%,transparent)_1px,transparent_1px,transparent_90px)]" />
       <Container className="relative">
         <Reveal y={12}>
           <Eyebrow>{eyebrow}</Eyebrow>

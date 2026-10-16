@@ -17,7 +17,7 @@ export function Vision({ t }: { t: Dict["vision"] }) {
               <SpotlightCard className="h-full p-8 sm:p-10">
                 <div className="mb-8 flex items-center justify-between">
                   <h3 className="font-display text-2xl text-gold-300 sm:text-3xl">{card.title}</h3>
-                  <span className="font-display text-sm italic text-terracotta">0{i + 1}</span>
+                  <span className="font-display text-sm italic text-bordeaux-300">0{i + 1}</span>
                 </div>
                 <CardList items={card.items} />
               </SpotlightCard>

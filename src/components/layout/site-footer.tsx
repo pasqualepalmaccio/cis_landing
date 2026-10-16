@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import type { Dict, Lang } from "@/content";
 
-import { Brand } from "./brand";
+import { Mark } from "../brand/mark";
 import { Container } from "./container";
 
 export function SiteFooter({ lang, t }: { lang: Lang; t: Dict["footer"] }) {
@@ -10,7 +10,9 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict["footer"] }) {
     <footer className="relative overflow-hidden border-t border-line pt-20">
       <Container className="relative z-10 flex flex-wrap justify-between gap-12 pb-16">
         <div className="space-y-4">
-          <Brand lang={lang} />
+          <Link href={`/${lang}`} className="block" aria-label="Colico International School — home">
+            <Mark variant="horizontal" className="h-24 w-auto sm:h-28" />
+          </Link>
           <p className="text-sm text-mist">{t.place}</p>
         </div>
         <div className="flex flex-wrap gap-16 text-sm">
@@ -35,7 +37,7 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict["footer"] }) {
       </Container>
       <p
         aria-hidden
-        className="pointer-events-none select-none whitespace-nowrap text-center font-display text-[18vw] leading-[0.8] text-transparent italic [-webkit-text-stroke:1px_rgb(232_196_106/0.18)]"
+        className="pointer-events-none select-none whitespace-nowrap text-center font-display text-[18vw] leading-[0.8] text-transparent italic [-webkit-text-stroke:1px_color-mix(in_oklab,var(--color-gold-500)_18%,transparent)]"
       >
         {t.motto}
       </p>

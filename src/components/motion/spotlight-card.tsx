@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 export function SpotlightCard({ children, className = "" }: { children: ReactNode; className?: string }) {
   const mx = useMotionValue(-400);
   const my = useMotionValue(-400);
-  const background = useMotionTemplate`radial-gradient(420px circle at ${mx}px ${my}px, rgb(232 196 106 / 0.13), transparent 65%)`;
+  const background = useMotionTemplate`radial-gradient(420px circle at ${mx}px ${my}px, color-mix(in oklab, var(--color-gold-500) 16%, transparent), transparent 65%)`;
 
   return (
     <div

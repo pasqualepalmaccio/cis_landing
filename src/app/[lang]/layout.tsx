@@ -13,7 +13,7 @@ import "../globals.css";
 const fraunces = Fraunces({ subsets: ["latin"], axes: ["opsz"], style: ["normal", "italic"], variable: "--font-fraunces", display: "swap" });
 const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter", display: "swap" });
 
-export const viewport: Viewport = { themeColor: "#0a1230" };
+export const viewport: Viewport = { themeColor: "#14233d" };
 
 export const dynamicParams = false;
 
@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     title: t.meta.title,
     description: t.meta.description,
     alternates: { languages: { it: "/it", en: "/en" } },
-    icons: { icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/favicon-32.png", type: "image/png", sizes: "32x32" }], apple: "/apple-touch-icon.png" },
+    icons: { icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/brand/favicon.svg", type: "image/svg+xml" }, { url: "/favicon-32.png", type: "image/png", sizes: "32x32" }], apple: "/apple-touch-icon.png" },
     openGraph: { title: t.meta.title, description: t.meta.description, images: ["/images/hero-lago.jpg"], locale: lang === "it" ? "it_IT" : "en_GB", type: "website" },
   };
 }

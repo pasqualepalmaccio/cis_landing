@@ -19,7 +19,7 @@ function PhiloCard({ card, index }: { card: Card; index: number }) {
       }`}
     >
       <div className="flex items-center justify-between">
-        <span className="font-display text-sm italic text-terracotta">{card.tag}</span>
+        <span className="font-display text-sm italic text-bordeaux-300">{card.tag}</span>
         <span className="font-display text-6xl leading-none text-gold-500/20">{String(index + 1).padStart(2, "0")}</span>
       </div>
       <h3 className="mt-10 font-display text-3xl leading-tight">{card.title}</h3>

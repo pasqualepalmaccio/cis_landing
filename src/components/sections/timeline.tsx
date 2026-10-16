@@ -29,7 +29,7 @@ export function Timeline({ t }: { t: Dict["timeline"] }) {
             <motion.span
               aria-hidden
               style={reduce ? undefined : { scaleY }}
-              className="absolute bottom-2 left-[7px] top-2 w-px origin-top bg-gradient-to-b from-gold-300 via-gold-500 to-terracotta sm:left-[11px]"
+              className="absolute bottom-2 left-[7px] top-2 w-px origin-top bg-gradient-to-b from-gold-300 via-gold-500 to-bordeaux sm:left-[11px]"
             />
             {t.steps.map((s, i) => (
               <Reveal as="li" key={s.when} delay={0.05} className="relative">
@@ -38,7 +38,7 @@ export function Timeline({ t }: { t: Dict["timeline"] }) {
                 </span>
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{s.when}</p>
                 <h3 className="mt-2 font-display text-2xl sm:text-3xl">
-                  <span className="mr-3 font-sans text-sm text-terracotta">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="mr-3 font-sans text-sm text-bordeaux-300">{String(i + 1).padStart(2, "0")}</span>
                   {s.title}
                 </h3>
                 {s.body && <p className="mt-3 leading-relaxed text-mist">{s.body}</p>}

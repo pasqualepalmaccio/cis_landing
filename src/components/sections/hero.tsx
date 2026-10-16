@@ -69,7 +69,7 @@ export function Hero({ lang, t }: { lang: Lang; t: Dict["hero"] }) {
             <span className="sm:truncate">{t.eyebrow}</span>
           </motion.p>
 
-          <h1 className="mt-7 font-display text-[clamp(2.8rem,8.4vw,7.6rem)] font-medium leading-[0.95] tracking-[-0.02em] [text-shadow:0_2px_30px_rgb(7_13_36/0.6)]">
+          <h1 className="mt-7 font-display text-[clamp(2.8rem,8.4vw,7.6rem)] font-medium leading-[0.95] tracking-[-0.02em] [text-shadow:0_2px_30px_color-mix(in_oklab,var(--color-navy-950)_60%,transparent)]">
             <SplitWords lines={t.titleLines} immediate delay={0.7} lineClassName="[&:nth-child(3)]:italic [&:nth-child(3)]:text-gold-300" />
           </h1>
 

@@ -1,18 +1,25 @@
 @import "tailwindcss";
 
-/* Identità di CIS: blu notte del lago, oro dello stemma, terracotta delle
-   ville, crema della pietra. Ogni colore della landing passa da qui. */
+/* Palette della direzione A del marchio (brandbook, ottobre 2026): quattro
+   colori pieni, nessuna sfumatura metallica. Le varianti 300 e le tinte navy
+   esistono solo per il contrasto del testo su fondo scuro; ogni colore della
+   landing passa da qui. */
 @theme {
-  --color-navy-950: #070d24;
-  --color-navy-900: #0a1230;
-  --color-navy-800: #111c40;
-  --color-navy-700: #1a2854;
-  --color-gold-500: #d4a02c;
-  --color-gold-300: #e8c46a;
-  --color-terracotta: #c96a4a;
-  --color-cream: #f6f2e9;
-  --color-mist: #a9b2ce;
-  --color-line: rgb(232 196 106 / 0.22);
+  /* Notte sul Lario — primario, fondi e testi */
+  --color-navy-950: #0d182b;
+  --color-navy-900: #14233d;
+  --color-navy-800: #1c2f4f;
+  --color-navy-700: #263b60;
+  /* Ottone — figure, filetti, azioni */
+  --color-gold-500: #b48a45;
+  --color-gold-300: #d2b27a;
+  /* Rosso Valtellina — campo e accenti; 300 per il testo su notte */
+  --color-bordeaux: #7a2433;
+  --color-bordeaux-300: #d58a96;
+  /* Pietra — carta, neve, testo chiaro */
+  --color-cream: #f5efe4;
+  --color-mist: #8d98ae;
+  --color-line: rgb(180 138 69 / 0.28);
 
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;

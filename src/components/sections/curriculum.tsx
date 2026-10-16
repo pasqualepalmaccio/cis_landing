@@ -10,7 +10,7 @@ import { Eyebrow, SectionHead } from "../section-head";
 export function Curriculum({ lang, t }: { lang: Lang; t: Dict["curriculum"] }) {
   return (
     <section id="curricolo" className="relative overflow-hidden bg-navy-800 py-28 sm:py-40">
-      <div aria-hidden className="absolute inset-0 bg-[repeating-linear-gradient(115deg,rgb(232_196_106/0.05)_0px,rgb(232_196_106/0.05)_1px,transparent_1px,transparent_90px)]" />
+      <div aria-hidden className="absolute inset-0 bg-[repeating-linear-gradient(115deg,color-mix(in_oklab,var(--color-gold-500)_5%,transparent)_0px,color-mix(in_oklab,var(--color-gold-500)_5%,transparent)_1px,transparent_1px,transparent_90px)]" />
       <Container className="relative">
         <SectionHead eyebrow={t.eyebrow} title={t.title} />
         <div className="grid gap-6 lg:grid-cols-2">
@@ -23,7 +23,7 @@ export function Curriculum({ lang, t }: { lang: Lang; t: Dict["curriculum"] }) {
                 >
                   {i + 1}
                 </span>
-                <p className="relative text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">{card.kicker}</p>
+                <p className="relative text-xs font-semibold uppercase tracking-[0.2em] text-bordeaux-300">{card.kicker}</p>
                 <h3 className="relative mt-4 font-display text-3xl leading-tight sm:text-4xl">{card.title}</h3>
                 <p className="relative mt-6 leading-relaxed text-mist">{card.body}</p>
               </article>

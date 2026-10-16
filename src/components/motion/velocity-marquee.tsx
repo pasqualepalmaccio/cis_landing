@@ -31,7 +31,7 @@ export function VelocityMarquee({ items, baseVelocity = -2.2 }: { items: string[
           <span key={copy} className="flex shrink-0 items-center">
             {row.map((word, i) => (
               <span key={i} className="flex items-center font-display text-[clamp(2.6rem,7vw,6.5rem)] leading-none tracking-tight">
-                <span className={i % 2 ? "text-transparent [-webkit-text-stroke:1px_rgb(232_196_106/0.55)]" : "text-cream"}>{word}</span>
+                <span className={i % 2 ? "text-transparent [-webkit-text-stroke:1px_color-mix(in_oklab,var(--color-gold-500)_55%,transparent)]" : "text-cream"}>{word}</span>
                 <span className="mx-[0.45em] text-[0.4em] text-gold-500">✦</span>
               </span>
             ))}

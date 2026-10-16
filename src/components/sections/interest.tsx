@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import type { Dict, Lang } from "@/content";
 
+import { CrestReveal } from "../brand/crest-reveal";
 import { Container } from "../layout/container";
 import { Magnetic } from "../motion/magnetic";
 import { Reveal } from "../motion/reveal";
@@ -11,11 +11,9 @@ import { SectionHead } from "../section-head";
 export function Interest({ lang, t }: { lang: Lang; t: Dict["interest"] }) {
   return (
     <section id="interesse" className="relative isolate overflow-hidden py-32 sm:py-48">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgb(212_160_44/0.22),transparent_60%)]" />
-      <div aria-hidden className="absolute left-1/2 top-1/2 -z-10 w-[min(70vw,520px)] -translate-x-1/2 -translate-y-1/2 opacity-[0.06]">
-        <Image src="/images/stemma-cis.png" alt="" width={333} height={500} className="w-full" />
-      </div>
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--color-gold-500)_12%,transparent),transparent_60%)]" />
       <Container>
+        <CrestReveal />
         <SectionHead eyebrow={t.eyebrow} title={t.title} lead={t.lead} align="center" />
         <Reveal className="text-center">
           <Magnetic strength={0.4}>
