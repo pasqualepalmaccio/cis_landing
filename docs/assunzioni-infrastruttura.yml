@@ -1,0 +1,41 @@
+# SG-04 · Inventario delle assunzioni sul contesto della landing
+progetto: landing
+aggiornato: 2026-10-16
+responsabile_inventario: Pasquale Palmaccio
+
+perimetri:
+  applicazione:   { responsabile: Pasquale Palmaccio, ambito: "codice della landing, rilasci" }
+  infrastruttura: { responsabile: da_accertare, ambito: "server, Coolify, Traefik, firewall di origine" }
+  cdn_wan:        { responsabile: cliente, ambito: "DNS cis-colico.com su Cloudflare; apex oggi su Netlify" }
+
+assunzioni:
+  - id: L01
+    categoria: configurazione
+    assunzione: L'immagine non contiene segreti.
+    stato: verificata
+    verificata_il: 2026-10-16
+    esito_osservato: "nessuna variabile d'ambiente richiesta; invio del modulo spento"
+  - id: L02
+    categoria: servizi-terzi
+    assunzione: Il visitatore non contatta terze parti (font, analytics, mappe).
+    stato: verificata
+    come_verificare: grep di fonts.googleapis nell'HTML servito; CSP default-src 'self' in produzione.
+    verificata_il: 2026-10-16
+    esito_osservato: "0 riferimenti a domini esterni; font serviti da /_next/static"
+  - id: L03
+    categoria: sonde-percorsi
+    assunzione: La sonda di Coolify su /api/health risponde nel container (wget di busybox).
+    stato: verificata
+    verificata_il: 2026-10-16
+    esito_osservato: 'docker exec … wget -qO- http://127.0.0.1:3050/api/health → {"ok":true}'
+  - id: L04
+    categoria: rete
+    assunzione: L'anteprima su sslip.io è pubblica e non passa da Cloudflare.
+    stato: verificata
+    esito_osservato: "accettabile solo finché la landing non raccoglie dati; incompatibile con la chiusura di A03 del CRM"
+  - id: L05
+    categoria: rete
+    assunzione: Il collegamento al CRM avrà un nome di rete stabile.
+    stato: falsa
+    verificata_il: 2026-10-16
+    esito_osservato: "il nome del container CRM cambia a ogni rilascio; serve customNetworkAliases (vedi record di decisione)"

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "layout": {
+    "container_componente": "src/components/layout/container.tsx",
+    "larghezza": "max-w-[1600px]",
+    "padding": "px-3",
+    "larghezze_ammesse": [],
+    "eccezioni_percorso": []
+  },
+  "dry": {
+    "attivo": true,
+    "soglia_righe": 12
+  },
+  "_dedotto_da": {
+    "wrapper_trovati": 2,
+    "file_con_wrapper": 2,
+    "varianti": {
+      "[1600px]": 1,
+      "[1240px]": 1
+    }
+  }
+}

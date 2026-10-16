@@ -1,0 +1,3 @@
+# Le sole dipendenze autorizzate a eseguire script all'installazione.
+allowBuilds:
+  unrs-resolver: true
