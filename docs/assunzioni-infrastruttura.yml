@@ -30,9 +30,12 @@ assunzioni:
     esito_osservato: 'docker exec … wget -qO- http://127.0.0.1:3050/api/health → {"ok":true}'
   - id: L04
     categoria: rete
-    assunzione: L'anteprima su sslip.io è pubblica e non passa da Cloudflare.
+    assunzione: "L'anteprima vive solo su landing.cis-colico.com (Cloudflare con proxy, certificato Let's Encrypt via HTTP-01) e resta fuori dai motori di ricerca."
     stato: verificata
-    esito_osservato: "accettabile solo finché la landing non raccoglie dati; incompatibile con la chiusura di A03 del CRM"
+    come_verificare: curl -sI https://landing.cis-colico.com/it (x-robots-tag noindex) e /robots.txt (Disallow); lo stesso build con Host cis-colico.com non deve avere x-robots-tag.
+    verificata_il: 2026-10-16
+    esito_osservato: "noindex e Disallow solo su quell'host; dominio sslip rimosso da Coolify (404); certificato CN=landing.cis-colico.com, scadenza 2027-01-14"
+    se_falsa: "il noindex legato all'host sbagliato de-indicizzerebbe in silenzio cis-colico.com: ricontrollare gli header al passaggio del dominio definitivo"
   - id: L05
     categoria: rete
     assunzione: Il collegamento al CRM avrà un nome di rete stabile.
