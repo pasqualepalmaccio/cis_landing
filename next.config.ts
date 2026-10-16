@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+import { NOINDEX_HOST } from "./src/lib/seo";
+
 const isProd = process.env.NODE_ENV === "production";
 
 /* Tutto dalla stessa origine: font compresi (next/font li serve da qui), così
@@ -50,6 +52,11 @@ const nextConfig: NextConfig = {
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
           ...(isProd ? [{ key: "Content-Security-Policy", value: csp }] : []),
         ],
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: NOINDEX_HOST }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
     ];
   },
