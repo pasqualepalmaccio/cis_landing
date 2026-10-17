@@ -20,6 +20,9 @@
   --color-cream: #f5efe4;
   --color-mist: #8d98ae;
   --color-line: rgb(180 138 69 / 0.28);
+  /* Azioni principali: bianche, la Pietra al passaggio del puntatore. */
+  --color-cta: #ffffff;
+  --color-cta-hover: var(--color-cream);
 
   --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;

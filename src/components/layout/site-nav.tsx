@@ -39,11 +39,11 @@ export function SiteNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
       >
         <Container className="flex items-center gap-6 py-3">
           <Brand lang={lang} />
-          <nav className="ml-6 hidden items-center gap-7 text-sm text-mist xl:flex">
+          <nav className="ml-6 hidden items-center gap-7 text-sm text-cream/90 xl:flex">
             {t.links.map((l) => (
-              <Link key={l.href} href={home(l.href)} className="group relative py-1 transition-colors hover:text-cream">
+              <Link key={l.href} href={home(l.href)} className="group relative py-1 transition-colors hover:text-cta">
                 {l.label}
-                <span className="absolute inset-x-0 -bottom-0.5 h-px origin-right scale-x-0 bg-gold-300 transition-transform duration-500 ease-out-expo group-hover:origin-left group-hover:scale-x-100" />
+                <span className="absolute inset-x-0 -bottom-0.5 h-px origin-right scale-x-0 bg-cta transition-transform duration-500 ease-out-expo group-hover:origin-left group-hover:scale-x-100" />
               </Link>
             ))}
           </nav>
@@ -51,7 +51,7 @@ export function SiteNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
             <LangSwitch lang={lang} label={t.language} />
             <Link
               href={`/${lang}/registrazione`}
-              className="hidden rounded-full bg-gold-500 px-5 py-2.5 text-sm font-bold text-navy-900 transition-colors hover:bg-gold-300 sm:inline-flex"
+              className="hidden rounded-full bg-cta px-5 py-2.5 text-sm font-bold text-navy-900 transition-colors hover:bg-cta-hover sm:inline-flex"
             >
               {t.cta}
             </Link>
@@ -99,7 +99,7 @@ export function SiteNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
                 </motion.div>
               ))}
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="mt-8">
-                <Link href={`/${lang}/registrazione`} onClick={() => setOpen(false)} className="inline-flex rounded-full bg-gold-500 px-7 py-4 font-bold text-navy-900">
+                <Link href={`/${lang}/registrazione`} onClick={() => setOpen(false)} className="inline-flex rounded-full bg-cta px-7 py-4 font-bold text-navy-900">
                   {t.cta} →
                 </Link>
               </motion.div>

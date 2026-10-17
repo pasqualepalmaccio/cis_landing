@@ -110,7 +110,7 @@ export default async function CurriculumPage({ params }: PageProps<"/[lang]/curr
         </Block>
 
         <Reveal className="pb-32 text-center">
-          <Link href={`/${lang}/registrazione`} className="inline-flex rounded-full bg-gold-500 px-8 py-4 text-lg font-bold text-navy-900 transition-colors hover:bg-gold-300">
+          <Link href={`/${lang}/registrazione`} className="inline-flex rounded-full bg-cta px-8 py-4 text-lg font-bold text-navy-900 transition-colors hover:bg-cta-hover">
             {t.cta} →
           </Link>
         </Reveal>

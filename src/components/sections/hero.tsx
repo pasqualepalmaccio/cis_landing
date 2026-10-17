@@ -92,7 +92,7 @@ export function Hero({ lang, t }: { lang: Lang; t: Dict["hero"] }) {
                 <Magnetic>
                   <Link
                     href="#visione"
-                    className="group inline-flex items-center gap-3 rounded-full bg-gold-500 py-2 pl-7 pr-2 font-bold text-navy-900 transition-colors hover:bg-gold-300"
+                    className="group inline-flex items-center gap-3 rounded-full bg-cta py-2 pl-7 pr-2 font-bold text-navy-900 transition-colors hover:bg-cta-hover"
                   >
                     {t.cta}
                     <span className="grid size-10 place-items-center rounded-full bg-navy-900 text-gold-300 transition-transform duration-500 ease-out-expo group-hover:rotate-90">
@@ -100,10 +100,10 @@ export function Hero({ lang, t }: { lang: Lang; t: Dict["hero"] }) {
                     </span>
                   </Link>
                 </Magnetic>
-                <Link href={`/${lang}/registrazione`} className="group text-sm font-semibold text-gold-300">
+                <Link href={`/${lang}/registrazione`} className="group text-sm font-semibold text-cta">
                   {t.secondary}
                   <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  <span className="block h-px origin-left scale-x-0 bg-gold-300 transition-transform duration-500 group-hover:scale-x-100" />
+                  <span className="block h-px origin-left scale-x-0 bg-cta transition-transform duration-500 group-hover:scale-x-100" />
                 </Link>
               </motion.div>
             </div>

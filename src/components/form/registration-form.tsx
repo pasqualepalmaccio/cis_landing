@@ -134,7 +134,7 @@ export function RegistrationForm({ lang, t }: { lang: Lang; t: RegistrationCopy 
         <button
           type="submit"
           disabled={!SUBMISSION_ENABLED}
-          className="w-full rounded-full bg-gold-500 px-8 py-4 text-lg font-bold text-navy-900 transition-colors hover:bg-gold-300 disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
+          className="w-full rounded-full bg-cta px-8 py-4 text-lg font-bold text-navy-900 transition-colors hover:bg-cta-hover disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
         >
           {t.submit}
         </button>

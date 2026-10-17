@@ -18,7 +18,7 @@ export function LangSwitch({ lang, label }: { lang: Lang; label: string }) {
           hrefLang={l}
           aria-current={l === lang ? "true" : undefined}
           className={`rounded-full px-2.5 py-1.5 uppercase tracking-wider transition-colors ${
-            l === lang ? "bg-gold-500 text-navy-900" : "text-mist hover:text-cream"
+            l === lang ? "bg-cta text-navy-900" : "text-cream/80 hover:text-cta"
           }`}
         >
           {l}
