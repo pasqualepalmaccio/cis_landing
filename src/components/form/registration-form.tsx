@@ -7,11 +7,12 @@ import type { Lang } from "@/content";
 import { BUS, COUNTRIES, LANG_LEVELS, MAX_CHILDREN, MESSAGE_MAX, SUBMISSION_ENABLED, type RegistrationCopy } from "@/content/registration";
 
 import { ChildBlock } from "./child-block";
-import { control, Field, FormSection, Options } from "./field";
+import { control, Field, FormSection, optionsOf } from "./field";
+import { Select } from "./select";
 
 export function RegistrationForm({ lang, t }: { lang: Lang; t: RegistrationCopy }) {
   const [children, setChildren] = useState(1);
-  const [prefix, setPrefix] = useState("+39");
+  const [prefix, setPrefix] = useState("IT");
   const [messageLength, setMessageLength] = useState(0);
 
   return (
@@ -30,53 +31,72 @@ export function RegistrationForm({ lang, t }: { lang: Lang; t: RegistrationCopy 
             <input id="p_email" name="parent_email" type="email" autoComplete="email" required maxLength={254} className={control} />
           </Field>
           <Field label={t.parent.phone} htmlFor="p_tel" required>
+            {/* Il valore è il codice del paese: Stati Uniti e Canada hanno lo stesso +1. */}
             <div className="flex gap-2">
-              <select aria-label={t.parent.phoneOther} name="parent_phone_prefix" value={prefix} onChange={(e) => setPrefix(e.target.value)} className={`${control} w-28 shrink-0 px-3`}>
-                {COUNTRIES.map((c) => (
-                  <option key={c.code} value={c.dial || "other"}>
-                    {c.flag} {c.dial || c[lang]}
-                  </option>
-                ))}
-              </select>
-              {prefix === "other" && <input aria-label={t.parent.phoneOther} name="parent_phone_prefix_other" required maxLength={6} placeholder="+" className={`${control} w-20 shrink-0`} />}
-              <input id="p_tel" name="parent_phone_number" type="tel" autoComplete="tel-national" required maxLength={20} placeholder="333 1234567" className={`${control} min-w-0`} />
+              <div className="w-32 shrink-0">
+                <Select
+                  id="p_tel_prefix"
+                  name="parent_phone_country"
+                  ariaLabel={t.parent.phoneOther}
+                  value={prefix}
+                  onChange={setPrefix}
+                  options={COUNTRIES.map((c) => ({ value: c.code, label: c.dial ? `${c[lang]} ${c.dial}` : c[lang], icon: c.flag }))}
+                  renderValue={(o) => COUNTRIES.find((c) => c.code === o.value)?.dial || "+"}
+                  listClassName="w-72"
+                />
+              </div>
+              {prefix === "OTHER" && (
+                <input
+                  aria-label={t.parent.phoneOther}
+                  name="parent_phone_prefix_other"
+                  required
+                  maxLength={6}
+                  placeholder="+"
+                  className={`${control} w-20 shrink-0`}
+                />
+              )}
+              <input
+                id="p_tel"
+                name="parent_phone_number"
+                type="tel"
+                autoComplete="tel-national"
+                inputMode="tel"
+                required
+                maxLength={20}
+                placeholder="333 1234567"
+                className={`${control} min-w-0 flex-1`}
+              />
             </div>
           </Field>
           <Field label={t.parent.nationality} htmlFor="p_nat">
-            <select id="p_nat" name="parent_nationality" className={control} defaultValue="">
-              <option value="">{t.choose}</option>
-              {COUNTRIES.map((c) => (
-                <option key={c.code} value={c.code}>
-                  {c.flag} {c[lang]}
-                </option>
-              ))}
-            </select>
+            <Select
+              id="p_nat"
+              name="parent_nationality"
+              placeholder={t.choose}
+              options={COUNTRIES.map((c) => ({ value: c.code, label: c[lang], icon: c.flag }))}
+            />
           </Field>
           <Field label={t.parent.city} htmlFor="p_city" required>
             <input id="p_city" name="parent_city" autoComplete="address-level2" required maxLength={100} className={control} />
           </Field>
           <Field label={t.parent.levelIt} htmlFor="p_lvl_it">
-            <select id="p_lvl_it" name="parent_level_it" className={control} defaultValue="">
-              <Options items={LANG_LEVELS} lang={lang} placeholder={t.choose} />
-            </select>
+            <Select id="p_lvl_it" name="parent_level_it" placeholder={t.choose} options={optionsOf(LANG_LEVELS, lang)} />
           </Field>
           <Field label={t.parent.levelEn} htmlFor="p_lvl_en">
-            <select id="p_lvl_en" name="parent_level_en" className={control} defaultValue="">
-              <Options items={LANG_LEVELS} lang={lang} placeholder={t.choose} />
-            </select>
+            <Select id="p_lvl_en" name="parent_level_en" placeholder={t.choose} options={optionsOf(LANG_LEVELS, lang)} />
           </Field>
         </div>
       </FormSection>
 
       <FormSection title={t.children.title} sub={t.children.sub}>
         <Field label={t.children.count} htmlFor="num_kids" className="max-w-xs">
-          <select id="num_kids" name="children_count" value={children} onChange={(e) => setChildren(Number(e.target.value))} className={control}>
-            {Array.from({ length: MAX_CHILDREN }, (_, i) => i + 1).map((n) => (
-              <option key={n} value={n}>
-                {n === MAX_CHILDREN ? `${n}+` : n}
-              </option>
-            ))}
-          </select>
+          <Select
+            id="num_kids"
+            name="children_count"
+            value={String(children)}
+            onChange={(v) => setChildren(Number(v))}
+            options={Array.from({ length: MAX_CHILDREN }, (_, i) => ({ value: String(i + 1), label: i + 1 === MAX_CHILDREN ? `${i + 1}+` : String(i + 1) }))}
+          />
         </Field>
         {children === MAX_CHILDREN && <p className="text-sm text-gold-300">{t.children.moreNote}</p>}
         {/* I blocchi già compilati restano montati quando il numero cresce. */}
@@ -103,7 +123,14 @@ export function RegistrationForm({ lang, t }: { lang: Lang; t: RegistrationCopy 
       <FormSection title={t.message.title} sub={t.message.sub}>
         <p className="rounded-2xl border border-bordeaux bg-bordeaux/25 px-5 py-4 text-sm text-cream/90">{t.message.warning}</p>
         <div>
-          <textarea name="message" rows={5} maxLength={MESSAGE_MAX} onChange={(e) => setMessageLength(e.target.value.length)} aria-label={t.message.title} className={`${control} resize-y`} />
+          <textarea
+            name="message"
+            rows={5}
+            maxLength={MESSAGE_MAX}
+            onChange={(e) => setMessageLength(e.target.value.length)}
+            aria-label={t.message.title}
+            className={`${control} resize-y`}
+          />
           <p className="mt-1 text-right text-xs tabular-nums text-mist">
             {messageLength}/{MESSAGE_MAX}
           </p>

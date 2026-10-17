@@ -6,7 +6,8 @@ import { useState } from "react";
 import type { Lang } from "@/content";
 import { CITIES, COUNTRIES, ENTRY_YEARS, EXTRA_LANGS, GENDERS, USAGE, type RegistrationCopy } from "@/content/registration";
 
-import { control, Field, Options } from "./field";
+import { control, Field, optionsOf } from "./field";
+import { Select } from "./select";
 
 export function ChildBlock({ n, lang, t, choose }: { n: number; lang: Lang; t: RegistrationCopy["children"]; choose: string }) {
   const [futureCity, setFutureCity] = useState("");
@@ -27,29 +28,28 @@ export function ChildBlock({ n, lang, t, choose }: { n: number; lang: Lang; t: R
       </h3>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={t.age} htmlFor={id("age")} required>
-          <input id={id("age")} name={id("age")} type="number" min={1} max={18} required className={control} />
+          <input id={id("age")} name={id("age")} type="number" inputMode="numeric" min={1} max={18} required className={control} />
         </Field>
         <Field label={t.gender} htmlFor={id("gender")}>
-          <select id={id("gender")} name={id("gender")} className={control} defaultValue="">
-            <Options items={GENDERS} lang={lang} placeholder={choose} />
-          </select>
+          <Select id={id("gender")} name={id("gender")} placeholder={choose} options={optionsOf(GENDERS, lang)} />
         </Field>
         <Field label={t.entryYear} htmlFor={id("entry_year")} required>
-          <select id={id("entry_year")} name={id("entry_year")} required className={control} defaultValue="">
-            <Options items={ENTRY_YEARS} lang={lang} placeholder={choose} />
-          </select>
+          <Select id={id("entry_year")} name={id("entry_year")} required placeholder={choose} options={optionsOf(ENTRY_YEARS, lang)} />
         </Field>
         <Field label={t.futureCity} htmlFor={id("future_city")} required>
-          <select id={id("future_city")} name={id("future_city")} required className={control} value={futureCity} onChange={(e) => setFutureCity(e.target.value)}>
-            <option value="">{choose}</option>
-            {CITIES.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-            <option value="undecided">{t.futureUndecided}</option>
-            <option value="other">{t.futureOther}</option>
-          </select>
+          <Select
+            id={id("future_city")}
+            name={id("future_city")}
+            required
+            placeholder={choose}
+            options={[
+              ...CITIES.map((c) => ({ value: c, label: c })),
+              { value: "undecided", label: t.futureUndecided },
+              { value: "other", label: t.futureOther },
+            ]}
+            value={futureCity}
+            onChange={setFutureCity}
+          />
         </Field>
         {futureCity === "other" && (
           <Field label={t.futureOtherDetail} htmlFor={id("future_city_other")} required className="sm:col-span-2">
@@ -66,27 +66,21 @@ export function ChildBlock({ n, lang, t, choose }: { n: number; lang: Lang; t: R
           <input id={id("school_city")} name={id("school_city")} maxLength={100} className={control} />
         </Field>
         <Field label={t.currentSchoolCountry} htmlFor={id("school_country")}>
-          <select id={id("school_country")} name={id("school_country")} className={control} defaultValue="">
-            <option value="">{choose}</option>
-            {COUNTRIES.map((c) => (
-              <option key={c.code} value={c.code}>
-                {c.flag} {c[lang]}
-              </option>
-            ))}
-          </select>
+          <Select
+            id={id("school_country")}
+            name={id("school_country")}
+            placeholder={choose}
+            options={COUNTRIES.map((c) => ({ value: c.code, label: c[lang], icon: c.flag }))}
+          />
         </Field>
       </div>
 
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <Field label={t.itUsage} htmlFor={id("it_usage")}>
-          <select id={id("it_usage")} name={id("it_usage")} className={control} defaultValue="">
-            <Options items={USAGE} lang={lang} placeholder={choose} />
-          </select>
+          <Select id={id("it_usage")} name={id("it_usage")} placeholder={choose} options={optionsOf(USAGE, lang)} />
         </Field>
         <Field label={t.enUsage} htmlFor={id("en_usage")}>
-          <select id={id("en_usage")} name={id("en_usage")} className={control} defaultValue="">
-            <Options items={USAGE} lang={lang} placeholder={choose} />
-          </select>
+          <Select id={id("en_usage")} name={id("en_usage")} placeholder={choose} options={optionsOf(USAGE, lang)} />
         </Field>
       </div>
 
@@ -104,9 +98,7 @@ export function ChildBlock({ n, lang, t, choose }: { n: number; lang: Lang; t: R
         </div>
       </div>
       <Field label={t.extraUsage} htmlFor={id("extra_usage")} className="mt-5">
-        <select id={id("extra_usage")} name={id("extra_usage")} className={control} defaultValue="">
-          <Options items={USAGE} lang={lang} placeholder={choose} />
-        </select>
+        <Select id={id("extra_usage")} name={id("extra_usage")} placeholder={choose} options={optionsOf(USAGE, lang)} />
       </Field>
     </motion.div>
   );

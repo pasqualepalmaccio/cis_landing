@@ -2,9 +2,21 @@ import type { ReactNode } from "react";
 
 /* Aspetto condiviso di input, select e textarea: una decisione, un posto. */
 export const control =
-  "w-full rounded-xl border border-line bg-cream/[0.04] px-4 py-3 text-[15px] text-cream placeholder:text-mist/50 transition-colors focus:border-gold-500 focus:bg-cream/[0.07] focus:outline-none [&>option]:bg-navy-900";
+  "w-full rounded-xl border border-line bg-cream/[0.04] px-4 py-3 text-[15px] text-cream placeholder:text-mist/50 transition-colors focus:border-gold-500 focus:bg-cream/[0.07] focus:outline-none [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none";
 
-export function Field({ label, htmlFor, required, children, className = "" }: { label: string; htmlFor?: string; required?: boolean; children: ReactNode; className?: string }) {
+export function Field({
+  label,
+  htmlFor,
+  required,
+  children,
+  className = "",
+}: {
+  label: string;
+  htmlFor?: string;
+  required?: boolean;
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <div className={className}>
       <label htmlFor={htmlFor} className="mb-2 block text-xs font-semibold uppercase tracking-[0.12em] text-mist">
@@ -16,17 +28,9 @@ export function Field({ label, htmlFor, required, children, className = "" }: { 
   );
 }
 
-export function Options({ items, lang, placeholder }: { items: ({ v: string } & Record<"it" | "en", string>)[]; lang: "it" | "en"; placeholder: string }) {
-  return (
-    <>
-      <option value="">{placeholder}</option>
-      {items.map((o) => (
-        <option key={o.v} value={o.v}>
-          {o[lang]}
-        </option>
-      ))}
-    </>
-  );
+/** Opzioni bilingui del dizionario nel formato del componente Select. */
+export function optionsOf(items: ({ v: string } & Record<"it" | "en", string>)[], lang: "it" | "en") {
+  return items.map((o) => ({ value: o.v, label: o[lang] }));
 }
 
 export function FormSection({ title, sub, children }: { title: string; sub: string; children: ReactNode }) {
