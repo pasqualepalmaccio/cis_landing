@@ -68,14 +68,6 @@ export function RegistrationForm({ lang, t }: { lang: Lang; t: RegistrationCopy 
               />
             </div>
           </Field>
-          <Field label={t.parent.nationality} htmlFor="p_nat">
-            <Select
-              id="p_nat"
-              name="parent_nationality"
-              placeholder={t.choose}
-              options={COUNTRIES.map((c) => ({ value: c.code, label: c[lang], icon: c.flag }))}
-            />
-          </Field>
           <Field label={t.parent.city} htmlFor="p_city" required>
             <input id="p_city" name="parent_city" autoComplete="address-level2" required maxLength={100} className={control} />
           </Field>

@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 
 import type { Lang } from "@/content";
-import { CITIES, COUNTRIES, ENTRY_YEARS, EXTRA_LANGS, GENDERS, USAGE, type RegistrationCopy } from "@/content/registration";
+import { CITIES, COUNTRIES, ENTRY_YEARS, EXTRA_LANGS, USAGE, type RegistrationCopy } from "@/content/registration";
 
 import { control, Field, optionsOf } from "./field";
 import { Select } from "./select";
@@ -29,9 +29,6 @@ export function ChildBlock({ n, lang, t, choose }: { n: number; lang: Lang; t: R
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label={t.age} htmlFor={id("age")} required>
           <input id={id("age")} name={id("age")} type="number" inputMode="numeric" min={1} max={18} required className={control} />
-        </Field>
-        <Field label={t.gender} htmlFor={id("gender")}>
-          <Select id={id("gender")} name={id("gender")} placeholder={choose} options={optionsOf(GENDERS, lang)} />
         </Field>
         <Field label={t.entryYear} htmlFor={id("entry_year")} required>
           <Select id={id("entry_year")} name={id("entry_year")} required placeholder={choose} options={optionsOf(ENTRY_YEARS, lang)} />
@@ -58,13 +55,7 @@ export function ChildBlock({ n, lang, t, choose }: { n: number; lang: Lang; t: R
         )}
       </div>
 
-      <div className="mt-5 grid gap-5 sm:grid-cols-3">
-        <Field label={t.currentSchool} htmlFor={id("school")}>
-          <input id={id("school")} name={id("school")} maxLength={120} placeholder={t.currentSchoolPlaceholder} className={control} />
-        </Field>
-        <Field label={t.currentSchoolCity} htmlFor={id("school_city")}>
-          <input id={id("school_city")} name={id("school_city")} maxLength={100} className={control} />
-        </Field>
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
         <Field label={t.currentSchoolCountry} htmlFor={id("school_country")}>
           <Select
             id={id("school_country")}

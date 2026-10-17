@@ -107,3 +107,13 @@ Finché mancano, `SUBMISSION_ENABLED` resta `false` anche dopo la consegna del c
 - Ogni esito mostrato all'utente riporta il contatto alternativo info@cis-colico.com.
 - Per il testo libero serve una procedura scritta: chi trova dati sanitari li cancella e lo registra.
 - «Considerazione prioritaria» è una promessa senza riscontro: si toglie o si scrive il criterio (decisione del titolare).
+
+## Decisioni del committente (2026-10-17)
+
+- **Sesso del figlio:** tolto dal modulo.
+- **Scuola attuale:** solo il paese; nome e città della scuola tolti.
+- **Nazionalità del genitore:** tolta.
+- **Conservazione nel CRM:** 24 mesi dalla ricezione, poi cancellazione automatica (`expiresAt`).
+- **Accesso nel CRM:** permesso dedicato per segreteria, direzione e amministrazione (OFFICE, MANAGER, ADMIN).
+- **«Considerazione prioritaria»:** sostituita con «Sarai tra i primi a sapere quando aprono le iscrizioni».
+- **Destinatario degli allarmi:** da indicare. Finché un allarme non è stato provato davvero, `SUBMISSION_ENABLED` resta `false`.
