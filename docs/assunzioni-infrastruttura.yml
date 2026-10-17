@@ -1,6 +1,6 @@
 # SG-04 · Inventario delle assunzioni sul contesto della landing
 progetto: landing
-aggiornato: 2026-10-16
+aggiornato: 2026-10-17
 responsabile_inventario: Pasquale Palmaccio
 
 perimetri:
@@ -17,8 +17,9 @@ assunzioni:
     esito_osservato: "nessuna variabile d'ambiente richiesta; invio del modulo spento"
   - id: L02
     categoria: servizi-terzi
-    assunzione: Il visitatore non contatta terze parti (font, analytics, mappe).
+    assunzione: Il visitatore non contatta terze parti (font, analytics, mappe) prima del consenso.
     stato: verificata
+    nota: "dal 2026-10-17 Google e Meta possono partire solo dopo il consenso (record 2026-10-17); finché TRACKING_ENABLED è falso nessuna terza parte. Ricontrollare con scripts/consent-check.mjs a ogni accensione."
     come_verificare: grep di fonts.googleapis nell'HTML servito; CSP default-src 'self' in produzione.
     verificata_il: 2026-10-16
     esito_osservato: "0 riferimenti a domini esterni; font serviti da /_next/static"
@@ -42,3 +43,38 @@ assunzioni:
     stato: falsa
     verificata_il: 2026-10-16
     esito_osservato: "il nome del container CRM cambia a ogni rilascio; serve customNetworkAliases (vedi record di decisione)"
+  - id: L06
+    categoria: rete
+    assunzione: L'origine è raggiungibile solo attraverso Cloudflare.
+    stato: falsa
+    verificata_il: 2026-10-17
+    esito_osservato: "curl --resolve sull'IP del server → 200; ufw inattivo, catena DOCKER-USER vuota"
+    se_falsa: "CF-Connecting-IP e CF-IPCountry falsificabili: il registro dei consensi li usa solo in hash e non per decidere; da chiudere prima della Conversions API"
+  - id: L07
+    categoria: persistenza
+    assunzione: Il registro dei consensi sopravvive ai rilasci e alla perdita del server.
+    stato: da_verificare
+    esito_osservato: "Postgres dedicato landing-postgres nel progetto Coolify «CIS Landing», backup orario su S3 (30 giorni); il container dell'app non ha volumi"
+    come_verificare: consenso di prova, rilascio dell'app, ricerca della riga; poi ripristino di un backup su un database di prova
+  - id: L08
+    categoria: servizi-terzi
+    assunzione: La CSP ammette i tag configurati e Cloudflare non inserisce script incompatibili.
+    stato: da_verificare
+    esito_osservato: "Email Obfuscation attiva (script /cdn-cgi, ammesso da 'self'); Rocket Loader assente; Zaraz 404; violazioni registrate da /api/csp-report"
+    come_verificare: dopo l'accensione dei tag, navigare accettando e rifiutando e leggere csp_reports
+  - id: L09
+    categoria: configurazione
+    assunzione: DATABASE_URL e CONSENT_IP_SALT sono solo variabili di runtime, mai nell'immagine.
+    stato: verificata
+    verificata_il: 2026-10-17
+    esito_osservato: "API Coolify: is_buildtime=false, is_runtime=true per entrambe"
+  - id: L10
+    categoria: servizi-terzi
+    assunzione: Pixel e Conversions API deduplicano tramite event_id.
+    stato: da_verificare
+    nota: fase 2, con il collegamento al CRM
+  - id: L11
+    categoria: configurazione
+    assunzione: Cookie e consenso coerenti fra landing.cis-colico.com e il dominio principale.
+    stato: da_verificare
+    come_verificare: dopo il consenso, controllare il Domain dei cookie su entrambi gli host; oggi l'apex è ancora su Netlify con il vecchio sito

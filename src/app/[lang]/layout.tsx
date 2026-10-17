@@ -2,10 +2,13 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 
+import { ConsentBanner } from "@/components/consent/consent-banner";
+import { CONSENT_DEFAULTS_SCRIPT, ConsentTags } from "@/components/consent/consent-tags";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteNav } from "@/components/layout/site-nav";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { getDict, isLang, LANGS } from "@/content";
+import { TRACKING_ENABLED } from "@/lib/consent/config";
 
 import "../globals.css";
 
@@ -40,11 +43,23 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
   const t = getDict(lang);
   return (
     <html lang={lang} className={`${fraunces.variable} ${inter.variable}`} data-scroll-behavior="smooth">
+      {/* Senza tag configurati il sito non usa cookie facoltativi: niente banner, niente script (I6). */}
+      {TRACKING_ENABLED && (
+        <head>
+          <script dangerouslySetInnerHTML={{ __html: CONSENT_DEFAULTS_SCRIPT }} />
+        </head>
+      )}
       <body className="bg-navy-900 font-sans text-cream antialiased">
         <ScrollProgress />
         <SiteNav lang={lang} t={t.nav} />
         <main className="overflow-x-clip">{children}</main>
-        <SiteFooter lang={lang} t={t.footer} />
+        <SiteFooter lang={lang} t={t.footer} legal={t.legal} />
+        {TRACKING_ENABLED && (
+          <>
+            <ConsentBanner lang={lang} t={t.consent} />
+            <ConsentTags />
+          </>
+        )}
       </body>
     </html>
   );

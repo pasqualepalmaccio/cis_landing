@@ -7,6 +7,8 @@ RUN pnpm install --frozen-lockfile
 
 FROM deps AS build
 COPY . .
+# ID pubblici dei tag (variabili di build in Coolify). Vuoti = nessun tag, nessun banner.
+ARG NEXT_PUBLIC_GA4_ID="" NEXT_PUBLIC_GADS_ID="" NEXT_PUBLIC_META_PIXEL_ID=""
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN pnpm build
 

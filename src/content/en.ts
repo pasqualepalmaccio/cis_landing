@@ -271,6 +271,29 @@ export const en: Dict = {
     curriculum: "The curriculum in detail",
     motto: "Ex altis lux",
   },
+  consent: {
+    label: "Cookie consent",
+    title: "Cookies",
+    body: "We use technical cookies to make the site work. If you agree, we also use statistics and marketing cookies: they tell us where visits come from and let us show our ads to people who have already been here. You can change your mind at any time from \"Cookie preferences\" at the bottom of every page.",
+    policy: "Cookie policy",
+    accept: "Accept all",
+    reject: "Reject",
+    customize: "Let me choose",
+    save: "Save choices",
+    close: "Close and reject",
+    preferencesTitle: "Cookie preferences",
+    always: "Always on",
+    purposes: {
+      necessary: { title: "Technical", body: "Needed for the site to work and to remember your cookie choice." },
+      statistics: { title: "Statistics", body: "{vendors} counts visits and page views. Data also reaches the United States." },
+      marketing: { title: "Marketing and remarketing", body: "{vendors} measure how our ads perform and let us show them to people who have visited the site. Data also reaches the United States." },
+    },
+  },
+  legal: {
+    privacy: "Privacy policy",
+    cookie: "Cookie policy",
+    preferences: "Cookie preferences",
+  },
   curriculumPage: {
     meta: {
       title: "Our curriculum · CIS",

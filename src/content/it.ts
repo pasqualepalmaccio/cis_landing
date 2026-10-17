@@ -291,6 +291,29 @@ export const it = {
     curriculum: "Il curricolo nel dettaglio",
     motto: "Ex altis lux",
   },
+  consent: {
+    label: "Consenso ai cookie",
+    title: "Cookie",
+    body: "Usiamo cookie tecnici per far funzionare il sito. Se sei d'accordo usiamo anche cookie di statistica e di marketing: ci dicono da dove arrivano le visite e ci permettono di mostrare i nostri annunci a chi è già passato di qui. Puoi cambiare idea quando vuoi da «Preferenze cookie», in fondo a ogni pagina.",
+    policy: "Cookie policy",
+    accept: "Accetta tutti",
+    reject: "Rifiuta",
+    customize: "Scegli tu",
+    save: "Salva le scelte",
+    close: "Chiudi e rifiuta",
+    preferencesTitle: "Preferenze cookie",
+    always: "Sempre attivi",
+    purposes: {
+      necessary: { title: "Tecnici", body: "Servono al sito e a ricordare la tua scelta sui cookie." },
+      statistics: { title: "Statistiche", body: "{vendors} conta le visite e le pagine viste. I dati arrivano anche negli Stati Uniti." },
+      marketing: { title: "Marketing e remarketing", body: "{vendors} misurano i risultati dei nostri annunci e ci permettono di mostrarli a chi ha già visitato il sito. I dati arrivano anche negli Stati Uniti." },
+    },
+  },
+  legal: {
+    privacy: "Privacy policy",
+    cookie: "Cookie policy",
+    preferences: "Preferenze cookie",
+  },
   curriculumPage: {
     meta: {
       title: "Il nostro curricolo · CIS",

@@ -1,11 +1,13 @@
 import Link from "next/link";
 
 import type { Dict, Lang } from "@/content";
+import { TRACKING_ENABLED } from "@/lib/consent/config";
 
 import { Mark } from "../brand/mark";
+import { PreferencesButton } from "../consent/preferences-button";
 import { Container } from "./container";
 
-export function SiteFooter({ lang, t }: { lang: Lang; t: Dict["footer"] }) {
+export function SiteFooter({ lang, t, legal }: { lang: Lang; t: Dict["footer"]; legal: Dict["legal"] }) {
   return (
     <footer className="relative overflow-hidden border-t border-line pt-20">
       <Container className="relative z-10 flex flex-wrap justify-between gap-12 pb-16">
@@ -34,6 +36,15 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict["footer"] }) {
             </Link>
           </div>
         </div>
+      </Container>
+      <Container className="relative z-10 flex flex-wrap gap-x-6 gap-y-2 border-t border-line py-6 text-xs text-mist">
+        <Link href={`/${lang}/privacy`} className="transition-colors hover:text-cta">
+          {legal.privacy}
+        </Link>
+        <Link href={`/${lang}/cookie`} className="transition-colors hover:text-cta">
+          {legal.cookie}
+        </Link>
+        {TRACKING_ENABLED && <PreferencesButton label={legal.preferences} className="transition-colors hover:text-cta" />}
       </Container>
       <p
         aria-hidden
