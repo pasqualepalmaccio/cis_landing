@@ -78,3 +78,31 @@ assunzioni:
     assunzione: Cookie e consenso coerenti fra landing.cis-colico.com e il dominio principale.
     stato: da_verificare
     come_verificare: dopo il consenso, controllare il Domain dei cookie su entrambi gli host; oggi l'apex è ancora su Netlify con il vecchio sito
+  - id: L12
+    categoria: rete
+    assunzione: La landing raggiunge le API del CRM su https://crm.cis-colico.com senza sfide di Cloudflare.
+    stato: verificata
+    verificata_il: 2026-10-17
+    esito_osservato: "POST /api/v1/leads → 401 JSON in 100-365 ms; nessun cf-mitigated; health 200 in ~80 ms"
+    se_falsa: "pagina di sfida al posto di 201: trattarla come failed e ritentare"
+  - id: L13
+    categoria: sonde-percorsi
+    assunzione: Un task di Coolify che fallisce produce una notifica.
+    stato: falsa
+    verificata_il: 2026-10-17
+    esito_osservato: "nessun canale di notifica attivo sul team; task con più container e campo container vuoto va in errore; 3 tentativi, nessuna protezione dalla sovrapposizione"
+    come_verificare: attivare un canale e far fallire di proposito un task di prova
+  - id: L14
+    categoria: persistenza
+    assunzione: Prima di ogni migrazione Prisma del CRM esiste un backup recente.
+    stato: falsa
+    verificata_il: 2026-10-17
+    esito_osservato: "migrate deploy all'avvio del container; backup solo orario"
+    se_falsa: "fino a 59 minuti di dati non recuperabili"
+  - id: L15
+    categoria: tempo
+    assunzione: I container sono in UTC (expiresAt).
+    stato: verificata
+    verificata_il: 2026-10-17
+    esito_osservato: "date -u e Intl in UTC nella landing; TZ=UTC nel CRM"
+
