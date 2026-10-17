@@ -6,7 +6,6 @@ import { Curriculum } from "@/components/sections/curriculum";
 import { Fees } from "@/components/sections/fees";
 import { Hero } from "@/components/sections/hero";
 import { Interest } from "@/components/sections/interest";
-import { MarqueeBand } from "@/components/sections/marquee-band";
 import { Philosophy } from "@/components/sections/philosophy";
 import { Safety } from "@/components/sections/safety";
 import { Timeline } from "@/components/sections/timeline";
@@ -20,7 +19,6 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   return (
     <>
       <Hero lang={lang} t={t.hero} />
-      <MarqueeBand words={t.marquee} />
       <Vision t={t.vision} />
       <Curriculum lang={lang} t={t.curriculum} />
       <Access t={t.access} />

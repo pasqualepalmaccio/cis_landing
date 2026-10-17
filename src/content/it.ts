@@ -36,7 +36,6 @@ export const it = {
       { value: "120", label: "studenti a regime" },
     ],
   },
-  marquee: ["English", "Italiano", "Français", "Deutsch", "Español", "中文", "Русский"],
   vision: {
     eyebrow: "La nostra visione",
     title: "Un patrimonio per la vita, non solo un curricolo",

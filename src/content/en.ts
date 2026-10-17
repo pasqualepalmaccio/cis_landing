@@ -36,7 +36,6 @@ export const en: Dict = {
       { value: "120", label: "students at capacity" },
     ],
   },
-  marquee: ["English", "Italiano", "Français", "Deutsch", "Español", "中文", "Русский"],
   vision: {
     eyebrow: "Our vision",
     title: "A lifelong asset, not just a curriculum",

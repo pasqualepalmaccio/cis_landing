@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteNav } from "@/components/layout/site-nav";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
-import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { getDict, isLang, LANGS } from "@/content";
 
 import "../globals.css";
@@ -40,9 +39,8 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
   if (!isLang(lang)) notFound();
   const t = getDict(lang);
   return (
-    <html lang={lang} className={`${fraunces.variable} ${inter.variable}`}>
+    <html lang={lang} className={`${fraunces.variable} ${inter.variable}`} data-scroll-behavior="smooth">
       <body className="bg-navy-900 font-sans text-cream antialiased">
-        <SmoothScroll />
         <ScrollProgress />
         <SiteNav lang={lang} t={t.nav} />
         <main className="overflow-x-clip">{children}</main>
