@@ -37,18 +37,28 @@ export function SiteNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
           solid ? "border-line bg-navy-900/75 backdrop-blur-xl" : "border-transparent bg-transparent"
         }`}
       >
-        <Container className="flex items-center gap-6 py-3">
+        {/* Tre colonne: menu a sinistra, stemma al centro, azioni a destra.
+            Le colonne laterali hanno la stessa larghezza, così lo stemma resta
+            al centro esatto qualunque sia la lunghezza delle voci. */}
+        <Container className="grid grid-cols-[1fr_auto_1fr] items-center gap-4 py-2">
+          <div className="flex min-w-0 items-center">
+            <nav className="hidden items-center gap-6 text-sm text-cream/90 xl:flex">
+              {t.links.map((l) => (
+                <Link key={l.href} href={home(l.href)} className="group relative py-1 transition-colors hover:text-cta">
+                  {l.label}
+                  <span className="absolute inset-x-0 -bottom-0.5 h-px origin-right scale-x-0 bg-cta transition-transform duration-500 ease-out-expo group-hover:origin-left group-hover:scale-x-100" />
+                </Link>
+              ))}
+            </nav>
+            <div className="xl:hidden">
+              <LangSwitch lang={lang} label={t.language} />
+            </div>
+          </div>
           <Brand lang={lang} />
-          <nav className="ml-6 hidden items-center gap-7 text-sm text-cream/90 xl:flex">
-            {t.links.map((l) => (
-              <Link key={l.href} href={home(l.href)} className="group relative py-1 transition-colors hover:text-cta">
-                {l.label}
-                <span className="absolute inset-x-0 -bottom-0.5 h-px origin-right scale-x-0 bg-cta transition-transform duration-500 ease-out-expo group-hover:origin-left group-hover:scale-x-100" />
-              </Link>
-            ))}
-          </nav>
-          <div className="ml-auto flex items-center gap-2.5">
-            <LangSwitch lang={lang} label={t.language} />
+          <div className="flex items-center justify-end gap-2.5">
+            <div className="hidden xl:block">
+              <LangSwitch lang={lang} label={t.language} />
+            </div>
             <Link
               href={`/${lang}/registrazione`}
               className="hidden rounded-full bg-cta px-5 py-2.5 text-sm font-bold text-navy-900 transition-colors hover:bg-cta-hover sm:inline-flex"
@@ -84,7 +94,7 @@ export function SiteNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
           >
             <Container className="flex items-center justify-between py-3">
-              <Brand lang={lang} compact />
+              <Brand lang={lang} />
               <button type="button" onClick={() => setOpen(false)} className="rounded-full border border-line px-4 py-2 text-sm" aria-label={t.close}>
                 {t.close}
               </button>
