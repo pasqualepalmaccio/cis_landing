@@ -112,15 +112,15 @@ export const registrationCopy = {
     meta: { title: "Pre-registrazione · CIS", description: "Raccontaci della tua famiglia: un primo passo, non un'iscrizione formale." },
     eyebrow: "Pre-registrazione",
     title: "Raccontaci della tua famiglia",
-    lead: "Qualche minuto per aiutarci a capire chi siamo e a organizzare al meglio l'apertura. Nessun impegno — è un primo passo, non un'iscrizione formale.",
+    lead: "Bastano pochi minuti. Ci aiuti a capire chi siete e a organizzare l'apertura. Non ti impegna a nulla e non è un'iscrizione.",
     why: {
       title: "Perché registrarti ora?",
       items: [
         "Aggiornamenti in anteprima, prima dell'apertura della campagna ufficiale, se scegli di riceverli",
         "Considerazione prioritaria quando le iscrizioni apriranno ufficialmente",
-        "La tua famiglia contribuisce a plasmare l'organizzazione della scuola — bus, lingue, orari",
+        "Le vostre risposte contano quando decidiamo bus, lingue e orari",
       ],
-      caveat: "La pre-registrazione non garantisce un posto — i criteri di ammissione sono ancora in definizione — ma ti mette in prima fila per saperne di più.",
+      caveat: "La pre-registrazione non garantisce un posto, perché i criteri di ammissione non sono ancora definiti. Però sarai tra i primi a ricevere notizie.",
     },
     required: "I campi con * sono obbligatori.",
     parent: {
@@ -146,7 +146,7 @@ export const registrationCopy = {
       gender: "Sesso",
       entryYear: "Anno di ingresso desiderato",
       futureCity: "Città di residenza quando andrà a scuola",
-      futureUndecided: "Non ancora deciso — valutiamo il trasferimento nella zona",
+      futureUndecided: "Non ancora: stiamo pensando di trasferirci in zona",
       futureOther: "Altro",
       futureOtherDetail: "Quale città?",
       currentSchool: "Scuola attuale",
@@ -161,7 +161,7 @@ export const registrationCopy = {
     bus: { title: "Trasporto", sub: "Ti interesserebbe il servizio bus dedicato?" },
     message: {
       title: "Altre informazioni",
-      sub: "Facoltativo — domande o informazioni utili.",
+      sub: "Facoltativo. Domande o cose che è utile sapere.",
       warning: "Per favore non inserire informazioni sulla salute, su disabilità o su bisogni educativi speciali dei bambini: ne parleremo con te di persona nella fase di iscrizione.",
     },
     updates: "Desidero ricevere via email aggiornamenti in anteprima su Colico International School (apertura, open day, iscrizioni). Facoltativo. Ti chiederemo di confermare l'indirizzo e potrai disiscriverti in ogni momento dal link in ogni email.",
@@ -171,21 +171,21 @@ export const registrationCopy = {
       title: "Anteprima del nuovo sito",
       body: "In questa anteprima l'invio del modulo è disattivato. Per registrare il tuo interesse scrivi a",
     },
-    choose: "—",
+    choose: "Seleziona",
   },
   en: {
     meta: { title: "Pre-registration · CIS", description: "Tell us about your family: a first step, not a formal enrolment." },
     eyebrow: "Pre-registration",
     title: "Tell us about your family",
-    lead: "A few minutes to help us understand who you are and plan the opening well. No commitment — this is a first step, not a formal enrolment.",
+    lead: "It only takes a few minutes. It helps us understand who you are and plan the opening. It commits you to nothing and isn't an enrolment.",
     why: {
       title: "Why register now?",
       items: [
         "Early updates, ahead of the official campaign, if you choose to receive them",
         "Priority consideration once enrolment officially opens",
-        "Your family helps shape how we organise the school — buses, languages, hours",
+        "Your answers count when we decide on buses, languages and hours",
       ],
-      caveat: "Pre-registration doesn't guarantee a place — our admissions criteria are still being finalised — but it puts you first in line to hear more.",
+      caveat: "Pre-registration doesn't guarantee a place, because admission criteria aren't final yet. You will be among the first to hear news, though.",
     },
     required: "Fields marked with * are required.",
     parent: {
@@ -211,7 +211,7 @@ export const registrationCopy = {
       gender: "Sex",
       entryYear: "Desired entry year",
       futureCity: "City of residence when attending school",
-      futureUndecided: "Not yet decided — considering moving to the area",
+      futureUndecided: "Not yet: we're thinking about moving to the area",
       futureOther: "Other",
       futureOtherDetail: "Which city?",
       currentSchool: "Current school",
@@ -226,7 +226,7 @@ export const registrationCopy = {
     bus: { title: "Transport", sub: "Would you be interested in the dedicated bus service?" },
     message: {
       title: "Anything else",
-      sub: "Optional — questions or useful information.",
+      sub: "Optional. Questions, or anything useful for us to know.",
       warning: "Please do not include information about your children's health, disabilities or special educational needs: we'll discuss these with you in person during enrolment.",
     },
     updates: "I'd like to receive early email updates about Colico International School (opening, open days, enrolment). Optional. We'll ask you to confirm your address, and you can unsubscribe at any time via the link in every email.",
@@ -236,7 +236,7 @@ export const registrationCopy = {
       title: "Preview of the new website",
       body: "Form submission is disabled in this preview. To register your interest, write to",
     },
-    choose: "—",
+    choose: "Select",
   },
 } satisfies Record<Lang, unknown>;
 

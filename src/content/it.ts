@@ -6,7 +6,7 @@ export const it = {
   meta: {
     title: "CIS · Colico International School",
     description:
-      "Una nuova scuola internazionale sul Lago di Como, a Colico. Apertura Settembre 2027. Registra il tuo interesse per la campagna di pre-iscrizione.",
+      "Una nuova scuola internazionale sul Lago di Como, a Colico. Apre a settembre 2027. Lascia il tuo interesse e ti avvisiamo quando si aprono le pre-iscrizioni.",
   },
   nav: {
     links: [
@@ -24,7 +24,7 @@ export const it = {
     language: "Lingua",
   },
   hero: {
-    eyebrow: "La nuova scuola internazionale del Nord Lago · Apertura Settembre 2027",
+    eyebrow: "La nuova scuola internazionale dell'Alto Lago · Apertura settembre 2027",
     titleLines: ["Il mondo come aula.", "Il Lago come casa."],
     sub: "Una scuola internazionale per bambini dai 3 ai 14 anni.",
     cta: "Scopri il progetto",
@@ -38,22 +38,22 @@ export const it = {
   },
   vision: {
     eyebrow: "La nostra visione",
-    title: "Un patrimonio per la vita, non solo un curricolo",
-    lead: "Pensata insieme per bambini, genitori e insegnanti — con un obiettivo: crescere persone capaci di pensare e di fare.",
+    title: "Quello che resta, dopo la scuola",
+    lead: "L'abbiamo pensata per bambini, genitori e insegnanti. L'idea è semplice: crescere ragazzi che sanno pensare e sanno fare.",
     cards: [
       {
         title: "Per i bambini",
         items: [
           "Ambiente multilingue e multiculturale, fin dal Pre-K",
-          "Apprendimento all'aperto integrato nel curricolo, non solo ricreazione",
-          "Attività manuali in classe: orto, falegnameria, cucina — sapere pensare e sapere fare",
+          "Si impara anche all'aperto, come parte delle lezioni",
+          "Orto, falegnameria e cucina in classe",
         ],
       },
       {
         title: "Per i genitori",
         items: [
-          "Orario esteso *(opzionale, a pagamento)* fino alle 18:30 — sport e laboratori",
-          "Giornate «Un genitore in classe», per vivere insieme un momento di scuola",
+          "Orario esteso fino alle 18:30 con sport e laboratori *(facoltativo, a pagamento)*",
+          "Giornate «Un genitore in classe»: passate una mattina a scuola con vostro figlio",
           "Navette dedicate su tutto l'Alto Lago",
         ],
       },
@@ -61,16 +61,16 @@ export const it = {
         title: "Per gli insegnanti",
         items: [
           "Classi piccole, piena autonomia didattica",
-          "Trattati come soci fondatori, non dipendenti",
-          "Aiuto all'alloggio in una delle zone più belle d'Italia",
+          "Entrano come soci fondatori del progetto",
+          "Un aiuto per trovare casa sul lago",
         ],
       },
       {
-        title: "Fasce d'età & lingue",
+        title: "Fasce d'età e lingue",
         items: [
           "Nido/Pre-primaria (3–5) · Primary (6–10) · Lower Secondary (11–14)",
-          "Inglese + Italiano come lingue principali",
-          "Francese, Tedesco, Spagnolo dalla primaria — Cinese e Russo opzionali",
+          "Inglese e italiano come lingue principali",
+          "Francese, tedesco e spagnolo dalla primaria. Cinese e russo facoltativi",
         ],
       },
     ],
@@ -82,12 +82,12 @@ export const it = {
       {
         kicker: "Pre-K e Primary",
         title: "Apprendimento per temi e indagine",
-        body: "Il nostro approccio organizza l'apprendimento per unità tematiche (es. «Il nostro pianeta», «Civiltà antiche») che collegano scienze, storia, geografia, arte e lingua in un unico percorso, invece di materie isolate. Ogni unità sviluppa in parallelo conoscenze, abilità e un aspetto del carattere dello studente (es. resilienza, cooperazione, rispetto) — nello spirito dei migliori standard internazionali per l'infanzia e la primaria.",
+        body: "Il nostro approccio organizza l'apprendimento per unità tematiche (es. «Il nostro pianeta», «Civiltà antiche») che collegano scienze, storia, geografia, arte e lingua in un unico percorso, invece di tenerle separate. Ogni unità lavora insieme su conoscenze, abilità e un tratto del carattere, come la resilienza, la cooperazione o il rispetto.",
       },
       {
         kicker: "Lower Secondary",
         title: "Apprendimento per concetti e contesti globali",
-        body: "Per gli studenti di 11–14 anni, un approccio che favorisce l'apprendimento per concetti e per indagine, e collega le materie tra loro e al mondo reale attraverso progetti interdisciplinari — costruendo le basi per un percorso internazionale riconosciuto dalle università di tutto il mondo. Stiamo lavorando per ottenere, nel tempo, l'affiliazione formale con le organizzazioni educative internazionali di riferimento.",
+        body: "Dagli 11 ai 14 anni si impara per concetti e per indagine. I progetti mettono insieme più materie e le collegano a problemi veri. È la base per un percorso internazionale che le università di tutto il mondo riconoscono. Stiamo lavorando per ottenere, nel tempo, l'affiliazione formale con le organizzazioni educative internazionali di riferimento.",
       },
     ],
     more: "Scopri come funziona nel dettaglio",
@@ -103,20 +103,20 @@ export const it = {
         },
         {
           title: "Grade 1–5 (età 6–10/11)",
-          body: "Corrisponde alla **Scuola primaria** italiana (1ª–5ª elementare). La nostra scuola sarà iscritta all'albo regionale come istituto non paritario, il che garantisce comunque l'assolvimento dell'obbligo scolastico. In questa fascia il rientro nel sistema italiano resta semplice: è previsto un solo esame di idoneità, sostenuto al termine della quinta elementare, per l'ammissione alla scuola secondaria di primo grado — la stessa procedura richiesta a chiunque provenga da una scuola non paritaria. Puntiamo a ottenere la parità scolastica anche per Grade 1–5 a partire da Settembre 2028 (vedi sotto).",
+          body: "Corrisponde alla **Scuola primaria** italiana (1ª–5ª elementare). La nostra scuola sarà iscritta all'albo regionale come istituto non paritario, il che garantisce comunque l'assolvimento dell'obbligo scolastico. In questa fascia il rientro nel sistema italiano resta semplice: è previsto un solo esame di idoneità, sostenuto al termine della quinta elementare, per l'ammissione alla scuola secondaria di primo grado. È la stessa procedura prevista per chiunque arrivi da una scuola non paritaria. Puntiamo alla parità scolastica anche per Grade 1–5 da settembre 2028 (vedi sotto).",
         },
       ],
       parity: {
         title: "Parità scolastica per tutta la scuola",
-        body: "Puntiamo a ottenere la **parità scolastica** per l'intero istituto — Grade 1–5 inclusa — a partire da Settembre 2028, in coincidenza con l'apertura della Lower Secondary (Grade 6 in su, età 11+). Una volta ottenuta, la scuola potrà rilasciare titoli con piena validità legale per tutte le classi, senza necessità di esami esterni per il passaggio tra sistemi. *La parità è soggetta all'approvazione del MIUR: la data indicata è il nostro obiettivo, non una garanzia.*",
+        body: "Puntiamo alla **parità scolastica** per tutto l'istituto, Grade 1–5 compresa, da settembre 2028, quando apre la Lower Secondary (dal Grade 6, età 11+). Una volta ottenuta, la scuola potrà rilasciare titoli con piena validità legale per tutte le classi, senza necessità di esami esterni per il passaggio tra sistemi. *La parità è soggetta all'approvazione del MIUR: la data indicata è il nostro obiettivo, non una garanzia.*",
         note: "Fino a quel momento, per Grade 1–5 resta valida la procedura descritta sopra: un solo esame di idoneità al termine della quinta elementare.",
       },
     } as { eyebrow: string; title: string; cards: { title: string; body: string }[]; parity: { title: string; body: string; note: string } } | null,
   },
   access: {
     eyebrow: "Perché Colico",
-    title: "Facile da raggiungere, nel cuore dell'Alto Lago",
-    lead: "Colico è lo snodo dell'Alto Lago: qui arrivano la superstrada SS36 da Lecco, la ferrovia e le linee di battello del lago. Ecco quanto ci vuole dalle località vicine.",
+    title: "Colico si raggiunge facilmente",
+    lead: "Colico è lo snodo dell'Alto Lago: qui arrivano la superstrada SS36 da Lecco, la ferrovia e le linee di battello del lago. Questi sono i tempi dalle località vicine.",
     routes: [
       { town: "Lecco", ways: [{ mode: "In auto · SS36", minutes: 35 }, { mode: "In treno", minutes: 42 }] },
       { town: "Menaggio", ways: [{ mode: "In auto", minutes: 40 }, { mode: "In aliscafo", minutes: 30 }] },
@@ -128,8 +128,8 @@ export const it = {
   campus: {
     eyebrow: "La futura sede",
     title: "Semplice, calda, accogliente",
-    lead: "Una prima immagine del progetto di ristrutturazione — spazi pensati per l'apprendimento all'aperto e in classi piccole.",
-    hero: { caption: "La sede — vista d'insieme", alt: "Render dell'ingresso della scuola" },
+    lead: "Una prima immagine della ristrutturazione: spazi per classi piccole e per le lezioni all'aperto.",
+    hero: { caption: "La sede, vista d'insieme", alt: "Render dell'ingresso della scuola" },
     gallery: [
       { src: "/images/sede-aula.jpg", caption: "Interno aula", alt: "Render dell'interno di un'aula" },
       { src: "/images/sede-giochi.jpg", caption: "Area giochi", alt: "Render dell'area giochi" },
@@ -144,37 +144,37 @@ export const it = {
       {
         tag: "Lettura",
         title: "Una pausa dedicata a leggere",
-        body: "Una delle tre pause giornaliere è riservata alla lettura individuale e silenziosa, nella lingua scelta dal bambino — anche la lingua madre. Quei libri diventano poi la base per attività di condivisione e discussione in classe: raccontare, riassumere e discutere i libri davanti ai compagni. Un modo semplice per coltivare il piacere e l'abitudine di leggere, fin dai primi anni.",
+        body: "Una delle tre pause giornaliere è riservata alla lettura individuale e silenziosa, nella lingua che il bambino sceglie, anche la sua lingua madre. Poi in classe quei libri si raccontano, si riassumono e se ne discute con i compagni. Così leggere diventa un'abitudine, e spesso un piacere, già dai primi anni.",
         highlight: true,
       },
       {
         tag: "Comunicazione",
-        title: "La comunicazione come competenza fondamentale",
-        body: "Crediamo che comunicare con sicurezza sia importante quanto qualsiasi materia scolastica. Fin dai primi anni, i nostri studenti imparano a presentare le idee con chiarezza, a parlare con convinzione davanti agli altri e ad ascoltare attivamente — confrontandosi fino in fondo con punti di vista diversi prima di rispondere. Sono le competenze che trasformano la conoscenza in leadership, e fanno parte dell'apprendimento quotidiano al CIS, non sono lasciate al caso.",
+        title: "Saper parlare e saper ascoltare",
+        body: "Per noi comunicare con sicurezza conta quanto una materia. Dai primi anni i bambini imparano a spiegare un'idea con chiarezza, a parlare davanti agli altri e ad ascoltare davvero chi la pensa diversamente prima di rispondere. Al CIS si allena ogni giorno, in classe.",
         highlight: true,
       },
       {
         tag: "Compiti",
         title: "Niente compiti fino a 10 anni",
-        body: "Le lezioni sono organizzate perché il lavoro si concluda in classe, durante l'orario scolastico regolare — non in dipendenza dai servizi opzionali del pomeriggio. Pomeriggi e sere restano liberi per la famiglia.",
+        body: "Il lavoro si finisce in classe, durante l'orario normale, senza contare sui servizi facoltativi del pomeriggio. Pomeriggi e sere restano alla famiglia.",
         highlight: true,
       },
       {
         tag: "Zero schermi",
         title: "Un uso consapevole degli schermi",
-        body: "A scuola, i dispositivi vengono utilizzati solo quando utili alla didattica — ad esempio per attività differenziate in matematica o per l'alfabetizzazione digitale strutturata. Incoraggiamo le famiglie a seguire alcune semplici regole di buon senso anche a casa, nello spirito della tendenza internazionale a proteggere i più giovani da un uso precoce o eccessivo dei social media.",
+        body: "A scuola i dispositivi si usano solo quando servono alla lezione, per esempio per esercizi differenziati di matematica o per imparare a usare il digitale con metodo. Alle famiglie proponiamo poche regole di buon senso anche a casa, soprattutto per tenere i più piccoli lontani dai social.",
         highlight: false,
       },
       {
         tag: "Uniforme",
-        title: "Elimina le differenze visibili",
-        body: "Crea identità e appartenenza, semplifica le mattine, mette tutti sullo stesso piano.",
+        title: "Tutti uguali, almeno nei vestiti",
+        body: "Ci si sente parte della stessa scuola e la mattina si fa prima.",
         highlight: false,
       },
       {
         tag: "Calendario",
         title: "~185 giorni, pause regolari",
-        body: "Settembre–Giugno con pause regolari ogni 2 mesi: meno burnout, più equilibrio.",
+        body: "Da settembre a giugno, con una pausa ogni due mesi circa per non arrivare stremati.",
         highlight: false,
       },
     ],
@@ -182,7 +182,7 @@ export const it = {
   safety: {
     eyebrow: "Sicurezza e protezione",
     title: "Regole chiare, applicate sempre",
-    lead: "Alcune politiche non sono negoziabili — perché la fiducia dei genitori si costruisce con pratiche verificabili, non con promesse.",
+    lead: "Su alcune regole non si tratta. Un genitore deve poterle verificare, non solo leggerle.",
     cards: [
       {
         title: "Personale",
@@ -193,7 +193,7 @@ export const it = {
         ],
       },
       {
-        title: "Spazi & vigilanza",
+        title: "Spazi e vigilanza",
         items: [
           "Politica «mai soli»: nessun adulto resta mai da solo con un bambino",
           "Aule vetrate, sempre visibili",
@@ -219,8 +219,8 @@ export const it = {
   },
   fees: {
     eyebrow: "Costi",
-    title: "Rette trasparenti, fin dall'inizio",
-    lead: "Tre voci semplici da capire — nessuna sorpresa in corso d'anno.",
+    title: "Le rette, tutte e subito",
+    lead: "Tre voci, e durante l'anno non se ne aggiungono altre.",
     labels: {
       nsaf: "NSAF",
       nsafNote: "una tantum, all'iscrizione",
@@ -234,11 +234,11 @@ export const it = {
       { name: "Grade 1–5", ages: "età 6–10/11", nsaf: 2000, tuition: 15000, registration: 1100 },
     ],
     schedule: {
-      title: "Piano di pagamento per l'anno scolastico 2027–2028",
-      lead: "Cinque rate distribuite tra l'iscrizione e il primo anno scolastico.",
+      title: "Piano di pagamento per l'anno scolastico 2027/28",
+      lead: "Cinque rate, dall'iscrizione alla fine del primo anno.",
       head: { instalment: "Rata", due: "Scadenza" },
       rows: [
-        { id: "P1", due: "Ott–Dic 2026", what: "NSAF + iscrizione", prek: 3100, grade: 3100 },
+        { id: "P1", due: "Ott-dic 2026", what: "NSAF + iscrizione", prek: 3100, grade: 3100 },
         { id: "P2", due: "Giugno 2027", what: "25% retta", prek: 2625, grade: 3750 },
         { id: "P3", due: "Ottobre 2027", what: "25% retta", prek: 2625, grade: 3750 },
         { id: "P4", due: "Dicembre 2027", what: "25% retta", prek: 2625, grade: 3750 },
@@ -254,31 +254,31 @@ export const it = {
   timeline: {
     eyebrow: "Il percorso",
     title: "Dalla validazione all'apertura",
-    lead: "Un progetto reale, con tappe chiare — non un'idea sulla carta.",
+    lead: "Le tappe, con le date che abbiamo oggi.",
     steps: [
-      { when: "Ora → Settembre 2026", title: "Validazione & accordo municipale", body: "Sondaggio di 200+ famiglie, primi accordi con scuole e partner del territorio.", items: [] as string[], highlight: null as string | null },
+      { when: "Fino a settembre 2026", title: "Verifica e accordo con il Comune", body: "Un sondaggio con oltre 200 famiglie e i primi accordi con scuole e partner della zona.", items: [] as string[], highlight: null as string | null },
       {
-        when: "Settembre – Dicembre 2026",
+        when: "Settembre-dicembre 2026",
         title: "La scuola prende forma",
         body: "",
         items: [
           "Il preside e il team fondatore si uniscono al progetto",
-          "Percorso di riconoscimento ministeriale (MIUR) avviato",
+          "Avviato il riconoscimento ministeriale (MIUR)",
           "Curricolo internazionale confermato",
         ],
         highlight: "Apertura delle iscrizioni",
       },
-      { when: "Gennaio – Agosto 2027", title: "Pre-apertura", body: "Allestimento della sede, primi insegnanti, open day, attivazione del servizio bus, campagna di iscrizioni.", items: [], highlight: null },
-      { when: "Settembre 2027", title: "Apertura — International Primary", body: "Accoglienza dei primi studenti, età 3–8, bus operativo, consiglio dei genitori attivo.", items: [], highlight: null },
-      { when: "2028 – 2031", title: "Crescita verso piena capacità", body: "Apertura della Lower Secondary: la comunità scolastica cresce, i primi studenti della Primary proseguono il loro percorso, fino a 120 studenti.", items: [], highlight: null },
+      { when: "Gennaio-agosto 2027", title: "Pre-apertura", body: "Allestimento della sede, primi insegnanti, open day, attivazione del servizio bus, campagna di iscrizioni.", items: [], highlight: null },
+      { when: "Settembre 2027", title: "Apre la International Primary", body: "Arrivano i primi studenti, dai 3 agli 8 anni. Il bus è in servizio e il consiglio dei genitori è attivo.", items: [], highlight: null },
+      { when: "2028-2031", title: "La scuola cresce", body: "Apre la Lower Secondary. I primi bambini della Primary continuano qui, e la scuola arriva a 120 studenti.", items: [], highlight: null },
     ],
   },
   interest: {
     eyebrow: "Pre-registrazione",
-    title: "Sii tra i primi a saperlo",
-    lead: "La campagna ufficiale di pre-iscrizione parte in autunno 2026. Compila il modulo di registrazione per ricevere aggiornamenti in anteprima e un posto prioritario nella lista.",
+    title: "Vuoi saperlo per primo?",
+    lead: "Le pre-iscrizioni aprono in autunno 2026. Compila il modulo: ti scriviamo prima degli altri e hai la precedenza in lista.",
     cta: "Vai al modulo di registrazione",
-    note: "Qualche minuto — nessun impegno, è un primo passo, non un'iscrizione formale.",
+    note: "Bastano pochi minuti e non ti impegna a nulla. Non è un'iscrizione.",
   },
   footer: {
     place: "Colico, Lago di Como, Italia",
@@ -294,24 +294,24 @@ export const it = {
   curriculumPage: {
     meta: {
       title: "Il nostro curricolo · CIS",
-      description: "Il nostro approccio pedagogico per bambini dai 3 ai 14 anni: come funziona davvero.",
+      description: "Come insegniamo ai bambini dai 3 ai 14 anni, spiegato per bene.",
     },
     eyebrow: "Il nostro curricolo",
     title: "Il nostro approccio pedagogico:",
     titleEm: "come funziona davvero",
-    lead: "Una guida completa al nostro metodo educativo per i vostri figli dai 3 ai 14 anni — cosa vivono gli studenti, cosa fanno gli insegnanti, e perché lo abbiamo scelto.",
+    lead: "Cosa fanno i vostri figli in classe dai 3 ai 14 anni, cosa fanno gli insegnanti e perché abbiamo scelto questo metodo.",
     path: {
       kicker: "Il nostro percorso",
       title: "Verso il riconoscimento internazionale",
       paragraphs: [
-        "I principali programmi educativi internazionali richiedono che le scuole seguano un percorso formale di accreditamento: la scuola presenta una candidatura, viene valutata da un ente indipendente, e riceve infine un riconoscimento ufficiale, valido per un periodo di tempo definito. È un processo serio, che richiede tempo — e che intendiamo intraprendere.",
-        "Nel frattempo, diversi dei nostri insegnanti fondatori hanno esperienza diretta nell'insegnamento di curricoli internazionali accreditati, con certificazioni professionali ottenute in altre scuole dove hanno già applicato questi approcci. Il nostro obiettivo è portare questa stessa qualità e rigore alla scuola di Colico, e completare il nostro percorso di accreditamento non appena le condizioni saranno mature.",
+        "I principali programmi educativi internazionali richiedono che le scuole seguano un percorso formale di accreditamento: la scuola presenta una candidatura, viene valutata da un ente indipendente, e alla fine ottiene un riconoscimento ufficiale che dura un certo numero di anni. Ci vuole tempo, e lo faremo.",
+        "Intanto, diversi insegnanti fondatori hanno già insegnato curricoli internazionali accreditati in altre scuole, con le relative certificazioni. Vogliamo portare lo stesso livello a Colico e chiedere l'accreditamento appena la scuola sarà pronta.",
       ],
     },
     primary: {
       kicker: "Pre-K e Primary · età 3–10",
       title: "Pre-K e Primary: apprendimento per temi e indagine",
-      lead: "Il nostro approccio organizza l'apprendimento in unità tematiche che collegano più materie in un unico percorso, invece di insegnarle separatamente — un modello diffuso in molte scuole internazionali di eccellenza.",
+      lead: "Il nostro approccio organizza l'apprendimento in unità tematiche che collegano più materie in un unico percorso, invece di insegnarle una per una. Lo fanno molte scuole internazionali.",
       processTitle: "Come funziona: il processo in 5 fasi",
       steps: [
         { title: "Punto di partenza", body: "Un avvio coinvolgente e pratico" },
@@ -324,18 +324,18 @@ export const it = {
         {
           title: "Principi generali",
           items: [
-            "**Obiettivi disciplinari** — le competenze specifiche di ogni materia",
-            "**Obiettivi personali** — otto qualità: adattabilità, comunicazione, collaborazione, empatia, etica, resilienza, rispetto, pensiero critico",
-            "**Obiettivi internazionali** — comprendere culture diverse, mentalità globale",
+            "**Obiettivi disciplinari:** le competenze di ogni materia",
+            "**Obiettivi personali:** otto qualità, cioè adattabilità, comunicazione, collaborazione, empatia, etica, resilienza, rispetto e pensiero critico",
+            "**Obiettivi internazionali:** capire culture diverse dalla propria",
           ],
           paragraphs: [] as string[],
         },
         {
           title: "Fondamenta pedagogiche",
           items: [
-            "Apprendimento attivo — mani e mente coinvolte, non solo ascolto passivo",
+            "I bambini fanno, non stanno solo ad ascoltare",
             "Collegamento tra nuove conoscenze e quelle già possedute",
-            "Metacognizione — riflettere su *come* si sta imparando, non solo su *cosa*",
+            "Si riflette anche su *come* si impara (metacognizione)",
           ],
           paragraphs: [],
         },
@@ -343,16 +343,16 @@ export const it = {
           title: "Per gli studenti",
           items: [] as string[],
           paragraphs: [
-            "L'apprendimento è vissuto come un'indagine coinvolgente, non come materie isolate. Le competenze sviluppate sono pensate per un mondo che cambia rapidamente — molti dei lavori di domani non esistono ancora oggi.",
-            "La valutazione avviene per fasi di sviluppo (inizio → crescita → padronanza), con largo spazio all'autovalutazione per costruire motivazione e consapevolezza di sé.",
+            "Per i bambini imparare diventa un'indagine. Le competenze servono in un mondo che cambia in fretta, dove molti dei lavori di domani ancora non esistono.",
+            "La valutazione segue tre fasi (inizio, crescita, padronanza) e lascia molto spazio all'autovalutazione, che aiuta i ragazzi a conoscersi e a motivarsi.",
           ],
         },
         {
           title: "Per gli insegnanti",
           items: [],
           paragraphs: [
-            "Una struttura chiara ma flessibile: piena libertà didattica su come realizzare ogni unità, adattandola ai propri studenti, mentre il framework garantisce coerenza negli obiettivi principali (matematica, inglese, scienze incluse).",
-            "Pensato per integrarsi con altri programmi nazionali, non per sostituirli — motivo per cui si presta bene ad affiancare i requisiti del sistema italiano.",
+            "Gli insegnanti decidono come svolgere ogni unità e la adattano alla classe. Il framework tiene fermi gli obiettivi principali, compresi matematica, inglese e scienze.",
+            "Il metodo si affianca ai programmi nazionali senza sostituirli, quindi convive bene con i requisiti italiani.",
           ],
         },
       ],
@@ -360,14 +360,14 @@ export const it = {
     secondary: {
       kicker: "Lower Secondary · età 11–14",
       title: "Lower Secondary: apprendimento per concetti e contesti globali",
-      lead: "Per gli studenti di 11–14 anni, un approccio costruito attorno a concetti chiave e contesti globali reali — le fondamenta per un futuro percorso internazionale riconosciuto. Stiamo lavorando per ottenere, nel tempo, l'affiliazione formale con le organizzazioni educative internazionali di riferimento.",
+      lead: "Dagli 11 ai 14 anni le lezioni partono da concetti chiave e da situazioni reali nel mondo. È la base per un percorso internazionale riconosciuto. Stiamo lavorando per ottenere, nel tempo, l'affiliazione formale con le organizzazioni educative internazionali di riferimento.",
       cards: [
         {
           title: "Come funziona",
           items: [
-            "**Più aree disciplinari integrate** — lingue, scienze umane e sociali, scienze, matematica, arti, educazione fisica e alla salute, design",
-            "**Insegnamento per concetti** — ogni unità collega concetti chiave a contesti globali reali",
-            "**Unità interdisciplinari** — almeno un progetto all'anno che unisce due o più materie",
+            "**Aree disciplinari collegate:** lingue, scienze umane e sociali, scienze, matematica, arti, educazione fisica e alla salute, design",
+            "**Per concetti:** ogni unità lega un concetto a un caso reale",
+            "**Interdisciplinare:** almeno un progetto all'anno che unisce due o più materie",
           ],
           paragraphs: [] as string[],
           wide: false,
@@ -376,8 +376,8 @@ export const it = {
           title: "Per gli studenti",
           items: [] as string[],
           paragraphs: [
-            "Gli studenti imparano a collegare ciò che studiano al mondo reale, sviluppando capacità di pensiero critico, ricerca e collaborazione che restano utili ben oltre la scuola.",
-            "Il percorso costruisce le basi per un futuro diploma internazionale, riconosciuto dalle università di tutto il mondo.",
+            "I ragazzi imparano a collegare quello che studiano a quello che succede fuori. Imparano a ragionare, a fare ricerca e a lavorare in gruppo, e se lo portano dietro anche dopo.",
+            "È la preparazione a un diploma internazionale che le università di tutto il mondo riconoscono.",
           ],
           wide: false,
         },
@@ -385,7 +385,7 @@ export const it = {
           title: "Per gli insegnanti",
           items: [],
           paragraphs: [
-            "Il framework non prescrive un curricolo rigido per materia: gli insegnanti costruiscono le unità di apprendimento pianificando insieme, collegando le materie tra loro e ai contesti globali. Questo richiede più collaborazione tra colleghi rispetto a un insegnamento tradizionale per materie isolate — ma dà anche più libertà creativa nel come si insegna.",
+            "Il framework non prescrive un curricolo rigido per materia: gli insegnanti costruiscono le unità di apprendimento pianificando insieme, collegando le materie tra loro e ai contesti globali. Serve più lavoro di squadra tra colleghi rispetto all'insegnamento per materie separate, ma c'è anche più libertà su come insegnare.",
           ],
           wide: true,
         },
@@ -393,7 +393,7 @@ export const it = {
     },
     why: {
       title: "Perché questa combinazione",
-      body: "Il nostro approccio per la Primaria e per la Lower Secondary condividono la stessa filosofia di fondo — apprendimento per indagine, obiettivi personali e internazionali accanto a quelli disciplinari — rendendo il passaggio dalla Primaria alla Lower Secondary naturale, non un cambio di sistema. È un modello utilizzato da scuole internazionali in tutto il mondo.",
+      body: "Primaria e Lower Secondary seguono la stessa idea: si impara per indagine, e accanto agli obiettivi di materia ci sono quelli personali e internazionali. Per questo il passaggio dall'una all'altra viene naturale. Molte scuole internazionali lavorano così.",
     },
     after: {
       kicker: "Domanda frequente",
@@ -401,11 +401,11 @@ export const it = {
       cards: [
         {
           title: "La nostra visione di crescita",
-          body: "L'obiettivo a lungo termine è estendere il nostro percorso Lower Secondary fino ai 16 anni, e valutare l'introduzione di un percorso pre-universitario internazionale (16–18 anni), man mano che la scuola cresce insieme alle prime classi. Non è ancora un impegno definito nei tempi — dipenderà dalla crescita della scuola — ma è la direzione verso cui lavoriamo, insieme all'affiliazione formale con le organizzazioni educative internazionali di riferimento.",
+          body: "Più avanti vorremmo portare la Lower Secondary fino ai 16 anni e valutare un percorso pre-universitario internazionale (16–18 anni), man mano che crescono le prime classi. Non abbiamo ancora date: dipende da come cresce la scuola. È comunque la direzione, insieme all'affiliazione con le organizzazioni educative internazionali.",
         },
         {
           title: "Se la scuola non si sarà ancora estesa",
-          body: "Il nostro approccio per la Lower Secondary è pensato per essere pienamente compatibile con i percorsi internazionali più diffusi: uno studente che completa i nostri primi 3 anni (11–14) può proseguire con serenità presso un'altra scuola internazionale, in Italia o all'estero. Non è un vicolo cieco — è un punto di partenza solido.",
+          body: "Il nostro approccio per la Lower Secondary è pensato per essere pienamente compatibile con i percorsi internazionali più diffusi: chi finisce da noi i tre anni dagli 11 ai 14 può continuare senza problemi in un'altra scuola internazionale, in Italia o all'estero.",
         },
       ],
     },

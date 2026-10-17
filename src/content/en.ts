@@ -6,7 +6,7 @@ export const en: Dict = {
   meta: {
     title: "CIS · Colico International School",
     description:
-      "A new international school on Lake Como, in Colico. Opening September 2027. Register your interest for the pre-enrolment campaign.",
+      "A new international school on Lake Como, in Colico. Opening September 2027. Register your interest and we'll let you know when pre-enrolment opens.",
   },
   nav: {
     links: [
@@ -38,22 +38,22 @@ export const en: Dict = {
   },
   vision: {
     eyebrow: "Our vision",
-    title: "A lifelong asset, not just a curriculum",
-    lead: "Designed together for children, parents and teachers — with one goal: raising people who know how to think and how to do.",
+    title: "What stays with them after school",
+    lead: "We designed it for children, parents and teachers. The idea is simple: raise kids who can think things through and get things done.",
     cards: [
       {
         title: "For the children",
         items: [
           "Multilingual, multicultural environment from Pre-K",
-          "Outdoor learning built into the curriculum, not just recess",
-          "Hands-on making in class: gardening, woodworking, cooking — knowing how to think and how to do",
+          "Lessons happen outdoors too, as part of the curriculum",
+          "Gardening, woodworking and cooking in class",
         ],
       },
       {
         title: "For parents",
         items: [
-          "Extended hours *(optional, paid add-on)* until 18:30 — sport and workshops",
-          "Occasional “Parent in class” days, to share a school moment together",
+          "Extended hours until 18:30 with sport and workshops *(optional, paid)*",
+          "\"Parent in class\" days: spend a morning at school with your child",
           "Dedicated shuttles across the whole Alto Lago area",
         ],
       },
@@ -61,16 +61,16 @@ export const en: Dict = {
         title: "For teachers",
         items: [
           "Small classes, full teaching autonomy",
-          "Treated as founding partners, not employees",
+          "They join as founding partners in the project",
           "Housing support in one of Italy's most beautiful regions",
         ],
       },
       {
-        title: "Age groups & languages",
+        title: "Age groups and languages",
         items: [
           "Nursery/Pre-primary (3–5) · Primary (6–10) · Lower Secondary (11–14)",
           "English + Italian as core languages",
-          "French, German, Spanish from primary — Mandarin and Russian optional",
+          "French, German and Spanish from primary. Mandarin and Russian optional",
         ],
       },
     ],
@@ -82,12 +82,12 @@ export const en: Dict = {
       {
         kicker: "Pre-K and Primary",
         title: "Theme- and inquiry-based learning",
-        body: "Our approach organises learning into thematic units (e.g. “Our Planet”, “Ancient Civilisations”) that connect science, history, geography, art and language into a single storyline instead of isolated subjects. Each unit develops knowledge, skills, and a personal character trait (resilience, cooperation, respect) in parallel — in the spirit of leading international standards for early years and primary education.",
+        body: "Our approach organises learning into thematic units (for example \"Our Planet\" or \"Ancient Civilisations\") that connect science, history, geography, art and language into one storyline instead of keeping them apart. Each unit works on knowledge, skills and a character trait at the same time, such as resilience, cooperation or respect.",
       },
       {
         kicker: "Lower Secondary",
         title: "Concept- and global-context-based learning",
-        body: "For students aged 11–14, an approach built around concept- and inquiry-based learning, connecting subjects to each other and to the real world through interdisciplinary projects — laying the groundwork for a pathway recognised by universities worldwide. We are working to obtain formal affiliation with the relevant international education organisations over time.",
+        body: "From 11 to 14, students learn through concepts and inquiry. Projects pull several subjects together and tie them to real problems. It's the groundwork for a pathway that universities around the world recognise. We are working to obtain formal affiliation with the relevant international education organisations over time.",
       },
     ],
     more: "See how it works in detail",
@@ -108,8 +108,8 @@ export const en: Dict = {
   campus: {
     eyebrow: "The future campus",
     title: "Simple, warm, welcoming",
-    lead: "An early look at the renovation project — spaces designed for outdoor learning and small classes.",
-    hero: { caption: "The campus — full view", alt: "Rendering of the school building entrance" },
+    lead: "An early look at the renovation: spaces for small classes and outdoor lessons.",
+    hero: { caption: "The campus, full view", alt: "Rendering of the school building entrance" },
     gallery: [
       { src: "/images/sede-aula.jpg", caption: "Inside classroom", alt: "Rendering of a classroom interior" },
       { src: "/images/sede-giochi.jpg", caption: "Playground upgrade", alt: "Rendering of the playground" },
@@ -124,25 +124,25 @@ export const en: Dict = {
       {
         tag: "Reading",
         title: "A break dedicated to reading",
-        body: "One of the three daily breaks is set aside for silent, individual reading — in whatever language the child chooses, including their mother tongue. Those books then become the basis for sharing and discussion activities in class: retelling, summarising and discussing the books in front of classmates. A simple way to build the pleasure and habit of reading from the earliest years.",
+        body: "One of the three daily breaks is set aside for silent, individual reading, in whatever language the child picks, mother tongue included. Back in class, children retell those books, summarise them and talk them over with classmates. Reading becomes a habit, and often a pleasure, from the very first years.",
         highlight: true,
       },
       {
         tag: "Communication",
         title: "Communication as a core competency",
-        body: "We believe confident communication is as essential as any academic subject. From their earliest years, our students learn to present ideas clearly, speak with conviction in front of others, and listen actively — engaging fully with different perspectives before responding to them. These are the skills that turn knowledge into leadership, and they are woven into everyday learning at CIS, not left to chance.",
+        body: "To us, speaking with confidence matters as much as any subject. From the first years, children learn to explain an idea clearly, to speak in front of others and to really listen to people who disagree before answering. At CIS they practise it every day in class.",
         highlight: true,
       },
       {
         tag: "Homework",
         title: "No homework until age 10",
-        body: "Lessons are structured so that work is completed in class, within the regular school day — not dependent on optional afternoon services. Evenings and afternoons stay free for family time.",
+        body: "Lessons are structured so that work is completed in class, within the normal school day, without relying on optional afternoon services. Afternoons and evenings belong to the family.",
         highlight: true,
       },
       {
         tag: "Zero screens",
         title: "A mindful approach to screens",
-        body: "At school, devices are used only when genuinely useful for learning — for example, differentiated maths activities or structured digital literacy. We encourage families to follow a few simple common-sense guidelines at home too, in the spirit of the international trend toward protecting younger children from early or excessive social media use.",
+        body: "At school, devices come out only when a lesson needs them, for example differentiated maths exercises or learning to use digital tools properly. We suggest a few common-sense rules for home as well, mostly to keep younger children away from social media.",
         highlight: false,
       },
       {
@@ -154,15 +154,15 @@ export const en: Dict = {
       {
         tag: "Calendar",
         title: "~185 days, regular breaks",
-        body: "September–June with regular breaks every 2 months: less burnout, more balance.",
+        body: "September to June, with a break roughly every two months so nobody runs out of steam.",
         highlight: false,
       },
     ],
   },
   safety: {
-    eyebrow: "Safety & safeguarding",
+    eyebrow: "Safety and safeguarding",
     title: "Clear rules, consistently applied",
-    lead: "Some policies are not negotiable — because parents' trust is built on verifiable practice, not promises.",
+    lead: "Some rules are not up for discussion. Parents should be able to check them, not just read them.",
     cards: [
       {
         title: "Staff",
@@ -173,9 +173,9 @@ export const en: Dict = {
         ],
       },
       {
-        title: "Spaces & supervision",
+        title: "Spaces and supervision",
         items: [
-          "“Never alone” policy: no adult is ever left alone with a child",
+          "\"Never alone\" rule: no adult is ever alone with a child",
           "Glazed classroom walls, always visible",
           "Open-door access for parents, no notice required",
         ],
@@ -199,8 +199,8 @@ export const en: Dict = {
   },
   fees: {
     eyebrow: "Fees",
-    title: "Transparent fees, from day one",
-    lead: "Three simple line items to understand — no surprises during the year.",
+    title: "All the fees, up front",
+    lead: "Three items, and nothing gets added during the year.",
     labels: {
       nsaf: "NSAF",
       nsafNote: "one-time, at enrolment",
@@ -214,8 +214,8 @@ export const en: Dict = {
       { name: "Grade 1–5", ages: "ages 6–10/11", nsaf: 2000, tuition: 15000, registration: 1100 },
     ],
     schedule: {
-      title: "Payment schedule for the 2027–2028 school year",
-      lead: "Five instalments spread between enrolment and the first school year.",
+      title: "Payment schedule for the 2027/28 school year",
+      lead: "Five instalments, from enrolment to the end of the first year.",
       head: { instalment: "Instalment", due: "Due date" },
       rows: [
         { id: "P1", due: "Oct–Dec 2026", what: "NSAF + registration", prek: 3100, grade: 3100 },
@@ -234,31 +234,31 @@ export const en: Dict = {
   timeline: {
     eyebrow: "The timeline",
     title: "From validation to opening day",
-    lead: "A real project with clear milestones — not just an idea on paper.",
+    lead: "The milestones, with the dates we have today.",
     steps: [
-      { when: "Now → September 2026", title: "Validation & municipal agreement", body: "Survey of 200+ families, first agreements with schools and local partners.", items: [], highlight: null },
+      { when: "Until September 2026", title: "Validation and agreement with the town", body: "A survey of more than 200 families and first agreements with local schools and partners.", items: [], highlight: null },
       {
-        when: "September – December 2026",
+        when: "September-December 2026",
         title: "The school takes shape",
         body: "",
         items: [
           "The headteacher and founding team join the project",
-          "Ministry (MIUR) recognition process begins",
+          "Ministry (MIUR) recognition under way",
           "International curriculum confirmed",
         ],
         highlight: "Registrations open",
       },
-      { when: "January – August 2027", title: "Pre-opening", body: "Fitting out the premises, first teachers, open day, bus service activation, enrolment campaign.", items: [], highlight: null },
-      { when: "September 2027", title: "Opening — International Primary", body: "First students welcomed, ages 3–8, bus operating, parents' council active.", items: [], highlight: null },
-      { when: "2028 – 2031", title: "Growth toward full capacity", body: "Lower Secondary opens: the school community grows, the first Primary students continue their journey, up to 120 students.", items: [], highlight: null },
+      { when: "January-August 2027", title: "Pre-opening", body: "Fitting out the premises, first teachers, open day, bus service activation, enrolment campaign.", items: [], highlight: null },
+      { when: "September 2027", title: "The International Primary opens", body: "The first students arrive, aged 3 to 8. The bus is running and the parents' council is up.", items: [], highlight: null },
+      { when: "2028-2031", title: "The school grows", body: "Lower Secondary opens. The first Primary children carry on here, and the school reaches 120 students.", items: [], highlight: null },
     ],
   },
   interest: {
     eyebrow: "Pre-registration",
-    title: "Be among the first to know",
-    lead: "The official pre-enrolment campaign launches in autumn 2026. Fill in the registration form to get early updates and a priority spot on the list.",
+    title: "Want to hear first?",
+    lead: "Pre-enrolment opens in autumn 2026. Fill in the form and we'll write to you before anyone else, with priority on the list.",
     cta: "Go to the registration form",
-    note: "A few minutes — no commitment, this is a first step, not a formal enrolment.",
+    note: "It takes a few minutes and commits you to nothing. It isn't an enrolment.",
   },
   footer: {
     place: "Colico, Lake Como, Italy",
@@ -274,48 +274,48 @@ export const en: Dict = {
   curriculumPage: {
     meta: {
       title: "Our curriculum · CIS",
-      description: "Our teaching approach for children aged 3 to 14: how it actually works.",
+      description: "How we teach children aged 3 to 14, explained properly.",
     },
     eyebrow: "Our curriculum",
     title: "Our teaching approach:",
     titleEm: "how it actually works",
-    lead: "A complete guide to our educational method for your children aged 3 to 14 — what students experience, what teachers do, and why we chose it.",
+    lead: "What your children do in class from 3 to 14, what the teachers do, and why we chose this method.",
     path: {
       kicker: "Our path",
       title: "Toward international recognition",
       paragraphs: [
-        "The leading international education programmes require schools to follow a formal accreditation process: the school submits an application, is evaluated by an independent body, and is ultimately granted official recognition, valid for a defined period. It's a serious process that takes time — and one we intend to pursue.",
-        "In the meantime, several of our founding teachers have direct experience teaching accredited international curricula, holding professional certifications earned at other schools where they've already applied these approaches. Our goal is to bring that same quality and rigour to the school in Colico, and complete our own accreditation path once the conditions are right.",
+        "The leading international education programmes require schools to follow a formal accreditation process: the school submits an application, is evaluated by an independent body, and is finally granted official recognition for a set number of years. It takes time, and we will do it.",
+        "Meanwhile, several founding teachers have already taught accredited international curricula at other schools and hold the certifications to match. We want to bring that level to Colico and apply for accreditation as soon as the school is ready.",
       ],
     },
     primary: {
       kicker: "Pre-K and Primary · ages 3–10",
       title: "Pre-K and Primary: theme- and inquiry-based learning",
-      lead: "Our approach organises learning into thematic units that connect multiple subjects into a single storyline, instead of teaching them separately — a model used in many leading international schools.",
+      lead: "Our approach organises learning into thematic units that connect multiple subjects into a single storyline, instead of teaching them one at a time. Many international schools work this way.",
       processTitle: "How it works: the 5-stage process",
       steps: [
         { title: "Starting point", body: "An engaging, hands-on start" },
         { title: "What we already know", body: "What children already know" },
         { title: "The theme", body: "An overview of what's ahead" },
-        { title: "Research & reflect", body: "The heart of the work" },
+        { title: "Research and reflect", body: "The heart of the work" },
         { title: "Ending point", body: "Children showcase their work" },
       ],
       cards: [
         {
           title: "General principles",
           items: [
-            "**Subject goals** — the specific skills of each academic subject",
-            "**Personal goals** — eight qualities: adaptability, communication, collaboration, empathy, ethics, resilience, respect, critical thinking",
-            "**International goals** — understanding different cultures, a global mindset",
+            "**Subject goals:** the skills of each subject",
+            "**Personal goals:** eight qualities, namely adaptability, communication, collaboration, empathy, ethics, resilience, respect and critical thinking",
+            "**International goals:** understanding cultures other than your own",
           ],
           paragraphs: [],
         },
         {
           title: "Pedagogical foundations",
           items: [
-            "Active learning — hands and minds engaged, not passive listening",
+            "Children do things, they don't just sit and listen",
             "Connecting new knowledge to what's already known",
-            "Metacognition — reflecting on *how* you're learning, not just *what*",
+            "They also think about *how* they learn (metacognition)",
           ],
           paragraphs: [],
         },
@@ -323,16 +323,16 @@ export const en: Dict = {
           title: "For students",
           items: [],
           paragraphs: [
-            "Learning is experienced as an engaging inquiry, not isolated subjects. The skills developed are built for a fast-changing world — many of tomorrow's jobs don't exist yet.",
-            "Assessment happens in developmental stages (beginning → developing → mastering), with plenty of room for self-assessment to build motivation and self-awareness.",
+            "For children, learning turns into an investigation. The skills are meant for a world that changes fast, where many of tomorrow's jobs don't exist yet.",
+            "Assessment follows three stages (beginning, developing, mastering) and leaves plenty of room for self-assessment, which helps students know themselves and stay motivated.",
           ],
         },
         {
           title: "For teachers",
           items: [],
           paragraphs: [
-            "A clear but flexible structure: full teaching freedom on how to deliver each unit, adapted to their students, while the framework keeps consistency across core learning goals (including maths, English, science).",
-            "Designed to integrate with national curricula, not replace them — which is exactly why it pairs well with Italian system requirements.",
+            "Teachers decide how to run each unit and adapt it to their class. The framework keeps the core goals fixed, maths, English and science included.",
+            "The method sits alongside national curricula without replacing them, so it fits well with Italian requirements.",
           ],
         },
       ],
@@ -340,14 +340,14 @@ export const en: Dict = {
     secondary: {
       kicker: "Lower Secondary · ages 11–14",
       title: "Lower Secondary: concept- and global-context-based learning",
-      lead: "For students aged 11–14, an approach built around key concepts and real global contexts — the foundation for a future internationally recognised pathway. We are working to obtain formal affiliation with the relevant international education organisations over time.",
+      lead: "From 11 to 14, lessons start from key concepts and real situations around the world. It's the base for an internationally recognised pathway. We are working to obtain formal affiliation with the relevant international education organisations over time.",
       cards: [
         {
           title: "How it works",
           items: [
-            "**Multiple integrated subject areas** — languages, humanities and social sciences, sciences, mathematics, arts, physical and health education, design",
-            "**Concept-driven teaching** — every unit links key concepts to real global contexts",
-            "**Interdisciplinary units** — at least one project per year connecting two or more subjects",
+            "**Connected subject areas:** languages, humanities and social sciences, sciences, mathematics, arts, physical and health education, design",
+            "**Concept-driven:** every unit ties a concept to a real case",
+            "**Interdisciplinary:** at least one project a year that joins two or more subjects",
           ],
           paragraphs: [],
           wide: false,
@@ -356,8 +356,8 @@ export const en: Dict = {
           title: "For students",
           items: [],
           paragraphs: [
-            "Students learn to connect what they study to the real world, building critical thinking, research, and collaboration skills that stay useful well beyond school.",
-            "The pathway builds the foundation for a future internationally recognised diploma, accepted by universities worldwide.",
+            "Students learn to connect what they study with what happens outside. They learn to reason, research and work in a team, and they keep those skills long after school.",
+            "It prepares them for an international diploma that universities around the world accept.",
           ],
           wide: false,
         },
@@ -365,7 +365,7 @@ export const en: Dict = {
           title: "For teachers",
           items: [],
           paragraphs: [
-            "The framework doesn't prescribe a rigid subject-by-subject curriculum: teachers build learning units through collective planning, connecting subjects to each other and to global contexts. This requires more collaboration between colleagues than traditional siloed subject teaching — but also gives more creative freedom in how they teach.",
+            "The framework doesn't prescribe a rigid subject-by-subject curriculum: teachers build learning units through collective planning, connecting subjects to each other and to global contexts. It takes more teamwork between colleagues than teaching subjects separately, but it also leaves more freedom in how to teach.",
           ],
           wide: true,
         },
@@ -373,7 +373,7 @@ export const en: Dict = {
     },
     why: {
       title: "Why this combination",
-      body: "Our approach for Primary and Lower Secondary share the same underlying philosophy — inquiry-based learning, personal and international goals alongside subject ones — making the move from Primary to Lower Secondary feel natural, not a change of system. It's a model used by international schools worldwide.",
+      body: "Primary and Lower Secondary follow the same idea: learning by inquiry, with personal and international goals next to subject goals. That's why moving from one to the other feels natural. Many international schools work like this.",
     },
     after: {
       kicker: "Frequently asked",
@@ -381,11 +381,11 @@ export const en: Dict = {
       cards: [
         {
           title: "Our growth vision",
-          body: "Our long-term goal is to extend our Lower Secondary pathway to age 16, and evaluate introducing an international pre-university pathway (16–18), growing alongside our first cohorts. This isn't yet a commitment tied to a specific date — it depends on the school's growth — but it's the direction we're working toward, alongside formal affiliation with the relevant international education organisations.",
+          body: "Further ahead, we'd like to take Lower Secondary up to age 16 and look at an international pre-university pathway (16–18) as our first classes grow. There are no dates yet, because it depends on how the school grows. It is the direction, together with affiliation to the international education organisations.",
         },
         {
           title: "If the school hasn't extended yet",
-          body: "Our Lower Secondary approach is designed to be fully compatible with the most widely used international pathways: a student who completes our first 3 years (11–14) can confidently continue at another international school, in Italy or abroad. It's not a dead end — it's a solid starting point.",
+          body: "Our Lower Secondary approach is designed to be fully compatible with the most widely used international pathways: a student who completes our first 3 years (11–14) can move on to another international school, in Italy or abroad, without trouble.",
         },
       ],
     },

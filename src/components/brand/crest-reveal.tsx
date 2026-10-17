@@ -33,7 +33,7 @@ export function CrestReveal() {
         viewport={view}
         transition={{ duration: 1.4, ease }}
       >
-        <Mark variant="crest" alt="Colico International School — Ex altis lux" className="h-auto w-28 sm:w-36" />
+        <Mark variant="crest" alt="Colico International School, Ex altis lux" className="h-auto w-28 sm:w-36" />
       </motion.div>
     </div>
   );

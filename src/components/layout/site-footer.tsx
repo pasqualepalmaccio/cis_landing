@@ -10,7 +10,7 @@ export function SiteFooter({ lang, t }: { lang: Lang; t: Dict["footer"] }) {
     <footer className="relative overflow-hidden border-t border-line pt-20">
       <Container className="relative z-10 flex flex-wrap justify-between gap-12 pb-16">
         <div className="space-y-4">
-          <Link href={`/${lang}`} className="block" aria-label="Colico International School — home">
+          <Link href={`/${lang}`} className="block" aria-label="Colico International School, home">
             <Mark variant="horizontal" className="h-24 w-auto sm:h-28" />
           </Link>
           <p className="text-sm text-mist">{t.place}</p>
