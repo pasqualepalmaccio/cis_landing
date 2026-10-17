@@ -9,16 +9,27 @@ import { BUS, COUNTRIES, LANG_LEVELS, MAX_CHILDREN, MESSAGE_MAX, SUBMISSION_ENAB
 import { ChildBlock } from "./child-block";
 import { control, Field, FormSection, optionsOf } from "./field";
 import { Select } from "./select";
+import { SubmitResult } from "./submit-result";
+import { useSubmit } from "./use-submit";
 
 export function RegistrationForm({ lang, t }: { lang: Lang; t: RegistrationCopy }) {
   const [children, setChildren] = useState(1);
   const [prefix, setPrefix] = useState("IT");
   const [messageLength, setMessageLength] = useState(0);
+  const { state, ready, onSubmit } = useSubmit(lang);
 
   return (
-    /* method="post": se il JavaScript non parte, i dati non finiscono mai
-       nell'indirizzo della pagina (e quindi nei log dei proxy). */
-    <form method="post" noValidate={false} onSubmit={(e) => e.preventDefault()} className="pb-32">
+    /* method="post": i dati non finiscono mai nell'indirizzo della pagina (e
+       quindi nei log dei proxy). L'invio vero passa da useSubmit. */
+    <form method="post" noValidate={false} onSubmit={onSubmit} className="pb-32">
+      {/* Campo esca: nascosto agli umani e ai lettori di schermo. Se compilato
+          il tentativo viene marcato, non scartato. */}
+      <div aria-hidden className="absolute -left-[9999px] size-px overflow-hidden">
+        <label>
+          Website
+          <input name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       <FormSection title={t.parent.title} sub={t.parent.sub}>
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label={t.parent.firstName} htmlFor="p_first" required>
@@ -150,12 +161,21 @@ export function RegistrationForm({ lang, t }: { lang: Lang; t: RegistrationCopy 
           </div>
         )}
 
+        <SubmitResult state={state} t={t.result} />
+        {SUBMISSION_ENABLED && (
+          <noscript>
+            <p className="text-sm text-cream/90">
+              {t.disabled.body} info@cis-colico.com.
+            </p>
+          </noscript>
+        )}
+
         <button
           type="submit"
-          disabled={!SUBMISSION_ENABLED}
+          disabled={!SUBMISSION_ENABLED || !ready || state === "sending" || state === "delivered" || state === "queued"}
           className="w-full rounded-full bg-cta px-8 py-4 text-lg font-bold text-navy-900 transition-colors hover:bg-cta-hover disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
         >
-          {t.submit}
+          {state === "sending" ? t.result.sending : t.submit}
         </button>
       </div>
     </form>

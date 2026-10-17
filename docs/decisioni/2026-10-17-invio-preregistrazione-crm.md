@@ -117,3 +117,50 @@ Finché mancano, `SUBMISSION_ENABLED` resta `false` anche dopo la consegna del c
 - **Accesso nel CRM:** permesso dedicato per segreteria, direzione e amministrazione (OFFICE, MANAGER, ADMIN).
 - **«Considerazione prioritaria»:** sostituita con «Sarai tra i primi a sapere quando aprono le iscrizioni».
 - **Destinatario degli allarmi:** da indicare. Finché un allarme non è stato provato davvero, `SUBMISSION_ENABLED` resta `false`.
+
+## Realizzazione (2026-10-17)
+
+**CRM** (commit `1238be5`, in produzione):
+- tabella `PreRegistration`;
+- `POST /pre-registrations` idempotente;
+- verifica per chiave e stato;
+- permesso dedicato;
+- pannello nella scheda contatto;
+- riconciliazione oraria;
+- scadenza a 24 mesi;
+- correzione del 500 su `lastUsedAt`.
+
+Prima della migrazione è stato fatto un backup manuale (`/root/backups/crm/crm-pre-preregistrazioni-20261017T091625Z.dump`, controllato con `pg_restore -l`).
+
+**Landing:**
+- **Rotte:**
+  - `POST /api/pre-registration`, solo server: la chiave del CRM non è nel bundle del browser, verificato con grep su `.next/static`;
+  - `POST /api/pre-registration/retry`;
+  - `GET /api/pre-registration/stats`.
+
+  Le ultime due sono protette dal segreto `PREREG_JOB_SECRET`.
+- **Registro `preregistration_attempts`:** id UUID, payload conservato fino alla verifica nel CRM più 30 giorni.
+- **Campo esca e limite per rete:** marcano l'invio come sospetto, non lo scartano.
+- **Senza JavaScript:** pulsante disattivato e indirizzo email al suo posto.
+- **Informativa:** la sezione sul modulo compare solo a invio acceso.
+
+**Prova completa in locale** (landing e CRM veri, database separati):
+1. Invio dal browser → `delivered`, con «registrata».
+2. CRM spento → `failed` e «ricevuti, li stiamo registrando»; il job risponde 500.
+3. CRM riacceso → il retry consegna, la verifica marca `verified`, la riconciliazione del CRM trova 2/2 e il controllo reciproco torna verde.
+4. Payload rifiutato (anno non previsto) → `rejected` con motivo, payload conservato, job 500.
+
+## Per accendere l'invio (`SUBMISSION_ENABLED = true`)
+
+1. Destinatario degli allarmi:
+   - `ALERT_EMAIL` del CRM;
+   - un canale di notifica in Coolify.
+
+   Entrambi vanno provati con un errore indotto.
+2. Chiave API `crm_live_` con ambito `leads:write`, creata dal pannello del CRM (Sviluppatori) e messa in `CRM_API_KEY` della landing (solo runtime).
+3. Task pianificato in Coolify sulla landing, ogni 10 minuti, con il campo `container` compilato:
+   ```
+   node -e "fetch('http://127.0.0.1:3050/api/pre-registration/retry',{method:'POST',headers:{'x-job-secret':process.env.PREREG_JOB_SECRET}}).then(r=>process.exit(r.ok?0:1),()=>process.exit(1))"
+   ```
+4. `EMAIL_MODE=live` verificato nel CRM, perché l'email di conferma del consenso deve partire.
+5. DPA con Resend e revisione legale della sezione dell'informativa.

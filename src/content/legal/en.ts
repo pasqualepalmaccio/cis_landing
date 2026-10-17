@@ -1,4 +1,6 @@
 import type { LegalDict, Section } from "./it";
+import { SUBMISSION_ENABLED } from "../registration";
+
 import { OWNER, POLICY_UPDATED } from "./owner";
 
 /* English privacy and cookie policy: same structure as the Italian one, which
@@ -29,9 +31,26 @@ export const legalEn: LegalDict = {
           "When you visit the site, the server receives the technical data every browser sends: IP address, browser type, requested page, date and time. We need it to show you the pages and to keep the site secure.",
           "If you agree, we also use statistics and marketing cookies. What they do, who runs them and how long they last is in the cookie policy.",
           "If you email us, we use what you send to reply.",
-          "The pre-registration form is not active yet: today the site does not collect data through forms. We will update this page before switching it on.",
+          SUBMISSION_ENABLED
+            ? "If you fill in the pre-registration form, we process the data described in the dedicated section below."
+            : "The pre-registration form is not active yet: today the site does not collect data through forms. We will update this page before switching it on.",
         ],
       },
+      ...(SUBMISSION_ENABLED
+        ? [
+            {
+              title: "The pre-registration form",
+              paragraphs: [
+                "If you fill in the form, we process your contact details (first and last name, email, phone, town) and the information you give us about your children: age, year of entry, town where you will live, country of their current school, languages used, interest in the bus. We do not ask for the children's names.",
+                "We use them to contact you, at your request, before enrolment and to plan the school's opening in aggregate form (Art. 6(1)(b) GDPR). The form is not an enrolment and does not assign a place.",
+                "Please do not include any health information about your children. If it reaches us anyway, we delete it.",
+                "We only send email updates if you ask for them and confirm your address from the link you receive (Art. 6(1)(a) GDPR). You can unsubscribe from every email.",
+                "The data stays in our management system for 24 months and is then deleted. The website server keeps a technical safety copy, deleted 30 days after the management system has confirmed it recorded the data.",
+                "In the management system only the school office and management can see it.",
+              ],
+            },
+          ]
+        : []),
       {
         title: "Why, and on what legal basis",
         paragraphs: [],
@@ -56,6 +75,7 @@ export const legalEn: LegalDict = {
         items: [
           "Hetzner Online GmbH (Germany), which hosts the site's server, as processor.",
           "Cloudflare, Inc., which protects and speeds up the site, as processor.",
+          ...(SUBMISSION_ENABLED ? ["Resend, Inc. (United States), which sends the confirmation email for updates, as processor."] : []),
           "Google Ireland Ltd and Google LLC, for Google Analytics and Google Ads, only with your consent.",
           "Meta Platforms Ireland Ltd, for the Meta Pixel, only with your consent. For collecting and transmitting Pixel data we are joint controllers with Meta (Art. 26 GDPR). The essence of the arrangement is at facebook.com/legal/controller_addendum. Meta is the sole controller for whatever it does with the data afterwards.",
         ],

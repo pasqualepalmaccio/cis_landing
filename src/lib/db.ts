@@ -76,5 +76,31 @@ async function migrate(sql: Sql) {
       raw           jsonb not null
     );
     create index if not exists csp_reports_recorded_at on csp_reports (recorded_at);
+
+    -- Registro dei tentativi di pre-registrazione: si scrive PRIMA di chiamare
+    -- il CRM. id = chiave di idempotenza verso il CRM (UUID casuale, mai una
+    -- sequenza: un database ripristinato non deve riusare chiavi già spese).
+    -- Il payload si cancella solo dopo che il CRM ha confermato di avere il
+    -- record (verified_at), mai sulla sola risposta 201.
+    create table if not exists preregistration_attempts (
+      id               uuid primary key,
+      received_at      timestamptz not null default now(),
+      status           text not null check (status in ('received', 'delivered', 'failed', 'rejected')),
+      attempts         integer not null default 0,
+      next_attempt_at  timestamptz not null default now(),
+      last_attempt_at  timestamptz,
+      last_error       text,
+      delivered_at     timestamptz,
+      verified_at      timestamptz,
+      crm_contact_id   uuid,
+      crm_prereg_id    uuid,
+      suspicious       boolean not null default false,
+      suspicious_reason text,
+      ip_hash          text,
+      payload          jsonb,
+      payload_purged_at timestamptz
+    );
+    create index if not exists preregistration_attempts_status on preregistration_attempts (status, next_attempt_at);
+    create index if not exists preregistration_attempts_ip on preregistration_attempts (ip_hash, received_at);
   `);
 }

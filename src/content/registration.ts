@@ -8,6 +8,10 @@ import type { Lang } from "./index";
    titolare, posto nel CRM per il questionario, presidi sul collegamento. */
 export const SUBMISSION_ENABLED = false;
 
+/** Versione del testo del consenso agli aggiornamenti: va nel registro del CRM
+ *  con ogni consenso. Si cambia quando cambia il testo di «updates». */
+export const UPDATES_TEXT_VERSION = "2026-10-17";
+
 type L = Record<Lang, string>;
 type Option = { v: string } & L;
 
@@ -158,6 +162,18 @@ export const registrationCopy = {
     updates: "Desidero ricevere via email aggiornamenti in anteprima su Colico International School (apertura, open day, iscrizioni). Facoltativo. Ti chiederemo di confermare l'indirizzo e potrai disiscriverti in ogni momento dal link in ogni email.",
     notice: "Inviando il modulo chiedi di essere ricontattato/a per la pre-iscrizione. I tuoi dati e quelli dei tuoi figli che ci comunichi sono trattati per gestire questa richiesta e per organizzare l'apertura della scuola, e non sono usati per comunicazioni promozionali senza il tuo consenso. Tempi di conservazione e diritti sono descritti nell'informativa privacy.",
     submit: "Invia la registrazione",
+    result: {
+      sending: "Invio in corso…",
+      deliveredTitle: "Grazie, abbiamo registrato la tua pre-registrazione.",
+      deliveredBody: "Ti scriveremo all'indirizzo che ci hai dato. Se hai chiesto gli aggiornamenti, cerca nella posta l'email per confermare l'indirizzo.",
+      queuedTitle: "Abbiamo ricevuto i tuoi dati.",
+      queuedBody: "Li stiamo registrando: non serve inviare di nuovo il modulo.",
+      errorTitle: "Il modulo non è arrivato.",
+      errorBody: "I dati che hai inserito sono ancora qui: riprova tra qualche minuto.",
+      invalidTitle: "Alcuni dati non sono validi.",
+      invalidBody: "Controlla i campi obbligatori e riprova.",
+      contact: "Per qualsiasi dubbio scrivi a",
+    },
     disabled: {
       title: "Anteprima del nuovo sito",
       body: "In questa anteprima l'invio del modulo è disattivato. Per registrare il tuo interesse scrivi a",
@@ -218,6 +234,18 @@ export const registrationCopy = {
     updates: "I'd like to receive early email updates about Colico International School (opening, open days, enrolment). Optional. We'll ask you to confirm your address, and you can unsubscribe at any time via the link in every email.",
     notice: "By submitting this form you ask to be contacted about pre-registration. Your data, and the data about your children that you share, are processed to handle this request and to plan the school's opening, and are not used for promotional communications without your consent. Retention periods and your rights are described in the privacy notice.",
     submit: "Submit registration",
+    result: {
+      sending: "Sending…",
+      deliveredTitle: "Thank you, your pre-registration is recorded.",
+      deliveredBody: "We'll write to the address you gave us. If you asked for updates, look for the email asking you to confirm your address.",
+      queuedTitle: "We've received your details.",
+      queuedBody: "We're recording them now: there's no need to send the form again.",
+      errorTitle: "The form didn't reach us.",
+      errorBody: "What you entered is still here: please try again in a few minutes.",
+      invalidTitle: "Some details aren't valid.",
+      invalidBody: "Check the required fields and try again.",
+      contact: "If anything is unclear, write to",
+    },
     disabled: {
       title: "Preview of the new website",
       body: "Form submission is disabled in this preview. To register your interest, write to",

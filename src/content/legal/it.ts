@@ -1,3 +1,5 @@
+import { SUBMISSION_ENABLED } from "../registration";
+
 import { OWNER, POLICY_UPDATED } from "./owner";
 
 /* Privacy e cookie policy in italiano. Bozza tecnica: va validata dal titolare
@@ -31,9 +33,26 @@ export const legalIt = {
           "Quando visiti il sito, il server riceve i dati tecnici che ogni browser invia: indirizzo IP, tipo di browser, pagina richiesta, data e ora. Servono a mostrarti le pagine e a proteggere il sito.",
           "Se acconsenti, usiamo anche cookie di statistica e di marketing. Cosa fanno, chi li gestisce e quanto durano è scritto nella cookie policy.",
           "Se ci scrivi via email, trattiamo i dati che ci mandi per risponderti.",
-          "Il modulo di pre-registrazione non è ancora attivo: oggi il sito non raccoglie dati tramite moduli. Aggiorneremo questa pagina prima di attivarlo.",
+          SUBMISSION_ENABLED
+            ? "Se compili il modulo di pre-registrazione trattiamo i dati descritti nella sezione dedicata qui sotto."
+            : "Il modulo di pre-registrazione non è ancora attivo: oggi il sito non raccoglie dati tramite moduli. Aggiorneremo questa pagina prima di attivarlo.",
         ],
       },
+      ...(SUBMISSION_ENABLED
+        ? [
+            {
+              title: "Il modulo di pre-registrazione",
+              paragraphs: [
+                "Se compili il modulo trattiamo i tuoi dati di contatto (nome, cognome, email, telefono, città) e le informazioni sui tuoi figli che ci dai: età, anno di ingresso, città in cui vivrete, paese della scuola attuale, lingue usate, interesse per il bus. Non chiediamo il nome dei bambini.",
+                "Li usiamo per ricontattarti, su tua richiesta, prima dell'iscrizione e per organizzare l'apertura della scuola in forma aggregata (art. 6.1.b GDPR). Il modulo non è un'iscrizione e non assegna un posto.",
+                "Ti chiediamo di non scrivere informazioni sulla salute dei bambini. Se arrivano lo stesso, le cancelliamo.",
+                "Gli aggiornamenti via email li inviamo solo se li chiedi e confermi l'indirizzo dal link che ricevi (art. 6.1.a GDPR). Puoi disiscriverti da ogni email.",
+                "I dati restano nel nostro gestionale per 24 mesi e poi vengono cancellati. Il server del sito ne tiene una copia tecnica di sicurezza, che si cancella 30 giorni dopo che il gestionale ha confermato di averli registrati.",
+                "Nel gestionale li vedono solo segreteria e direzione.",
+              ],
+            },
+          ]
+        : []),
       {
         title: "Perché e su quale base",
         paragraphs: [],
@@ -58,6 +77,7 @@ export const legalIt = {
         items: [
           "Hetzner Online GmbH (Germania), che ospita il server del sito, come responsabile del trattamento.",
           "Cloudflare, Inc., che protegge e velocizza il sito, come responsabile del trattamento.",
+          ...(SUBMISSION_ENABLED ? ["Resend, Inc. (Stati Uniti), che invia l'email di conferma degli aggiornamenti, come responsabile del trattamento."] : []),
           "Google Ireland Ltd e Google LLC, per Google Analytics e Google Ads, solo con il tuo consenso.",
           "Meta Platforms Ireland Ltd, per il Meta Pixel, solo con il tuo consenso. Per la raccolta e la trasmissione dei dati del Pixel siamo contitolari con Meta (art. 26 GDPR). Il contenuto essenziale dell'accordo è disponibile su facebook.com/legal/controller_addendum. Per tutto quello che Meta fa dopo con i dati, il titolare è Meta.",
         ],

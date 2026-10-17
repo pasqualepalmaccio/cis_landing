@@ -9,6 +9,7 @@ import { legalIt } from "@/content/legal/it";
 import { COOKIES } from "@/content/legal/cookies";
 import { CONSENT_VERSION } from "@/lib/consent/config";
 import { db, DatabaseUnavailable, recheckSchema } from "@/lib/db";
+import { ipHash } from "@/lib/ip";
 
 /* Registro dei consensi (record 2026-10-17). Ogni scelta è una riga nuova; la
    riga cita l'hash dei testi in vigore (banner, privacy, cookie policy,
@@ -39,16 +40,6 @@ const POLICY_CONTENT = JSON.parse(
 const POLICY_HASH = createHash("sha256").update(JSON.stringify(POLICY_CONTENT)).digest("hex");
 
 let policyStored = false;
-
-/* IP troncato (/24 o /48) e poi cifrato con un sale segreto: serve solo a
-   collegare una prova a una connessione, non a identificare. */
-function ipHash(request: Request): string | null {
-  const salt = process.env.CONSENT_IP_SALT;
-  const ip = request.headers.get("cf-connecting-ip") ?? request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "";
-  if (!salt || !ip) return null;
-  const truncated = ip.includes(":") ? ip.split(":").slice(0, 3).join(":") + "::" : ip.split(".").slice(0, 3).join(".") + ".0";
-  return createHash("sha256").update(`${salt}|${truncated}`).digest("hex");
-}
 
 export async function POST(request: Request) {
   const raw = await request.text();
