@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import type { Dict, Lang } from "@/content";
+import { OWNER } from "@/content/legal/owner";
 import { TRACKING_ENABLED } from "@/lib/consent/config";
 
 import { Mark } from "../brand/mark";
@@ -45,6 +46,12 @@ export function SiteFooter({ lang, t, legal }: { lang: Lang; t: Dict["footer"]; 
           {legal.cookie}
         </Link>
         {TRACKING_ENABLED && <PreferencesButton label={legal.preferences} className="transition-colors hover:text-cta" />}
+        {/* Ragione sociale, sede e P.IVA sul sito della società (art. 35 DPR 633/1972, art. 2250 c.c.). */}
+        {OWNER.name && (
+          <span className="sm:ml-auto">
+            {OWNER.name} · {OWNER.address} · P.IVA {OWNER.vatNumber}
+          </span>
+        )}
       </Container>
       <p
         aria-hidden

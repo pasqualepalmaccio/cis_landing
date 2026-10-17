@@ -12,7 +12,8 @@
   - Meta Pixel;
   - enhanced conversions e advanced matching;
   - Conversions API dal CRM.
-- **Titolare:** i dati (ragione sociale, sede, P.IVA, contatto privacy, eventuale DPO) arriveranno dal committente. Finché mancano, nessun tag parte (vedi «Cancelli»).
+- **Titolare:** Athena Education S.r.l., Via Costituzione 7, Colico (LC), P.IVA 04326810134, dal certificato di attribuzione della partita IVA fornito dal committente. Contatto privacy: info@cis-colico.com. DPO non indicato.
+- **Conservazione del registro dei consensi:** 6 anni dall'ultima scelta, scelta del committente il 2026-10-17, da confermare con il legale.
 
 ## Decisione: fase 1, realizzata in questo intervento
 
@@ -77,7 +78,7 @@ Ogni voce richiede un proprio record R3.
 ## Rischi accettati e aperti
 
 - **Origine raggiungibile senza Cloudflare** (audit infra, A1). Gli header `CF-*` sono falsificabili, quindi il registro salva l'IP visto dal proxy, troncato e in hash, e non lo usa per decisioni. Va chiuso con un firewall sull'origine prima della Conversions API.
-- **Conservazione del registro dei consensi:** proposta di 6 anni dall'ultima scelta, **da confermare dal titolare**. Fino ad allora non si cancella nulla.
+- **Conservazione del registro dei consensi:** 6 anni (vedi sopra). La cancellazione automatica delle righe scadute non esiste ancora: il trigger append-only la impedisce, quindi servirà una procedura dedicata prima del 2032.
 - **I testi di privacy e cookie policy sono una bozza tecnica.** Vanno validati dal titolare o da un legale prima di accendere i tag. Domande aperte nella sezione «Per il legale».
 - **Vecchio sito Netlify con modulo verso Formspree:** dati di minori negli USA senza informativa, ancora in corso. Segnalato al committente; non riguarda questa base di codice.
 
