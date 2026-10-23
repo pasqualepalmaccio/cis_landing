@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import { notFound } from "next/navigation";
 
 import { ConsentBanner } from "@/components/consent/consent-banner";
@@ -12,10 +12,13 @@ import { TRACKING_ENABLED } from "@/lib/consent/config";
 
 import "../globals.css";
 
-const fraunces = Fraunces({ subsets: ["latin"], axes: ["opsz"], style: ["normal", "italic"], variable: "--font-fraunces", display: "swap" });
-const inter = Inter({ subsets: ["latin", "cyrillic"], variable: "--font-inter", display: "swap" });
+// Caratteri della guida di marca: Cormorant Garamond per titoli e citazioni,
+// Cinzel per etichette brevi in maiuscolo, Source Sans 3 per testo e moduli.
+const cormorant = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"], style: ["normal", "italic"], variable: "--font-cormorant", display: "swap" });
+const cinzel = Cinzel({ subsets: ["latin"], weight: ["600", "700"], variable: "--font-cinzel", display: "swap" });
+const sourceSans = Source_Sans_3({ subsets: ["latin", "cyrillic"], variable: "--font-source-sans", display: "swap" });
 
-export const viewport: Viewport = { themeColor: "#14233d" };
+export const viewport: Viewport = { themeColor: "#1c3f72" };
 
 export const dynamicParams = false;
 
@@ -42,7 +45,7 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
   if (!isLang(lang)) notFound();
   const t = getDict(lang);
   return (
-    <html lang={lang} className={`${fraunces.variable} ${inter.variable}`} data-scroll-behavior="smooth">
+    <html lang={lang} className={`${cormorant.variable} ${cinzel.variable} ${sourceSans.variable}`} data-scroll-behavior="smooth">
       {/* Senza tag configurati il sito non usa cookie facoltativi: niente banner, niente script (I6). */}
       {TRACKING_ENABLED && (
         <head>

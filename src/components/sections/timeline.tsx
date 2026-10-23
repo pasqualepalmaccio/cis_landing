@@ -36,7 +36,7 @@ export function Timeline({ t }: { t: Dict["timeline"] }) {
                 <span aria-hidden className="absolute -left-10 top-1 grid size-[15px] place-items-center rounded-full border-2 border-gold-500 bg-navy-900 sm:-left-14 sm:size-[23px]">
                   <span className="size-1.5 rounded-full bg-gold-300 sm:size-2" />
                 </span>
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{s.when}</p>
+                <p className="font-label text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{s.when}</p>
                 <h3 className="mt-2 font-display text-2xl sm:text-3xl">
                   <span className="mr-3 font-sans text-sm text-bordeaux-300">{String(i + 1).padStart(2, "0")}</span>
                   {s.title}

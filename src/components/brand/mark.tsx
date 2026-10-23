@@ -1,14 +1,12 @@
 import Image from "next/image";
 
-/* Marchio della direzione A, versioni negative per il fondo blu notte. Gli SVG
-   in public/brand derivano dai file del brandbook: stesso disegno e stessi
-   colori, solo senza il rettangolo di fondo e con il riquadro stretto sul
-   segno (l'area di rispetto la dà il layout). Dimensioni minime a schermo:
-   orizzontale 180 px di larghezza, stemma 96 px, ridotto 56 px. */
+/* Marchio definitivo della grafica (brand/CIS_LOGO_DEFINITIVO), versioni
+   «fondo blu» senza sfondo: stesso disegno e stessi colori, con il riquadro
+   stretto sul segno (l'area di rispetto la dà il layout). */
 const MARKS = {
-  horizontal: { src: "/brand/orizzontale-negativo.svg", width: 372, height: 156 },
-  crest: { src: "/brand/stemma-negativo.svg", width: 236, height: 249 },
-  reduced: { src: "/brand/ridotto-negativo.svg", width: 176, height: 218 },
+  horizontal: { src: "/brand/orizzontale.svg", width: 871, height: 273 },
+  compact: { src: "/brand/compatto.svg", width: 595, height: 180 },
+  crest: { src: "/brand/stemma.svg", width: 442, height: 438 },
 } as const;
 
 type Props = {

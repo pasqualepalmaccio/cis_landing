@@ -1,31 +1,35 @@
 @import "tailwindcss";
 
-/* Palette della direzione A del marchio (brandbook, ottobre 2026): quattro
-   colori pieni, nessuna sfumatura metallica. Le varianti 300 e le tinte navy
-   esistono solo per il contrasto del testo su fondo scuro; ogni colore della
-   landing passa da qui. */
+/* Palette della guida di marca (brand/CIS_palette_e_font.pdf). I nomi dei
+   token restano quelli storici (navy, gold, bordeaux, cream) perché ogni
+   colore della landing passa da qui. Le tinte 800/700, mist e bordeaux-300
+   non sono nella guida: servono solo al contrasto del testo sul Blu Lario
+   (≥ 4,5:1 per il testo piccolo). */
 @theme {
-  /* Notte sul Lario — primario, fondi e testi */
-  --color-navy-950: #0d182b;
-  --color-navy-900: #14233d;
-  --color-navy-800: #1c2f4f;
-  --color-navy-700: #263b60;
-  /* Ottone — figure, filetti, azioni */
-  --color-gold-500: #b48a45;
-  --color-gold-300: #d2b27a;
-  /* Rosso Valtellina — campo e accenti; 300 per il testo su notte */
-  --color-bordeaux: #7a2433;
-  --color-bordeaux-300: #d58a96;
-  /* Pietra — carta, neve, testo chiaro */
-  --color-cream: #f5efe4;
-  --color-mist: #8d98ae;
-  --color-line: rgb(180 138 69 / 0.28);
-  /* Azioni principali: bianche, la Pietra al passaggio del puntatore. */
+  /* Blu Lario — colore principale, fondo del sito; Inchiostro per i neri */
+  --color-navy-950: #121b2b;
+  --color-navy-900: #1c3f72;
+  --color-navy-800: #234a83;
+  --color-navy-700: #2b5594;
+  /* Oro — secondario: figure, filetti, azioni; Oro chiaro per il testo */
+  --color-gold-500: #d2a649;
+  --color-gold-300: #e8cc86;
+  /* Cremisi — accento; 300 per il testo sul blu */
+  --color-bordeaux: #9c1f35;
+  --color-bordeaux-300: #f0b3bd;
+  /* Avorio — neutro caldo: carta, testo chiaro */
+  --color-cream: #f7f2e8;
+  --color-mist: #b4c0d4;
+  --color-line: rgb(210 166 73 / 0.32);
+  /* Azioni principali: bianche, l'Avorio al passaggio del puntatore. */
   --color-cta: #ffffff;
   --color-cta-hover: var(--color-cream);
 
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Cormorant: titoli e citazioni. Cinzel: titoli brevi ed etichette in
+     maiuscolo. Source Sans 3: testo corrente, didascalie, moduli. */
+  --font-display: var(--font-cormorant), ui-serif, Georgia, serif;
+  --font-label: var(--font-cinzel), ui-serif, Georgia, serif;
+  --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }

@@ -23,7 +23,7 @@ export function Curriculum({ lang, t }: { lang: Lang; t: Dict["curriculum"] }) {
                 >
                   {i + 1}
                 </span>
-                <p className="relative text-xs font-semibold uppercase tracking-[0.2em] text-bordeaux-300">{card.kicker}</p>
+                <p className="relative font-label text-xs font-semibold uppercase tracking-[0.2em] text-bordeaux-300">{card.kicker}</p>
                 <h3 className="relative mt-4 font-display text-3xl leading-tight sm:text-4xl">{card.title}</h3>
                 <p className="relative mt-6 leading-relaxed text-mist">{card.body}</p>
               </article>
