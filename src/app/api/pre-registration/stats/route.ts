@@ -11,7 +11,7 @@ export async function GET(request: Request) {
   if (!jobAuthorized(request)) return new Response(null, { status: 401 });
   const sql = await db();
   const delivered = await sql<{ id: string }[]>`
-    select id from preregistration_attempts where status = 'delivered' and delivered_at > now() - interval '72 hours'`;
+    select id from preregistration_attempts where kind = 'preregistration' and status = 'delivered' and delivered_at > now() - interval '72 hours'`;
   const { overdue, rejected } = await pendingCounts(sql);
   return Response.json({ deliveredKeys: delivered.map((r) => r.id), overdue, rejected, generatedAt: new Date().toISOString() });
 }

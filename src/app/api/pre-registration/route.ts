@@ -86,7 +86,7 @@ export async function POST(request: Request) {
   const outcome = await sendPreRegistration(crmBody);
   if (stored) {
     try {
-      await recordOutcome(await db(), id, outcome);
+      await recordOutcome(await db(), id, outcome, "preregistration");
     } catch (error) {
       // Il tentativo resta «received»: il job lo riprende e l'idempotenza del CRM evita il doppione.
       console.error(`[preregistrazione] ${id} esito non salvato (${outcome.status}): ${String(error)}`);

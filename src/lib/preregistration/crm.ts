@@ -1,10 +1,14 @@
 /* Chiamate al CRM, solo lato server. La chiave sta in CRM_API_KEY (variabile
    di runtime in Coolify, mai nell'immagine né nel bundle del browser). */
 
+export type AttemptKind = "preregistration" | "open-day";
+
 export type CrmOutcome =
-  | { status: "delivered"; contactId: string; preRegistrationId: string }
-  /** Il CRM ha esaminato i dati e li rifiuta: ritentare non serve, serve una persona. */
-  | { status: "rejected"; error: string }
+  /** `result`: esito dichiarato dal CRM (per l'Open Day: confirmed | waitlist). */
+  | { status: "delivered"; contactId: string; recordId: string; result?: string }
+  /** Il CRM ha esaminato i dati e li rifiuta: ritentare non serve, serve una
+   *  persona. `code` distingue i casi (event_closed, session_started…). */
+  | { status: "rejected"; error: string; code?: string }
   /** Il CRM non ha risposto come previsto: si ritenta con la stessa chiave. */
   | { status: "failed"; error: string };
 
@@ -48,7 +52,7 @@ export async function sendPreRegistration(body: unknown): Promise<CrmOutcome> {
     const j = json as Json;
     const contact = j?.contact as Json;
     if (status === 201 && !j?.dryRun && typeof j?.preRegistrationId === "string" && typeof contact?.id === "string") {
-      return { status: "delivered", contactId: contact.id, preRegistrationId: j.preRegistrationId };
+      return { status: "delivered", contactId: contact.id, recordId: j.preRegistrationId };
     }
     if (status === 400 || status === 409 || status === 422) return { status: "rejected", error: `${status} ${errorCode(json)}` };
     return { status: "failed", error: `${status} ${errorCode(json) || "risposta inattesa"}`.slice(0, 500) };
@@ -57,10 +61,40 @@ export async function sendPreRegistration(body: unknown): Promise<CrmOutcome> {
   }
 }
 
-/** Il record esiste davvero nel CRM? true / false / null = non si sa. */
-export async function existsInCrm(idempotencyKey: string): Promise<boolean | null> {
+/** Iscrizione all'Open Day. Successo solo con 201, id dell'iscrizione e del
+ *  contatto, esito confirmed|waitlist e nessun dryRun. Evento chiuso o sessione
+ *  iniziata sono rifiuti con il loro codice: la landing li dice al visitatore. */
+export async function sendOpenDayRegistration(slug: string, body: unknown): Promise<CrmOutcome> {
   try {
-    const { status } = await call("GET", `/pre-registrations/by-key/${idempotencyKey}`);
+    const { status, json } = await call("POST", `/events/${encodeURIComponent(slug)}/registrations`, body);
+    const j = json as Json;
+    const contact = j?.contact as Json;
+    const result = j?.status;
+    if (status === 201 && !j?.dryRun && typeof j?.registrationId === "string" && typeof contact?.id === "string" && (result === "confirmed" || result === "waitlist")) {
+      return { status: "delivered", contactId: contact.id, recordId: j.registrationId, result };
+    }
+    const code = String(((j?.error as Json)?.code as string | undefined) ?? "");
+    if (status === 400 || status === 409 || status === 422) return { status: "rejected", error: `${status} ${errorCode(json)}`, code };
+    return { status: "failed", error: `${status} ${errorCode(json) || "risposta inattesa"}`.slice(0, 500) };
+  } catch (error) {
+    return { status: "failed", error: error instanceof Error ? error.message : String(error) };
+  }
+}
+
+/** Invio di un tentativo salvato, secondo il suo tipo. */
+export function sendAttempt(kind: AttemptKind, payload: unknown): Promise<CrmOutcome> {
+  if (kind === "open-day") {
+    const p = payload as { slug: string; body: unknown };
+    return sendOpenDayRegistration(p.slug, p.body);
+  }
+  return sendPreRegistration(payload);
+}
+
+/** Il record esiste davvero nel CRM? true / false / null = non si sa. */
+export async function existsInCrm(idempotencyKey: string, kind: AttemptKind = "preregistration"): Promise<boolean | null> {
+  try {
+    const path = kind === "open-day" ? `/events/registrations/by-key/${idempotencyKey}` : `/pre-registrations/by-key/${idempotencyKey}`;
+    const { status } = await call("GET", path);
     if (status === 200) return true;
     if (status === 404) return false;
     return null;

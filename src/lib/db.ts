@@ -102,5 +102,29 @@ async function migrate(sql: Sql) {
     );
     create index if not exists preregistration_attempts_status on preregistration_attempts (status, next_attempt_at);
     create index if not exists preregistration_attempts_ip on preregistration_attempts (ip_hash, received_at);
+
+    -- Lo stesso registro serve anche le iscrizioni all'Open Day: stesso ciclo
+    -- di vita, stesso job di retry, endpoint del CRM diverso per tipo.
+    -- crm_record_id = id dell'iscrizione nel CRM (per l'Open Day);
+    -- crm_result = esito dichiarato dal CRM (confirmed | waitlist).
+    alter table preregistration_attempts add column if not exists kind text not null default 'preregistration';
+    alter table preregistration_attempts add column if not exists crm_record_id uuid;
+    alter table preregistration_attempts add column if not exists crm_result text;
+    create index if not exists preregistration_attempts_kind on preregistration_attempts (kind, status);
+    -- «closed»: evento chiuso detto al visitatore nel momento dell'invio. È
+    -- terminale e non chiede una persona; lo stesso rifiuto arrivato da un
+    -- retry resta «rejected», perché alla famiglia nessuno l'ha detto.
+    alter table preregistration_attempts drop constraint if exists preregistration_attempts_status_check;
+    alter table preregistration_attempts add constraint preregistration_attempts_status_check
+      check (status in ('received', 'delivered', 'failed', 'rejected', 'closed'));
+
+    -- Volte in cui la pagina dell'Open Day non ha potuto leggere l'evento dal
+    -- CRM e ha mostrato il ripiego: il CRM le legge e allarma se l'evento è aperto.
+    create table if not exists open_day_fallbacks (
+      id      bigserial primary key,
+      at      timestamptz not null default now(),
+      reason  text
+    );
+    create index if not exists open_day_fallbacks_at on open_day_fallbacks (at);
   `);
 }

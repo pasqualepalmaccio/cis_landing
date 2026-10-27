@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { jobAuthorized } from "@/lib/ip";
 import { pendingCounts, retryDue } from "@/lib/preregistration/attempts";
-import { crmLastReconciliation, existsInCrm } from "@/lib/preregistration/crm";
+import { crmLastReconciliation, existsInCrm, type AttemptKind } from "@/lib/preregistration/crm";
 
 /* Job pianificato (Coolify, ogni 10 minuti). Fa tre cose e risponde 500 se
    qualcosa richiede una persona, così il task fallisce e scatta la notifica:
@@ -21,13 +21,13 @@ export async function POST(request: Request) {
 
   Object.assign(figures, await retryDue(sql));
 
-  const toVerify = await sql<{ id: string }[]>`
-    select id from preregistration_attempts where status = 'delivered' and verified_at is null and delivered_at < now() - interval '10 minutes' order by delivered_at limit 50`;
+  const toVerify = await sql<{ id: string; kind: AttemptKind }[]>`
+    select id, kind from preregistration_attempts where status = 'delivered' and verified_at is null and delivered_at < now() - interval '10 minutes' order by delivered_at limit 50`;
   let verified = 0;
   let lost = 0;
   let unknown = 0;
-  for (const { id } of toVerify) {
-    const exists = await existsInCrm(id);
+  for (const { id, kind } of toVerify) {
+    const exists = await existsInCrm(id, kind);
     if (exists === true) {
       await sql`update preregistration_attempts set verified_at = now() where id = ${id}`;
       verified++;
@@ -48,6 +48,9 @@ export async function POST(request: Request) {
   const { overdue, rejected } = await pendingCounts(sql);
   figures.inRitardo = overdue;
   figures.respinti = rejected;
+  const openDay = await pendingCounts(sql, "open-day");
+  figures.openDayInRitardo = openDay.overdue;
+  figures.openDayRespinte = openDay.rejected;
 
   const last = await crmLastReconciliation();
   const crmStale = !last || Date.now() - last.getTime() > 2 * HOUR;
@@ -58,6 +61,8 @@ export async function POST(request: Request) {
     rejected > 0 && `${rejected} pre-registrazioni respinte dal CRM da controllare`,
     lost > 0 && `${lost} pre-registrazioni sparite dal CRM e rimesse in coda`,
     crmStale && "il CRM non riconcilia le pre-registrazioni da più di 2 ore",
+    openDay.overdue > 0 && `${openDay.overdue} iscrizioni all'Open Day non consegnate da più di 15 minuti`,
+    openDay.rejected > 0 && `${openDay.rejected} iscrizioni all'Open Day respinte dal CRM (evento chiuso o dati non validi): le famiglie vanno contattate`,
   ].filter(Boolean);
   if (problems.length) console.error(`[preregistrazione] job: ${problems.join("; ")}`);
   return Response.json({ ok: problems.length === 0, problems, figures }, { status: problems.length ? 500 : 200 });

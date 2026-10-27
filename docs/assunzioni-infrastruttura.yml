@@ -106,3 +106,19 @@ assunzioni:
     verificata_il: 2026-10-17
     esito_osservato: "date -u e Intl in UTC nella landing; TZ=UTC nel CRM"
 
+  - id: L16
+    categoria: cache
+    assunzione: >
+      La pagina dell'Open Day si rigenera al massimo ogni 60 secondi; se il CRM non risponde mostra il ripiego
+      («iscrizioni non disponibili») invece di dati vecchi, e lo registra in open_day_fallbacks.
+    stato: verificata
+    verificata_il: 2026-10-27 (locale, next dev)
+    esito_osservato: "CRM a 500 → pagina col ripiego, una riga in open_day_fallbacks, conteggio esposto in /api/open-day/stats"
+    se_falsa: "famiglie respinte dalla pagina senza che nessuno lo sappia; il CRM allarma solo se il ripiego è registrato"
+    da_verificare: "in produzione (build standalone, cache che non sopravvive ai rilasci: L07) e con la prima build senza CRM raggiungibile"
+  - id: L17
+    categoria: servizi-terzi
+    assunzione: Il CRM in produzione espone /api/v1/events e la chiave della landing ha l'ambito events:write.
+    stato: da_verificare
+    come_verificare: "curl con la chiave di produzione su /api/v1/events/open-day dopo il rilascio del CRM: atteso 404 se l'evento è in preparazione, 200 se aperto"
+    se_falsa: "senza endpoint la pagina dice «date in arrivo» (404); senza ambito dice «non disponibili» (403) e registra il ripiego"
