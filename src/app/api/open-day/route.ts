@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { AGE_BANDS, MAX_ADULTS, MAX_CHILDREN, OPEN_DAY_ENABLED, OPEN_DAY_NOTICE_VERSION, UPDATES_TEXT_VERSION } from "@/content/open-day";
+import { AGE_BANDS, MAX_ADULTS, MAX_CHILDREN, OPEN_DAY_ENABLED, OPEN_DAY_NOTICE_VERSION, SCHOOL_LEVELS, UPDATES_TEXT_VERSION } from "@/content/open-day";
 import { db, recheckSchema } from "@/lib/db";
 import { ipHash } from "@/lib/ip";
 import { OPEN_DAY_SLUG } from "@/lib/open-day/event";
@@ -32,11 +32,39 @@ const formPayload = z.strictObject({
   lang: z.enum(["it", "en"]),
   adults: z.number().int().min(1).max(MAX_ADULTS),
   children: z.number().int().min(0).max(MAX_CHILDREN),
-  childAgeBands: z.array(z.enum(AGE_BANDS.map((b) => b.v) as [string, ...string[]])).max(MAX_CHILDREN),
+  /** Moduli aperti prima dell'aggiornamento mandano ancora le fasce. */
+  childAgeBands: z.array(z.enum(AGE_BANDS.map((b) => b.v) as [string, ...string[]])).max(MAX_CHILDREN).default([]),
+  childrenInfo: z
+    .array(
+      z.strictObject({
+        firstName: z.string().trim().max(80).optional(),
+        birthYear: z.number().int().min(2005).max(2100),
+        level: z.enum(SCHOOL_LEVELS.map((l) => l.v) as [string, ...string[]]),
+        intakeYear: z.number().int().min(2024).max(2100),
+      })
+    )
+    .max(MAX_CHILDREN)
+    .default([]),
+  /** Valore sconosciuto: il CRM lo registra come «altro», non respinge. */
+  howHeard: z.string().trim().max(40).optional(),
+  /** «Ho letto l'informativa»: senza, il modulo non è stato compilato davvero. */
+  privacyAck: z.literal(true),
+  /** Parametri utm dell'indirizzo: in più o troppo lunghi si tagliano, non respingono. */
+  attribution: z.record(z.string(), z.string()).optional(),
   wantsUpdates: z.boolean(),
   /** Campo esca: marca, non scarta. */
   website: z.string().max(200).optional(),
 });
+
+const UTM = ["utm_source", "utm_medium", "utm_campaign", "utm_content"] as const;
+
+/** Solo i parametri utm noti, tagliati a 100 caratteri: misurano, non decidono. */
+function attribution(raw: Record<string, string> | undefined): Partial<Record<(typeof UTM)[number], string>> | undefined {
+  if (!raw) return undefined;
+  const out: Partial<Record<(typeof UTM)[number], string>> = {};
+  for (const k of UTM) if (raw[k]?.trim()) out[k] = raw[k].trim().slice(0, 100);
+  return Object.keys(out).length ? out : undefined;
+}
 
 export async function POST(request: Request) {
   if (!OPEN_DAY_ENABLED) return Response.json({ result: "disabled" }, { status: 403 });
@@ -49,9 +77,10 @@ export async function POST(request: Request) {
   } catch {
     return Response.json({ result: "invalid" }, { status: 400 });
   }
-  if (!parsed.success || parsed.data.childAgeBands.length > parsed.data.children) {
+  const shape = parsed.success && (parsed.data.childAgeBands.length > parsed.data.children ? "childAgeBands" : parsed.data.childrenInfo.length > parsed.data.children ? "childrenInfo" : null);
+  if (!parsed.success || shape) {
     // Solo i nomi dei campi nei log, mai i valori.
-    console.warn(`[open-day] respinta dalla validazione: ${parsed.success ? "childAgeBands" : parsed.error.issues.map((i) => i.path.join(".")).join(", ")}`);
+    console.warn(`[open-day] respinta dalla validazione: ${parsed.success ? shape : parsed.error.issues.map((i) => i.path.join(".")).join(", ")}`);
     return Response.json({ result: "invalid" }, { status: 422 });
   }
   const form = parsed.data;
@@ -67,6 +96,10 @@ export async function POST(request: Request) {
     adults: form.adults,
     children: form.children,
     childAgeBands: form.childAgeBands,
+    childrenInfo: form.childrenInfo,
+    ...(form.howHeard ? { howHeard: form.howHeard } : {}),
+    privacyAck: true,
+    ...(attribution(form.attribution) ? { attribution: attribution(form.attribution) } : {}),
     noticeVersion: OPEN_DAY_NOTICE_VERSION,
     suspicious: false,
     ...(form.wantsUpdates

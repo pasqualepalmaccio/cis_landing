@@ -18,6 +18,26 @@ export { UPDATES_TEXT_VERSION } from "./registration";
 export const MAX_ADULTS = 4;
 export const MAX_CHILDREN = 4;
 /** Stessi codici del CRM (crm/src/lib/event-registration.ts). */
+export const SCHOOL_LEVELS = [
+  { v: "INFANT", it: "Scuola dell'infanzia", en: "Early years (3–5)" },
+  { v: "PRIMARY", it: "Scuola primaria", en: "Primary (6–10)" },
+] as const;
+export const HOW_HEARD = [
+  { v: "word-of-mouth", it: "Passaparola", en: "Word of mouth" },
+  { v: "social", it: "Social", en: "Social media" },
+  { v: "search", it: "Ricerca su Google", en: "Google search" },
+  { v: "email", it: "Email della scuola", en: "Email from the school" },
+  { v: "flyer", it: "Volantino o manifesto", en: "Flyer or poster" },
+  { v: "event", it: "Evento o incontro", en: "Event or meeting" },
+  { v: "other", it: "Altro", en: "Other" },
+] as const;
+/** Primo anno scolastico possibile (la scuola apre a settembre 2027) e i due dopo. */
+export const INTAKE_YEARS = [2027, 2028, 2029] as const;
+/** Anni di nascita proponibili, dal più recente: copre infanzia e primaria
+ *  per tutti gli anni di INTAKE_YEARS. Il livello lo verifica la segreteria. */
+export const BIRTH_YEARS = Array.from({ length: 12 }, (_, i) => 2027 - i);
+
+/** Fasce d'età: non più chieste dal modulo, restano per i tentativi già registrati. */
 export const AGE_BANDS = [
   { v: "0-2", it: "0–2 anni", en: "0–2 years" },
   { v: "3-5", it: "3–5 anni (infanzia)", en: "3–5 years (early years)" },
@@ -71,9 +91,17 @@ const it = {
     adults: "Adulti",
     children: "Bambini",
     childBand: "Età del bambino {n} (facoltativa)",
+    childTitle: "Bambino {n}",
+    childName: "Nome (facoltativo)",
+    birthYear: "Anno di nascita",
+    level: "Scuola di interesse",
+    intakeYear: "Anno scolastico di inizio",
+    howHeard: "Come ci avete conosciuto? (facoltativo)",
     choose: "Scegli",
     session: "Sessione",
   },
+  privacyAck: "Ho letto l'{link} sul trattamento dei dati per l'iscrizione all'Open Day.",
+  privacyLink: "informativa privacy",
   updates: "Desidero ricevere via email aggiornamenti in anteprima su Colico International School (apertura, open day, iscrizioni). Facoltativo. Ti chiederemo di confermare l'indirizzo e potrai disiscriverti in ogni momento dal link in ogni email.",
   notice: "Iscrivendoti chiedi di partecipare all'Open Day. Usiamo i tuoi dati per gestire l'iscrizione, mandarti la conferma ed eventuali avvisi sull'evento, non per comunicazioni promozionali senza il tuo consenso. Tempi di conservazione e diritti sono descritti nell'informativa privacy.",
   required: "* Campi obbligatori",
@@ -151,9 +179,17 @@ const en: OpenDayCopy = {
     adults: "Adults",
     children: "Children",
     childBand: "Age of child {n} (optional)",
+    childTitle: "Child {n}",
+    childName: "First name (optional)",
+    birthYear: "Year of birth",
+    level: "School of interest",
+    intakeYear: "Starting school year",
+    howHeard: "How did you hear about us? (optional)",
     choose: "Choose",
     session: "Session",
   },
+  privacyAck: "I have read the {link} on how my data is processed for the Open Day registration.",
+  privacyLink: "privacy notice",
   updates: "I'd like to receive early email updates about Colico International School (opening, open days, enrolment). Optional. We'll ask you to confirm your address, and you can unsubscribe at any time via the link in every email.",
   notice: "By registering you ask to attend the Open Day. We use your data to manage your registration, send you the confirmation and any notices about the event, not for promotional communications without your consent. Retention periods and your rights are described in the privacy notice.",
   required: "* Required fields",

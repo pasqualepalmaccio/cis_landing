@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useSyncExternalStore, type FormEvent } from "react";
 
 import type { Lang } from "@/content";
-import { AGE_BANDS, fill, MAX_ADULTS, MAX_CHILDREN, OPEN_DAY_ENABLED, type OpenDayCopy } from "@/content/open-day";
+import { BIRTH_YEARS, fill, HOW_HEARD, INTAKE_YEARS, MAX_ADULTS, MAX_CHILDREN, OPEN_DAY_ENABLED, SCHOOL_LEVELS, type OpenDayCopy } from "@/content/open-day";
 import type { PublicSession } from "@/lib/open-day/event";
 
 import { control, Field, FormSection, optionsOf } from "./field";
@@ -23,7 +24,7 @@ const when = (lang: Lang, s: PublicSession) => {
    CRM, mai dai posti indicativi della pagina. */
 export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy; sessions: PublicSession[] }) {
   const [state, setState] = useState<State>("idle");
-  const [children, setChildren] = useState(0);
+  const [children, setChildren] = useState(1);
   const ready = useSyncExternalStore(noop, () => true, () => false);
   const done = state === "confirmed" || state === "waitlist" || state === "queued" || state === "closed";
 
@@ -38,7 +39,15 @@ export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy;
       lang,
       adults: Number(s("adults") || "1"),
       children,
-      childAgeBands: Array.from({ length: children }, (_, i) => s(`band_${i + 1}`)).filter(Boolean),
+      childrenInfo: Array.from({ length: children }, (_, i) => ({
+        ...(s(`child_name_${i + 1}`) ? { firstName: s(`child_name_${i + 1}`) } : {}),
+        birthYear: Number(s(`birth_year_${i + 1}`)),
+        level: s(`level_${i + 1}`),
+        intakeYear: Number(s(`intake_year_${i + 1}`)),
+      })),
+      ...(s("how_heard") ? { howHeard: s("how_heard") } : {}),
+      privacyAck: fd.get("privacy_ack") === "on",
+      attribution: utmFromUrl(),
       wantsUpdates: fd.get("updates_consent") === "on",
       ...(s("website") ? { website: s("website") } : {}),
     };
@@ -89,14 +98,15 @@ export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy;
             <Select id="od_adults" name="adults" options={Array.from({ length: MAX_ADULTS }, (_, i) => ({ value: String(i + 1), label: String(i + 1) }))} />
           </Field>
           <Field label={t.form.children} htmlFor="od_children" required>
-            <Select id="od_children" name="children" value={String(children)} onChange={(v) => setChildren(Number(v))} options={Array.from({ length: MAX_CHILDREN + 1 }, (_, i) => ({ value: String(i), label: String(i) }))} />
+            <Select id="od_children" name="children" value={String(children)} onChange={(v) => setChildren(Number(v))} options={Array.from({ length: MAX_CHILDREN }, (_, i) => ({ value: String(i + 1), label: String(i + 1) }))} />
           </Field>
-          {Array.from({ length: children }, (_, i) => (
-            <Field key={i} label={fill(t.form.childBand, { n: i + 1 })} htmlFor={`od_band_${i + 1}`}>
-              <Select id={`od_band_${i + 1}`} name={`band_${i + 1}`} placeholder={t.form.choose} options={optionsOf([...AGE_BANDS], lang)} />
-            </Field>
-          ))}
         </div>
+        {Array.from({ length: children }, (_, i) => (
+          <ChildFields key={i} n={i + 1} lang={lang} t={t} />
+        ))}
+        <Field label={t.form.howHeard} htmlFor="od_how_heard">
+          <Select id="od_how_heard" name="how_heard" placeholder={t.form.choose} options={optionsOf([...HOW_HEARD], lang)} />
+        </Field>
       </FormSection>
 
       <div className="space-y-6 border-t border-line pt-12">
@@ -105,6 +115,7 @@ export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy;
           <span className="text-sm leading-relaxed text-mist">{t.updates}</span>
         </label>
         <p className="text-sm leading-relaxed text-mist">{t.notice}</p>
+        <PrivacyAck lang={lang} t={t} />
         <p className="text-xs text-mist">{t.required}</p>
         <OpenDayResult state={state} t={t} />
         <button
@@ -117,6 +128,57 @@ export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy;
       </div>
     </form>
   );
+}
+
+/* Un bambino: anno di nascita, scuola e anno di interesse obbligatori, nome
+   facoltativo. Il livello dichiarato non si corregge qui: lo guarda la
+   segreteria nel CRM, che vede anche quello che darebbe l'età. */
+function ChildFields({ n, lang, t }: { n: number; lang: Lang; t: OpenDayCopy }) {
+  const years = (list: readonly number[], label: (y: number) => string) => list.map((y) => ({ value: String(y), label: label(y) }));
+  return (
+    <div className="rounded-2xl border border-line p-5">
+      <p className="mb-4 font-label text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">{fill(t.form.childTitle, { n })}</p>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label={t.form.childName} htmlFor={`od_child_name_${n}`}><input id={`od_child_name_${n}`} name={`child_name_${n}`} autoComplete="off" maxLength={80} className={control} /></Field>
+        <Field label={t.form.birthYear} htmlFor={`od_birth_year_${n}`} required>
+          <Select id={`od_birth_year_${n}`} name={`birth_year_${n}`} required placeholder={t.form.choose} options={years(BIRTH_YEARS, String)} />
+        </Field>
+        <Field label={t.form.level} htmlFor={`od_level_${n}`} required>
+          <Select id={`od_level_${n}`} name={`level_${n}`} required placeholder={t.form.choose} options={optionsOf([...SCHOOL_LEVELS], lang)} />
+        </Field>
+        <Field label={t.form.intakeYear} htmlFor={`od_intake_year_${n}`} required>
+          <Select id={`od_intake_year_${n}`} name={`intake_year_${n}`} required placeholder={t.form.choose} options={years(INTAKE_YEARS, (y) => `${y}/${y + 1}`)} />
+        </Field>
+      </div>
+    </div>
+  );
+}
+
+/** «Ho letto l'informativa»: obbligatoria, e NON è un consenso. */
+function PrivacyAck({ lang, t }: { lang: Lang; t: OpenDayCopy }) {
+  const [before, after] = t.privacyAck.split("{link}");
+  return (
+    <label className="flex cursor-pointer items-start gap-4 rounded-2xl border border-line p-5 transition-colors hover:border-gold-500/60">
+      <input type="checkbox" name="privacy_ack" required className="mt-1 size-5 shrink-0 accent-gold-500" />
+      <span className="text-sm leading-relaxed text-mist">
+        {before}
+        <Link href={`/${lang}/privacy`} target="_blank" className="font-semibold text-gold-300 underline underline-offset-4">{t.privacyLink}</Link>
+        {after} <span className="text-gold-500">*</span>
+      </span>
+    </label>
+  );
+}
+
+/** Parametri utm dell'indirizzo, letti al momento dell'invio: nessun cookie,
+ *  nessuna memoria nel browser. Solo valori di campagna. */
+function utmFromUrl(): Record<string, string> | undefined {
+  const q = new URLSearchParams(window.location.search);
+  const out: Record<string, string> = {};
+  for (const k of ["utm_source", "utm_medium", "utm_campaign", "utm_content"]) {
+    const v = q.get(k)?.trim().slice(0, 100);
+    if (v) out[k] = v;
+  }
+  return Object.keys(out).length ? out : undefined;
 }
 
 function OpenDayResult({ state, t }: { state: State; t: OpenDayCopy }) {
