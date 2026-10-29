@@ -6,7 +6,7 @@ type Props = { eyebrow: string; title: string; lead?: string; align?: "left" | "
 export function Eyebrow({ children }: { children: string }) {
   return (
     <span className="inline-flex items-center gap-3 font-label text-xs font-semibold uppercase tracking-[0.22em] text-gold-300">
-      {/* Filetto e rombo: lo stesso ornamento che separa le righe del marchio orizzontale. */}
+      {/* Filetto e rombo: ornamento delle intestazioni, nell'oro del marchio. */}
       <span aria-hidden className="flex items-center gap-1.5">
         <span className="h-px w-8 bg-gold-500" />
         <span className="size-1.5 rotate-45 bg-gold-500" />

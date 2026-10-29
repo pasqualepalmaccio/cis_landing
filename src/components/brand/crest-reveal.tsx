@@ -6,7 +6,7 @@ import { Mark } from "./mark";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-/* Lo stemma completo, col motto, si svela dall'alto come una tela che scende,
+/* Lo stemma si svela dall'alto come una tela che scende,
    mentre due cerchi d'ottone si allargano dietro. Il segno resta piatto e
    intatto: nessuna rotazione, ombra o effetto oro (brandbook, usi scorretti). */
 export function CrestReveal() {
@@ -33,7 +33,7 @@ export function CrestReveal() {
         viewport={view}
         transition={{ duration: 1.4, ease }}
       >
-        <Mark variant="crest" alt="Colico International School, Ex altis lux" className="h-auto w-28 sm:w-36" />
+        <Mark variant="crest" alt="Colico International School" className="h-auto w-28 sm:w-36" />
       </motion.div>
     </div>
   );
