@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     title: t.meta.title,
     description: t.meta.description,
     alternates: { languages: { it: "/it", en: "/en" } },
-    icons: { icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/brand/favicon.svg", type: "image/svg+xml" }, { url: "/favicon-32.png", type: "image/png", sizes: "32x32" }], apple: "/apple-touch-icon.png" },
+    icons: { icon: [{ url: "/favicon.ico?v=2", sizes: "any" }, { url: "/brand/favicon.svg?v=2", type: "image/svg+xml" }, { url: "/favicon-32.png?v=2", type: "image/png", sizes: "32x32" }], apple: "/apple-touch-icon.png?v=2" },
     openGraph: { title: t.meta.title, description: t.meta.description, images: ["/images/hero-lago.jpg"], locale: lang === "it" ? "it_IT" : "en_GB", type: "website" },
   };
 }
