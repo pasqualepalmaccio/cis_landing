@@ -48,12 +48,18 @@ export const AGE_BANDS = [
 const it = {
   meta: {
     title: "Open Day · CIS Colico International School",
-    description: "Vieni a conoscere la nuova scuola internazionale di Colico: due sessioni, posti limitati, iscrizione online.",
+    description: "Vieni a conoscere CIS Colico International School, la nuova scuola internazionale di Colico sul Lago di Como: posti limitati, iscrizione online.",
   },
   eyebrow: "Open Day",
-  title: "Vieni a conoscerci",
-  titleEm: "di persona",
+  /* Due righe sempre: l'invito, poi il nome per intero. */
+  title: "Vieni a scoprire",
+  titleEm: "CIS Colico International School",
   lead: "La nuova scuola internazionale sull'alto lago apre a settembre 2027. All'Open Day incontri chi la sta costruendo, vedi gli spazi e fai tutte le domande che vuoi.",
+  cta: "Prenota il tuo posto",
+  /* Data, ore, luogo e posti della striscia vengono dall'evento del CRM. */
+  strip: { date: "Data", sessions: "Sessioni", place: "Luogo", seats: "Posti", limited: "Limitati", waitlist: "Lista d'attesa" },
+  pillarsEyebrow: "Perché partecipare",
+  pillarsTitle: "Un progetto pensato per ogni bambino, dai 3 ai 14 anni",
   pillars: [
     { title: "Basi solide, futuri sicuri", body: "Un curricolo in inglese che costruisce lettura, scrittura, matematica e comunicazione con metodo." },
     { title: "La curiosità che fa imparare", body: "Si impara facendo domande e collegando le materie, per temi e progetti." },
@@ -136,12 +142,16 @@ export type OpenDayCopy = typeof it;
 const en: OpenDayCopy = {
   meta: {
     title: "Open Day · CIS Colico International School",
-    description: "Come and meet the new international school in Colico: two sessions, limited places, register online.",
+    description: "Come and meet CIS Colico International School, the new international school in Colico on Lake Como: limited places, register online.",
   },
   eyebrow: "Open Day",
-  title: "Come and meet us",
-  titleEm: "in person",
+  title: "Come and discover",
+  titleEm: "CIS Colico International School",
   lead: "The new international school on the north lake opens in September 2027. At the Open Day you'll meet the people building it, see the spaces and ask all your questions.",
+  cta: "Book your place",
+  strip: { date: "Date", sessions: "Sessions", place: "Venue", seats: "Places", limited: "Limited", waitlist: "Waiting list" },
+  pillarsEyebrow: "Why attend",
+  pillarsTitle: "A project designed for every child, aged 3 to 14",
   pillars: [
     { title: "Strong foundations. Confident futures.", body: "An English-language curriculum that builds literacy, numeracy and communication skills with method." },
     { title: "Curiosity that inspires learning.", body: "Enquiry-based learning that encourages questions and connections, through themes and projects." },

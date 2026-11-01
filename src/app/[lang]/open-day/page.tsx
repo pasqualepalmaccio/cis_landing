@@ -4,11 +4,16 @@ import { notFound } from "next/navigation";
 
 import { OpenDayForm } from "@/components/form/open-day-form";
 import { Container } from "@/components/layout/container";
-import { PageHead } from "@/components/layout/page-head";
-import { Reveal } from "@/components/motion/reveal";
+import { Ages } from "@/components/open-day/ages";
+import { Languages } from "@/components/open-day/languages";
+import { OpenDayHero } from "@/components/open-day/open-day-hero";
+import { Pillars } from "@/components/open-day/pillars";
+import { JsonLd } from "@/components/seo/json-ld";
 import { isLang, type Lang } from "@/content";
 import { fill, OPEN_DAY_ENABLED, openDayCopy, type OpenDayCopy } from "@/content/open-day";
+import { pageMetadata } from "@/lib/metadata";
 import { loadEvent } from "@/lib/open-day/event";
+import { openDayJsonLd } from "@/lib/structured-data";
 
 /* I posti cambiano: la pagina si rigenera al massimo ogni 60 secondi. Chi
    decide il posto è l'iscrizione, non questa pagina. */
@@ -17,8 +22,7 @@ export const revalidate = 60;
 export async function generateMetadata({ params }: PageProps<"/[lang]/open-day">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLang(lang)) return {};
-  const t = openDayCopy[lang].meta;
-  return { title: t.title, description: t.description, alternates: { languages: { it: "/it/open-day", en: "/en/open-day" } } };
+  return pageMetadata(lang, "/open-day", openDayCopy[lang].meta);
 }
 
 export default async function OpenDayPage({ params }: PageProps<"/[lang]/open-day">) {
@@ -27,48 +31,20 @@ export default async function OpenDayPage({ params }: PageProps<"/[lang]/open-da
   const t = openDayCopy[lang];
   const state = await loadEvent();
 
+  /* Hero, perché partecipare, lingue (Blu Lario), fasce d'età, iscrizione.
+     L'iscrizione resta sul fondo scuro per cui il modulo è disegnato. */
   return (
     <>
-      <PageHead eyebrow={t.eyebrow} title={t.title} titleEm={t.titleEm} lead={t.lead} />
-      <Container>
-        <Reveal className="grid gap-4 sm:grid-cols-2">
-          {t.pillars.map((p) => (
-            <div key={p.title} className="rounded-3xl border border-line border-l-4 border-l-gold-500 bg-cream/[0.03] p-7">
-              <h2 className="font-display text-2xl text-cream">{p.title}</h2>
-              <p className="mt-2 text-mist">{p.body}</p>
-            </div>
-          ))}
-        </Reveal>
-
-        <Reveal className="mt-10 grid gap-8 rounded-3xl border border-line bg-gradient-to-br from-navy-800 to-navy-900 p-8 lg:grid-cols-[1fr_1.4fr]">
-          <div>
-            <h2 className="font-label text-sm font-semibold uppercase tracking-[0.18em] text-gold-300">{t.languagesTitle}</h2>
-            <ul className="mt-5 flex flex-wrap gap-3">
-              {t.languages.map((l) => (
-                <li key={l} className="rounded-full border border-bordeaux bg-bordeaux/20 px-5 py-2.5 text-sm font-semibold text-cream">{l}</li>
-              ))}
-            </ul>
-            <p className="mt-6 text-sm italic text-mist">{t.opening}</p>
-          </div>
-          <div>
-            <h2 className="font-label text-sm font-semibold uppercase tracking-[0.18em] text-gold-300">{t.agesTitle}</h2>
-            <table className="mt-5 w-full text-left text-sm">
-              <thead className="text-mist">
-                <tr>{t.agesHead.map((h) => <th key={h} className="border-b border-line py-2 pr-4 font-semibold">{h}</th>)}</tr>
-              </thead>
-              <tbody>
-                {t.ages.map((row) => (
-                  <tr key={row[0]}>{row.map((c, i) => <td key={i} className="border-b border-line/50 py-2 pr-4 text-cream/90">{c}</td>)}</tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </Reveal>
-
-        <section id="iscrizione" className="mt-16">
+      {state.kind === "ok" && <JsonLd data={openDayJsonLd(lang, state.event, t.meta.description)} />}
+      <OpenDayHero lang={lang} t={t} state={state} />
+      <Pillars t={t} />
+      <Languages t={t} />
+      <Ages t={t} />
+      <section id="iscrizione" className="bg-navy-900 pt-12 md:pt-24">
+        <Container>
           <EventBlock lang={lang} t={t} state={state} />
-        </section>
-      </Container>
+        </Container>
+      </section>
     </>
   );
 }
