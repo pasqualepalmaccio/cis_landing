@@ -6,7 +6,7 @@ export const it = {
   meta: {
     title: "CIS · Colico International School",
     description:
-      "Una nuova scuola internazionale sul Lago di Como, a Colico. Apre a settembre 2027. Lascia il tuo interesse e ti avvisiamo quando si aprono le pre-iscrizioni.",
+      "CIS · Colico International School è la nuova scuola internazionale a Colico, sul Lago di Como: bambini dai 3 ai 14 anni, inglese e italiano come lingue principali, apertura a settembre 2027.",
   },
   nav: {
     links: [
@@ -17,18 +17,18 @@ export const it = {
       { href: "#sicurezza", label: "Sicurezza" },
       { href: "#percorso", label: "Percorso" },
     ],
-    cta: "Sono interessato",
+    cta: "Pre-iscriviti ora",
     back: "Torna al sito",
     menu: "Menu",
     close: "Chiudi",
     language: "Lingua",
   },
   hero: {
-    eyebrow: "La nuova scuola internazionale dell'Alto Lago · Apertura settembre 2027",
+    eyebrow: "Scuola internazionale · Apertura settembre 2027",
     titleLines: ["Il mondo come aula.", "Il Lago come casa."],
     sub: "Una scuola internazionale per bambini dai 3 ai 14 anni.",
-    cta: "Scopri il progetto",
-    secondary: "Ricevi aggiornamenti in anteprima",
+    explore: "Scopri il progetto",
+    cta: "Assicurati un posto tra i primi",
     scroll: "Scorri",
     facts: [
       { value: "3–14", label: "anni" },
@@ -117,12 +117,16 @@ export const it = {
     eyebrow: "Perché Colico",
     title: "Colico si raggiunge facilmente",
     lead: "Colico è lo snodo dell'Alto Lago: qui arrivano la superstrada SS36 da Lecco, la ferrovia e le linee di battello del lago. Questi sono i tempi dalle località vicine.",
+    /* La meta: il primo riquadro, quello verso cui portano tutte le strade. */
+    destination: { place: "CIS · Colico", note: "La tua meta" },
+    /* Il nome del mezzo si legge accanto all'icona; se c'è, al suo posto va la strada. */
+    modes: { car: "Auto", train: "Treno", ferry: "Aliscafo" },
     routes: [
-      { town: "Lecco", ways: [{ mode: "In auto · SS36", minutes: 35 }, { mode: "In treno", minutes: 42 }] },
-      { town: "Menaggio", ways: [{ mode: "In auto", minutes: 40 }, { mode: "In aliscafo", minutes: 30 }] },
-      { town: "Chiavenna", ways: [{ mode: "In auto · SS36", minutes: 30 }, { mode: "In treno", minutes: 30 }] },
-      { town: "Sondrio", ways: [{ mode: "In auto · SS38", minutes: 40 }, { mode: "In treno", minutes: 40 }] },
-    ],
+      { town: "Lecco", ways: [{ by: "car", road: "SS36", minutes: 35 }, { by: "train", road: "", minutes: 42 }] },
+      { town: "Menaggio", ways: [{ by: "car", road: "", minutes: 40 }, { by: "ferry", road: "", minutes: 30 }] },
+      { town: "Chiavenna", ways: [{ by: "car", road: "SS36", minutes: 30 }, { by: "train", road: "", minutes: 30 }] },
+      { town: "Sondrio", ways: [{ by: "car", road: "SS38", minutes: 40 }, { by: "train", road: "", minutes: 40 }] },
+    ] as { town: string; ways: { by: "car" | "train" | "ferry"; road: string; minutes: number }[] }[],
     note: "Tempi indicativi in condizioni di traffico regolare (la SS36 può rallentare nelle ore di punta) e secondo gli orari Trenord; il battello per Menaggio ha orari stagionali. Verifica sempre gli orari aggiornati prima di viaggiare.",
   },
   campus: {
@@ -140,42 +144,37 @@ export const it = {
   philosophy: {
     eyebrow: "Filosofia della scuola",
     title: "Alcune scelte non sono negoziabili",
+    controls: { region: "Filosofia della scuola: scorri con le frecce", prev: "Scheda precedente", next: "Scheda successiva", goTo: "Vai alla scheda {n}" },
     cards: [
       {
         tag: "Lettura",
         title: "Una pausa dedicata a leggere",
         body: "Una delle tre pause giornaliere è riservata alla lettura individuale e silenziosa, nella lingua che il bambino sceglie, anche la sua lingua madre. Poi in classe quei libri si raccontano, si riassumono e se ne discute con i compagni. Così leggere diventa un'abitudine, e spesso un piacere, già dai primi anni.",
-        highlight: true,
       },
       {
         tag: "Comunicazione",
         title: "Saper parlare e saper ascoltare",
         body: "Per noi comunicare con sicurezza conta quanto una materia. Dai primi anni i bambini imparano a spiegare un'idea con chiarezza, a parlare davanti agli altri e ad ascoltare davvero chi la pensa diversamente prima di rispondere. Al CIS si allena ogni giorno, in classe.",
-        highlight: true,
       },
       {
         tag: "Compiti",
         title: "Niente compiti fino a 10 anni",
         body: "Il lavoro si finisce in classe, durante l'orario normale, senza contare sui servizi facoltativi del pomeriggio. Pomeriggi e sere restano alla famiglia.",
-        highlight: true,
       },
       {
         tag: "Zero schermi",
         title: "Un uso consapevole degli schermi",
         body: "A scuola i dispositivi si usano solo quando servono alla lezione, per esempio per esercizi differenziati di matematica o per imparare a usare il digitale con metodo. Alle famiglie proponiamo poche regole di buon senso anche a casa, soprattutto per tenere i più piccoli lontani dai social.",
-        highlight: false,
       },
       {
         tag: "Uniforme",
         title: "Tutti uguali, almeno nei vestiti",
         body: "Ci si sente parte della stessa scuola e la mattina si fa prima.",
-        highlight: false,
       },
       {
         tag: "Calendario",
         title: "~185 giorni, pause regolari",
         body: "Da settembre a giugno, con una pausa ogni due mesi circa per non arrivare stremati.",
-        highlight: false,
       },
     ],
   },
@@ -275,9 +274,9 @@ export const it = {
   },
   interest: {
     eyebrow: "Pre-registrazione",
-    title: "Vuoi saperlo per primo?",
+    title: "Assicurati un posto tra le prime famiglie",
     lead: "Le pre-iscrizioni aprono in autunno 2026. Compila il modulo: ti scriviamo prima degli altri e hai la precedenza in lista.",
-    cta: "Vai al modulo di registrazione",
+    cta: "Compila la pre-iscrizione",
     note: "Bastano pochi minuti e non ti impegna a nulla. Non è un'iscrizione.",
   },
   footer: {
@@ -289,7 +288,6 @@ export const it = {
       { href: "#percorso", label: "Percorso verso l'apertura" },
     ],
     curriculum: "Il curricolo nel dettaglio",
-    motto: "Ex altis lux",
   },
   consent: {
     label: "Consenso ai cookie",

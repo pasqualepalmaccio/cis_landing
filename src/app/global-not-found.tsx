@@ -10,7 +10,7 @@ export default function GlobalNotFound() {
           <p className="font-display text-7xl text-gold-300">404</p>
           <p className="mt-4 text-mist">Pagina non trovata · Page not found</p>
           <Link href="/it" className="mt-8 inline-flex rounded-full bg-cta px-6 py-3 font-bold text-navy-900">
-            Colico International School →
+            CIS Colico International School →
           </Link>
         </div>
       </body>

@@ -6,13 +6,14 @@ import { CookieTable } from "@/components/legal/cookie-table";
 import { LegalSections } from "@/components/legal/legal-sections";
 import { isLang } from "@/content";
 import { getLegal } from "@/content/legal";
+import { pageMetadata } from "@/lib/metadata";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/cookie">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLang(lang)) return {};
   const t = getLegal(lang).cookie.meta;
-  return { title: t.title, description: t.description, alternates: { languages: { it: "/it/cookie", en: "/en/cookie" } } };
+  return pageMetadata(lang, "/cookie", t);
 }
 
 export default async function CookiePage({ params }: PageProps<"/[lang]/cookie">) {

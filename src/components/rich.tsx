@@ -6,7 +6,7 @@ export function Rich({ text }: { text: string }) {
   return (
     <>
       {parts.map((part, i) => {
-        if (part.startsWith("**")) return <strong key={i} className="font-semibold text-cream">{part.slice(2, -2)}</strong>;
+        if (part.startsWith("**")) return <strong key={i} className="font-semibold text-heading">{part.slice(2, -2)}</strong>;
         if (part.startsWith("*")) return <em key={i} className="italic">{part.slice(1, -1)}</em>;
         return <Fragment key={i}>{part}</Fragment>;
       })}

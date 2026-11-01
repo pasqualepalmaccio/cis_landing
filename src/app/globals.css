@@ -24,6 +24,26 @@
   /* Azioni principali: bianche, l'Avorio al passaggio del puntatore. */
   --color-cta: #ffffff;
   --color-cta-hover: var(--color-cream);
+  /* Landing V2: l'azione principale è Cremisi pieno, più scuro al passaggio. */
+  --color-action: var(--color-bordeaux);
+  --color-action-hover: #7e1a2b;
+  /* Neutri delle sezioni chiare: testo, testo secondario, filetti, sabbia. */
+  --color-white: #ffffff;
+  --color-ink-soft: #3b4b63;
+  --color-ink-faint: #6b7a91;
+  --color-sand: #ece6d8;
+  --color-sand-strong: #d8ceb3;
+
+  --shadow-card: 0 2px 8px rgb(18 27 43 / 0.08);
+  --shadow-lift: 0 8px 24px rgb(18 27 43 / 0.12);
+  --shadow-float: 0 20px 48px rgb(18 27 43 / 0.18);
+
+  /* Anello che si allarga e svanisce attorno a un segno: la meta, le tappe. */
+  --animate-ping-slow: ring 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  @keyframes ring {
+    0% { transform: scale(1); opacity: 0.7; }
+    80%, 100% { transform: scale(1.6); opacity: 0; }
+  }
 
   /* Cormorant: titoli e citazioni. Cinzel: titoli brevi ed etichette in
      maiuscolo. Source Sans 3: testo corrente, didascalie, moduli. */
@@ -32,6 +52,47 @@
   --font-sans: var(--font-source-sans), ui-sans-serif, system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Toni delle sezioni. Ogni componente scrive text-fg, text-heading,
+   text-accent, border-rule: il colore lo decide il tono della superficie che
+   lo contiene. Il tono predefinito è quello scuro delle pagine interne, così
+   chi non dichiara un tono resta com'era. «inline» perché le classi leggano
+   la variabile nel punto in cui sono usate, non sulla radice. */
+@theme inline {
+  --color-fg: var(--tone-fg);
+  --color-fg-muted: var(--tone-muted);
+  --color-heading: var(--tone-heading);
+  --color-accent: var(--tone-accent);
+  --color-rule: var(--tone-rule);
+}
+
+:root {
+  --tone-fg: var(--color-cream);
+  --tone-muted: var(--color-mist);
+  --tone-heading: var(--color-cream);
+  --tone-accent: var(--color-gold-300);
+  --tone-rule: var(--color-line);
+}
+
+/* Bianco e Avorio: testo Inchiostro, titoli Blu Lario, occhielli Cremisi. */
+@utility tone-light {
+  --tone-fg: var(--color-navy-950);
+  --tone-muted: var(--color-ink-soft);
+  --tone-heading: var(--color-navy-900);
+  --tone-accent: var(--color-bordeaux);
+  --tone-rule: var(--color-sand);
+  color: var(--tone-fg);
+}
+
+/* Blu Lario: testo bianco, occhielli Oro chiaro. */
+@utility tone-navy {
+  --tone-fg: var(--color-white);
+  --tone-muted: rgb(255 255 255 / 0.8);
+  --tone-heading: var(--color-white);
+  --tone-accent: var(--color-gold-300);
+  --tone-rule: rgb(255 255 255 / 0.16);
+  color: var(--tone-fg);
 }
 
 @layer base {

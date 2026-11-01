@@ -14,7 +14,7 @@ export function CrestReveal() {
   const view = { once: true, margin: "-15% 0px" } as const;
 
   return (
-    <div className="relative mb-12 flex justify-center sm:mb-16">
+    <div className="relative mb-8 flex justify-center">
       {!reduce &&
         [0, 0.35].map((delay) => (
           <motion.span
@@ -33,7 +33,7 @@ export function CrestReveal() {
         viewport={view}
         transition={{ duration: 1.4, ease }}
       >
-        <Mark variant="crest" alt="Colico International School" className="h-auto w-28 sm:w-36" />
+        <Mark variant="crest" alt="CIS Colico International School" className="h-auto w-20 sm:w-24" />
       </motion.div>
     </div>
   );

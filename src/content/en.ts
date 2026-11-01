@@ -6,7 +6,7 @@ export const en: Dict = {
   meta: {
     title: "CIS · Colico International School",
     description:
-      "A new international school on Lake Como, in Colico. Opening September 2027. Register your interest and we'll let you know when pre-enrolment opens.",
+      "CIS · Colico International School is the new international school in Colico, on Lake Como: children aged 3 to 14, English and Italian as the main languages, opening September 2027.",
   },
   nav: {
     links: [
@@ -17,18 +17,18 @@ export const en: Dict = {
       { href: "#sicurezza", label: "Safety" },
       { href: "#percorso", label: "Timeline" },
     ],
-    cta: "I'm interested",
+    cta: "Pre-register now",
     back: "Back to site",
     menu: "Menu",
     close: "Close",
     language: "Language",
   },
   hero: {
-    eyebrow: "The new international school on the north shore · Opening September 2027",
+    eyebrow: "International school · Opening September 2027",
     titleLines: ["The world as a classroom.", "The lake as home."],
     sub: "An international school for children aged 3 to 14.",
-    cta: "Discover the project",
-    secondary: "Get early updates",
+    explore: "Discover the project",
+    cta: "Secure a spot among the first",
     scroll: "Scroll",
     facts: [
       { value: "3–14", label: "years old" },
@@ -97,11 +97,13 @@ export const en: Dict = {
     eyebrow: "Why Colico",
     title: "Easy to reach, at the heart of the upper lake",
     lead: "Colico is the hub of the upper lake: the SS36 expressway from Lecco, the railway and the lake's boat lines all arrive here. Here is how long it takes from the nearby towns.",
+    destination: { place: "CIS · Colico", note: "Your destination" },
+    modes: { car: "Car", train: "Train", ferry: "Hydrofoil" },
     routes: [
-      { town: "Lecco", ways: [{ mode: "By car · SS36", minutes: 35 }, { mode: "By train", minutes: 42 }] },
-      { town: "Menaggio", ways: [{ mode: "By car", minutes: 40 }, { mode: "By hydrofoil", minutes: 30 }] },
-      { town: "Chiavenna", ways: [{ mode: "By car · SS36", minutes: 30 }, { mode: "By train", minutes: 30 }] },
-      { town: "Sondrio", ways: [{ mode: "By car · SS38", minutes: 40 }, { mode: "By train", minutes: 40 }] },
+      { town: "Lecco", ways: [{ by: "car", road: "SS36", minutes: 35 }, { by: "train", road: "", minutes: 42 }] },
+      { town: "Menaggio", ways: [{ by: "car", road: "", minutes: 40 }, { by: "ferry", road: "", minutes: 30 }] },
+      { town: "Chiavenna", ways: [{ by: "car", road: "SS36", minutes: 30 }, { by: "train", road: "", minutes: 30 }] },
+      { town: "Sondrio", ways: [{ by: "car", road: "SS38", minutes: 40 }, { by: "train", road: "", minutes: 40 }] },
     ],
     note: "Approximate times in regular traffic (the SS36 can slow down at peak hours) and based on Trenord timetables; the boat to Menaggio runs on seasonal timetables. Always check the latest times before travelling.",
   },
@@ -120,42 +122,37 @@ export const en: Dict = {
   philosophy: {
     eyebrow: "School philosophy",
     title: "Some choices are not negotiable",
+    controls: { region: "School philosophy: scroll with the arrows", prev: "Previous card", next: "Next card", goTo: "Go to card {n}" },
     cards: [
       {
         tag: "Reading",
         title: "A break dedicated to reading",
         body: "One of the three daily breaks is set aside for silent, individual reading, in whatever language the child picks, mother tongue included. Back in class, children retell those books, summarise them and talk them over with classmates. Reading becomes a habit, and often a pleasure, from the very first years.",
-        highlight: true,
       },
       {
         tag: "Communication",
         title: "Communication as a core competency",
         body: "To us, speaking with confidence matters as much as any subject. From the first years, children learn to explain an idea clearly, to speak in front of others and to really listen to people who disagree before answering. At CIS they practise it every day in class.",
-        highlight: true,
       },
       {
         tag: "Homework",
         title: "No homework until age 10",
         body: "Lessons are structured so that work is completed in class, within the normal school day, without relying on optional afternoon services. Afternoons and evenings belong to the family.",
-        highlight: true,
       },
       {
         tag: "Zero screens",
         title: "A mindful approach to screens",
         body: "At school, devices come out only when a lesson needs them, for example differentiated maths exercises or learning to use digital tools properly. We suggest a few common-sense rules for home as well, mostly to keep younger children away from social media.",
-        highlight: false,
       },
       {
         tag: "Uniform",
         title: "Removes visible differences",
         body: "Builds identity and belonging, simplifies mornings, puts everyone on equal footing.",
-        highlight: false,
       },
       {
         tag: "Calendar",
         title: "~185 days, regular breaks",
         body: "September to June, with a break roughly every two months so nobody runs out of steam.",
-        highlight: false,
       },
     ],
   },
@@ -255,9 +252,9 @@ export const en: Dict = {
   },
   interest: {
     eyebrow: "Pre-registration",
-    title: "Want to hear first?",
+    title: "Secure a spot among the first families",
     lead: "Pre-enrolment opens in autumn 2026. Fill in the form and we'll write to you before anyone else, with priority on the list.",
-    cta: "Go to the registration form",
+    cta: "Complete your pre-registration",
     note: "It takes a few minutes and commits you to nothing. It isn't an enrolment.",
   },
   footer: {
@@ -269,7 +266,6 @@ export const en: Dict = {
       { href: "#percorso", label: "Path to opening" },
     ],
     curriculum: "The curriculum in detail",
-    motto: "Ex altis lux",
   },
   consent: {
     label: "Cookie consent",

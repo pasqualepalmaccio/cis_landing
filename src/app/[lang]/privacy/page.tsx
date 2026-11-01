@@ -6,13 +6,14 @@ import { PageHead } from "@/components/layout/page-head";
 import { LegalSections } from "@/components/legal/legal-sections";
 import { isLang } from "@/content";
 import { getLegal } from "@/content/legal";
+import { pageMetadata } from "@/lib/metadata";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/privacy">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLang(lang)) return {};
   const t = getLegal(lang).privacy.meta;
-  return { title: t.title, description: t.description, alternates: { languages: { it: "/it/privacy", en: "/en/privacy" } } };
+  return pageMetadata(lang, "/privacy", t);
 }
 
 export default async function PrivacyPage({ params }: PageProps<"/[lang]/privacy">) {

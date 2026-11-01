@@ -10,7 +10,7 @@ export function LangSwitch({ lang, label }: { lang: Lang; label: string }) {
   const pathname = usePathname();
   const rest = pathname.replace(/^\/(it|en)(?=\/|$)/, "");
   return (
-    <nav aria-label={label} className="flex items-center rounded-full border border-line p-0.5 text-xs font-semibold">
+    <nav aria-label={label} className="flex items-center rounded-full border border-rule p-0.5 text-[11px] font-bold">
       {LANGS.map((l) => (
         <Link
           key={l}
@@ -18,7 +18,7 @@ export function LangSwitch({ lang, label }: { lang: Lang; label: string }) {
           hrefLang={l}
           aria-current={l === lang ? "true" : undefined}
           className={`rounded-full px-2.5 py-1.5 uppercase tracking-wider transition-colors ${
-            l === lang ? "bg-cta text-navy-900" : "text-cream/80 hover:text-cta"
+            l === lang ? "bg-gold-500 text-navy-950" : "text-fg/80 hover:text-fg"
           }`}
         >
           {l}

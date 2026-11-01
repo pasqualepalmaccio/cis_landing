@@ -9,12 +9,13 @@ import { Rich } from "@/components/rich";
 import { CardList } from "@/components/sections/card-list";
 import { Eyebrow } from "@/components/section-head";
 import { getDict, isLang } from "@/content";
+import { pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/curricolo">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLang(lang)) return {};
   const t = getDict(lang).curriculumPage.meta;
-  return { title: t.title, description: t.description, alternates: { languages: { it: "/it/curricolo", en: "/en/curricolo" } } };
+  return pageMetadata(lang, "/curricolo", t);
 }
 
 function Block({ kicker, title, lead, children }: { kicker: string; title: string; lead?: string; children: React.ReactNode }) {

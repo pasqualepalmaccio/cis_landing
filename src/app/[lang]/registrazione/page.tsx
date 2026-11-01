@@ -7,12 +7,13 @@ import { PageHead } from "@/components/layout/page-head";
 import { Reveal } from "@/components/motion/reveal";
 import { isLang } from "@/content";
 import { registrationCopy } from "@/content/registration";
+import { pageMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({ params }: PageProps<"/[lang]/registrazione">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLang(lang)) return {};
   const t = registrationCopy[lang].meta;
-  return { title: t.title, description: t.description, alternates: { languages: { it: "/it/registrazione", en: "/en/registrazione" } } };
+  return pageMetadata(lang, "/registrazione", t);
 }
 
 export default async function RegistrationPage({ params }: PageProps<"/[lang]/registrazione">) {
