@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useSyncExternalStore, type FormEvent } from "react";
 
 import type { Lang } from "@/content";
-import { BIRTH_YEARS, fill, HOW_HEARD, INTAKE_YEARS, MAX_ADULTS, MAX_CHILDREN, OPEN_DAY_ENABLED, SCHOOL_LEVELS, type OpenDayCopy } from "@/content/open-day";
+import { BIRTH_YEARS, fill, HOW_HEARD, INTAKE_YEARS, MAX_ADULTS, MAX_CHILDREN, SCHOOL_LEVELS, type OpenDayCopy } from "@/content/open-day";
 import type { PublicSession } from "@/lib/open-day/event";
 
 import { SessionTicket } from "@/components/open-day/session-ticket";
@@ -117,7 +117,7 @@ export function OpenDayForm({ lang, t, sessions, place }: { lang: Lang; t: OpenD
         <OpenDayResult state={state} t={t} assigned={assigned ? when(lang, assigned) : null} />
         <button
           type="submit"
-          disabled={!OPEN_DAY_ENABLED || !ready || state === "sending" || done}
+          disabled={!ready || state === "sending" || done}
           className="w-full rounded-full bg-cta px-8 py-4 text-lg font-bold text-navy-900 transition-colors hover:bg-cta-hover disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto"
         >
           {state === "sending" ? t.result.sending : t.submit}

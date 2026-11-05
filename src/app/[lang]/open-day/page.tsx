@@ -10,7 +10,7 @@ import { OpenDayHero } from "@/components/open-day/open-day-hero";
 import { Pillars } from "@/components/open-day/pillars";
 import { JsonLd } from "@/components/seo/json-ld";
 import { isLang, type Lang } from "@/content";
-import { fill, OPEN_DAY_ENABLED, openDayCopy, type OpenDayCopy } from "@/content/open-day";
+import { fill, openDayCopy, type OpenDayCopy } from "@/content/open-day";
 import { pageMetadata } from "@/lib/metadata";
 import { loadEvent } from "@/lib/open-day/event";
 import { openDayJsonLd } from "@/lib/structured-data";
@@ -76,15 +76,6 @@ function EventBlock({ lang, t, state }: { lang: Lang; t: OpenDayCopy; state: Awa
         <p className="mt-2 text-lg text-mist">{event.place}</p>
         <p className="mt-2 text-xs text-mist">{fill(t.sessions.updated, { time: updated })}</p>
       </div>
-      {OPEN_DAY_ENABLED ? null : (
-        <div role="status" className="mt-6 rounded-2xl border border-gold-500 bg-gold-500/10 p-5 text-sm">
-          <p className="font-semibold text-gold-300">{t.states.disabled.title}</p>
-          <p className="mt-1 text-cream/90">
-            {t.states.disabled.body}{" "}
-            <a href="mailto:info@cis-colico.com" className="font-semibold text-gold-300 underline underline-offset-4">info@cis-colico.com</a>.
-          </p>
-        </div>
-      )}
       <OpenDayForm lang={lang} t={t} sessions={event.sessions} place={event.place} />
     </>
   );

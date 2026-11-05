@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { AGE_BANDS, MAX_ADULTS, MAX_CHILDREN, OPEN_DAY_ENABLED, OPEN_DAY_NOTICE_VERSION, SCHOOL_LEVELS, UPDATES_TEXT_VERSION } from "@/content/open-day";
+import { AGE_BANDS, MAX_ADULTS, MAX_CHILDREN, OPEN_DAY_NOTICE_VERSION, SCHOOL_LEVELS, UPDATES_TEXT_VERSION } from "@/content/open-day";
 import { db, recheckSchema } from "@/lib/db";
 import { ipHash } from "@/lib/ip";
 import { OPEN_DAY_SLUG } from "@/lib/open-day/event";
@@ -70,8 +70,6 @@ function attribution(raw: Record<string, string> | undefined): Partial<Record<(t
 }
 
 export async function POST(request: Request) {
-  if (!OPEN_DAY_ENABLED) return Response.json({ result: "disabled" }, { status: 403 });
-
   const raw = await request.text();
   if (raw.length > 10_000) return Response.json({ result: "invalid" }, { status: 413 });
   let parsed;

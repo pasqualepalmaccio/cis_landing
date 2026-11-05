@@ -5,10 +5,8 @@ import type { Lang } from "./index";
    che la scuola non ha ancora ottenuto. Data, ore, luogo e posti NON stanno
    qui: arrivano dal CRM, dove la segreteria li gestisce.
 
-   L'invio resta spento finché non ci sono i presupposti scritti in
-   docs/decisioni/2026-10-27-open-day.md (informativa, base giuridica,
-   email in uscita, chi riceve gli allarmi). */
-export const OPEN_DAY_ENABLED = false;
+   Iscrizioni aperte o chiuse le decide lo stato dell'evento nel CRM
+   (Apri/Chiudi iscrizioni): nessun interruttore nel codice. */
 
 /** Versione dell'informativa mostrata nel modulo: va nel CRM con ogni iscrizione. */
 export const OPEN_DAY_NOTICE_VERSION = "2026-11-05";
@@ -118,7 +116,6 @@ const it = {
     unpublished: { title: "Le date del Meet & Discover CIS arrivano presto.", body: "Nel frattempo puoi lasciarci i tuoi dati con la pre-registrazione: ti avviseremo." },
     unavailable: { title: "Le iscrizioni non sono disponibili in questo momento.", body: "Riprova fra qualche minuto, oppure scrivici." },
     closed: { title: "Le iscrizioni al Meet & Discover CIS sono chiuse.", body: "Se vuoi conoscerci, scrivici: troviamo un altro momento." },
-    disabled: { title: "Le iscrizioni apriranno a breve.", body: "Stiamo completando gli ultimi passaggi. Per informazioni scrivici a" },
   },
   result: {
     sending: "Invio in corso…",
@@ -213,7 +210,6 @@ const en: OpenDayCopy = {
     unpublished: { title: "Meet & Discover CIS dates are coming soon.", body: "Meanwhile you can leave your details with the pre-registration: we'll let you know." },
     unavailable: { title: "Registration isn't available right now.", body: "Please try again in a few minutes, or write to us." },
     closed: { title: "Meet & Discover CIS registration is closed.", body: "If you'd like to meet us, write to us and we'll find another time." },
-    disabled: { title: "Registration opens soon.", body: "We're completing the last steps. For information write to" },
   },
   result: {
     sending: "Sending…",
