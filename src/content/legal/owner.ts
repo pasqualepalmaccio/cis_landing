@@ -15,4 +15,4 @@ export const OWNER = {
 export const OWNER_READY = Boolean(OWNER.name && OWNER.address && OWNER.vatNumber && OWNER.privacyEmail);
 
 /** Data dell'ultima revisione dei testi delle policy. */
-export const POLICY_UPDATED = "2026-10-17";
+export const POLICY_UPDATED = "2026-11-05";

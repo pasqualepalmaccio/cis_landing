@@ -5,7 +5,7 @@ import { OWNER_READY } from "@/content/legal/owner";
 
 /** Da cambiare a ogni modifica di finalità, fornitori o testi delle policy:
  *  il banner viene riproposto a tutti e il registro distingue le versioni. */
-export const CONSENT_VERSION = "2026-10-17";
+export const CONSENT_VERSION = "2026-11-05";
 
 export const CONSENT_COOKIE = "cis_consent";
 
@@ -30,4 +30,4 @@ export const VENDORS = {
 export const TRACKING_ENABLED = OWNER_READY && Object.values(VENDORS).some(Boolean);
 
 /** Pagine dove il Pixel non manda eventi: raccolgono dati sui figli. */
-export const NO_PIXEL_PATHS = ["/registrazione"];
+export const NO_PIXEL_PATHS = ["/registrazione", "/open-day"];

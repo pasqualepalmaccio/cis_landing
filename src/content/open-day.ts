@@ -11,7 +11,7 @@ import type { Lang } from "./index";
 export const OPEN_DAY_ENABLED = false;
 
 /** Versione dell'informativa mostrata nel modulo: va nel CRM con ogni iscrizione. */
-export const OPEN_DAY_NOTICE_VERSION = "2026-10-27";
+export const OPEN_DAY_NOTICE_VERSION = "2026-11-05";
 /** Versione del testo del consenso agli aggiornamenti (stesso testo della pre-registrazione). */
 export { UPDATES_TEXT_VERSION } from "./registration";
 

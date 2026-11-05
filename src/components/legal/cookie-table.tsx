@@ -3,6 +3,7 @@ import type { LegalDict } from "@/content/legal/it";
 
 /* Inventario dei cookie realmente usati: le righe dipendono dai fornitori configurati. */
 export function CookieTable({ t }: { t: LegalDict["cookie"]["table"] }) {
+  if (COOKIES.length === 0) return null;
   return (
     <section className="max-w-3xl pb-12">
       <h2 className="font-display text-2xl text-gold-300 sm:text-3xl">{t.title}</h2>

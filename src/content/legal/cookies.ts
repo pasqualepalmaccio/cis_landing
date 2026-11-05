@@ -1,4 +1,4 @@
-import { CONSENT_COOKIE, CONSENT_MAX_AGE_DAYS, VENDORS, type Purpose } from "@/lib/consent/config";
+import { CONSENT_COOKIE, CONSENT_MAX_AGE_DAYS, TRACKING_ENABLED, VENDORS, type Purpose } from "@/lib/consent/config";
 
 /* Inventario dei cookie: alimenta la tabella della cookie policy. Una riga per
    cookie, e compare solo se il fornitore è configurato. Va aggiornato insieme
@@ -14,7 +14,8 @@ export type CookieRow = {
   firstParty: boolean;
 };
 
-export const COOKIES: CookieRow[] = [
+// Senza tag il banner non c'è, e nemmeno il cookie che ricorda la scelta.
+export const COOKIES: CookieRow[] = !TRACKING_ENABLED ? [] : [
   { name: CONSENT_COOKIE, provider: "CIS", purpose: "necessary", days: CONSENT_MAX_AGE_DAYS, firstParty: true },
   ...(VENDORS.ga4
     ? [
