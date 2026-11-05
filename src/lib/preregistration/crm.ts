@@ -5,7 +5,7 @@ export type AttemptKind = "preregistration" | "open-day";
 
 export type CrmOutcome =
   /** `result`: esito dichiarato dal CRM (per l'Open Day: confirmed | waitlist). */
-  | { status: "delivered"; contactId: string; recordId: string; result?: string }
+  | { status: "delivered"; contactId: string; recordId: string; result?: string; session?: { startsAt: string; endsAt: string } }
   /** Il CRM ha esaminato i dati e li rifiuta: ritentare non serve, serve una
    *  persona. `code` distingue i casi (event_closed, session_started…). */
   | { status: "rejected"; error: string; code?: string }
@@ -71,7 +71,10 @@ export async function sendOpenDayRegistration(slug: string, body: unknown): Prom
     const contact = j?.contact as Json;
     const result = j?.status;
     if (status === 201 && !j?.dryRun && typeof j?.registrationId === "string" && typeof contact?.id === "string" && (result === "confirmed" || result === "waitlist")) {
-      return { status: "delivered", contactId: contact.id, recordId: j.registrationId, result };
+      // Il turno arriva dal CRM; le risposte salvate prima del 05/11/2026 non lo hanno.
+      const s = j.session as Json | undefined;
+      const session = typeof s?.startsAt === "string" && typeof s?.endsAt === "string" ? { startsAt: s.startsAt, endsAt: s.endsAt } : undefined;
+      return { status: "delivered", contactId: contact.id, recordId: j.registrationId, result, ...(session ? { session } : {}) };
     }
     const code = String(((j?.error as Json)?.code as string | undefined) ?? "");
     if (status === 400 || status === 409 || status === 422) return { status: "rejected", error: `${status} ${errorCode(json)}`, code };

@@ -24,6 +24,7 @@ const when = (lang: Lang, s: PublicSession) => {
    CRM, mai dai posti indicativi della pagina. */
 export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy; sessions: PublicSession[] }) {
   const [state, setState] = useState<State>("idle");
+  const [assigned, setAssigned] = useState<PublicSession | null>(null);
   const [children, setChildren] = useState(1);
   const ready = useSyncExternalStore(noop, () => true, () => false);
   const done = state === "confirmed" || state === "waitlist" || state === "queued" || state === "closed";
@@ -34,7 +35,6 @@ export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy;
     const fd = new FormData(e.currentTarget);
     const s = (k: string) => String(fd.get(k) ?? "").trim();
     const payload = {
-      sessionId: s("session"),
       parent: { firstName: s("first_name"), lastName: s("last_name"), email: s("email"), phone: s("phone") },
       lang,
       adults: Number(s("adults") || "1"),
@@ -54,8 +54,12 @@ export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy;
     setState("sending");
     try {
       const res = await fetch("/api/open-day", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload) });
-      const json = (await res.json().catch(() => ({}))) as { result?: string };
-      if (res.status === 201 && (json.result === "confirmed" || json.result === "waitlist")) setState(json.result);
+      const json = (await res.json().catch(() => ({}))) as { result?: string; session?: { startsAt: string; endsAt: string } };
+      if (res.status === 201 && (json.result === "confirmed" || json.result === "waitlist")) {
+        // L'orario si mostra solo se lo dice il CRM: altrimenti arriva con l'email.
+        if (json.result === "confirmed" && json.session) setAssigned({ id: "", capacity: 0, free: 0, waitlist: 0, started: false, ...json.session });
+        setState(json.result);
+      }
       else if (res.status === 202) setState("queued");
       else if (res.status === 409) setState("closed");
       else if (res.status === 422 || res.status === 400) setState("invalid");
@@ -73,19 +77,16 @@ export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy;
       </div>
 
       <FormSection title={t.sessions.title} sub={t.sessions.sub}>
-        <div role="radiogroup" aria-label={t.form.session} className="grid gap-3 sm:grid-cols-2">
-          {sessions.map((s, i) => (
-            <label key={s.id} className={`cursor-pointer ${s.started ? "pointer-events-none opacity-40" : ""}`}>
-              <input type="radio" name="session" value={s.id} required={i === 0} disabled={s.started} className="peer sr-only" />
-              <span className="block rounded-2xl border border-line p-5 transition-colors peer-checked:border-gold-500 peer-checked:bg-gold-500/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-gold-300">
-                <span className="block font-display text-xl text-cream first-letter:uppercase">{when(lang, s)}</span>
-                <span className={`mt-1 block text-sm ${s.free > 0 ? "text-gold-300" : "text-mist"}`}>
-                  {s.started ? t.sessions.started : s.free > 0 ? (s.free === 1 ? t.sessions.freeOne : fill(t.sessions.freeMany, { n: s.free })) : t.sessions.full}
-                </span>
+        <ul aria-label={t.form.session} className="grid gap-3 sm:grid-cols-2">
+          {sessions.map((s) => (
+            <li key={s.id} className={`rounded-2xl border border-line p-5 ${s.started ? "opacity-40" : ""}`}>
+              <span className="block font-display text-xl text-cream first-letter:uppercase">{when(lang, s)}</span>
+              <span className={`mt-1 block text-sm ${s.free > 0 ? "text-gold-300" : "text-mist"}`}>
+                {s.started ? t.sessions.started : s.free > 0 ? (s.free === 1 ? t.sessions.freeOne : fill(t.sessions.freeMany, { n: s.free })) : t.sessions.full}
               </span>
-            </label>
+            </li>
           ))}
-        </div>
+        </ul>
       </FormSection>
 
       <FormSection title={t.form.title} sub={t.form.sub}>
@@ -117,7 +118,7 @@ export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy;
         <p className="text-sm leading-relaxed text-mist">{t.notice}</p>
         <PrivacyAck lang={lang} t={t} />
         <p className="text-xs text-mist">{t.required}</p>
-        <OpenDayResult state={state} t={t} />
+        <OpenDayResult state={state} t={t} assigned={assigned ? when(lang, assigned) : null} />
         <button
           type="submit"
           disabled={!OPEN_DAY_ENABLED || !ready || state === "sending" || done}
@@ -181,7 +182,7 @@ function utmFromUrl(): Record<string, string> | undefined {
   return Object.keys(out).length ? out : undefined;
 }
 
-function OpenDayResult({ state, t }: { state: State; t: OpenDayCopy }) {
+function OpenDayResult({ state, t, assigned }: { state: State; t: OpenDayCopy; assigned: string | null }) {
   if (state === "idle" || state === "sending") return null;
   const r = t.result;
   const [title, body] = {
@@ -196,6 +197,7 @@ function OpenDayResult({ state, t }: { state: State; t: OpenDayCopy }) {
   return (
     <div role={good ? "status" : "alert"} className={`rounded-2xl border p-5 text-sm ${good ? "border-gold-500 bg-gold-500/10" : "border-bordeaux bg-bordeaux/25"}`}>
       <p className="font-semibold text-gold-300">{title}</p>
+      {state === "confirmed" && assigned ? <p className="mt-1 font-semibold text-cream first-letter:uppercase">{fill(r.assigned, { when: assigned })}</p> : null}
       <p className="mt-1 text-cream/90">
         {body} {r.contact}{" "}
         <a href="mailto:info@cis-colico.com" className="font-semibold text-gold-300 underline underline-offset-4">info@cis-colico.com</a>.

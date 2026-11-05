@@ -14,7 +14,8 @@ import { sendOpenDayRegistration } from "@/lib/preregistration/crm";
    3. al visitatore si dice solo ciò che è vero: confermato o in lista d'attesa
       (201 verificato dal CRM), iscrizioni chiuse (rifiuto del CRM), ricevuto
       e in registrazione (tentativo salvato), oppure errore.
-   I posti li decide il CRM: la landing non scarta mai per «sessione piena». */
+   I posti e il turno li decide il CRM: la landing non scarta mai per
+   «sessione piena» e non sceglie il turno (decisione del 02/11/2026). */
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +23,9 @@ const RATE_WINDOW_MIN = 10;
 const RATE_MAX = 5;
 
 const formPayload = z.strictObject({
-  sessionId: z.uuid(),
+  /** Moduli aperti prima dell'aggiornamento mandano ancora il turno scelto:
+   *  si accetta e NON si inoltra (potrebbe essere un turno tolto). */
+  sessionId: z.string().max(60).optional(),
   parent: z.strictObject({
     firstName: z.string().trim().min(1).max(100),
     lastName: z.string().trim().min(1).max(100),
@@ -90,7 +93,6 @@ export async function POST(request: Request) {
 
   const body = {
     idempotencyKey: id,
-    sessionId: form.sessionId,
     parent: form.parent,
     lang: form.lang,
     adults: form.adults,
@@ -149,7 +151,7 @@ export async function POST(request: Request) {
   }
 
   // 3 · Risposta vera.
-  if (outcome.status === "delivered") return Response.json({ result: outcome.result }, { status: 201 });
+  if (outcome.status === "delivered") return Response.json({ result: outcome.result, ...(outcome.session ? { session: outcome.session } : {}) }, { status: 201 });
   if (outcome.status === "rejected" && (outcome.code === "event_closed" || outcome.code === "session_started")) {
     if (stored) {
       try {
