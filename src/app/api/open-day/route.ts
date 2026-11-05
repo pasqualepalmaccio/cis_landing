@@ -55,6 +55,7 @@ const formPayload = z.strictObject({
   /** Parametri utm dell'indirizzo: in più o troppo lunghi si tagliano, non respingono. */
   attribution: z.record(z.string(), z.string()).optional(),
   wantsUpdates: z.boolean(),
+  phoneContactOk: z.boolean().default(false),
   /** Campo esca: marca, non scarta. */
   website: z.string().max(200).optional(),
 });
@@ -99,6 +100,7 @@ export async function POST(request: Request) {
     childrenInfo: form.childrenInfo,
     ...(form.howHeard ? { howHeard: form.howHeard } : {}),
     privacyAck: true,
+    phoneContactOk: form.phoneContactOk,
     ...(attribution(form.attribution) ? { attribution: attribution(form.attribution) } : {}),
     noticeVersion: OPEN_DAY_NOTICE_VERSION,
     suspicious: false,

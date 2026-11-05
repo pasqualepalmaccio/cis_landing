@@ -51,6 +51,7 @@ export function OpenDayForm({ lang, t, sessions, place }: { lang: Lang; t: OpenD
       privacyAck: fd.get("privacy_ack") === "on",
       attribution: utmFromUrl(),
       wantsUpdates: fd.get("updates_consent") === "on",
+      phoneContactOk: fd.get("phone_contact") === "on",
       ...(s("website") ? { website: s("website") } : {}),
     };
     setState("sending");
@@ -98,6 +99,11 @@ export function OpenDayForm({ lang, t, sessions, place }: { lang: Lang; t: OpenD
             <Select id="od_children" name="children" value={String(children)} onChange={(v) => setChildren(Number(v))} options={Array.from({ length: MAX_CHILDREN }, (_, i) => ({ value: String(i + 1), label: String(i + 1) }))} />
           </Field>
         </div>
+        <label className="flex cursor-pointer items-start gap-4 rounded-2xl border border-line p-5 transition-colors hover:border-gold-500/60">
+          <input type="checkbox" name="phone_contact" className="mt-1 size-5 shrink-0 accent-gold-500" />
+          <span className="text-sm leading-relaxed text-mist">{t.form.phoneContact}</span>
+        </label>
+        <p className="text-sm leading-relaxed text-mist">{t.form.childrenNote}</p>
         {Array.from({ length: children }, (_, i) => (
           <ChildFields key={i} n={i + 1} lang={lang} t={t} />
         ))}
