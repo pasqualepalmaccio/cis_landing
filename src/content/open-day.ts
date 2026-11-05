@@ -57,7 +57,7 @@ const it = {
   lead: "La nuova scuola internazionale sull'alto lago apre a settembre 2027. All'Open Day incontri chi la sta costruendo, vedi gli spazi e fai tutte le domande che vuoi.",
   cta: "Prenota il tuo posto",
   /* Data, ore, luogo e posti della striscia vengono dall'evento del CRM. */
-  strip: { date: "Data", sessions: "Sessioni", place: "Luogo", seats: "Posti", limited: "Limitati", waitlist: "Lista d'attesa" },
+  strip: { date: "Data", sessions: "Orario", place: "Luogo", seats: "Posti", limited: "Limitati", waitlist: "Lista d'attesa" },
   pillarsEyebrow: "Perché partecipare",
   pillarsTitle: "Un progetto pensato per ogni bambino, dai 3 ai 14 anni",
   pillars: [
@@ -79,8 +79,8 @@ const it = {
   ],
   opening: "Apertura a settembre 2027, soggetta ad autorizzazione.",
   sessions: {
-    title: "I turni",
-    sub: "Il turno lo assegniamo noi: il primo con posto per tutto il tuo gruppo. Quando il primo è pieno si passa al secondo. Le due sessioni hanno lo stesso programma. I posti contano adulti e bambini.",
+    title: "Orario e posti",
+    sub: "I posti contano adulti e bambini. L'orario confermato te lo scriviamo nell'email di conferma.",
     freeOne: "1 posto libero",
     freeMany: "{n} posti liberi",
     full: "Al completo",
@@ -150,7 +150,7 @@ const en: OpenDayCopy = {
   titleEm: "CIS Colico International School",
   lead: "The new international school on the north lake opens in September 2027. At the Open Day you'll meet the people building it, see the spaces and ask all your questions.",
   cta: "Book your place",
-  strip: { date: "Date", sessions: "Sessions", place: "Venue", seats: "Places", limited: "Limited", waitlist: "Waiting list" },
+  strip: { date: "Date", sessions: "Time", place: "Venue", seats: "Places", limited: "Limited", waitlist: "Waiting list" },
   pillarsEyebrow: "Why attend",
   pillarsTitle: "A project designed for every child, aged 3 to 14",
   pillars: [
@@ -172,8 +172,8 @@ const en: OpenDayCopy = {
   ],
   opening: "Opening September 2027, subject to authorisation.",
   sessions: {
-    title: "Sessions",
-    sub: "We assign the session: the first one with room for your whole group. When the first is full, the second opens. Both sessions follow the same programme. Places count adults and children.",
+    title: "Time and places",
+    sub: "Places count adults and children. We'll confirm your time in the confirmation email.",
     freeOne: "1 place left",
     freeMany: "{n} places left",
     full: "Full",

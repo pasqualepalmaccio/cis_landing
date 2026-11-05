@@ -35,6 +35,18 @@ async function recordFallback(reason: string) {
   }
 }
 
+/** Si mostrano i turni fino al primo che ha ancora posto: il successivo
+ *  compare solo quando quelli prima sono pieni (decisione della scuola,
+ *  05/11). Tutti pieni: si mostrano tutti, con la lista d'attesa. Vale per
+ *  striscia, modulo e dati strutturati, che leggono l'evento da qui. Chi
+ *  assegna il turno resta il CRM: una famiglia troppo numerosa per i posti
+ *  rimasti può finire nel successivo, e lo legge nella conferma. */
+export function visibleSessions(sessions: PublicSession[]): PublicSession[] {
+  const sorted = [...sessions].sort((a, b) => a.startsAt.localeCompare(b.startsAt));
+  const firstWithRoom = sorted.findIndex((s) => !s.started && s.free > 0);
+  return firstWithRoom === -1 ? sorted : sorted.slice(0, firstWithRoom + 1);
+}
+
 export async function loadEvent(): Promise<EventState> {
   const key = process.env.CRM_API_KEY;
   // In fase di build la chiave non c'è: niente chiamata e niente ripiego registrato.
@@ -50,7 +62,7 @@ export async function loadEvent(): Promise<EventState> {
     if (!res.ok) throw new Error(`il CRM risponde ${res.status}`);
     const json: unknown = await res.json();
     if (!isEvent(json)) throw new Error("risposta del CRM in un formato inatteso");
-    return { kind: "ok", event: json };
+    return { kind: "ok", event: { ...json, sessions: visibleSessions(json.sessions) } };
   } catch (error) {
     const reason = error instanceof Error ? error.message : String(error);
     console.error(`[open-day] evento non letto dal CRM: ${reason}`);
