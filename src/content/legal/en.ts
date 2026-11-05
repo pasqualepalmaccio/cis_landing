@@ -1,4 +1,4 @@
-import { TRACKING_ENABLED, VENDORS } from "@/lib/consent/config";
+import { TRACKING_ENABLED, DECLARED } from "@/lib/consent/config";
 
 import { SUBMISSION_ENABLED } from "../registration";
 import type { LegalDict, Section } from "./it";
@@ -10,8 +10,8 @@ import { OWNER, POLICY_UPDATED } from "./owner";
 
 const missing = "[to be completed]";
 const o = (v: string) => v || missing;
-const GOOGLE = TRACKING_ENABLED && Boolean(VENDORS.ga4 || VENDORS.googleAds);
-const META = TRACKING_ENABLED && Boolean(VENDORS.metaPixel);
+const GOOGLE = TRACKING_ENABLED && Boolean(DECLARED.ga4 || DECLARED.googleAds);
+const META = TRACKING_ENABLED && Boolean(DECLARED.metaPixel);
 const when = <T>(on: boolean, ...items: T[]): T[] => (on ? items : []);
 
 export const legalEn: LegalDict = {
@@ -78,8 +78,8 @@ export const legalEn: LegalDict = {
           "Running the site and keeping it secure: needed to provide the page you ask for, and in our legitimate interest in security (Art. 6(1)(b) and 6(1)(f) GDPR).",
           ...when(TRACKING_ENABLED, "Remembering your cookie choice and keeping proof of it: a legal obligation (Art. 6(1)(c) and Art. 7(1) GDPR)."),
           "Handling your Meet & Discover CIS registration: needed to follow up on your request (Art. 6(1)(b) GDPR).",
-          ...when(Boolean(TRACKING_ENABLED && VENDORS.ga4), "Visit statistics: only with your consent (Art. 6(1)(a) GDPR)."),
-          ...when(Boolean(TRACKING_ENABLED && (VENDORS.googleAds || VENDORS.metaPixel)), "Measuring our ads and showing them to people who have visited the site (remarketing): only with your consent (Art. 6(1)(a) GDPR)."),
+          ...when(Boolean(TRACKING_ENABLED && DECLARED.ga4), "Visit statistics: only with your consent (Art. 6(1)(a) GDPR)."),
+          ...when(Boolean(TRACKING_ENABLED && (DECLARED.googleAds || DECLARED.metaPixel)), "Measuring our ads and showing them to people who have visited the site (remarketing): only with your consent (Art. 6(1)(a) GDPR)."),
           "Sending you updates about the school: only if you ask for them and confirm your address (Art. 6(1)(a) GDPR).",
           "Replying to your emails: needed to follow up on your request (Art. 6(1)(b) GDPR).",
         ],
@@ -163,14 +163,14 @@ export const legalEn: LegalDict = {
               ],
             },
           ]),
-      ...when(Boolean(TRACKING_ENABLED && VENDORS.ga4), {
+      ...when(Boolean(TRACKING_ENABLED && DECLARED.ga4), {
         title: "Statistics",
         paragraphs: ["With your consent we use Google Analytics to count visits and page views. We use Google Consent Mode: without consent the script is not loaded."],
       }),
-      ...when(Boolean(TRACKING_ENABLED && (VENDORS.googleAds || VENDORS.metaPixel)), {
+      ...when(Boolean(TRACKING_ENABLED && (DECLARED.googleAds || DECLARED.metaPixel)), {
         title: "Marketing and remarketing",
         paragraphs: [
-          `With your consent we use ${[...when(Boolean(VENDORS.googleAds), "Google Ads"), ...when(META, "the Meta Pixel")].join(" and ")} to know whether a visit came from one of our ads and to show our ads to people who have visited the site.${META ? " The Meta Pixel does not read form fields and sends no events from the pre-registration and Meet & Discover CIS registration pages." : ""}`,
+          `With your consent we use ${[...when(Boolean(DECLARED.googleAds), "Google Ads"), ...when(META, "the Meta Pixel")].join(" and ")} to know whether a visit came from one of our ads and to show our ads to people who have visited the site.${META ? " The Meta Pixel does not read form fields and sends no events from the pre-registration and Meet & Discover CIS registration pages." : ""}`,
         ],
       }),
       ...when(TRACKING_ENABLED, {

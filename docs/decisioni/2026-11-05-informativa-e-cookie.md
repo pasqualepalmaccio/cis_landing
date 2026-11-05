@@ -55,3 +55,14 @@ Applicate:
 - Testi generati in due configurazioni:
   - senza fornitori: nessuna menzione di Google, Meta o del banner, tabella dei cookie vuota e nascosta;
   - con Pixel e GA: tutte le sezioni presenti.
+
+## Aggiornamento · banner acceso prima degli ID
+
+Decisione dell'utente (05/11): Google e Meta si useranno, e il banner va acceso subito. Gli ID non ci sono ancora.
+
+- In `src/lib/consent/config.ts`, `DECLARED` unisce i fornitori configurati a quelli già decisi (`PLANNED`: GA4, Google Ads, Meta Pixel). Banner, policy e tabella dei cookie leggono `DECLARED`. Gli script e la CSP restano legati agli ID reali (`VENDORS` e variabili di build).
+- **Effetto.**
+  - Il banner compare a tutti e il consenso si registra già da oggi.
+  - Nessuno script di Google o Meta parte finché non arriva l'ID.
+  - Quando arriverà, chi ha già accettato verrà tracciato senza vedere di nuovo il banner, perché le finalità dichiarate non cambiano.
+- **Rischio segnalato.** Fino agli ID, banner e policy descrivono strumenti non ancora attivi. Il visitatore acconsente a qualcosa che oggi non accade: non è un danno per lui, ma il testo anticipa i fatti. Se un fornitore non verrà più usato, va tolto da `PLANNED` e va alzata `CONSENT_VERSION`.
