@@ -85,7 +85,7 @@ function EventBlock({ lang, t, state }: { lang: Lang; t: OpenDayCopy; state: Awa
           </p>
         </div>
       )}
-      <OpenDayForm lang={lang} t={t} sessions={event.sessions} />
+      <OpenDayForm lang={lang} t={t} sessions={event.sessions} place={event.place} />
     </>
   );
 }

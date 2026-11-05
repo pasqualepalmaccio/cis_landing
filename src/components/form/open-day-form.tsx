@@ -7,6 +7,8 @@ import type { Lang } from "@/content";
 import { BIRTH_YEARS, fill, HOW_HEARD, INTAKE_YEARS, MAX_ADULTS, MAX_CHILDREN, OPEN_DAY_ENABLED, SCHOOL_LEVELS, type OpenDayCopy } from "@/content/open-day";
 import type { PublicSession } from "@/lib/open-day/event";
 
+import { SessionTicket } from "@/components/open-day/session-ticket";
+
 import { control, Field, FormSection, optionsOf } from "./field";
 import { Select } from "./select";
 
@@ -22,7 +24,7 @@ const when = (lang: Lang, s: PublicSession) => {
 /* Il modulo manda alla landing, mai al CRM. Lo stato mostrato viene solo
    dalla risposta del server: «confermato» e «lista d'attesa» arrivano dal
    CRM, mai dai posti indicativi della pagina. */
-export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy; sessions: PublicSession[] }) {
+export function OpenDayForm({ lang, t, sessions, place }: { lang: Lang; t: OpenDayCopy; sessions: PublicSession[]; place: string }) {
   const [state, setState] = useState<State>("idle");
   const [assigned, setAssigned] = useState<PublicSession | null>(null);
   const [children, setChildren] = useState(1);
@@ -77,18 +79,12 @@ export function OpenDayForm({ lang, t, sessions }: { lang: Lang; t: OpenDayCopy;
       </div>
 
       <FormSection title={t.sessions.title} sub={t.sessions.sub}>
-        <ul aria-label={t.form.session} className="grid gap-3 sm:grid-cols-2">
-          {sessions.map((s) => (
-            <li key={s.id} className={`rounded-2xl border border-line p-5 ${s.started ? "opacity-40" : ""}`}>
-              <span className="block font-display text-xl text-cream first-letter:uppercase">{when(lang, s)}</span>
-              <span className={`mt-1 block text-sm ${s.free > 0 ? "text-gold-300" : "text-mist"}`}>
-                {s.started ? t.sessions.started : s.free > 0 ? (s.free === 1 ? t.sessions.freeOne : fill(t.sessions.freeMany, { n: s.free })) : t.sessions.full}
-              </span>
-            </li>
-          ))}
+        <ul aria-label={t.form.session} className="grid gap-4">
+          {sessions.map((s) => <SessionTicket key={s.id} lang={lang} t={t} session={s} place={place} href="#dati" />)}
         </ul>
       </FormSection>
 
+      <div id="dati" className="scroll-mt-24" />
       <FormSection title={t.form.title} sub={t.form.sub}>
         <div className="grid gap-5 sm:grid-cols-2">
           <Field label={t.form.firstName} htmlFor="od_first" required><input id="od_first" name="first_name" autoComplete="given-name" required maxLength={100} className={control} /></Field>
