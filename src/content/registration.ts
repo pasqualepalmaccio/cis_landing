@@ -3,10 +3,10 @@ import type { Lang } from "./index";
 /* Il modulo di pre-registrazione. I valori delle opzioni sono codici stabili,
    indipendenti dalla lingua: cambiare lingua non cambia ciò che è stato scelto.
 
-   L'invio è spento finché non esistono i presupposti scritti in
-   docs/decisioni/2026-10-16-landing-modulo-preregistrazione.md: informativa del
-   titolare, posto nel CRM per il questionario, presidi sul collegamento. */
-export const SUBMISSION_ENABLED = false;
+   Acceso il 06/11/2026 su decisione del committente, con la pubblicazione
+   della landing su cis-colico.com (vedi
+   docs/decisioni/2026-10-16-landing-modulo-preregistrazione.md). */
+export const SUBMISSION_ENABLED = true;
 
 /** Versione del testo del consenso agli aggiornamenti: va nel registro del CRM
  *  con ogni consenso. Si cambia quando cambia il testo di «updates». */

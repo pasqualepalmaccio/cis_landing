@@ -71,3 +71,7 @@ Gli audit concordano: l'endpoint `/leads` oggi non può ricevere questo modulo s
 ## Rischi accettati
 
 Nessuno: l'invio resta spento finché i presupposti non sono soddisfatti.
+
+## Aggiornamento 2026-11-06 — modulo acceso
+
+La landing è pubblicata su `cis-colico.com` al posto del sito precedente, e il committente ha chiesto di accendere il modulo (`SUBMISSION_ENABLED = true`). Verificato prima dell'accensione: la chiave della landing raggiunge `/api/v1/pre-registrations` con lo scope `leads:write` e l'ultima riconciliazione delle pre-registrazioni è riuscita. Chi si accorge di un guasto: la riconciliazione del CRM, che confronta i tentativi della landing con le righe ricevute.
