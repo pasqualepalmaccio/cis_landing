@@ -27,7 +27,8 @@ const when = (lang: Lang, s: PublicSession) => {
 export function OpenDayForm({ lang, t, sessions, place }: { lang: Lang; t: OpenDayCopy; sessions: PublicSession[]; place: string }) {
   const [state, setState] = useState<State>("idle");
   const [assigned, setAssigned] = useState<PublicSession | null>(null);
-  const [children, setChildren] = useState(1);
+  // Chi compila è l'adulto che viene; i bambini possono anche non esserci.
+  const [children, setChildren] = useState(0);
   const ready = useSyncExternalStore(noop, () => true, () => false);
   const done = state === "confirmed" || state === "waitlist" || state === "queued" || state === "closed";
 
@@ -93,17 +94,17 @@ export function OpenDayForm({ lang, t, sessions, place }: { lang: Lang; t: OpenD
           <Field label={t.form.email} htmlFor="od_email" required><input id="od_email" name="email" type="email" autoComplete="email" required maxLength={254} className={control} /></Field>
           <Field label={t.form.phone} htmlFor="od_phone" required><input id="od_phone" name="phone" type="tel" autoComplete="tel" required minLength={4} maxLength={40} placeholder="+39 333 1234567" className={control} /></Field>
           <Field label={t.form.adults} htmlFor="od_adults" required>
-            <Select id="od_adults" name="adults" options={Array.from({ length: MAX_ADULTS }, (_, i) => ({ value: String(i + 1), label: String(i + 1) }))} />
+            <Select id="od_adults" name="adults" defaultValue="1" options={Array.from({ length: MAX_ADULTS }, (_, i) => ({ value: String(i + 1), label: String(i + 1) }))} />
           </Field>
           <Field label={t.form.children} htmlFor="od_children" required>
-            <Select id="od_children" name="children" value={String(children)} onChange={(v) => setChildren(Number(v))} options={Array.from({ length: MAX_CHILDREN }, (_, i) => ({ value: String(i + 1), label: String(i + 1) }))} />
+            <Select id="od_children" name="children" value={String(children)} onChange={(v) => setChildren(Number(v))} options={Array.from({ length: MAX_CHILDREN + 1 }, (_, i) => ({ value: String(i), label: String(i) }))} />
           </Field>
         </div>
         <label className="flex cursor-pointer items-start gap-4 rounded-2xl border border-line p-5 transition-colors hover:border-gold-500/60">
           <input type="checkbox" name="phone_contact" className="mt-1 size-5 shrink-0 accent-gold-500" />
           <span className="text-sm leading-relaxed text-mist">{t.form.phoneContact}</span>
         </label>
-        <p className="text-sm leading-relaxed text-mist">{t.form.childrenNote}</p>
+        {children > 0 ? <p className="text-sm leading-relaxed text-mist">{t.form.childrenNote}</p> : null}
         {Array.from({ length: children }, (_, i) => (
           <ChildFields key={i} n={i + 1} lang={lang} t={t} />
         ))}

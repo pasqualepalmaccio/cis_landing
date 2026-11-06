@@ -10,13 +10,25 @@ import type { Dict, Lang } from "@/content";
 import { ButtonLink } from "../ui/button-link";
 import { Brand } from "./brand";
 import { Container } from "./container";
+import { FocusedNav } from "./focused-nav";
 import { LangSwitch } from "./lang-switch";
+
+/** Pagine di campagna: chi arriva da un invito resta sulla pagina. Barra con
+ *  solo logo e lingua, niente sezioni del sito né «Preiscriviti» (richiesta
+ *  della scuola, 06/11). */
+const FOCUSED = ["/meet-and-discover"];
+
+export function SiteNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
+  const pathname = usePathname();
+  const rest = pathname.replace(/^\/(it|en)(?=\/|$)/, "");
+  return FOCUSED.includes(rest) ? <FocusedNav lang={lang} label={t.language} home={pathname} /> : <FullNav lang={lang} t={t} />;
+}
 
 /* Barra che si nasconde scendendo e ricompare risalendo; su mobile apre
    un pannello a tutto schermo. In cima è trasparente sulla fotografia o sul
    blu, con testi bianchi; appena si scorre diventa bianca con testi Blu Lario
    (il tono chiaro cambia i colori di tutto ciò che contiene). */
-export function SiteNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
+function FullNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [solid, setSolid] = useState(false);

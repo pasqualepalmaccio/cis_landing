@@ -126,7 +126,8 @@ export function Select({
       >
         {selected?.icon && <span aria-hidden>{selected.icon}</span>}
         <span className={`truncate ${selected && selected.value !== "" ? "" : "text-mist/70"}`}>
-          {selected ? (renderValue && selected.value ? renderValue(selected) : selected.label) : (placeholder ?? "")}
+          {/* Vuoto, il riquadro resterebbe più basso dei campi accanto: uno spazio tiene la riga. */}
+          {(selected ? (renderValue && selected.value ? renderValue(selected) : selected.label) : placeholder) || "\u00a0"}
         </span>
         <svg
           aria-hidden
