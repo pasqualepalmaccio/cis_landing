@@ -267,7 +267,7 @@ export const it = {
         ],
         highlight: "Apertura delle iscrizioni",
       },
-      { when: "Gennaio-agosto 2027", title: "Pre-apertura", body: "Allestimento della sede, primi insegnanti, open day, attivazione del servizio bus, campagna di iscrizioni.", items: [], highlight: null },
+      { when: "Gennaio-agosto 2027", title: "Pre-apertura", body: "Allestimento della sede, primi insegnanti, Meet & Discover, attivazione del servizio bus, campagna di iscrizioni.", items: [], highlight: null },
       { when: "Settembre 2027", title: "Apre la International Primary", body: "Arrivano i primi studenti, dai 3 agli 8 anni. Il bus è in servizio e il consiglio dei genitori è attivo.", items: [], highlight: null },
       { when: "2028-2031", title: "La scuola cresce", body: "Apre la Lower Secondary. I primi bambini della Primary continuano qui, e la scuola arriva a 120 studenti.", items: [], highlight: null },
     ],

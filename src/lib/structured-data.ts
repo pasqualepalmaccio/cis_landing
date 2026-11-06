@@ -38,7 +38,7 @@ export function openDayJsonLd(lang: Lang, event: PublicEvent, description: strin
     eventStatus: "https://schema.org/EventScheduled",
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     inLanguage: lang,
-    url: absoluteUrl(`/${lang}/open-day`),
+    url: absoluteUrl(`/${lang}/meet-and-discover`),
     location: { "@type": "Place", name: event.place, address: event.place },
     organizer: { ...ORGANIZATION, url: absoluteUrl(`/${lang}`) },
   }));

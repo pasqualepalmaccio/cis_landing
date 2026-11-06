@@ -53,6 +53,10 @@ const nextConfig: NextConfig = {
         permanent: true,
       })),
       ...legacy.map((l) => ({ source: `/${l.from}`, destination: `/it${l.to}`, permanent: true })),
+      // L'evento si chiama Meet & Discover (06/11): il vecchio indirizzo resta
+      // valido per i link già spediti e stampati. La query (utm_*) passa.
+      { source: "/:lang(it|en)/open-day", destination: "/:lang/meet-and-discover", permanent: true },
+      { source: "/open-day", destination: "/it/meet-and-discover", permanent: true },
     ];
   },
   async headers() {

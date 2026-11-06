@@ -43,4 +43,4 @@ export const DECLARED = {
 export const TRACKING_ENABLED = OWNER_READY && Object.values(DECLARED).some(Boolean);
 
 /** Pagine dove il Pixel non manda eventi: raccolgono dati sui figli. */
-export const NO_PIXEL_PATHS = ["/registrazione", "/open-day"];
+export const NO_PIXEL_PATHS = ["/registrazione", "/meet-and-discover", "/open-day"];

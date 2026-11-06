@@ -19,13 +19,13 @@ import { openDayJsonLd } from "@/lib/structured-data";
    decide il posto è l'iscrizione, non questa pagina. */
 export const revalidate = 60;
 
-export async function generateMetadata({ params }: PageProps<"/[lang]/open-day">): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<"/[lang]/meet-and-discover">): Promise<Metadata> {
   const { lang } = await params;
   if (!isLang(lang)) return {};
-  return pageMetadata(lang, "/open-day", openDayCopy[lang].meta);
+  return pageMetadata(lang, "/meet-and-discover", openDayCopy[lang].meta);
 }
 
-export default async function OpenDayPage({ params }: PageProps<"/[lang]/open-day">) {
+export default async function OpenDayPage({ params }: PageProps<"/[lang]/meet-and-discover">) {
   const { lang } = await params;
   if (!isLang(lang)) notFound();
   const t = openDayCopy[lang];

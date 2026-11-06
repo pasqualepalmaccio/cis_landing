@@ -245,7 +245,7 @@ export const en: Dict = {
         ],
         highlight: "Registrations open",
       },
-      { when: "January-August 2027", title: "Pre-opening", body: "Fitting out the premises, first teachers, open day, bus service activation, enrolment campaign.", items: [], highlight: null },
+      { when: "January-August 2027", title: "Pre-opening", body: "Fitting out the premises, first teachers, Meet & Discover, bus service activation, enrolment campaign.", items: [], highlight: null },
       { when: "September 2027", title: "The International Primary opens", body: "The first students arrive, aged 3 to 8. The bus is running and the parents' council is up.", items: [], highlight: null },
       { when: "2028-2031", title: "The school grows", body: "Lower Secondary opens. The first Primary children carry on here, and the school reaches 120 students.", items: [], highlight: null },
     ],
