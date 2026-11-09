@@ -25,7 +25,7 @@ export const it = {
   },
   hero: {
     eyebrow: "Apertura settembre 2027 · Dai 3 ai 14 anni",
-    titleLines: ["Scuola internazionale a Colico,", "sul Lago di Como"],
+    titleLines: ["Scuola internazionale a\u00a0Colico,", "sul Lago di Como"],
     sub: "Il mondo come aula, il Lago come casa.",
     explore: "Scopri il progetto",
     cta: "Assicurati un posto tra i primi",

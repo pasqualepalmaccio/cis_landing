@@ -25,7 +25,7 @@ export const en: Dict = {
   },
   hero: {
     eyebrow: "Opening September 2027 · Ages 3 to 14",
-    titleLines: ["International school in Colico,", "on Lake Como"],
+    titleLines: ["International school in\u00a0Colico,", "on Lake Como"],
     sub: "The world as a classroom, the lake as home.",
     explore: "Discover the project",
     cta: "Secure a spot among the first",
