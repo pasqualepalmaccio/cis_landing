@@ -69,7 +69,7 @@ export function Hero({ lang, t }: { lang: Lang; t: Dict["hero"] }) {
             <span>{t.eyebrow}</span>
           </motion.p>
 
-          <h1 className="mt-7 font-display text-[clamp(2.6rem,6.6vw,5.8rem)] font-semibold leading-[1] tracking-[-0.015em] text-white [text-shadow:0_2px_30px_color-mix(in_oklab,var(--color-navy-950)_60%,transparent)]">
+          <h1 className="mt-7 font-display text-[clamp(2.3rem,5.2vw,4.6rem)] font-semibold leading-[1.05] tracking-[-0.015em] text-white [text-shadow:0_2px_30px_color-mix(in_oklab,var(--color-navy-950)_60%,transparent)]">
             <SplitWords lines={t.titleLines} immediate delay={0.7} lineClassName="[&:nth-child(3)]:italic [&:nth-child(3)]:text-gold-300" />
           </h1>
 
@@ -79,8 +79,9 @@ export function Hero({ lang, t }: { lang: Lang; t: Dict["hero"] }) {
                 initial={reduce ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 1.5, ease }}
-                className="max-w-md text-lg text-white/85 sm:text-xl"
+                className="max-w-md font-display text-xl italic text-white/85 sm:text-2xl"
               >
+                {/* Il motto: claim di marchio, sotto il titolo e più piccolo. */}
                 {t.sub}
               </motion.p>
               <motion.div
