@@ -34,7 +34,7 @@ export function Hero({ lang, t, ica }: { lang: Lang; t: Dict["hero"]; ica: Dict[
       >
         <motion.div className="absolute inset-0" style={reduce ? undefined : { scale: imageScale, y: imageY }}>
           <Image
-            src="/images/hero-lago.jpg"
+            src="/images/hero-lungolago.jpg"
             alt=""
             fill
             priority
@@ -44,9 +44,10 @@ export function Hero({ lang, t, ica }: { lang: Lang; t: Dict["hero"]; ica: Dict[
         </motion.div>
       </motion.div>
 
-      {/* Velature: blu notte dall'alto e dal basso, luce dorata che respira. */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-950/80 via-navy-950/25 to-navy-950/85" />
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950/60 via-transparent to-transparent" />
+      {/* Velature: blu notte dall'alto e dal basso, più una velatura a sinistra
+         sotto il testo (richiesta del 9/11: più contrasto fra foto e scritte). */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-navy-950/80 via-navy-950/40 to-navy-950/90" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy-950/85 via-navy-950/45 to-navy-950/10" />
       <motion.div
         aria-hidden
         className="absolute -left-1/4 -top-1/3 -z-10 size-[80vw] rounded-full bg-gold-500/20 blur-[120px]"
@@ -96,9 +97,6 @@ export function Hero({ lang, t, ica }: { lang: Lang; t: Dict["hero"]; ica: Dict[
                     {t.cta}
                   </ButtonLink>
                 </Magnetic>
-                <ButtonLink href="#visione" variant="ghost">
-                  {t.explore}
-                </ButtonLink>
               </motion.div>
               {/* Il curricolo internazionale, con la clausola: l'accordo con l'ICA non è ancora firmato. */}
               <motion.div

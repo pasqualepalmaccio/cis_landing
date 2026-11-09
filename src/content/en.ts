@@ -37,9 +37,8 @@ export const en: Dict = {
   },
   hero: {
     eyebrow: "Opening September 2027 · Ages 3 to 14",
-    titleLines: ["International school in\u00a0Colico,", "on Lake Como"],
+    titleLines: ["Colico International School,", "on Lake Como"],
     sub: "The world as a classroom, the lake as home.",
-    explore: "Discover the project",
     cta: "Secure a spot among the first",
     scroll: "Scroll",
     facts: [
@@ -289,7 +288,7 @@ export const en: Dict = {
         ],
         highlight: "Registrations open",
       },
-      { when: "20 January 2027", title: "Opening confirmed, based on enrolments", body: "The day we decide. If enrolments reach the required threshold, we confirm the September 2027 opening and works begin. Families who commit early are what make this moment happen.", items: [], highlight: null },
+      { when: "20 January 2027", title: "Opening confirmed, based on enrolments", body: "The day we decide. If enrolments reach the required threshold, we confirm the September 2027 opening and works begin. Families who commit early are what make this moment happen.", items: [], highlight: null, featured: true },
       { when: "January-August 2027", title: "Pre-opening", body: "Fitting out the premises, first teachers, Meet & Discover, bus service activation, enrolment campaign.", items: ["Works completed between May and June"], highlight: null },
       { when: "September 2027", title: "Opening: Nursery to Year 3", body: "The first students arrive, aged 3 to 8. The bus is running and the parents' council is up.", items: [], highlight: null },
       { when: "2028-2031", title: "The school grows", body: "Year 7–9 open. The first pupils continue their journey here, and the school reaches 120 students.", items: [], highlight: null },

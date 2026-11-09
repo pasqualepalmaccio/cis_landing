@@ -27,7 +27,7 @@ export function Campus({ t }: { t: Dict["campus"] }) {
       <div ref={frame}>
         <motion.figure style={reduce ? undefined : { clipPath }} className="relative aspect-[16/9] overflow-hidden rounded-[20px] sm:aspect-[31/12]">
           <motion.div className="absolute inset-0" style={reduce ? undefined : { scale }}>
-            <Image src="/images/sede-ingresso.jpg" alt={t.hero.alt} fill sizes="(min-width: 1240px) 1176px, 100vw" className="object-cover object-left" />
+            <Image src="/images/sede-ingresso-stemma.jpg" alt={t.hero.alt} fill sizes="(min-width: 1240px) 1176px, 100vw" className="object-cover object-left" />
           </motion.div>
           <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-navy-950/85 to-transparent px-6 pb-5 pt-16 text-sm font-semibold text-gold-300 sm:px-10">
             {t.hero.caption}

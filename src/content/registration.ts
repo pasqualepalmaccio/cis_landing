@@ -160,7 +160,8 @@ export const registrationCopy = {
       warning: "Per favore non inserire informazioni sulla salute, su disabilità o su bisogni educativi speciali dei bambini: ne parleremo con te di persona nella fase di iscrizione.",
     },
     updates: "Desidero ricevere via email aggiornamenti in anteprima su Colico International School (apertura, Meet & Discover, iscrizioni). Facoltativo. Ti chiederemo di confermare l'indirizzo e potrai disiscriverti in ogni momento dal link in ogni email.",
-    notice: "Inviando il modulo chiedi di essere ricontattato/a per la pre-iscrizione. I tuoi dati e quelli dei tuoi figli che ci comunichi sono trattati per gestire questa richiesta e per organizzare l'apertura della scuola, e non sono usati per comunicazioni promozionali senza il tuo consenso. Tempi di conservazione e diritti sono descritti nell'informativa privacy.",
+    notice: "Inviando il modulo chiedi di essere ricontattato/a per la pre-iscrizione. I tuoi dati e quelli dei tuoi figli che ci comunichi sono trattati per gestire questa richiesta e per organizzare l'apertura della scuola, e non sono usati per comunicazioni promozionali senza il tuo consenso. Tempi di conservazione e diritti sono descritti nell'{link}.",
+    noticeLink: "informativa privacy",
     submit: "Invia la registrazione",
     result: {
       sending: "Invio in corso…",
@@ -232,7 +233,8 @@ export const registrationCopy = {
       warning: "Please do not include information about your children's health, disabilities or special educational needs: we'll discuss these with you in person during enrolment.",
     },
     updates: "I'd like to receive early email updates about Colico International School (opening, Meet & Discover, enrolment). Optional. We'll ask you to confirm your address, and you can unsubscribe at any time via the link in every email.",
-    notice: "By submitting this form you ask to be contacted about pre-registration. Your data, and the data about your children that you share, are processed to handle this request and to plan the school's opening, and are not used for promotional communications without your consent. Retention periods and your rights are described in the privacy notice.",
+    notice: "By submitting this form you ask to be contacted about pre-registration. Your data, and the data about your children that you share, are processed to handle this request and to plan the school's opening, and are not used for promotional communications without your consent. Retention periods and your rights are described in the {link}.",
+    noticeLink: "privacy notice",
     submit: "Submit registration",
     result: {
       sending: "Sending…",

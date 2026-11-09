@@ -39,9 +39,8 @@ export const it = {
   },
   hero: {
     eyebrow: "Apertura settembre 2027 · Dai 3 ai 14 anni",
-    titleLines: ["Scuola internazionale a\u00a0Colico,", "sul Lago di Como"],
+    titleLines: ["Colico International School,", "sul Lago di Como"],
     sub: "Il mondo come aula, il Lago come casa.",
-    explore: "Scopri il progetto",
     cta: "Assicurati un posto tra i primi",
     scroll: "Scorri",
     facts: [
@@ -313,7 +312,7 @@ export const it = {
         ],
         highlight: "Apertura delle iscrizioni",
       },
-      { when: "20 gennaio 2027", title: "Conferma dell'apertura, in base alle iscrizioni", body: "È il giorno in cui decidiamo. Se le iscrizioni raggiungono la soglia necessaria confermiamo l'apertura a settembre 2027 e partono i lavori. A rendere possibile questo momento sono le famiglie che scelgono presto.", items: [], highlight: null },
+      { when: "20 gennaio 2027", title: "Conferma dell'apertura, in base alle iscrizioni", body: "È il giorno in cui decidiamo. Se le iscrizioni raggiungono la soglia necessaria confermiamo l'apertura a settembre 2027 e partono i lavori. A rendere possibile questo momento sono le famiglie che scelgono presto.", items: [], highlight: null, featured: true },
       { when: "Gennaio-agosto 2027", title: "Pre-apertura", body: "Allestimento della sede, primi insegnanti, Meet & Discover, attivazione del servizio bus, campagna di iscrizioni.", items: ["I lavori finiscono fra maggio e giugno"], highlight: null },
       { when: "Settembre 2027", title: "Apertura: dalla Nursery alla Year 3", body: "Arrivano i primi studenti, dai 3 agli 8 anni. Il bus è in servizio e il consiglio dei genitori è attivo.", items: [], highlight: null },
       { when: "2028-2031", title: "La scuola cresce", body: "Aprono le classi Year 7–9. I primi alunni continuano il loro percorso qui, e la scuola arriva a 120 studenti.", items: [], highlight: null },

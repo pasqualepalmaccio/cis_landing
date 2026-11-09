@@ -78,7 +78,7 @@ const it = {
   opening: "Apertura a settembre 2027, soggetta ad autorizzazione.",
   sessions: {
     title: "Orario e posti",
-    sub: "I posti contano adulti e bambini. L'orario confermato te lo scriviamo nell'email di conferma.",
+    sub: "I posti contano solo gli adulti: i bambini vengono senza occupare posto. L'orario confermato te lo scriviamo nell'email di conferma.",
     freeOne: "1 posto libero",
     freeMany: "{n} posti liberi",
     full: "Al completo",
@@ -175,7 +175,7 @@ const en: OpenDayCopy = {
   opening: "Opening September 2027, subject to authorisation.",
   sessions: {
     title: "Time and places",
-    sub: "Places count adults and children. We'll confirm your time in the confirmation email.",
+    sub: "Places count adults only: children come without taking a place. We'll confirm your time in the confirmation email.",
     freeOne: "1 place left",
     freeMany: "{n} places left",
     full: "Full",

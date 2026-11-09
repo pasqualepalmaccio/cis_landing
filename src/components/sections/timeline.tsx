@@ -49,29 +49,32 @@ export function Timeline({ t }: { t: Dict["timeline"] }) {
               <span className="absolute -inset-[7px] rounded-full border-[1.5px] border-bordeaux opacity-0 motion-safe:animate-ping-slow" />
               {String(i + 1).padStart(2, "0")}
             </motion.span>
-            <p className="pt-1 font-label text-xs font-bold uppercase tracking-[0.07em] text-accent sm:pt-2.5">{s.when}</p>
-            <h3 className="mt-1 font-display text-2xl font-semibold text-heading">{s.title}</h3>
-            {s.body && <p className="mt-2 leading-relaxed text-fg-muted">{s.body}</p>}
-            {s.items.length > 0 && (
-              <ul className="mt-3 space-y-2 text-fg-muted">
-                {s.items.map((item) => (
-                  <li key={item} className="relative pl-5">
-                    <span aria-hidden className="absolute left-0 text-gold-500">
-                      –
-                    </span>
-                    {item}
-                  </li>
-                ))}
-                {s.highlight && (
-                  <li className="relative pl-5 font-semibold text-bordeaux">
-                    <span aria-hidden className="absolute left-0 text-gold-500">
-                      –
-                    </span>
-                    {s.highlight}
-                  </li>
-                )}
-              </ul>
-            )}
+            {/* La tappa decisiva (featured) su fondo blu: è quella da non perdere. */}
+            <div className={"featured" in s && s.featured ? "tone-navy -mt-2 rounded-2xl bg-navy-900 p-6 shadow-card sm:-mt-1 sm:p-8" : ""}>
+              <p className="pt-1 font-label text-xs font-bold uppercase tracking-[0.07em] text-accent sm:pt-2.5">{s.when}</p>
+              <h3 className="mt-1 font-display text-2xl font-semibold text-heading">{s.title}</h3>
+              {s.body && <p className="mt-2 leading-relaxed text-fg-muted">{s.body}</p>}
+              {s.items.length > 0 && (
+                <ul className="mt-3 space-y-2 text-fg-muted">
+                  {s.items.map((item) => (
+                    <li key={item} className="relative pl-5">
+                      <span aria-hidden className="absolute left-0 text-gold-500">
+                        –
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                  {s.highlight && (
+                    <li className="relative pl-5 font-semibold text-bordeaux">
+                      <span aria-hidden className="absolute left-0 text-gold-500">
+                        –
+                      </span>
+                      {s.highlight}
+                    </li>
+                  )}
+                </ul>
+              )}
+            </div>
           </motion.li>
         ))}
       </ol>

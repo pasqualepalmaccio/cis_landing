@@ -10,7 +10,7 @@ import { LANGS, type Lang } from "@/content";
 export const SITE_NAME = "CIS · Colico International School";
 /** Dominio di produzione: base di canonical, og:url e dati strutturati. */
 export const SITE_URL = new URL(process.env.SITE_URL ?? "https://cis-colico.com");
-const IMAGE = "/images/hero-lago.jpg";
+const IMAGE = "/images/hero-lungolago.jpg";
 const OG_LOCALE: Record<Lang, string> = { it: "it_IT", en: "en_GB" };
 
 export function pageMetadata(lang: Lang, path: string, { title, description }: { title: string; description: string }): Metadata {

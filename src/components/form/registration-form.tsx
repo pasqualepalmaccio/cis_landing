@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence } from "motion/react";
+import Link from "next/link";
 import { useState } from "react";
 
 import type { Lang } from "@/content";
@@ -145,7 +146,13 @@ export function RegistrationForm({ lang, t }: { lang: Lang; t: RegistrationCopy 
           <input type="checkbox" name="updates_consent" className="mt-1 size-5 shrink-0 accent-gold-500" />
           <span className="text-sm leading-relaxed text-mist">{t.updates}</span>
         </label>
-        <p className="text-sm leading-relaxed text-mist">{t.notice}</p>
+        <p className="text-sm leading-relaxed text-mist">
+          {t.notice.split("{link}")[0]}
+          <Link href={`/${lang}/privacy`} target="_blank" className="font-semibold text-gold-300 underline underline-offset-4">
+            {t.noticeLink}
+          </Link>
+          {t.notice.split("{link}")[1]}
+        </p>
         <p className="text-xs text-mist">{t.required}</p>
 
         {!SUBMISSION_ENABLED && (
