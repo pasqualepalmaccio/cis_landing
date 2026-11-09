@@ -9,7 +9,7 @@ import type { Lang } from "./index";
    (Apri/Chiudi iscrizioni): nessun interruttore nel codice. */
 
 /** Versione dell'informativa mostrata nel modulo: va nel CRM con ogni iscrizione. */
-export const OPEN_DAY_NOTICE_VERSION = "2026-11-05";
+export const OPEN_DAY_NOTICE_VERSION = "2026-11-09";
 /** Versione del testo del consenso agli aggiornamenti (stesso testo della pre-registrazione). */
 export { UPDATES_TEXT_VERSION } from "./registration";
 
@@ -95,10 +95,11 @@ const it = {
     email: "Email",
     phone: "Telefono",
     adults: "Adulti",
-    children: "Bambini",
+    children: "Bambini che vengono all'incontro",
+    kids: "Figli per cui vi interessa la scuola",
     childBand: "Età del bambino {n} (facoltativa)",
-    childTitle: "Bambino {n}",
-    childrenNote: "I dati dei bambini li inserisci tu, come genitore: ci servono solo per organizzare l'incontro e capire quale classe vi interessa.",
+    childTitle: "Figlio {n}",
+    childrenNote: "Indica i figli per cui vi interessa la scuola, anche se all'incontro non vengono. I dati li inserisci tu, come genitore: ci servono per organizzare l'incontro e capire quale classe vi interessa.",
     phoneContact: "Potete contattarmi anche per telefono o su WhatsApp a questo numero. Facoltativo.",
     childName: "Nome (facoltativo)",
     birthYear: "Anno di nascita",
@@ -191,10 +192,11 @@ const en: OpenDayCopy = {
     email: "Email",
     phone: "Phone",
     adults: "Adults",
-    children: "Children",
+    children: "Children coming to the event",
+    kids: "Children you are enquiring about",
     childBand: "Age of child {n} (optional)",
     childTitle: "Child {n}",
-    childrenNote: "You, as the parent, enter your children's details: we only use them to organise the meeting and see which class you are interested in.",
+    childrenNote: "Tell us about the children you are considering the school for, even if they are not coming to the event. You enter their details as the parent: we use them to organise the meeting and see which class you are interested in.",
     phoneContact: "You may also contact me by phone or WhatsApp on this number. Optional.",
     childName: "First name (optional)",
     birthYear: "Year of birth",

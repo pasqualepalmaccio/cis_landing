@@ -79,7 +79,9 @@ export async function POST(request: Request) {
   } catch {
     return Response.json({ result: "invalid" }, { status: 400 });
   }
-  const shape = parsed.success && (parsed.data.childAgeBands.length > parsed.data.children ? "childAgeBands" : parsed.data.childrenInfo.length > parsed.data.children ? "childrenInfo" : null);
+  /* I figli descritti (childrenInfo) possono essere più dei bambini che vengono:
+     chi viene da solo descrive comunque i figli per cui interessa la scuola. */
+  const shape = parsed.success && (parsed.data.childAgeBands.length > parsed.data.children ? "childAgeBands" : null);
   if (!parsed.success || shape) {
     // Solo i nomi dei campi nei log, mai i valori.
     console.warn(`[open-day] respinta dalla validazione: ${parsed.success ? shape : parsed.error.issues.map((i) => i.path.join(".")).join(", ")}`);

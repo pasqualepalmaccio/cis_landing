@@ -27,8 +27,11 @@ const when = (lang: Lang, s: PublicSession) => {
 export function OpenDayForm({ lang, t, sessions, place }: { lang: Lang; t: OpenDayCopy; sessions: PublicSession[]; place: string }) {
   const [state, setState] = useState<State>("idle");
   const [assigned, setAssigned] = useState<PublicSession | null>(null);
-  // Chi compila è l'adulto che viene; i bambini possono anche non esserci.
+  /* Due numeri diversi: i bambini che vengono contano i posti; i figli per cui
+     interessa la scuola decidono quante schede compilare. Un genitore può
+     venire da solo e descrivere due figli. */
   const [children, setChildren] = useState(0);
+  const [kids, setKids] = useState(1);
   const ready = useSyncExternalStore(noop, () => true, () => false);
   const done = state === "confirmed" || state === "waitlist" || state === "queued" || state === "closed";
 
@@ -42,7 +45,7 @@ export function OpenDayForm({ lang, t, sessions, place }: { lang: Lang; t: OpenD
       lang,
       adults: Number(s("adults") || "1"),
       children,
-      childrenInfo: Array.from({ length: children }, (_, i) => ({
+      childrenInfo: Array.from({ length: kids }, (_, i) => ({
         ...(s(`child_name_${i + 1}`) ? { firstName: s(`child_name_${i + 1}`) } : {}),
         birthYear: Number(s(`birth_year_${i + 1}`)),
         level: s(`level_${i + 1}`),
@@ -99,13 +102,16 @@ export function OpenDayForm({ lang, t, sessions, place }: { lang: Lang; t: OpenD
           <Field label={t.form.children} htmlFor="od_children" required>
             <Select id="od_children" name="children" value={String(children)} onChange={(v) => setChildren(Number(v))} options={Array.from({ length: MAX_CHILDREN + 1 }, (_, i) => ({ value: String(i), label: String(i) }))} />
           </Field>
+          <Field label={t.form.kids} htmlFor="od_kids" required>
+            <Select id="od_kids" name="kids" value={String(kids)} onChange={(v) => setKids(Number(v))} options={Array.from({ length: MAX_CHILDREN + 1 }, (_, i) => ({ value: String(i), label: String(i) }))} />
+          </Field>
         </div>
         <label className="flex cursor-pointer items-start gap-4 rounded-2xl border border-line p-5 transition-colors hover:border-gold-500/60">
           <input type="checkbox" name="phone_contact" className="mt-1 size-5 shrink-0 accent-gold-500" />
           <span className="text-sm leading-relaxed text-mist">{t.form.phoneContact}</span>
         </label>
-        {children > 0 ? <p className="text-sm leading-relaxed text-mist">{t.form.childrenNote}</p> : null}
-        {Array.from({ length: children }, (_, i) => (
+        {kids > 0 ? <p className="text-sm leading-relaxed text-mist">{t.form.childrenNote}</p> : null}
+        {Array.from({ length: kids }, (_, i) => (
           <ChildFields key={i} n={i + 1} lang={lang} t={t} />
         ))}
         <Field label={t.form.howHeard} htmlFor="od_how_heard">
