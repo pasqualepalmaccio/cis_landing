@@ -9,11 +9,13 @@ import { Eyebrow, SectionHead } from "../section-head";
 import { CARD } from "../ui/card";
 import { IconBadge } from "../ui/icon-badge";
 import type { IconName } from "../ui/icons";
+import { IcaStrip } from "./ica-strip";
+import { YearGroupsTable } from "./year-groups-table";
 
-/* Pre-K e Primary: temi che si collegano. Lower Secondary: verso il diploma. */
+/* Nursery–Year 6: temi che si collegano. Year 7–9: verso il diploma. */
 const ICONS: IconName[] = ["network", "mortarboard"];
 
-export function Curriculum({ lang, t }: { lang: Lang; t: Dict["curriculum"] }) {
+export function Curriculum({ lang, t, ica }: { lang: Lang; t: Dict["curriculum"]; ica: Dict["ica"] }) {
   return (
     <Section id="curricolo" tone="ivory">
       <SectionHead eyebrow={t.eyebrow} title={t.title} />
@@ -31,6 +33,10 @@ export function Curriculum({ lang, t }: { lang: Lang; t: Dict["curriculum"] }) {
       </div>
 
       <Reveal className="mt-8">
+        <IcaStrip t={ica} />
+      </Reveal>
+
+      <Reveal className="mt-8">
         <Link href={`/${lang}/curricolo`} className="group inline-flex items-center gap-1.5 font-semibold text-bordeaux">
           {t.more}
           <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
@@ -38,6 +44,23 @@ export function Curriculum({ lang, t }: { lang: Lang; t: Dict["curriculum"] }) {
           </span>
         </Link>
       </Reveal>
+
+      <div className="mt-16 border-t border-rule pt-12">
+        <Reveal>
+          <Eyebrow>{t.compare.eyebrow}</Eyebrow>
+          <h3 className="mt-4 max-w-2xl font-display text-[clamp(1.7rem,3.2vw,2.4rem)] font-semibold leading-tight text-heading">{t.compare.title}</h3>
+        </Reveal>
+        <Reveal className="mt-8">
+          <YearGroupsTable lang={lang} t={t.compare} />
+          <p className="mt-3 text-[13px] text-fg-muted">{t.compare.legend}</p>
+        </Reveal>
+        <Reveal className="mt-6 grid gap-4 md:grid-cols-2">
+          <p className="rounded-xl bg-white p-6 leading-relaxed text-fg-muted">{t.compare.opening}</p>
+          <p className="rounded-xl border border-gold-500 bg-white p-6 leading-relaxed text-fg-muted">
+            <Rich text={t.compare.note} />
+          </p>
+        </Reveal>
+      </div>
 
       {t.equivalence && (
         <div className="mt-16 border-t border-rule pt-12">

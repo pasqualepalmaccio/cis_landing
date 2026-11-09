@@ -23,6 +23,20 @@ export const it = {
     close: "Chiudi",
     language: "Lingua",
   },
+  /* Clausola sul curricolo internazionale: va riportata con queste parole,
+     perché la scuola non ha ancora firmato l'accordo con l'ICA. */
+  ica: {
+    short: "Intendiamo **adottare** l'IEYC e l'IPC, previa finalizzazione dell'accordo con l'International Curriculum Association (ICA).",
+    full: "Colico International School **intende adottare** l'International Early Years Curriculum (IEYC) e l'International Primary Curriculum (IPC), previa finalizzazione dell'accordo con l'International Curriculum Association (ICA).",
+    disclaimer: "IEYC e IPC sono creati dall'International Curriculum Association (ICA). Colico International School intende adottarli e non è ancora una scuola abbonata.",
+    link: "Scopri l'International Curriculum Association",
+    href: "https://www.internationalcurriculum.com",
+    alts: {
+      badge: "International Curriculum Association: IEYC e IPC",
+      ieyc: "IEYC, International Early Years Curriculum",
+      ipc: "IPC, International Primary Curriculum",
+    },
+  },
   hero: {
     eyebrow: "Apertura settembre 2027 · Dai 3 ai 14 anni",
     titleLines: ["Scuola internazionale a\u00a0Colico,", "sul Lago di Como"],
@@ -44,7 +58,7 @@ export const it = {
       {
         title: "Per i bambini",
         items: [
-          "Ambiente multilingue e multiculturale, fin dal Pre-K",
+          "Ambiente multilingue e multiculturale, fin dalla Nursery",
           "Si impara anche all'aperto, come parte delle lezioni",
           "Orto, falegnameria e cucina in classe",
         ],
@@ -68,9 +82,9 @@ export const it = {
       {
         title: "Fasce d'età e lingue",
         items: [
-          "Nido/Pre-primaria (3–5) · Primary (6–10) · Lower Secondary (11–14)",
-          "Inglese e italiano come lingue principali",
-          "Francese, tedesco e spagnolo dalla primaria. Cinese e russo facoltativi",
+          "Nursery – Year 1 (3–6) · Year 2 – Year 6 (6–11) · Year 7 – Year 9 (11–14)",
+          "Inglese come prima lingua. Dai 6 anni italiano (3 ore a settimana) e una terza lingua (2 ore a settimana)",
+          "Terza lingua: francese, tedesco o spagnolo. Cinese e russo facoltativi",
         ],
       },
     ],
@@ -80,36 +94,46 @@ export const it = {
     title: "Cosa significa, in pratica",
     cards: [
       {
-        kicker: "Pre-K e Primary",
+        kicker: "Nursery – Year 6 · età 3–11",
         title: "Apprendimento per temi e indagine",
         body: "Il nostro approccio organizza l'apprendimento per unità tematiche (es. «Il nostro pianeta», «Civiltà antiche») che collegano scienze, storia, geografia, arte e lingua in un unico percorso, invece di tenerle separate. Ogni unità lavora insieme su conoscenze, abilità e un tratto del carattere, come la resilienza, la cooperazione o il rispetto.",
       },
       {
-        kicker: "Lower Secondary",
+        kicker: "Year 7 – Year 9 · età 11–14",
         title: "Apprendimento per concetti e contesti globali",
         body: "Dagli 11 ai 14 anni si impara per concetti e per indagine. I progetti mettono insieme più materie e le collegano a problemi veri. È la base per un percorso internazionale che le università di tutto il mondo riconoscono. Stiamo lavorando per ottenere, nel tempo, l'affiliazione formale con le organizzazioni educative internazionali di riferimento.",
       },
     ],
     more: "Scopri come funziona nel dettaglio",
+    compare: {
+      eyebrow: "Equivalenze con il sistema italiano",
+      title: "Età e classi a confronto",
+      head: { stage: "Stage", england: "Inghilterra", ages: "Età", born: "Nati", italy: "Italia (appross.)", status: "Set. 2027" },
+      born: "set {from} – ago {to}",
+      status: { open: "Aperta", gradual: "Gradualmente", later: "Più avanti" },
+      legend: "EYFS = Early Years Foundation Stage · KS = Key Stage. Età nell'anno scolastico 2027/28. Le classi italiane seguono l'anno solare, quindi l'equivalenza è approssimativa.",
+      opening: "All'apertura, a settembre 2027, ci sono le classi dalla Nursery alla Year 3 (3–8 anni). Le altre aprono un po' alla volta.",
+      note: "**Da sapere:** se le iscrizioni bastano, a settembre 2027 possiamo aprire anche le classi fino alla Year 5 (10 anni), con un programma estivo di preparazione all'inglese per i nuovi alunni.",
+    },
     /* Le equivalenze riguardano il sistema scolastico italiano: nella versione
        inglese il materiale del cliente non le riporta. */
     equivalence: {
-      eyebrow: "Equivalenze con il sistema italiano",
-      title: "Pre-K e Grade 1–5: cosa significano",
+      eyebrow: "Il passaggio tra i sistemi",
+      title: "Dalla Nursery alla Year 6: cosa significano",
       cards: [
         {
-          title: "Pre-K (età 3–5)",
-          body: "Corrisponde alla **Scuola dell'infanzia** italiana (materna). Non fa parte dell'obbligo scolastico: si può passare dal sistema italiano al nostro, e viceversa, in qualunque momento, senza alcuna formalità.",
+          title: "Nursery – Year 1 (età 3–6)",
+          body: "Corrisponde alla **Scuola dell'infanzia** italiana (materna, tre anni). Non fa parte dell'obbligo scolastico: si può passare dal sistema italiano al nostro, e viceversa, in qualunque momento, senza alcuna formalità.",
         },
         {
-          title: "Grade 1–5 (età 6–10/11)",
-          body: "Corrisponde alla **Scuola primaria** italiana (1ª–5ª elementare). La nostra scuola sarà iscritta all'albo regionale come istituto non paritario, il che garantisce comunque l'assolvimento dell'obbligo scolastico. In questa fascia il rientro nel sistema italiano resta semplice: è previsto un solo esame di idoneità, sostenuto al termine della quinta elementare, per l'ammissione alla scuola secondaria di primo grado. È la stessa procedura prevista per chiunque arrivi da una scuola non paritaria. Puntiamo alla parità scolastica anche per Grade 1–5 da settembre 2028 (vedi sotto).",
+          title: "Year 2 – Year 6 (età 6–11)",
+          body: "Corrisponde alla **Scuola primaria** italiana (1ª–5ª elementare, cioè Year 2–6). La nostra scuola sarà iscritta all'albo regionale come istituto non paritario, il che garantisce comunque l'assolvimento dell'obbligo scolastico. In questa fascia il rientro nel sistema italiano resta semplice: è previsto un solo esame di idoneità, sostenuto al termine della quinta elementare, per l'ammissione alla scuola secondaria di primo grado. È la stessa procedura prevista per chiunque arrivi da una scuola non paritaria. Puntiamo alla parità scolastica anche per Year 2–6 da settembre 2028 (vedi sotto).",
         },
       ],
       parity: {
         title: "Parità scolastica per tutta la scuola",
-        body: "Puntiamo alla **parità scolastica** per tutto l'istituto, Grade 1–5 compresa, da settembre 2028, quando apre la Lower Secondary (dal Grade 6, età 11+). Una volta ottenuta, la scuola potrà rilasciare titoli con piena validità legale per tutte le classi, senza necessità di esami esterni per il passaggio tra sistemi. *La parità è soggetta all'approvazione del MIUR: la data indicata è il nostro obiettivo, non una garanzia.*",
-        note: "Fino a quel momento, per Grade 1–5 resta valida la procedura descritta sopra: un solo esame di idoneità al termine della quinta elementare.",
+        body: "Puntiamo alla **parità scolastica** per tutto l'istituto, Year 2–6 compresa, da settembre 2028, quando aprono le classi Year 7–9 (età 11+). Una volta ottenuta, la scuola potrà rilasciare titoli con piena validità legale per tutte le classi, senza necessità di esami esterni per il passaggio tra sistemi. *La parità è soggetta all'approvazione del MIUR: la data indicata è il nostro obiettivo, non una garanzia.*",
+        note: "Fino a quel momento, per Year 2–6 resta valida la procedura descritta sopra: un solo esame di idoneità al termine della quinta elementare.",
       },
     } as { eyebrow: string; title: string; cards: { title: string; body: string }[]; parity: { title: string; body: string; note: string } } | null,
   },
@@ -144,39 +168,55 @@ export const it = {
   philosophy: {
     eyebrow: "Filosofia della scuola",
     title: "Alcune scelte non sono negoziabili",
-    controls: { region: "Filosofia della scuola: scorri con le frecce", prev: "Scheda precedente", next: "Scheda successiva", goTo: "Vai alla scheda {n}" },
     cards: [
       {
         tag: "Lettura",
+        image: { src: "/images/filosofia-lettura.jpg", alt: "Una bambina legge un libro in biblioteca", position: "50% 100%" },
         title: "Una pausa dedicata a leggere",
         body: "Una delle tre pause giornaliere è riservata alla lettura individuale e silenziosa, nella lingua che il bambino sceglie, anche la sua lingua madre. Poi in classe quei libri si raccontano, si riassumono e se ne discute con i compagni. Così leggere diventa un'abitudine, e spesso un piacere, già dai primi anni.",
       },
       {
         tag: "Comunicazione",
+        image: { src: "/images/filosofia-comunicazione.jpg", alt: "Un bambino presenta qualcosa alla classe", position: "50% 10%" },
         title: "Saper parlare e saper ascoltare",
         body: "Per noi comunicare con sicurezza conta quanto una materia. Dai primi anni i bambini imparano a spiegare un'idea con chiarezza, a parlare davanti agli altri e ad ascoltare davvero chi la pensa diversamente prima di rispondere. Al CIS si allena ogni giorno, in classe.",
       },
       {
         tag: "Compiti",
+        image: { src: "/images/filosofia-compiti.jpg", alt: "Un quaderno con la parola homework cancellata", position: "50% 50%" },
         title: "Niente compiti fino a 10 anni",
         body: "Il lavoro si finisce in classe, durante l'orario normale, senza contare sui servizi facoltativi del pomeriggio. Pomeriggi e sere restano alla famiglia.",
       },
       {
         tag: "Zero schermi",
+        image: { src: "/images/filosofia-schermi.jpg", alt: "Un bambino osserva una pianta con la lente d'ingrandimento", position: "50% 28%" },
         title: "Un uso consapevole degli schermi",
         body: "A scuola i dispositivi si usano solo quando servono alla lezione, per esempio per esercizi differenziati di matematica o per imparare a usare il digitale con metodo. Alle famiglie proponiamo poche regole di buon senso anche a casa, soprattutto per tenere i più piccoli lontani dai social.",
       },
       {
         tag: "Uniforme",
+        image: { src: "/images/filosofia-uniforme.jpg", alt: "Tre alunni del CIS con la polo blu e lo stemma della scuola", position: "50% 35%" },
         title: "Tutti uguali, almeno nei vestiti",
         body: "Ci si sente parte della stessa scuola e la mattina si fa prima.",
       },
-      {
-        tag: "Calendario",
-        title: "~185 giorni, pause regolari",
-        body: "Da settembre a giugno, con una pausa ogni due mesi circa per non arrivare stremati.",
-      },
     ],
+    calendar: {
+      tag: "Calendario",
+      title: "2027/28: pause vere, un'estate più corta",
+      first: "Primo giorno",
+      last: "Ultimo giorno",
+      back: "Rientro",
+      breaks: { autumn: "Autunno", christmas: "Natale", carnival: "Carnevale", spring: "Primavera" },
+      daysOff: "{n} giorni di pausa",
+      stats: [
+        { value: "175", label: "giorni di scuola" },
+        { value: "5 settimane", label: "di pause durante l'anno" },
+        { value: "11,5 settimane", label: "di estate, contro le 14 delle scuole italiane" },
+        { value: "8:30–15:30", label: "la giornata scolastica, con il doposcuola fino alle 17:30" },
+      ],
+      note: "Natale in linea con le scuole italiane. Chiuso anche l'8 dicembre, il Lunedì dell'Angelo e il 2 giugno. Campus facoltativi in estate e durante le pause.",
+    },
+    imagesNote: "Immagini illustrative.",
   },
   safety: {
     eyebrow: "Sicurezza e protezione",
@@ -185,6 +225,7 @@ export const it = {
     cards: [
       {
         title: "Personale",
+        image: { src: "/images/sicurezza-personale.jpg", alt: "Tre persone dello staff del CIS con il badge", position: "50% 20%" },
         items: [
           "Verifica penale internazionale e referenze obbligatorie per tutto il personale",
           "Safeguarding lead designato, punto di riferimento unico per ogni segnalazione",
@@ -193,6 +234,7 @@ export const it = {
       },
       {
         title: "Spazi e vigilanza",
+        image: { src: "/images/sicurezza-spazi.jpg", alt: "Bambini che giocano a calcio all'aperto sotto lo sguardo di un'insegnante", position: "50% 55%" },
         items: [
           "Politica «mai soli»: nessun adulto resta mai da solo con un bambino",
           "Aule vetrate, sempre visibili",
@@ -201,6 +243,7 @@ export const it = {
       },
       {
         title: "Trasporto",
+        image: { src: "/images/sicurezza-bus.jpg", alt: "Bambini che salgono sullo scuolabus giallo del CIS", position: "50% 50%" },
         items: [
           "Badge sullo scuolabus: un SMS avvisa i genitori quando il figlio sale e scende",
           "Incluso nella retta, nessun costo aggiuntivo",
@@ -209,12 +252,14 @@ export const it = {
       },
       {
         title: "Dati personali",
+        image: { src: "/images/sicurezza-dati.jpg", alt: "Un portatile con lo scudo e il lucchetto della sicurezza dei dati", position: "80% 50%" },
         items: [
           "Dati di presenza e localizzazione trattati solo a fini di sicurezza",
           "Consenso esplicito dei genitori raccolto all'iscrizione, conforme al GDPR",
         ],
       },
     ],
+    imagesNote: "Immagini illustrative.",
   },
   fees: {
     eyebrow: "Costi",
@@ -229,15 +274,15 @@ export const it = {
       totalNote: "escl. NSAF, mensa, bus",
     },
     tiers: [
-      { name: "Pre-K", ages: "età 3–5", nsaf: 2000, tuition: 10500, registration: 1100 },
-      { name: "Grade 1–5", ages: "età 6–10/11", nsaf: 2000, tuition: 15000, registration: 1100 },
+      { name: "Nursery – Year 1", ages: "età 3–6", nsaf: 2000, tuition: 10500, registration: 1100 },
+      { name: "Year 2 – Year 6", ages: "età 6–11", nsaf: 2000, tuition: 15000, registration: 1100 },
     ],
     schedule: {
       title: "Piano di pagamento per l'anno scolastico 2027/28",
       lead: "Cinque rate, dall'iscrizione alla fine del primo anno.",
       head: { instalment: "Rata", due: "Scadenza" },
       rows: [
-        { id: "P1", due: "Ott-dic 2026", what: "NSAF + iscrizione", prek: 3100, grade: 3100 },
+        { id: "P1", due: "Dic 2026-gen 2027", what: "NSAF + iscrizione", prek: 3100, grade: 3100 },
         { id: "P2", due: "Giugno 2027", what: "25% retta", prek: 2625, grade: 3750 },
         { id: "P3", due: "Ottobre 2027", what: "25% retta", prek: 2625, grade: 3750 },
         { id: "P4", due: "Dicembre 2027", what: "25% retta", prek: 2625, grade: 3750 },
@@ -264,12 +309,14 @@ export const it = {
           "Il preside e il team fondatore si uniscono al progetto",
           "Avviato il riconoscimento ministeriale (MIUR)",
           "Curricolo internazionale confermato",
+          "Incontri «Meet & Discover» con le famiglie (novembre-dicembre)",
         ],
         highlight: "Apertura delle iscrizioni",
       },
-      { when: "Gennaio-agosto 2027", title: "Pre-apertura", body: "Allestimento della sede, primi insegnanti, Meet & Discover, attivazione del servizio bus, campagna di iscrizioni.", items: [], highlight: null },
-      { when: "Settembre 2027", title: "Apre la International Primary", body: "Arrivano i primi studenti, dai 3 agli 8 anni. Il bus è in servizio e il consiglio dei genitori è attivo.", items: [], highlight: null },
-      { when: "2028-2031", title: "La scuola cresce", body: "Apre la Lower Secondary. I primi bambini della Primary continuano qui, e la scuola arriva a 120 studenti.", items: [], highlight: null },
+      { when: "20 gennaio 2027", title: "Conferma dell'apertura, in base alle iscrizioni", body: "È il giorno in cui decidiamo. Se le iscrizioni raggiungono la soglia necessaria confermiamo l'apertura a settembre 2027 e partono i lavori. A rendere possibile questo momento sono le famiglie che scelgono presto.", items: [], highlight: null },
+      { when: "Gennaio-agosto 2027", title: "Pre-apertura", body: "Allestimento della sede, primi insegnanti, Meet & Discover, attivazione del servizio bus, campagna di iscrizioni.", items: ["I lavori finiscono fra maggio e giugno"], highlight: null },
+      { when: "Settembre 2027", title: "Apertura: dalla Nursery alla Year 3", body: "Arrivano i primi studenti, dai 3 agli 8 anni. Il bus è in servizio e il consiglio dei genitori è attivo.", items: [], highlight: null },
+      { when: "2028-2031", title: "La scuola cresce", body: "Aprono le classi Year 7–9. I primi alunni continuano il loro percorso qui, e la scuola arriva a 120 studenti.", items: [], highlight: null },
     ],
   },
   interest: {
@@ -330,8 +377,8 @@ export const it = {
       ],
     },
     primary: {
-      kicker: "Pre-K e Primary · età 3–10",
-      title: "Pre-K e Primary: apprendimento per temi e indagine",
+      kicker: "Nursery – Year 6 · età 3–11",
+      title: "Nursery – Year 6: apprendimento per temi e indagine",
       lead: "Il nostro approccio organizza l'apprendimento in unità tematiche che collegano più materie in un unico percorso, invece di insegnarle una per una. Lo fanno molte scuole internazionali.",
       processTitle: "Come funziona: il processo in 5 fasi",
       steps: [
@@ -379,8 +426,8 @@ export const it = {
       ],
     },
     secondary: {
-      kicker: "Lower Secondary · età 11–14",
-      title: "Lower Secondary: apprendimento per concetti e contesti globali",
+      kicker: "Year 7 – Year 9 · età 11–14",
+      title: "Year 7 – Year 9: apprendimento per concetti e contesti globali",
       lead: "Dagli 11 ai 14 anni le lezioni partono da concetti chiave e da situazioni reali nel mondo. È la base per un percorso internazionale riconosciuto. Stiamo lavorando per ottenere, nel tempo, l'affiliazione formale con le organizzazioni educative internazionali di riferimento.",
       cards: [
         {
@@ -414,7 +461,7 @@ export const it = {
     },
     why: {
       title: "Perché questa combinazione",
-      body: "Primaria e Lower Secondary seguono la stessa idea: si impara per indagine, e accanto agli obiettivi di materia ci sono quelli personali e internazionali. Per questo il passaggio dall'una all'altra viene naturale. Molte scuole internazionali lavorano così.",
+      body: "Nursery–Year 6 e Year 7–9 seguono la stessa idea: si impara per indagine, e accanto agli obiettivi di materia ci sono quelli personali e internazionali. Per questo il passaggio dalla Year 6 alla Year 7 viene naturale e non è un cambio di sistema. Molte scuole internazionali lavorano così.",
     },
     after: {
       kicker: "Domanda frequente",
@@ -422,11 +469,11 @@ export const it = {
       cards: [
         {
           title: "La nostra visione di crescita",
-          body: "Più avanti vorremmo portare la Lower Secondary fino ai 16 anni e valutare un percorso pre-universitario internazionale (16–18 anni), man mano che crescono le prime classi. Non abbiamo ancora date: dipende da come cresce la scuola. È comunque la direzione, insieme all'affiliazione con le organizzazioni educative internazionali.",
+          body: "Più avanti vorremmo portare il percorso oltre la Year 9, fino ai 16 anni, e valutare un percorso pre-universitario internazionale (16–18 anni), man mano che crescono le prime classi. Non abbiamo ancora date: dipende da come cresce la scuola. È comunque la direzione, insieme all'affiliazione con le organizzazioni educative internazionali.",
         },
         {
           title: "Se la scuola non si sarà ancora estesa",
-          body: "Il nostro approccio per la Lower Secondary è pensato per essere pienamente compatibile con i percorsi internazionali più diffusi: chi finisce da noi i tre anni dagli 11 ai 14 può continuare senza problemi in un'altra scuola internazionale, in Italia o all'estero.",
+          body: "Il nostro approccio per Year 7–9 è pensato per essere pienamente compatibile con i percorsi internazionali più diffusi: chi finisce da noi i tre anni dagli 11 ai 14 può continuare senza problemi in un'altra scuola internazionale, in Italia o all'estero.",
         },
       ],
     },

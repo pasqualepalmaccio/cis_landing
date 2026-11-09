@@ -55,7 +55,7 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
         <ScrollProgress />
         <SiteNav lang={lang} t={t.nav} />
         <main className="overflow-x-clip">{children}</main>
-        <SiteFooter lang={lang} t={t.footer} legal={t.legal} />
+        <SiteFooter lang={lang} t={t.footer} legal={t.legal} ica={t.ica.disclaimer} />
         {TRACKING_ENABLED && (
           <>
             <ConsentBanner lang={lang} t={t.consent} />

@@ -31,12 +31,12 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   return (
     <>
       <JsonLd data={schoolJsonLd(lang, t.meta.description)} />
-      <Hero lang={lang} t={t.hero} />
+      <Hero lang={lang} t={t.hero} ica={t.ica} />
       <Vision t={t.vision} />
-      <Curriculum lang={lang} t={t.curriculum} />
+      <Curriculum lang={lang} t={t.curriculum} ica={t.ica} />
       <Access t={t.access} />
       <Campus t={t.campus} />
-      <Philosophy t={t.philosophy} />
+      <Philosophy lang={lang} t={t.philosophy} />
       <Safety t={t.safety} />
       <Fees lang={lang} t={t.fees} />
       <Timeline t={t.timeline} />

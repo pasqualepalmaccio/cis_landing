@@ -9,11 +9,12 @@ import type { Dict, Lang } from "@/content";
 import { Container } from "../layout/container";
 import { Magnetic } from "../motion/magnetic";
 import { SplitWords } from "../motion/split-words";
+import { Rich } from "../rich";
 import { ButtonLink } from "../ui/button-link";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-export function Hero({ lang, t }: { lang: Lang; t: Dict["hero"] }) {
+export function Hero({ lang, t, ica }: { lang: Lang; t: Dict["hero"]; ica: Dict["ica"] }) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -98,6 +99,20 @@ export function Hero({ lang, t }: { lang: Lang; t: Dict["hero"] }) {
                 <ButtonLink href="#visione" variant="ghost">
                   {t.explore}
                 </ButtonLink>
+              </motion.div>
+              {/* Il curricolo internazionale, con la clausola: l'accordo con l'ICA non è ancora firmato. */}
+              <motion.div
+                initial={reduce ? false : { opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 1.9, ease }}
+                className="mt-7 flex max-w-xl items-center gap-4"
+              >
+                <a href="#curricolo" className="shrink-0 rounded-lg bg-cream px-3 py-2">
+                  <Image src="/images/ica/ica-ieyc-ipc.svg" alt={ica.alts.badge} width={175} height={70} className="h-11 w-auto" />
+                </a>
+                <p className="text-xs leading-snug text-white/85 [text-shadow:0_1px_3px_rgba(0,0,0,0.8)]">
+                  <Rich text={ica.short} />
+                </p>
               </motion.div>
             </div>
 

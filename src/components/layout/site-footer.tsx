@@ -8,7 +8,7 @@ import { Mark } from "../brand/mark";
 import { PreferencesButton } from "../consent/preferences-button";
 import { Container } from "./container";
 
-export function SiteFooter({ lang, t, legal }: { lang: Lang; t: Dict["footer"]; legal: Dict["legal"] }) {
+export function SiteFooter({ lang, t, legal, ica }: { lang: Lang; t: Dict["footer"]; legal: Dict["legal"]; ica: string }) {
   return (
     <footer className="relative overflow-hidden bg-navy-950 pt-16">
       <Container className="relative z-10 flex flex-wrap justify-between gap-12 pb-16">
@@ -37,6 +37,10 @@ export function SiteFooter({ lang, t, legal }: { lang: Lang; t: Dict["footer"]; 
             </Link>
           </div>
         </div>
+      </Container>
+      {/* Su ogni pagina, perché il nome dei programmi compare su più pagine. */}
+      <Container className="relative z-10 pb-6">
+        <p className="max-w-[90ch] text-xs text-mist">{ica}</p>
       </Container>
       <Container className="relative z-10 flex flex-wrap gap-x-6 gap-y-2 border-t border-white/12 py-6 text-xs text-mist">
         <Link href={`/${lang}/privacy`} className="transition-colors hover:text-cta">

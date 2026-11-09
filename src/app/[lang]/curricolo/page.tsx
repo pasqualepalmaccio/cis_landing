@@ -7,6 +7,7 @@ import { PageHead } from "@/components/layout/page-head";
 import { Reveal } from "@/components/motion/reveal";
 import { Rich } from "@/components/rich";
 import { CardList } from "@/components/sections/card-list";
+import { IcaStrip } from "@/components/sections/ica-strip";
 import { Eyebrow } from "@/components/section-head";
 import { getDict, isLang } from "@/content";
 import { pageMetadata } from "@/lib/metadata";
@@ -50,7 +51,8 @@ function Card({ title, items = [], paragraphs = [], className = "" }: { title?: 
 export default async function CurriculumPage({ params }: PageProps<"/[lang]/curricolo">) {
   const { lang } = await params;
   if (!isLang(lang)) notFound();
-  const t = getDict(lang).curriculumPage;
+  const dict = getDict(lang);
+  const t = dict.curriculumPage;
 
   return (
     <>
@@ -59,6 +61,9 @@ export default async function CurriculumPage({ params }: PageProps<"/[lang]/curr
         <Block kicker={t.path.kicker} title={t.path.title}>
           <Reveal>
             <Card paragraphs={t.path.paragraphs} />
+          </Reveal>
+          <Reveal className="mt-6">
+            <IcaStrip t={dict.ica} />
           </Reveal>
         </Block>
 

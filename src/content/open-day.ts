@@ -17,8 +17,8 @@ export const MAX_ADULTS = 4;
 export const MAX_CHILDREN = 4;
 /** Stessi codici del CRM (crm/src/lib/event-registration.ts). */
 export const SCHOOL_LEVELS = [
-  { v: "INFANT", it: "Scuola dell'infanzia", en: "Early years (3–5)" },
-  { v: "PRIMARY", it: "Scuola primaria", en: "Primary (6–10)" },
+  { v: "INFANT", it: "Scuola dell'infanzia", en: "Nursery – Year 1 (3–6)" },
+  { v: "PRIMARY", it: "Scuola primaria", en: "Year 2 – Year 6 (6–11)" },
 ] as const;
 export const HOW_HEARD = [
   { v: "word-of-mouth", it: "Passaparola", en: "Word of mouth" },

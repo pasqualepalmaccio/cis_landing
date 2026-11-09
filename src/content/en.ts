@@ -23,6 +23,18 @@ export const en: Dict = {
     close: "Close",
     language: "Language",
   },
+  ica: {
+    short: "We **intend to implement** the IEYC and IPC, subject to finalising our agreement with the International Curriculum Association (ICA).",
+    full: "Colico International School **intends to implement** the International Early Years Curriculum (IEYC) and the International Primary Curriculum (IPC), subject to finalising our agreement with the International Curriculum Association (ICA).",
+    disclaimer: "IEYC and IPC are created by the International Curriculum Association (ICA). Colico International School intends to implement them and is not yet a subscribing school.",
+    link: "Discover the International Curriculum Association",
+    href: "https://www.internationalcurriculum.com",
+    alts: {
+      badge: "International Curriculum Association: IEYC and IPC",
+      ieyc: "IEYC, International Early Years Curriculum",
+      ipc: "IPC, International Primary Curriculum",
+    },
+  },
   hero: {
     eyebrow: "Opening September 2027 · Ages 3 to 14",
     titleLines: ["International school in\u00a0Colico,", "on Lake Como"],
@@ -44,7 +56,7 @@ export const en: Dict = {
       {
         title: "For the children",
         items: [
-          "Multilingual, multicultural environment from Pre-K",
+          "Multilingual, multicultural environment from Nursery",
           "Lessons happen outdoors too, as part of the curriculum",
           "Gardening, woodworking and cooking in class",
         ],
@@ -68,9 +80,9 @@ export const en: Dict = {
       {
         title: "Age groups and languages",
         items: [
-          "Nursery/Pre-primary (3–5) · Primary (6–10) · Lower Secondary (11–14)",
-          "English + Italian as core languages",
-          "French, German and Spanish from primary. Mandarin and Russian optional",
+          "Nursery – Year 1 (3–6) · Year 2 – Year 6 (6–11) · Year 7 – Year 9 (11–14)",
+          "English first. From age 6, Italian (3 hours a week) and a third language (2 hours a week)",
+          "Third language: French, German or Spanish. Mandarin and Russian optional",
         ],
       },
     ],
@@ -80,17 +92,27 @@ export const en: Dict = {
     title: "What this means in practice",
     cards: [
       {
-        kicker: "Pre-K and Primary",
+        kicker: "Nursery – Year 6 · ages 3–11",
         title: "Theme- and inquiry-based learning",
         body: "Our approach organises learning into thematic units (for example \"Our Planet\" or \"Ancient Civilisations\") that connect science, history, geography, art and language into one storyline instead of keeping them apart. Each unit works on knowledge, skills and a character trait at the same time, such as resilience, cooperation or respect.",
       },
       {
-        kicker: "Lower Secondary",
+        kicker: "Year 7 – Year 9 · ages 11–14",
         title: "Concept- and global-context-based learning",
         body: "From 11 to 14, students learn through concepts and inquiry. Projects pull several subjects together and tie them to real problems. It's the groundwork for a pathway that universities around the world recognise. We are working to obtain formal affiliation with the relevant international education organisations over time.",
       },
     ],
     more: "See how it works in detail",
+    compare: {
+      eyebrow: "Equivalence with the Italian system",
+      title: "Ages and year groups compared",
+      head: { stage: "Stage", england: "England", ages: "Ages", born: "Born", italy: "Italy (approx.)", status: "Sept 2027" },
+      born: "Sep {from} – Aug {to}",
+      status: { open: "Open", gradual: "Progressively", later: "Later" },
+      legend: "EYFS = Early Years Foundation Stage · KS = Key Stage. Ages during the 2027/28 school year. Italian classes follow the calendar year, so the equivalence is approximate.",
+      opening: "At opening, in September 2027, we start with Nursery to Year 3 (ages 3–8). Further year groups open progressively.",
+      note: "**Good to know:** if enough children enrol, we can also open classes up to Year 5 (age 10) in September 2027, with a summer English preparation programme for new pupils.",
+    },
     equivalence: null,
   },
   access: {
@@ -122,39 +144,55 @@ export const en: Dict = {
   philosophy: {
     eyebrow: "School philosophy",
     title: "Some choices are not negotiable",
-    controls: { region: "School philosophy: scroll with the arrows", prev: "Previous card", next: "Next card", goTo: "Go to card {n}" },
     cards: [
       {
         tag: "Reading",
+        image: { src: "/images/filosofia-lettura.jpg", alt: "A pupil reading a book in the library", position: "50% 100%" },
         title: "A break dedicated to reading",
         body: "One of the three daily breaks is set aside for silent, individual reading, in whatever language the child picks, mother tongue included. Back in class, children retell those books, summarise them and talk them over with classmates. Reading becomes a habit, and often a pleasure, from the very first years.",
       },
       {
         tag: "Communication",
+        image: { src: "/images/filosofia-comunicazione.jpg", alt: "A pupil presenting to the class", position: "50% 10%" },
         title: "Communication as a core competency",
         body: "To us, speaking with confidence matters as much as any subject. From the first years, children learn to explain an idea clearly, to speak in front of others and to really listen to people who disagree before answering. At CIS they practise it every day in class.",
       },
       {
         tag: "Homework",
+        image: { src: "/images/filosofia-compiti.jpg", alt: "A notepad with the word homework crossed out", position: "50% 50%" },
         title: "No homework until age 10",
         body: "Lessons are structured so that work is completed in class, within the normal school day, without relying on optional afternoon services. Afternoons and evenings belong to the family.",
       },
       {
         tag: "Zero screens",
+        image: { src: "/images/filosofia-schermi.jpg", alt: "A child exploring a plant with a magnifying glass", position: "50% 28%" },
         title: "A mindful approach to screens",
         body: "At school, devices come out only when a lesson needs them, for example differentiated maths exercises or learning to use digital tools properly. We suggest a few common-sense rules for home as well, mostly to keep younger children away from social media.",
       },
       {
         tag: "Uniform",
+        image: { src: "/images/filosofia-uniforme.jpg", alt: "Three CIS pupils in navy uniform polo shirts with the school crest", position: "50% 35%" },
         title: "Removes visible differences",
         body: "Builds identity and belonging, simplifies mornings, puts everyone on equal footing.",
       },
-      {
-        tag: "Calendar",
-        title: "~185 days, regular breaks",
-        body: "September to June, with a break roughly every two months so nobody runs out of steam.",
-      },
     ],
+    calendar: {
+      tag: "Calendar",
+      title: "2027/28: real breaks, a shorter summer",
+      first: "First day",
+      last: "Last day",
+      back: "Back",
+      breaks: { autumn: "Autumn", christmas: "Christmas", carnival: "Carnival", spring: "Spring" },
+      daysOff: "{n} days off",
+      stats: [
+        { value: "175", label: "school days" },
+        { value: "5 weeks", label: "of breaks during the year" },
+        { value: "11.5 weeks", label: "of summer, against 14 in Italian schools" },
+        { value: "8:30–15:30", label: "school day, with after-school club until 17:30" },
+      ],
+      note: "Christmas aligned with Italian schools. Also closed on 8 December, Easter Monday and 2 June. Optional camps in summer and during breaks.",
+    },
+    imagesNote: "Illustrative images.",
   },
   safety: {
     eyebrow: "Safety and safeguarding",
@@ -163,6 +201,7 @@ export const en: Dict = {
     cards: [
       {
         title: "Staff",
+        image: { src: "/images/sicurezza-personale.jpg", alt: "Three CIS staff members with lanyards", position: "50% 20%" },
         items: [
           "International criminal background check and mandatory references for all staff",
           "Designated safeguarding lead, a single point of contact for any concern",
@@ -171,6 +210,7 @@ export const en: Dict = {
       },
       {
         title: "Spaces and supervision",
+        image: { src: "/images/sicurezza-spazi.jpg", alt: "Children playing football outside with a teacher watching", position: "50% 55%" },
         items: [
           "\"Never alone\" rule: no adult is ever alone with a child",
           "Glazed classroom walls, always visible",
@@ -179,6 +219,7 @@ export const en: Dict = {
       },
       {
         title: "Transport",
+        image: { src: "/images/sicurezza-bus.jpg", alt: "Children boarding the yellow CIS school bus", position: "50% 50%" },
         items: [
           "Bus badge system: parents get an SMS the moment their child boards and gets off",
           "Included in the fees, no extra cost",
@@ -187,12 +228,14 @@ export const en: Dict = {
       },
       {
         title: "Personal data",
+        image: { src: "/images/sicurezza-dati.jpg", alt: "A laptop showing a security shield with a padlock", position: "80% 50%" },
         items: [
           "Attendance and location data used solely for safety purposes",
           "Explicit parental consent collected at enrolment, GDPR-compliant",
         ],
       },
     ],
+    imagesNote: "Illustrative images.",
   },
   fees: {
     eyebrow: "Fees",
@@ -207,15 +250,15 @@ export const en: Dict = {
       totalNote: "excl. NSAF, meals, bus",
     },
     tiers: [
-      { name: "Pre-K", ages: "ages 3–5", nsaf: 2000, tuition: 10500, registration: 1100 },
-      { name: "Grade 1–5", ages: "ages 6–10/11", nsaf: 2000, tuition: 15000, registration: 1100 },
+      { name: "Nursery – Year 1", ages: "ages 3–6", nsaf: 2000, tuition: 10500, registration: 1100 },
+      { name: "Year 2 – Year 6", ages: "ages 6–11", nsaf: 2000, tuition: 15000, registration: 1100 },
     ],
     schedule: {
       title: "Payment schedule for the 2027/28 school year",
       lead: "Five instalments, from enrolment to the end of the first year.",
       head: { instalment: "Instalment", due: "Due date" },
       rows: [
-        { id: "P1", due: "Oct–Dec 2026", what: "NSAF + registration", prek: 3100, grade: 3100 },
+        { id: "P1", due: "Dec 2026–Jan 2027", what: "NSAF + registration", prek: 3100, grade: 3100 },
         { id: "P2", due: "June 2027", what: "25% tuition", prek: 2625, grade: 3750 },
         { id: "P3", due: "October 2027", what: "25% tuition", prek: 2625, grade: 3750 },
         { id: "P4", due: "December 2027", what: "25% tuition", prek: 2625, grade: 3750 },
@@ -242,12 +285,14 @@ export const en: Dict = {
           "The headteacher and founding team join the project",
           "Ministry (MIUR) recognition under way",
           "International curriculum confirmed",
+          "\"Meet & Discover\" meetings with families (November-December)",
         ],
         highlight: "Registrations open",
       },
-      { when: "January-August 2027", title: "Pre-opening", body: "Fitting out the premises, first teachers, Meet & Discover, bus service activation, enrolment campaign.", items: [], highlight: null },
-      { when: "September 2027", title: "The International Primary opens", body: "The first students arrive, aged 3 to 8. The bus is running and the parents' council is up.", items: [], highlight: null },
-      { when: "2028-2031", title: "The school grows", body: "Lower Secondary opens. The first Primary children carry on here, and the school reaches 120 students.", items: [], highlight: null },
+      { when: "20 January 2027", title: "Opening confirmed, based on enrolments", body: "The day we decide. If enrolments reach the required threshold, we confirm the September 2027 opening and works begin. Families who commit early are what make this moment happen.", items: [], highlight: null },
+      { when: "January-August 2027", title: "Pre-opening", body: "Fitting out the premises, first teachers, Meet & Discover, bus service activation, enrolment campaign.", items: ["Works completed between May and June"], highlight: null },
+      { when: "September 2027", title: "Opening: Nursery to Year 3", body: "The first students arrive, aged 3 to 8. The bus is running and the parents' council is up.", items: [], highlight: null },
+      { when: "2028-2031", title: "The school grows", body: "Year 7–9 open. The first pupils continue their journey here, and the school reaches 120 students.", items: [], highlight: null },
     ],
   },
   interest: {
@@ -308,8 +353,8 @@ export const en: Dict = {
       ],
     },
     primary: {
-      kicker: "Pre-K and Primary · ages 3–10",
-      title: "Pre-K and Primary: theme- and inquiry-based learning",
+      kicker: "Nursery – Year 6 · ages 3–11",
+      title: "Nursery – Year 6: theme- and inquiry-based learning",
       lead: "Our approach organises learning into thematic units that connect multiple subjects into a single storyline, instead of teaching them one at a time. Many international schools work this way.",
       processTitle: "How it works: the 5-stage process",
       steps: [
@@ -357,8 +402,8 @@ export const en: Dict = {
       ],
     },
     secondary: {
-      kicker: "Lower Secondary · ages 11–14",
-      title: "Lower Secondary: concept- and global-context-based learning",
+      kicker: "Year 7 – Year 9 · ages 11–14",
+      title: "Year 7 – Year 9: concept- and global-context-based learning",
       lead: "From 11 to 14, lessons start from key concepts and real situations around the world. It's the base for an internationally recognised pathway. We are working to obtain formal affiliation with the relevant international education organisations over time.",
       cards: [
         {
@@ -392,7 +437,7 @@ export const en: Dict = {
     },
     why: {
       title: "Why this combination",
-      body: "Primary and Lower Secondary follow the same idea: learning by inquiry, with personal and international goals next to subject goals. That's why moving from one to the other feels natural. Many international schools work like this.",
+      body: "Nursery–Year 6 and Year 7–9 follow the same idea: learning by inquiry, with personal and international goals next to subject goals. That's why moving from Year 6 to Year 7 feels natural, not like a change of system. Many international schools work like this.",
     },
     after: {
       kicker: "Frequently asked",
@@ -400,11 +445,11 @@ export const en: Dict = {
       cards: [
         {
           title: "Our growth vision",
-          body: "Further ahead, we'd like to take Lower Secondary up to age 16 and look at an international pre-university pathway (16–18) as our first classes grow. There are no dates yet, because it depends on how the school grows. It is the direction, together with affiliation to the international education organisations.",
+          body: "Further ahead, we'd like to extend our pathway beyond Year 9, to age 16, and look at an international pre-university pathway (16–18) as our first classes grow. There are no dates yet, because it depends on how the school grows. It is the direction, together with affiliation to the international education organisations.",
         },
         {
           title: "If the school hasn't extended yet",
-          body: "Our Lower Secondary approach is designed to be fully compatible with the most widely used international pathways: a student who completes our first 3 years (11–14) can move on to another international school, in Italy or abroad, without trouble.",
+          body: "Our Year 7–9 approach is designed to be fully compatible with the most widely used international pathways: a student who completes our first 3 years (11–14) can move on to another international school, in Italy or abroad, without trouble.",
         },
       ],
     },
