@@ -222,9 +222,9 @@ export const en: Dict = {
         { id: "P5", due: "March 2028", what: "25% tuition", prek: 2625, grade: 3750 },
       ],
       total: "Total (NSAF + registration + tuition)",
+      note: "* School materials (books, approx. €750) billed in June together with P2. Cafeteria (approx. €1,650/year, optional) billed in 3 instalments together with P3, P4 and P5. Bus (approx. €1,200/year, optional) invoiced separately.",
     },
     notes: [
-      "* School materials (books, approx. €750) billed in June together with P2. Cafeteria (approx. €1,650/year, optional) billed in 3 instalments together with P3, P4 and P5. Bus (approx. €1,200/year, optional) invoiced separately.",
       "* NSAF: New Student Admission Fee, paid once at enrolment. Fees exclude meals, bus and materials.",
     ],
   },

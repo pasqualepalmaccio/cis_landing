@@ -14,6 +14,11 @@ type Tier = Dict["fees"]["tiers"][number];
 /* Pre-K col fiore dello stemma, Grade 1–5 col tocco. */
 const ICONS: IconName[] = ["flower", "mortarboard"];
 
+/* Il piano delle rate è nascosto su richiesta del committente (9/11/2026), che
+   non vuole ancora mostrarlo. Con lui sparisce la nota che rimanda alle rate.
+   Per rimetterlo basta portare questo valore a true. */
+const SHOW_SCHEDULE = false;
+
 /* Le rette su fondo Blu Lario: due schede di prezzo e, sotto, il piano delle
    cinque rate, che resta una tabella perché è un dato a due dimensioni. I
    totali si calcolano dalle righe: non c'è un numero scritto due volte. */
@@ -34,6 +39,7 @@ export function Fees({ lang, t }: { lang: Lang; t: Dict["fees"] }) {
         ))}
       </div>
 
+      {SHOW_SCHEDULE && (
       <Reveal className="mt-8">
         <div className={`rounded-[20px] p-6 shadow-float sm:p-8 ${CARD}`}>
           <h3 className="font-display text-2xl font-semibold text-heading">{t.schedule.title}</h3>
@@ -71,8 +77,10 @@ export function Fees({ lang, t }: { lang: Lang; t: Dict["fees"] }) {
           </div>
         </div>
       </Reveal>
+      )}
 
       <div className="mt-6 space-y-1.5 text-[13px] text-fg-muted">
+        {SHOW_SCHEDULE && <p>{t.schedule.note}</p>}
         {t.notes.map((n) => (
           <p key={n}>{n}</p>
         ))}

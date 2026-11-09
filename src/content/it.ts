@@ -244,9 +244,9 @@ export const it = {
         { id: "P5", due: "Marzo 2028", what: "25% retta", prek: 2625, grade: 3750 },
       ],
       total: "Totale (NSAF + iscrizione + retta)",
+      note: "* Materiale scolastico (libri, circa €750) addebitato a giugno insieme a P2. Mensa (circa €1.650/anno, opzionale) addebitata in 3 rate insieme a P3, P4 e P5. Bus (circa €1.200/anno, opzionale) fatturato separatamente.",
     },
     notes: [
-      "* Materiale scolastico (libri, circa €750) addebitato a giugno insieme a P2. Mensa (circa €1.650/anno, opzionale) addebitata in 3 rate insieme a P3, P4 e P5. Bus (circa €1.200/anno, opzionale) fatturato separatamente.",
       "* NSAF: New Student Admission Fee, versata una sola volta al momento dell'iscrizione. Rette escluse mensa, bus e materiali.",
     ],
   },
