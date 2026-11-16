@@ -42,6 +42,7 @@ export const legalIt = {
             : "Il sito non usa cookie di statistica né di pubblicità, e il tuo browser non contatta Google né Meta.",
           "Se ci scrivi via email, trattiamo i dati che ci mandi per risponderti.",
           "Se ti iscrivi al Meet & Discover CIS trattiamo i dati descritti nella sezione dedicata qui sotto.",
+          "Se pre-prenoti un posto early bird trattiamo i dati descritti nella sezione dedicata qui sotto.",
           SUBMISSION_ENABLED
             ? "Se compili il modulo di pre-registrazione trattiamo i dati descritti nella sezione dedicata qui sotto."
             : "Il modulo di pre-registrazione non è ancora attivo. Aggiorneremo questa pagina prima di attivarlo.",
@@ -57,6 +58,18 @@ export const legalIt = {
           "La casella «Ho letto l'informativa» non è un consenso: conferma solo che hai letto questa pagina. Senza un tuo consenso non ti mandiamo comunicazioni promozionali. Gli aggiornamenti sulla scuola li riceve solo chi spunta la casella facoltativa e poi conferma l'indirizzo dal link che riceve (art. 6.1.a GDPR). In quel caso conserviamo la prova del consenso: data e ora, pagina, browser e l'impronta cifrata dell'indirizzo IP. Dagli aggiornamenti puoi disiscriverti in ogni momento dal link in ciascuna di quelle email. Le email sull'evento (conferma, promemoria, avvisi) contengono invece il link per annullare l'iscrizione.",
           "I dati sui bambini, la risposta a «come ci avete conosciuto» e i parametri del link si cancellano 12 mesi dopo l'incontro. Resta solo il collegamento alla campagna da cui sei arrivato, per le statistiche. Nome, cognome, email e telefono restano nel nostro gestionale finché servono a seguire il tuo interesse per la scuola, e puoi chiederne la cancellazione in qualsiasi momento. Il server del sito tiene una copia tecnica di sicurezza dell'iscrizione, che si svuota 30 giorni dopo che il gestionale l'ha registrata. Se l'iscrizione non va a buon fine, la copia resta finché non abbiamo risolto il problema con te.",
           "Nel gestionale li vedono solo le persone autorizzate dalla scuola.",
+        ],
+      },
+      {
+        title: "La pre-prenotazione early bird",
+        paragraphs: [
+          "Se compili il modulo di pre-prenotazione early bird trattiamo: nome, cognome, email e telefono del genitore; per ogni figlio nome, cognome se lo indichi e data di nascita; la città in cui vivrete all'ingresso, l'interesse per il bus e il messaggio, se li scrivi. Conserviamo anche la prova dell'accettazione dei termini: la versione e l'impronta del testo che hai letto, data e ora, pagina, browser e un'impronta cifrata del tuo indirizzo IP, mai l'indirizzo in chiaro.",
+          "Quando arriva il bonifico la segreteria registra la data dell'accredito e l'importo ricevuto. Gli altri dati necessari all'iscrizione (ad esempio codice fiscale e indirizzo) non li chiediamo nel modulo: li raccogliamo direttamente da te in seguito.",
+          "Usiamo questi dati per gestire la pre-prenotazione che ci chiedi: mandarti la causale e i dati per il bonifico, abbinare il pagamento, assegnare i posti in ordine di pagamento, gestire rimborsi e recesso e, se non chiedi il rimborso, l'iscrizione definitiva (art. 6.1.b GDPR, esecuzione del contratto). I dati del pagamento li conserviamo anche per gli obblighi contabili e fiscali (art. 6.1.c GDPR).",
+          "Ti chiediamo di non scrivere informazioni sulla salute dei bambini. Se arrivano lo stesso, le cancelliamo.",
+          "Gli aggiornamenti sulla scuola li inviamo solo se spunti la casella facoltativa e confermi l'indirizzo dal link che ricevi (art. 6.1.a GDPR).",
+          "Conserviamo la pre-prenotazione per tutta la durata del rapporto con la scuola. Se recedi o non si arriva all'iscrizione, la conserviamo per il tempo necessario a chiudere il rimborso e a tutelare i diritti delle parti; i documenti contabili del pagamento per il tempo previsto dalla legge (10 anni). Il server del sito tiene una copia tecnica di sicurezza dell'invio, che si svuota 30 giorni dopo che il gestionale l'ha registrato.",
+          "Nel gestionale li vedono solo segreteria e direzione.",
         ],
       },
       ...(SUBMISSION_ENABLED
@@ -81,6 +94,7 @@ export const legalIt = {
           "Far funzionare il sito e tenerlo sicuro: è necessario per offrirti il servizio che chiedi aprendo la pagina e risponde al nostro legittimo interesse alla sicurezza (art. 6.1.b e 6.1.f GDPR).",
           ...when(TRACKING_ENABLED, "Ricordare la tua scelta sui cookie e conservarne la prova: è un obbligo di legge (art. 6.1.c e art. 7.1 GDPR)."),
           "Gestire la tua iscrizione al Meet & Discover CIS: serve a dare seguito alla tua richiesta (art. 6.1.b GDPR).",
+          "Gestire la pre-prenotazione early bird: esecuzione del contratto (art. 6.1.b GDPR) e obblighi contabili e fiscali sul pagamento (art. 6.1.c GDPR).",
           ...when(Boolean(TRACKING_ENABLED && DECLARED.ga4), "Statistiche di visita: solo con il tuo consenso (art. 6.1.a GDPR)."),
           ...when(Boolean(TRACKING_ENABLED && (DECLARED.googleAds || DECLARED.metaPixel)), "Misurare i nostri annunci e mostrarli a chi ha già visitato il sito (remarketing): solo con il tuo consenso (art. 6.1.a GDPR)."),
           "Mandarti aggiornamenti sulla scuola: solo se li chiedi e confermi l'indirizzo (art. 6.1.a GDPR).",
@@ -115,7 +129,7 @@ export const legalIt = {
         title: "Per quanto tempo",
         paragraphs: [
           "I dati tecnici di navigazione restano nei log del server solo per il tempo necessario alla sicurezza del sito.",
-          "Per l'iscrizione al Meet & Discover CIS e la pre-registrazione i tempi sono indicati nelle sezioni dedicate.",
+          "Per l'iscrizione al Meet & Discover CIS, la pre-prenotazione early bird e la pre-registrazione i tempi sono indicati nelle sezioni dedicate.",
           TRACKING_ENABLED
             ? "La durata di ogni cookie è indicata nella cookie policy. Le email restano finché servono a gestire la tua richiesta."
             : "Le email restano finché servono a gestire la tua richiesta.",

@@ -39,6 +39,7 @@ export const legalEn: LegalDict = {
             : "The site uses no statistics or advertising cookies, and your browser does not contact Google or Meta.",
           "If you email us, we use what you send to reply.",
           "If you register for Meet & Discover CIS, we process the data described in the dedicated section below.",
+          "If you pre-book an early-bird place, we process the data described in the dedicated section below.",
           SUBMISSION_ENABLED
             ? "If you fill in the pre-registration form, we process the data described in the dedicated section below."
             : "The pre-registration form is not active yet. We will update this page before switching it on.",
@@ -54,6 +55,18 @@ export const legalEn: LegalDict = {
           "The \"I have read the privacy notice\" box is not consent: it only confirms you have read this page. Without your consent we send no promotional messages. Updates about the school only go to people who tick the optional box and then confirm their address from the link they receive (Art. 6(1)(a) GDPR). In that case we keep proof of the consent: date and time, page, browser and the encrypted fingerprint of your IP address. You can unsubscribe from updates at any time from the link in each of those emails. Emails about the event (confirmation, reminder, notices) carry a link to cancel your registration instead.",
           "The information about children, the answer to \"how did you hear about us\" and the link parameters are deleted 12 months after the meeting. Only the link to the campaign you arrived from remains, for statistics. First and last name, email and phone stay in our management system as long as we need them to follow up on your interest in the school, and you can ask us to delete them at any time. The website server keeps a technical safety copy of the registration, emptied 30 days after the management system has recorded it. If the registration does not go through, the copy stays until we have sorted the problem out with you.",
           "In the management system only people authorised by the school can see it.",
+        ],
+      },
+      {
+        title: "Early-bird pre-booking",
+        paragraphs: [
+          "If you fill in the early-bird pre-booking form, we process: the parent's first and last name, email and phone; for each child the first name, last name if you give it and date of birth; the town you will live in at entry, interest in the bus and your message, if you write them. We also keep proof that you accepted the terms: the version and fingerprint of the text you read, date and time, page, browser and an encrypted fingerprint of your IP address, never the address itself.",
+          "When the bank transfer arrives, the school office records the date it was credited and the amount received. The other details needed for enrolment (such as tax code and address) are not requested in the form: we collect them directly from you later.",
+          "We use this data to handle the pre-booking you ask for: send you the reference and the bank transfer details, match the payment, allocate places in order of payment, handle refunds and withdrawal and, if you do not ask for a refund, the final enrolment (Art. 6(1)(b) GDPR, performance of the contract). We also keep the payment data to meet accounting and tax obligations (Art. 6(1)(c) GDPR).",
+          "Please do not include any health information about your children. If it reaches us anyway, we delete it.",
+          "We only send updates about the school if you tick the optional box and confirm your address from the link you receive (Art. 6(1)(a) GDPR).",
+          "We keep the pre-booking for as long as your relationship with the school lasts. If you withdraw or no enrolment follows, we keep it for as long as needed to complete the refund and protect the rights of both parties; accounting records of the payment for the period required by law (10 years). The website server keeps a technical safety copy of the submission, emptied 30 days after the management system has recorded it.",
+          "In the management system only the school office and management can see it.",
         ],
       },
       ...(SUBMISSION_ENABLED
@@ -78,6 +91,7 @@ export const legalEn: LegalDict = {
           "Running the site and keeping it secure: needed to provide the page you ask for, and in our legitimate interest in security (Art. 6(1)(b) and 6(1)(f) GDPR).",
           ...when(TRACKING_ENABLED, "Remembering your cookie choice and keeping proof of it: a legal obligation (Art. 6(1)(c) and Art. 7(1) GDPR)."),
           "Handling your Meet & Discover CIS registration: needed to follow up on your request (Art. 6(1)(b) GDPR).",
+          "Handling your early-bird pre-booking: performance of the contract (Art. 6(1)(b) GDPR) and accounting and tax obligations on the payment (Art. 6(1)(c) GDPR).",
           ...when(Boolean(TRACKING_ENABLED && DECLARED.ga4), "Visit statistics: only with your consent (Art. 6(1)(a) GDPR)."),
           ...when(Boolean(TRACKING_ENABLED && (DECLARED.googleAds || DECLARED.metaPixel)), "Measuring our ads and showing them to people who have visited the site (remarketing): only with your consent (Art. 6(1)(a) GDPR)."),
           "Sending you updates about the school: only if you ask for them and confirm your address (Art. 6(1)(a) GDPR).",

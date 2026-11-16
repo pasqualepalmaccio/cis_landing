@@ -5,14 +5,16 @@ import type { Lang } from "./index";
    La pagina è il sito principale con un'apertura early bird, la sezione
    delle condizioni e un banner prima delle rette.
 
-   ANTEPRIMA: la pagina non è collegata dal sito ed è fuori dai motori di
-   ricerca finché PREVIEW è true.
+   Con PREVIEW true la pagina è un'anteprima: fuori dai motori di ricerca e
+   con l'avviso in cima. Pubblica dal 16/11/2026.
 
    Pre-prenotazione €1.500 confermata dalla scuola il 16/11/2026. Il totale
    di NSAF + iscrizione su cui vale lo sconto non si scrive qui: si calcola
    dalle rette (src/lib/early-bird/vars.ts), così segue il listino. */
 export const EARLY_BIRD = {
-  PREVIEW: true,
+  PREVIEW: false,
+  /** Modulo di pre-prenotazione acceso (16/11/2026, su richiesta della scuola). */
+  FORM: true,
   /** Pre-prenotazione per bambino. */
   prebooking: 1500,
   places: 20,

@@ -2,18 +2,19 @@ import type { Lang } from "./index";
 
 /* Termini e condizioni early bird: testo della bozza della scuola del
    13/11/2026, con gli importi presi dalla fonte unica (EARLY_BIRD e rette)
-   invece che scritti a mano. NON è il testo definitivo: la bozza dice
-   «in attesa di revisione legale». Il modulo non si accende finché
-   TERMS_APPROVED è false o manca l'email per il recesso (guardia in
-   src/lib/early-bird/switch.ts). Ogni modifica del testo alza
-   TERMS_VERSION: la versione e l'impronta del testo mostrato restano sulla
-   prenotazione come prova dell'accettazione. */
+   invece che scritti a mano. Il modulo si accende solo con TERMS_APPROVED e
+   l'email per il recesso (guardia in src/lib/early-bird/switch.ts). Ogni
+   modifica del testo alza TERMS_VERSION: la versione e l'impronta del testo
+   mostrato restano sulla prenotazione come prova dell'accettazione. */
 
-export const TERMS_VERSION = "bozza-2026-11-13";
-/** Testo approvato dal legale della scuola (per iscritto). */
-export const TERMS_APPROVED = false;
-/** Indirizzo per il recesso: da indicare dalla scuola. */
-export const WITHDRAWAL_EMAIL: string | null = null;
+export const TERMS_VERSION = "2026-11-16";
+/** Pubblicazione autorizzata il 16/11/2026 con il testo della bozza della
+ *  scuola del 13/11, senza revisione legale scritta: rischio accettato e
+ *  registrato in docs/decisioni/2026-11-16-early-bird.md. Quando arriva il
+ *  testo rivisto dal legale si sostituisce qui e si alza TERMS_VERSION. */
+export const TERMS_APPROVED = true;
+/** Indirizzo per il recesso: il contatto della scuola già in uso sul sito. */
+export const WITHDRAWAL_EMAIL: string | null = "info@cis-colico.com";
 
 /* Segnaposto: {prebooking} {combined} {places} {email}. */
 export const earlyBirdTerms: Record<Lang, { title: string; clauses: { title: string; body: string }[]; precontract: { title: string; lines: string[] } }> = {
