@@ -63,8 +63,14 @@ export const earlyBirdCopy = {
         "**Dal 16 gennaio i {prebooking} non sono più rimborsabili.** Vengono trattenuti come NSAF e iscrizione (con lo sconto del 50%) e l'iscrizione del tuo bambino diventa definitiva, subordinatamente alla conferma di apertura del 20 gennaio 2027. Se non apriamo, tutto viene rimborsato.",
       ],
     },
-    soon: "Il modulo di pre-prenotazione sarà disponibile a breve.",
-    questions: "Per domande scrivici a",
+    /* Finché il modulo non c'è, la prenotazione parte da una mail a info@:
+       la scuola risponde con le istruzioni per il bonifico. */
+    book: {
+      cta: "Prenota il tuo posto",
+      note: "Ti si apre una mail per info@cis-colico.com: ti rispondiamo con le istruzioni per il bonifico.",
+      subject: "Pre-prenotazione early bird",
+      body: "Buongiorno,\nvorrei pre-prenotare un posto early bird per l'ingresso a settembre 2027.\n\nNome e cognome del genitore:\nTelefono:\nNumero di bambini:\nAnno di nascita dei bambini:\n\nGrazie",
+    },
   },
   en: {
     meta: {
@@ -105,8 +111,12 @@ export const earlyBirdCopy = {
         "**From 16 January, the {prebooking} is no longer refundable.** It is retained as your NSAF and registration fee (at 50% off), and your child's enrolment becomes final, subject to the opening being confirmed on 20 January 2027. If we do not open, everything is refunded.",
       ],
     },
-    soon: "The pre-booking form will be available soon.",
-    questions: "Questions? Write to",
+    book: {
+      cta: "Book your place",
+      note: "This opens an email to info@cis-colico.com: we will reply with the bank transfer instructions.",
+      subject: "Early-bird pre-booking",
+      body: "Hello,\nI would like to pre-book an early-bird place for entry in September 2027.\n\nParent's full name:\nPhone:\nNumber of children:\nChildren's year of birth:\n\nThank you",
+    },
   },
 } satisfies Record<Lang, unknown>;
 
