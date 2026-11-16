@@ -249,15 +249,15 @@ export const en: Dict = {
       totalNote: "excl. NSAF, meals, bus",
     },
     tiers: [
-      { name: "Nursery – Year 1", ages: "ages 3–6", nsaf: 2000, tuition: 10500, registration: 1100 },
-      { name: "Year 2 – Year 6", ages: "ages 6–11", nsaf: 2000, tuition: 15000, registration: 1100 },
+      { name: "Nursery – Year 1", ages: "ages 3–6", nsaf: 2000, tuition: 10500, registration: 1000 },
+      { name: "Year 2 – Year 6", ages: "ages 6–11", nsaf: 2000, tuition: 15000, registration: 1000 },
     ],
     schedule: {
       title: "Payment schedule for the 2027/28 school year",
       lead: "Five instalments, from enrolment to the end of the first year.",
       head: { instalment: "Instalment", due: "Due date" },
       rows: [
-        { id: "P1", due: "Dec 2026–Jan 2027", what: "NSAF + registration", prek: 3100, grade: 3100 },
+        { id: "P1", due: "Dec 2026–Jan 2027", what: "NSAF + registration", prek: 3000, grade: 3000 },
         { id: "P2", due: "June 2027", what: "25% tuition", prek: 2625, grade: 3750 },
         { id: "P3", due: "October 2027", what: "25% tuition", prek: 2625, grade: 3750 },
         { id: "P4", due: "December 2027", what: "25% tuition", prek: 2625, grade: 3750 },

@@ -273,15 +273,15 @@ export const it = {
       totalNote: "escl. NSAF, mensa, bus",
     },
     tiers: [
-      { name: "Nursery – Year 1", ages: "età 3–6", nsaf: 2000, tuition: 10500, registration: 1100 },
-      { name: "Year 2 – Year 6", ages: "età 6–11", nsaf: 2000, tuition: 15000, registration: 1100 },
+      { name: "Nursery – Year 1", ages: "età 3–6", nsaf: 2000, tuition: 10500, registration: 1000 },
+      { name: "Year 2 – Year 6", ages: "età 6–11", nsaf: 2000, tuition: 15000, registration: 1000 },
     ],
     schedule: {
       title: "Piano di pagamento per l'anno scolastico 2027/28",
       lead: "Cinque rate, dall'iscrizione alla fine del primo anno.",
       head: { instalment: "Rata", due: "Scadenza" },
       rows: [
-        { id: "P1", due: "Dic 2026-gen 2027", what: "NSAF + iscrizione", prek: 3100, grade: 3100 },
+        { id: "P1", due: "Dic 2026-gen 2027", what: "NSAF + iscrizione", prek: 3000, grade: 3000 },
         { id: "P2", due: "Giugno 2027", what: "25% retta", prek: 2625, grade: 3750 },
         { id: "P3", due: "Ottobre 2027", what: "25% retta", prek: 2625, grade: 3750 },
         { id: "P4", due: "Dicembre 2027", what: "25% retta", prek: 2625, grade: 3750 },
