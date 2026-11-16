@@ -1,17 +1,19 @@
 "use client";
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import type { Dict, Lang } from "@/content";
+import { earlyBirdCopy } from "@/content/early-bird";
 
 import { ButtonLink } from "../ui/button-link";
+import { PageLink } from "../ui/page-link";
 import { Brand } from "./brand";
 import { Container } from "./container";
 import { FocusedNav } from "./focused-nav";
 import { LangSwitch } from "./lang-switch";
+import { usePageLinks } from "./use-page-links";
 
 /** Pagine di campagna: chi arriva da un invito resta sulla pagina. Barra con
  *  solo logo e lingua, niente sezioni del sito né «Preiscriviti» (richiesta
@@ -33,9 +35,9 @@ function FullNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
   const [hidden, setHidden] = useState(false);
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-  const onHome = pathname === `/${lang}`;
-  const home = (hash: string) => (onHome ? hash : `/${lang}${hash}`);
+  const links = usePageLinks(lang);
+  const home = links.section;
+  const cta = links.earlyBird ? earlyBirdCopy[lang].book.cta : t.cta;
 
   useMotionValueEvent(scrollY, "change", (y) => {
     const prev = scrollY.getPrevious() ?? 0;
@@ -59,10 +61,10 @@ function FullNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
           <div className="flex min-w-0 items-center">
             <nav className="hidden items-center gap-6 text-sm font-semibold xl:flex">
               {t.links.map((l) => (
-                <Link key={l.href} href={home(l.href)} className={`group relative py-1 transition-colors ${solid ? "text-heading/85 hover:text-heading" : "text-white/90 hover:text-white"}`}>
+                <PageLink key={l.href} href={home(l.href)} className={`group relative py-1 transition-colors ${solid ? "text-heading/85 hover:text-heading" : "text-white/90 hover:text-white"}`}>
                   {l.label}
                   <span className="absolute inset-x-0 -bottom-0.5 h-px origin-right scale-x-0 bg-gold-500 transition-transform duration-500 ease-out-expo group-hover:origin-left group-hover:scale-x-100" />
-                </Link>
+                </PageLink>
               ))}
             </nav>
             <div className="xl:hidden">
@@ -75,8 +77,8 @@ function FullNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
               <LangSwitch lang={lang} label={t.language} />
             </div>
             <span className="hidden sm:block">
-              <ButtonLink href={`/${lang}/registrazione`} size="sm">
-                {t.cta}
+              <ButtonLink href={links.ctaHref} size="sm">
+                {cta}
               </ButtonLink>
             </span>
             <button
@@ -116,15 +118,15 @@ function FullNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
             <Container className="mt-10 flex flex-1 flex-col gap-2">
               {t.links.map((l, i) => (
                 <motion.div key={l.href} initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25 + i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>
-                  <Link href={home(l.href)} onClick={() => setOpen(false)} className="flex items-baseline gap-4 border-b border-line py-4 font-display text-4xl">
+                  <PageLink href={home(l.href)} onClick={() => setOpen(false)} className="flex items-baseline gap-4 border-b border-line py-4 font-display text-4xl">
                     <span className="font-sans text-xs text-gold-500">0{i + 1}</span>
                     {l.label}
-                  </Link>
+                  </PageLink>
                 </motion.div>
               ))}
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="mt-8">
-                <ButtonLink href={`/${lang}/registrazione`} onClick={() => setOpen(false)} arrow>
-                  {t.cta}
+                <ButtonLink href={links.ctaHref} onClick={() => setOpen(false)} arrow>
+                  {cta}
                 </ButtonLink>
               </motion.div>
             </Container>

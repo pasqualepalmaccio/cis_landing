@@ -1,5 +1,7 @@
 import type { Dict, Lang } from "@/content";
 
+export type PageCta = { href: string; label: string };
+
 import { CrestReveal } from "../brand/crest-reveal";
 import { Section } from "../layout/section";
 import { Magnetic } from "../motion/magnetic";
@@ -8,7 +10,8 @@ import { SectionHead } from "../section-head";
 import { ButtonLink } from "../ui/button-link";
 
 /* L'invito finale: un riquadro Blu Lario su fondo bianco, con lo stemma. */
-export function Interest({ lang, t }: { lang: Lang; t: Dict["interest"] }) {
+/* `cta`: dove porta e cosa dice il comando; senza, la pre-registrazione. */
+export function Interest({ lang, t, cta }: { lang: Lang; t: Dict["interest"]; cta?: PageCta }) {
   return (
     <Section id="interesse" tone="white">
       <div className="tone-navy relative isolate flex flex-col items-center overflow-hidden rounded-[20px] bg-navy-900 px-6 py-14 text-center sm:px-12 sm:py-16">
@@ -17,8 +20,8 @@ export function Interest({ lang, t }: { lang: Lang; t: Dict["interest"] }) {
         <SectionHead eyebrow={t.eyebrow} title={t.title} lead={t.lead} align="center" />
         <Reveal>
           <Magnetic strength={0.4}>
-            <ButtonLink href={`/${lang}/registrazione`} arrow>
-              {t.cta}
+            <ButtonLink href={cta?.href ?? `/${lang}/registrazione`} arrow>
+              {cta?.label ?? t.cta}
             </ButtonLink>
           </Magnetic>
           <p className="mt-5 text-[13px] text-white/60">{t.note}</p>

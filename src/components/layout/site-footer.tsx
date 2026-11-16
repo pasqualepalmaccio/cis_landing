@@ -9,6 +9,7 @@ import { Mark } from "../brand/mark";
 import { PreferencesButton } from "../consent/preferences-button";
 import { Icon } from "../ui/icons";
 import { Container } from "./container";
+import { SectionLinks } from "./section-links";
 
 export function SiteFooter({ lang, t, legal, ica }: { lang: Lang; t: Dict["footer"]; legal: Dict["legal"]; ica: string }) {
   return (
@@ -47,11 +48,7 @@ export function SiteFooter({ lang, t, legal, ica }: { lang: Lang; t: Dict["foote
           </div>
           <div className="space-y-3">
             <p className="font-label text-[11px] font-semibold uppercase tracking-[0.08em] text-gold-300">{t.project}</p>
-            {t.links.map((l) => (
-              <Link key={l.href} href={`/${lang}${l.href}`} className="block text-mist transition-colors hover:text-gold-300">
-                {l.label}
-              </Link>
-            ))}
+            <SectionLinks lang={lang} links={t.links} className="block text-mist transition-colors hover:text-gold-300" />
             <Link href={`/${lang}/curricolo`} className="block text-mist transition-colors hover:text-gold-300">
               {t.curriculum}
             </Link>

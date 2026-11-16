@@ -20,6 +20,11 @@ export const EARLY_BIRD = {
   deadline: "2026-12-14T23:59:59+01:00",
 } as const;
 
+/** Dove portano tutte le azioni della pagina early bird: la sezione di
+ *  prenotazione (il modulo quando è acceso, altrimenti la mail a info@). */
+export const EARLY_BIRD_PATH = "/early-bird";
+export const BOOKING_ANCHOR = "#prenota";
+
 /* I segnaposto fra graffe ({prebooking}, {combined}, {places}) si
    riempiono con gli importi qui sopra, nel formato della lingua. */
 export const earlyBirdCopy = {
@@ -34,7 +39,7 @@ export const earlyBirdCopy = {
       eyebrow: "Early bird · Solo per i primi {places} posti",
       titleLines: ["Scegli la Colico International School tra i primi", "15% sulla retta del primo anno"],
       sub: "50% su NSAF e iscrizione, listino bloccato per cinque anni. Entro il 14 dicembre 2026.",
-      cta: "Scopri le condizioni early bird",
+      cta: "Prenota il tuo posto",
     },
     countdown: {
       label: "L'offerta early bird termina tra",
@@ -44,7 +49,7 @@ export const earlyBirdCopy = {
     banner: {
       label: "Early bird",
       text: "15% sulla retta del primo anno, 50% su NSAF e iscrizione e listino bloccato per cinque anni. Entro il 14 dicembre 2026, solo per i primi {places} posti.",
-      link: "Vedi le condizioni",
+      link: "Prenota il tuo posto",
     },
     eyebrow: "Early bird",
     title: "Condizioni early bird",
@@ -67,7 +72,10 @@ export const earlyBirdCopy = {
        la scuola risponde con le istruzioni per il bonifico. */
     book: {
       cta: "Prenota il tuo posto",
-      note: "Ti si apre una mail per info@cis-colico.com: ti rispondiamo con le istruzioni per il bonifico.",
+      title: "Pre-prenota il tuo posto",
+      lead: "Scrivici con nome del genitore, telefono, numero e anno di nascita dei bambini. Ti rispondiamo con la causale e i dati per il bonifico, da fare entro il 14 dicembre 2026.",
+      emailCta: "Scrivi a info@cis-colico.com",
+      note: "Se cliccando non si apre la posta, copia l'indirizzo qui sopra e scrivici dal tuo account email.",
       subject: "Pre-prenotazione early bird",
       body: "Buongiorno,\nvorrei pre-prenotare un posto early bird per l'ingresso a settembre 2027.\n\nNome e cognome del genitore:\nTelefono:\nNumero di bambini:\nAnno di nascita dei bambini:\n\nGrazie",
     },
@@ -82,7 +90,7 @@ export const earlyBirdCopy = {
       eyebrow: "Early bird · First {places} places only",
       titleLines: ["Be among the first to choose Colico International School", "15% off first-year tuition"],
       sub: "50% off NSAF and registration, price list frozen for five years. By 14 December 2026.",
-      cta: "See the early-bird conditions",
+      cta: "Book your place",
     },
     countdown: {
       label: "The early-bird offer ends in",
@@ -92,7 +100,7 @@ export const earlyBirdCopy = {
     banner: {
       label: "Early bird",
       text: "15% off first-year tuition, 50% off NSAF and registration and a price list frozen for five years. By 14 December 2026, for the first {places} places only.",
-      link: "See the conditions",
+      link: "Book your place",
     },
     eyebrow: "Early bird",
     title: "Early-bird conditions",
@@ -113,7 +121,10 @@ export const earlyBirdCopy = {
     },
     book: {
       cta: "Book your place",
-      note: "This opens an email to info@cis-colico.com: we will reply with the bank transfer instructions.",
+      title: "Pre-book your place",
+      lead: "Write to us with the parent's name, phone number, and the number and year of birth of your children. We will reply with your reference and the bank transfer details; the transfer is due by 14 December 2026.",
+      emailCta: "Write to info@cis-colico.com",
+      note: "If clicking does not open your email, copy the address above and write to us from your email account.",
       subject: "Early-bird pre-booking",
       body: "Hello,\nI would like to pre-book an early-bird place for entry in September 2027.\n\nParent's full name:\nPhone:\nNumber of children:\nChildren's year of birth:\n\nThank you",
     },

@@ -3,20 +3,22 @@ import { notFound } from "next/navigation";
 
 import { earlyBirdVars } from "@/lib/early-bird/vars";
 import { EarlyBirdBanner } from "@/components/early-bird/banner";
+import { BookingByEmail } from "@/components/early-bird/booking-by-email";
 import { BookingSection } from "@/components/early-bird/booking-section";
 import { EarlyBirdConditions } from "@/components/early-bird/conditions";
 import { Countdown } from "@/components/early-bird/countdown";
 import { Hero } from "@/components/sections/hero";
 import { HomeBody } from "@/components/sections/home-body";
 import { getDict, isLang } from "@/content";
-import { EARLY_BIRD, earlyBirdCopy } from "@/content/early-bird";
+import { BOOKING_ANCHOR, EARLY_BIRD, earlyBirdCopy } from "@/content/early-bird";
 import { fill } from "@/content/open-day";
 import { earlyBirdFormSwitch } from "@/lib/early-bird/switch";
 import { pageMetadata } from "@/lib/metadata";
 
 /* La pagina early bird è il sito principale con un'apertura che annuncia
    l'offerta, le condizioni subito dopo e un banner prima delle rette. Il
-   resto (curricolo, sede, rette, percorso) è lo stesso della home.
+   resto (curricolo, sede, rette, percorso) è lo stesso della home. Ogni
+   azione della pagina porta alla sezione di prenotazione (#prenota).
    Finché è un'anteprima è fuori dai motori di ricerca. */
 export async function generateMetadata({ params }: PageProps<"/[lang]/early-bird">): Promise<Metadata> {
   const { lang } = await params;
@@ -36,10 +38,10 @@ export default async function EarlyBirdPage({ params }: PageProps<"/[lang]/early
 
   return (
     <>
-      <Hero lang={lang} t={hero} ica={t.ica} ctaHref="#early-bird" top={<Countdown deadline={EARLY_BIRD.deadline} t={eb.countdown} />} />
-      <EarlyBirdConditions t={eb} vars={vars} formEnabled={form.enabled} />
-      {form.enabled ? <BookingSection lang={lang} form={form} /> : null}
-      <HomeBody lang={lang} t={t} beforeFees={<EarlyBirdBanner t={eb.banner} vars={vars} />} />
+      <Hero lang={lang} t={hero} ica={t.ica} ctaHref={BOOKING_ANCHOR} top={<Countdown deadline={EARLY_BIRD.deadline} t={eb.countdown} />} />
+      <EarlyBirdConditions t={eb} vars={vars} />
+      {form.enabled ? <BookingSection lang={lang} form={form} /> : <BookingByEmail t={eb.book} />}
+      <HomeBody lang={lang} t={t} beforeFees={<EarlyBirdBanner t={eb.banner} vars={vars} />} cta={{ href: BOOKING_ANCHOR, label: eb.book.cta }} />
     </>
   );
 }

@@ -6,7 +6,7 @@ import { Access } from "./access";
 import { Campus } from "./campus";
 import { Curriculum } from "./curriculum";
 import { Fees } from "./fees";
-import { Interest } from "./interest";
+import { Interest, type PageCta } from "./interest";
 import { Philosophy } from "./philosophy";
 import { Safety } from "./safety";
 import { Timeline } from "./timeline";
@@ -15,8 +15,9 @@ import { Vision } from "./vision";
 /* Il corpo del sito dopo l'apertura, in un posto solo: lo usano la home e
    la pagina early bird, che cambia solo l'apertura e aggiunge i richiami.
    Fondi alternati (bianco, avorio, blu) nell'ordine del prototipo.
-   `beforeFees`: ciò che va subito prima delle rette (il banner early bird). */
-export function HomeBody({ lang, t, beforeFees }: { lang: Lang; t: Dict; beforeFees?: ReactNode }) {
+   `beforeFees`: ciò che va subito prima delle rette (il banner early bird);
+   `cta`: dove porta l'invito finale (sulla pagina early bird, alla prenotazione). */
+export function HomeBody({ lang, t, beforeFees, cta }: { lang: Lang; t: Dict; beforeFees?: ReactNode; cta?: PageCta }) {
   return (
     <>
       <Vision t={t.vision} />
@@ -28,7 +29,7 @@ export function HomeBody({ lang, t, beforeFees }: { lang: Lang; t: Dict; beforeF
       {beforeFees}
       <Fees lang={lang} t={t.fees} />
       <Timeline t={t.timeline} />
-      <Interest lang={lang} t={t.interest} />
+      <Interest lang={lang} t={t.interest} cta={cta} />
     </>
   );
 }

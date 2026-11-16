@@ -1,19 +1,18 @@
 import type { EarlyBirdCopy } from "@/content/early-bird";
-import { EARLY_BIRD } from "@/content/early-bird";
+import { BOOKING_ANCHOR, EARLY_BIRD } from "@/content/early-bird";
 import { fill } from "@/content/open-day";
 
 import { Section } from "../layout/section";
 import { Reveal } from "../motion/reveal";
 import { Rich } from "../rich";
 import { SectionHead } from "../section-head";
+import { ButtonLink } from "../ui/button-link";
 import { CARD } from "../ui/card";
 import type { EarlyBirdVars } from "@/lib/early-bird/vars";
 
 /* Le condizioni early bird: tre vantaggi, come assicurarseli e il comando
-   per prenotare (per ora una mail a info@, finché il modulo non c'è). */
-/* `formEnabled`: con il modulo acceso il comando porta al modulo (#prenota),
-   altrimenti apre la mail a info@. */
-export function EarlyBirdConditions({ t, vars, formEnabled }: { t: EarlyBirdCopy; vars: EarlyBirdVars; formEnabled: boolean }) {
+   che porta alla sezione di prenotazione (modulo o mail, secondo l'interruttore). */
+export function EarlyBirdConditions({ t, vars }: { t: EarlyBirdCopy; vars: EarlyBirdVars }) {
   return (
     <Section id="early-bird" tone="ivory">
       {EARLY_BIRD.PREVIEW ? (
@@ -47,16 +46,10 @@ export function EarlyBirdConditions({ t, vars, formEnabled }: { t: EarlyBirdCopy
         </div>
       </Reveal>
       <Reveal delay={0.2}>
-        <div className="mt-10 flex flex-col items-center gap-3 text-center">
-          {/* Una mail, non un collegamento interno: per questo <a> e non ButtonLink. */}
-          <a
-            href={formEnabled ? "#prenota" : `mailto:info@cis-colico.com?subject=${encodeURIComponent(t.book.subject)}&body=${encodeURIComponent(t.book.body)}`}
-            className="group inline-flex items-center gap-2 rounded-[4px] bg-action px-7 py-4 font-label text-[13px] font-semibold uppercase tracking-[0.06em] text-white transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-action-hover hover:shadow-lift"
-          >
+        <div className="mt-10 flex justify-center">
+          <ButtonLink href={BOOKING_ANCHOR} arrow>
             {t.book.cta}
-            <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </a>
-          {formEnabled ? null : <p className="max-w-md text-sm text-fg-muted">{t.book.note}</p>}
+          </ButtonLink>
         </div>
       </Reveal>
     </Section>
