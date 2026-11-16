@@ -2,6 +2,9 @@ import type { Lang } from "./index";
 
 /* Le condizioni early bird (bozza del committente, 13/11/2026).
 
+   La pagina è il sito principale con un'apertura early bird, la sezione
+   delle condizioni e un banner prima delle rette.
+
    ANTEPRIMA: la pagina non è collegata dal sito ed è fuori dai motori di
    ricerca finché PREVIEW è true. Gli importi sono quelli della bozza e vanno
    confermati: la pre-prenotazione era la metà di NSAF + iscrizione quando
@@ -25,6 +28,18 @@ export const earlyBirdCopy = {
       description: "15% sulla retta del primo anno, 50% su NSAF e iscrizione, listino bloccato per cinque anni. Per l'ingresso a settembre 2027.",
     },
     preview: "Anteprima: questa pagina non è ancora pubblica e gli importi sono da confermare.",
+    /* Apertura: sostituisce solo questi testi di quella della home. */
+    hero: {
+      eyebrow: "Early bird · Solo per i primi {places} posti",
+      titleLines: ["Iscriviti tra le prime famiglie:", "15% sulla retta del primo anno"],
+      sub: "50% su NSAF e iscrizione, listino bloccato per cinque anni. Entro il 14 dicembre 2026.",
+      cta: "Scopri le condizioni early bird",
+    },
+    banner: {
+      label: "Early bird",
+      text: "15% sulla retta del primo anno, 50% su NSAF e iscrizione e listino bloccato per cinque anni. Entro il 14 dicembre 2026, solo per i primi {places} posti.",
+      link: "Vedi le condizioni",
+    },
     eyebrow: "Early bird",
     title: "Condizioni early bird",
     lead: "Per le famiglie che scelgono per prime CIS, con ingresso a settembre 2027.",
@@ -51,6 +66,17 @@ export const earlyBirdCopy = {
       description: "15% off first-year tuition, 50% off NSAF and registration, price list frozen for five years. For entry in September 2027.",
     },
     preview: "Preview: this page is not public yet and the amounts are still to be confirmed.",
+    hero: {
+      eyebrow: "Early bird · First {places} places only",
+      titleLines: ["Be one of the first families:", "15% off first-year tuition"],
+      sub: "50% off NSAF and registration, price list frozen for five years. By 14 December 2026.",
+      cta: "See the early-bird conditions",
+    },
+    banner: {
+      label: "Early bird",
+      text: "15% off first-year tuition, 50% off NSAF and registration and a price list frozen for five years. By 14 December 2026, for the first {places} places only.",
+      link: "See the conditions",
+    },
     eyebrow: "Early bird",
     title: "Early-bird conditions",
     lead: "For the families who choose CIS first, for entry in September 2027.",

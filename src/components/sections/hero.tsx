@@ -14,7 +14,8 @@ import { ButtonLink } from "../ui/button-link";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-export function Hero({ lang, t, ica }: { lang: Lang; t: Dict["hero"]; ica: Dict["ica"] }) {
+/* `ctaHref`: dove porta il comando principale; senza, alla pre-registrazione. */
+export function Hero({ lang, t, ica, ctaHref }: { lang: Lang; t: Dict["hero"]; ica: Dict["ica"]; ctaHref?: string }) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -93,7 +94,7 @@ export function Hero({ lang, t, ica }: { lang: Lang; t: Dict["hero"]; ica: Dict[
                 className="mt-8 flex flex-wrap items-center gap-4"
               >
                 <Magnetic>
-                  <ButtonLink href={`/${lang}/registrazione`} arrow>
+                  <ButtonLink href={ctaHref ?? `/${lang}/registrazione`} arrow>
                     {t.cta}
                   </ButtonLink>
                 </Magnetic>
