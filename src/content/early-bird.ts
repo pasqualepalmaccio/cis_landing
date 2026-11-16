@@ -31,7 +31,7 @@ export const earlyBirdCopy = {
     /* Apertura: sostituisce solo questi testi di quella della home. */
     hero: {
       eyebrow: "Early bird · Solo per i primi {places} posti",
-      titleLines: ["Iscriviti tra le prime famiglie:", "15% sulla retta del primo anno"],
+      titleLines: ["Scegli la Colico International School tra i primi", "15% sulla retta del primo anno"],
       sub: "50% su NSAF e iscrizione, listino bloccato per cinque anni. Entro il 14 dicembre 2026.",
       cta: "Scopri le condizioni early bird",
     },
@@ -68,7 +68,7 @@ export const earlyBirdCopy = {
     preview: "Preview: this page is not public yet and the amounts are still to be confirmed.",
     hero: {
       eyebrow: "Early bird · First {places} places only",
-      titleLines: ["Be one of the first families:", "15% off first-year tuition"],
+      titleLines: ["Be among the first to choose Colico International School", "15% off first-year tuition"],
       sub: "50% off NSAF and registration, price list frozen for five years. By 14 December 2026.",
       cta: "See the early-bird conditions",
     },
