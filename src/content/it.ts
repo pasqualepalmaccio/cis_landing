@@ -166,7 +166,7 @@ export const it = {
   },
   philosophy: {
     eyebrow: "Filosofia della scuola",
-    title: "Alcune scelte non sono negoziabili",
+    title: "Impegni fondamentali che ci impegniamo a rispettare",
     cards: [
       {
         tag: "Lettura",
@@ -235,9 +235,9 @@ export const it = {
         title: "Spazi e vigilanza",
         image: { src: "/images/sicurezza-spazi.jpg", alt: "Bambini che giocano a calcio all'aperto sotto lo sguardo di un'insegnante", position: "50% 55%" },
         items: [
-          "Politica «mai soli»: nessun adulto resta mai da solo con un bambino",
+          "Elevati standard di tutela dei minori (safeguarding), applicati a tutto il personale",
           "Aule vetrate, sempre visibili",
-          "Accesso dei genitori sempre aperto, senza preavviso",
+          "Genitori sempre benvenuti: colloqui insegnanti–genitori programmati con regolarità sui progressi di ogni bambino; visite durante le lezioni su appuntamento",
         ],
       },
       {
@@ -245,7 +245,7 @@ export const it = {
         image: { src: "/images/sicurezza-bus.jpg", alt: "Bambini che salgono sullo scuolabus giallo del CIS", position: "50% 50%" },
         items: [
           "Badge sullo scuolabus: un SMS avvisa i genitori quando il figlio sale e scende",
-          "Incluso nella retta, nessun costo aggiuntivo",
+          "Servizio bus facoltativo, a pagamento separato (vedi rette)",
           "L'autista segnala immediatamente ogni discesa a una fermata non prevista",
         ],
       },

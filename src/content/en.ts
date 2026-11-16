@@ -142,7 +142,7 @@ export const en: Dict = {
   },
   philosophy: {
     eyebrow: "School philosophy",
-    title: "Some choices are not negotiable",
+    title: "Fundamental commitments we are dedicated to upholding",
     cards: [
       {
         tag: "Reading",
@@ -211,9 +211,9 @@ export const en: Dict = {
         title: "Spaces and supervision",
         image: { src: "/images/sicurezza-spazi.jpg", alt: "Children playing football outside with a teacher watching", position: "50% 55%" },
         items: [
-          "\"Never alone\" rule: no adult is ever alone with a child",
+          "Strong safeguarding standards, applied to all staff",
           "Glazed classroom walls, always visible",
-          "Open-door access for parents, no notice required",
+          "Parents always welcome: regularly scheduled parent–teacher meetings on each child's progress; visits during teaching time by appointment",
         ],
       },
       {
@@ -221,7 +221,7 @@ export const en: Dict = {
         image: { src: "/images/sicurezza-bus.jpg", alt: "Children boarding the yellow CIS school bus", position: "50% 50%" },
         items: [
           "Bus badge system: parents get an SMS the moment their child boards and gets off",
-          "Included in the fees, no extra cost",
+          "Optional bus service, charged separately (see fees)",
           "The driver is alerted immediately if a child exits at the wrong stop",
         ],
       },
