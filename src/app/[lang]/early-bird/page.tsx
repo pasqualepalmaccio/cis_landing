@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { earlyBirdVars } from "@/components/early-bird/amounts";
 import { EarlyBirdBanner } from "@/components/early-bird/banner";
 import { EarlyBirdConditions } from "@/components/early-bird/conditions";
+import { Countdown } from "@/components/early-bird/countdown";
 import { Hero } from "@/components/sections/hero";
 import { HomeBody } from "@/components/sections/home-body";
 import { getDict, isLang } from "@/content";
@@ -32,7 +33,7 @@ export default async function EarlyBirdPage({ params }: PageProps<"/[lang]/early
 
   return (
     <>
-      <Hero lang={lang} t={hero} ica={t.ica} ctaHref="#early-bird" />
+      <Hero lang={lang} t={hero} ica={t.ica} ctaHref="#early-bird" top={<Countdown deadline={EARLY_BIRD.deadline} t={eb.countdown} />} />
       <EarlyBirdConditions t={eb} vars={vars} />
       <HomeBody lang={lang} t={t} beforeFees={<EarlyBirdBanner t={eb.banner} vars={vars} />} />
     </>

@@ -6,17 +6,18 @@ import type { Lang } from "./index";
    delle condizioni e un banner prima delle rette.
 
    ANTEPRIMA: la pagina non è collegata dal sito ed è fuori dai motori di
-   ricerca finché PREVIEW è true. Gli importi sono quelli della bozza e vanno
-   confermati: la pre-prenotazione era la metà di NSAF + iscrizione quando
-   l'iscrizione costava €1.100 (€3.100 in totale); con l'iscrizione a €1.000
-   la metà sarebbe €1.500. Si cambiano qui, in un posto solo. */
+   ricerca finché PREVIEW è true.
+
+   Pre-prenotazione €1.500 confermata dalla scuola il 16/11/2026. Il totale
+   di NSAF + iscrizione su cui vale lo sconto non si scrive qui: si calcola
+   dalle rette (src/components/early-bird/amounts.ts), così segue il listino. */
 export const EARLY_BIRD = {
   PREVIEW: true,
   /** Pre-prenotazione per bambino. */
-  prebooking: 1550,
-  /** NSAF + iscrizione annuale, su cui vale lo sconto del 50%. */
-  combined: 3100,
+  prebooking: 1500,
   places: 20,
+  /** Fine dell'offerta: il 14 dicembre 2026 compreso, ora di Roma. */
+  deadline: "2026-12-14T23:59:59+01:00",
 } as const;
 
 /* I segnaposto fra graffe ({prebooking}, {combined}, {places}) si
@@ -27,13 +28,18 @@ export const earlyBirdCopy = {
       title: "Condizioni early bird · Colico International School",
       description: "15% sulla retta del primo anno, 50% su NSAF e iscrizione, listino bloccato per cinque anni. Per l'ingresso a settembre 2027.",
     },
-    preview: "Anteprima: questa pagina non è ancora pubblica e gli importi sono da confermare.",
+    preview: "Anteprima: questa pagina non è ancora pubblica.",
     /* Apertura: sostituisce solo questi testi di quella della home. */
     hero: {
       eyebrow: "Early bird · Solo per i primi {places} posti",
       titleLines: ["Scegli la Colico International School tra i primi", "15% sulla retta del primo anno"],
       sub: "50% su NSAF e iscrizione, listino bloccato per cinque anni. Entro il 14 dicembre 2026.",
       cta: "Scopri le condizioni early bird",
+    },
+    countdown: {
+      label: "L'offerta early bird termina tra",
+      units: { days: ["giorno", "giorni"], hours: ["ora", "ore"], minutes: ["minuto", "minuti"], seconds: ["secondo", "secondi"] },
+      ended: "L'offerta early bird è terminata",
     },
     banner: {
       label: "Early bird",
@@ -65,12 +71,17 @@ export const earlyBirdCopy = {
       title: "Early-bird conditions · Colico International School",
       description: "15% off first-year tuition, 50% off NSAF and registration, price list frozen for five years. For entry in September 2027.",
     },
-    preview: "Preview: this page is not public yet and the amounts are still to be confirmed.",
+    preview: "Preview: this page is not public yet.",
     hero: {
       eyebrow: "Early bird · First {places} places only",
       titleLines: ["Be among the first to choose Colico International School", "15% off first-year tuition"],
       sub: "50% off NSAF and registration, price list frozen for five years. By 14 December 2026.",
       cta: "See the early-bird conditions",
+    },
+    countdown: {
+      label: "The early-bird offer ends in",
+      units: { days: ["day", "days"], hours: ["hour", "hours"], minutes: ["minute", "minutes"], seconds: ["second", "seconds"] },
+      ended: "The early-bird offer has ended",
     },
     banner: {
       label: "Early bird",

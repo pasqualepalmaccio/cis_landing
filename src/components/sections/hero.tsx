@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import Image from "next/image";
-import { useRef } from "react";
+import { type ReactNode, useRef } from "react";
 
 import type { Dict, Lang } from "@/content";
 
@@ -14,8 +14,10 @@ import { ButtonLink } from "../ui/button-link";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-/* `ctaHref`: dove porta il comando principale; senza, alla pre-registrazione. */
-export function Hero({ lang, t, ica, ctaHref }: { lang: Lang; t: Dict["hero"]; ica: Dict["ica"]; ctaHref?: string }) {
+/* `ctaHref`: dove porta il comando principale; senza, alla pre-registrazione.
+   `top`: un richiamo in alto, sotto la barra (il conto alla rovescia early
+   bird); quando c'è, il testo scende per lasciargli spazio. */
+export function Hero({ lang, t, ica, ctaHref, top }: { lang: Lang; t: Dict["hero"]; ica: Dict["ica"]; ctaHref?: string; top?: ReactNode }) {
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -25,7 +27,7 @@ export function Hero({ lang, t, ica, ctaHref }: { lang: Lang; t: Dict["hero"]; i
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <section ref={ref} className="tone-navy relative isolate flex min-h-[94svh] items-end overflow-hidden bg-navy-950 pb-14 pt-32 sm:min-h-[100svh] sm:pb-20">
+    <section ref={ref} className={`tone-navy relative isolate flex min-h-[94svh] items-end overflow-hidden bg-navy-950 pb-14 sm:min-h-[100svh] sm:pb-20 ${top ? "pt-52 sm:pt-44" : "pt-32"}`}>
       {/* Fotografia: entra da un'apertura che si allarga, poi scorre più lenta della pagina. */}
       <motion.div
         className="absolute inset-0 -z-20"
@@ -56,6 +58,12 @@ export function Hero({ lang, t, ica, ctaHref }: { lang: Lang; t: Dict["hero"]; i
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
       />
       <div aria-hidden className="grain absolute inset-0 -z-10 opacity-[0.07] mix-blend-overlay" />
+
+      {top ? (
+        <div className="absolute inset-x-0 top-20 z-10 sm:top-24">
+          <Container className="flex justify-center">{top}</Container>
+        </div>
+      ) : null}
 
       <Container>
         <motion.div style={reduce ? undefined : { y: textY, opacity: fade }}>
