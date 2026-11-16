@@ -19,7 +19,7 @@ export const earlyBirdFormCopy = {
     sending: "Invio in corso…",
     result: {
       deliveredTitle: "Richiesta registrata",
-      deliveredBody: "La tua causale è {code}. Ti abbiamo mandato una mail con i dati per il bonifico: il posto è tuo quando l'accredito arriva sul nostro conto, entro il 14 dicembre.",
+      deliveredBody: "Il tuo codice è {code}. Ti abbiamo mandato una mail con i dati per il bonifico e la causale completa, che inizia con {code}. Il posto è tuo quando l'accredito arriva sul nostro conto, entro il 14 dicembre.",
       queuedTitle: "Richiesta ricevuta, la stiamo registrando",
       queuedBody: "Non serve inviarla di nuovo. Entro poco ti arriva la mail con la causale e i dati per il bonifico; se non arriva entro un'ora, scrivici.",
       rejectedTitle: "Non siamo riusciti a registrare la richiesta",
@@ -44,7 +44,7 @@ export const earlyBirdFormCopy = {
     sending: "Sending…",
     result: {
       deliveredTitle: "Request recorded",
-      deliveredBody: "Your reference is {code}. We have emailed you the bank transfer details: the place is yours when the payment reaches our account, by 14 December.",
+      deliveredBody: "Your code is {code}. We have emailed you the bank transfer details and the full reference, which starts with {code}. The place is yours when the payment reaches our account, by 14 December.",
       queuedTitle: "Request received, we are recording it",
       queuedBody: "No need to send it again. You will shortly receive an email with your reference and the bank transfer details; if it does not arrive within an hour, write to us.",
       rejectedTitle: "We could not record your request",

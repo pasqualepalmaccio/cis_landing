@@ -61,7 +61,7 @@ export const legalEn: LegalDict = {
         title: "Early-bird pre-booking",
         paragraphs: [
           "If you fill in the early-bird pre-booking form, we process: the parent's first and last name, email and phone; for each child the first name, last name if you give it and date of birth; the town you will live in at entry, interest in the bus and your message, if you write them. We also keep proof that you accepted the terms: the version and fingerprint of the text you read, date and time, page, browser and an encrypted fingerprint of your IP address, never the address itself.",
-          "When the bank transfer arrives, the school office records the date it was credited and the amount received. The other details needed for enrolment (such as tax code and address) are not requested in the form: we collect them directly from you later.",
+          "The transfer reference we give you contains the pre-booking code and each child's first name, last name and year of birth: it lets us recognise the payment even when someone else makes it. The reference is seen by your bank, ours and anyone who pays on your behalf. When the transfer arrives, the school office records the date it was credited, the amount, the reference and the name of the payer. The other details needed for enrolment (such as tax code and address) are not requested in the form: we collect them directly from you later.",
           "We use this data to handle the pre-booking you ask for: send you the reference and the bank transfer details, match the payment, allocate places in order of payment, handle refunds and withdrawal and, if you do not ask for a refund, the final enrolment (Art. 6(1)(b) GDPR, performance of the contract). We also keep the payment data to meet accounting and tax obligations (Art. 6(1)(c) GDPR).",
           "Please do not include any health information about your children. If it reaches us anyway, we delete it.",
           "We only send updates about the school if you tick the optional box and confirm your address from the link you receive (Art. 6(1)(a) GDPR).",
@@ -112,6 +112,7 @@ export const legalEn: LegalDict = {
           "Hetzner Online GmbH (Germany), which hosts the servers of the site and of the management system, as processor.",
           "Cloudflare, Inc., which protects and speeds up the site, as processor.",
           "Resend, Inc. (United States), which sends confirmation, reminder and update emails, as processor.",
+          "For the early-bird pre-booking, the banks involved in the transfer, which receive the reference as independent controllers.",
           ...when(GOOGLE, "Google Ireland Ltd and Google LLC, for Google Analytics and Google Ads, only if you accept them in the cookie banner."),
           ...when(META, "Meta Platforms Ireland Ltd, for the Meta Pixel, only if you accept it in the cookie banner. For collecting and transmitting Pixel data we are joint controllers with Meta (Art. 26 GDPR). The essence of the arrangement is at facebook.com/legal/controller_addendum. Meta is the sole controller for whatever it does with the data afterwards."),
         ],

@@ -64,7 +64,7 @@ export const legalIt = {
         title: "La pre-prenotazione early bird",
         paragraphs: [
           "Se compili il modulo di pre-prenotazione early bird trattiamo: nome, cognome, email e telefono del genitore; per ogni figlio nome, cognome se lo indichi e data di nascita; la città in cui vivrete all'ingresso, l'interesse per il bus e il messaggio, se li scrivi. Conserviamo anche la prova dell'accettazione dei termini: la versione e l'impronta del testo che hai letto, data e ora, pagina, browser e un'impronta cifrata del tuo indirizzo IP, mai l'indirizzo in chiaro.",
-          "Quando arriva il bonifico la segreteria registra la data dell'accredito e l'importo ricevuto. Gli altri dati necessari all'iscrizione (ad esempio codice fiscale e indirizzo) non li chiediamo nel modulo: li raccogliamo direttamente da te in seguito.",
+          "La causale del bonifico che ti indichiamo contiene il codice della pre-prenotazione e nome, cognome e anno di nascita di ogni bambino: serve a riconoscere il pagamento anche quando lo fa un'altra persona. La causale la vedono la tua banca, la nostra e chi eventualmente paga per te. Quando arriva il bonifico la segreteria registra la data dell'accredito, l'importo, la causale e il nome di chi ha pagato. Gli altri dati necessari all'iscrizione (ad esempio codice fiscale e indirizzo) non li chiediamo nel modulo: li raccogliamo direttamente da te in seguito.",
           "Usiamo questi dati per gestire la pre-prenotazione che ci chiedi: mandarti la causale e i dati per il bonifico, abbinare il pagamento, assegnare i posti in ordine di pagamento, gestire rimborsi e recesso e, se non chiedi il rimborso, l'iscrizione definitiva (art. 6.1.b GDPR, esecuzione del contratto). I dati del pagamento li conserviamo anche per gli obblighi contabili e fiscali (art. 6.1.c GDPR).",
           "Ti chiediamo di non scrivere informazioni sulla salute dei bambini. Se arrivano lo stesso, le cancelliamo.",
           "Gli aggiornamenti sulla scuola li inviamo solo se spunti la casella facoltativa e confermi l'indirizzo dal link che ricevi (art. 6.1.a GDPR).",
@@ -115,6 +115,7 @@ export const legalIt = {
           "Hetzner Online GmbH (Germania), che ospita i server del sito e del gestionale, come responsabile del trattamento.",
           "Cloudflare, Inc., che protegge e velocizza il sito, come responsabile del trattamento.",
           "Resend, Inc. (Stati Uniti), che invia le email di conferma, promemoria e aggiornamenti, come responsabile del trattamento.",
+          "Per la pre-prenotazione early bird, le banche coinvolte nel bonifico, che ricevono la causale come titolari autonomi del trattamento.",
           ...when(GOOGLE, "Google Ireland Ltd e Google LLC, per Google Analytics e Google Ads, solo se lo accetti dal banner dei cookie."),
           ...when(META, "Meta Platforms Ireland Ltd, per il Meta Pixel, solo se lo accetti dal banner dei cookie. Per la raccolta e la trasmissione dei dati del Pixel siamo contitolari con Meta (art. 26 GDPR). Il contenuto essenziale dell'accordo è disponibile su facebook.com/legal/controller_addendum. Per tutto quello che Meta fa dopo con i dati, il titolare è Meta."),
         ],

@@ -129,7 +129,7 @@ function Result({ state, code, t }: { state: State; code: string | null; t: Earl
   if (state === "idle" || state === "sending") return null;
   const good = state === "delivered" || state === "queued";
   const [title, body] = {
-    delivered: [t.deliveredTitle, t.deliveredBody.replace("{code}", code ?? "")],
+    delivered: [t.deliveredTitle, t.deliveredBody.replaceAll("{code}", code ?? "")],
     queued: [t.queuedTitle, t.queuedBody],
     rejected: [t.rejectedTitle, t.rejectedBody],
     invalid: [t.invalidTitle, t.invalidBody],
