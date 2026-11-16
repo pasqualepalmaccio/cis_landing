@@ -122,3 +122,42 @@ assunzioni:
     stato: da_verificare
     come_verificare: "curl con la chiave di produzione su /api/v1/events/open-day dopo il rilascio del CRM: atteso 404 se l'evento è in preparazione, 200 se aperto"
     se_falsa: "senza endpoint la pagina dice «date in arrivo» (404); senza ambito dice «non disponibili» (403) e registra il ripiego"
+
+  # ── Early bird (revisione prima del codice, 2026-11-16) ──
+  - id: L18
+    categoria: unicita-ordine
+    assunzione: L'ordine dei posti early bird si decide sulla data di valuta del bonifico registrata dalla segreteria, non sull'ordine dei moduli.
+    controllato_da: cliente
+    stato: da_verificare
+    come_verificare: "estratto conto di esempio (campo e granularità della data), regola scritta di parità e di «entro il 14/12» (disposizione o accredito), lunghezza della causale che arriva"
+    se_falsa: "graduatoria contestabile senza prova (R3)"
+  - id: L19
+    categoria: tempo
+    assunzione: La scadenza è 2026-12-14T23:59:59+01:00; il conto alla rovescia usa l'ora del dispositivo e informa soltanto, non decide.
+    stato: verificata
+    verificata_il: 2026-11-16 (conversione in locale)
+    esito_osservato: "22:59:59Z = 23:59:59 CET"
+  - id: L20
+    categoria: unicita-ordine
+    assunzione: Un invio early bird produce una sola prenotazione anche con doppio clic o nuovo invio dopo un timeout.
+    stato: verificata
+    verificata_il: 2026-11-16 (locale)
+    esito_osservato: "chiave generata dal browser; due POST in parallelo più un terzo → una sola prenotazione nel CRM"
+  - id: L21
+    categoria: configurazione
+    assunzione: Retry, verifica nel CRM, statistiche e riconciliazione gestiscono il tipo early-bird.
+    stato: verificata
+    verificata_il: 2026-11-16 (locale)
+    esito_osservato: "switch esaustivo; stats con earlyBird; riconciliazione CRM 2 consegnate = 2 presenti"
+  - id: L22
+    categoria: servizi-terzi
+    assunzione: La chiave CRM_API_KEY di produzione non scade prima del 15/01/2027 e ha leads:write.
+    stato: da_verificare
+    come_verificare: "GET /api/v1/me dal container della landing (expiresAt, scopes, ratePerMinute)"
+    se_falsa: "401 la notte della scadenza, prenotazioni consegnate dopo la chiusura"
+  - id: L26
+    categoria: sonde-percorsi
+    assunzione: Il task di retry ogni 10 minuti esiste in Coolify e un suo fallimento raggiunge una persona.
+    stato: da_verificare
+    come_verificare: "storico delle esecuzioni in Coolify; canale di notifica attivo (L13); task fatto fallire di proposito"
+    se_falsa: "prenotazioni «in registrazione» mai consegnate"

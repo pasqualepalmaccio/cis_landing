@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { earlyBirdVars } from "@/components/early-bird/amounts";
+import { earlyBirdVars } from "@/lib/early-bird/vars";
 import { EarlyBirdBanner } from "@/components/early-bird/banner";
+import { BookingSection } from "@/components/early-bird/booking-section";
 import { EarlyBirdConditions } from "@/components/early-bird/conditions";
 import { Countdown } from "@/components/early-bird/countdown";
 import { Hero } from "@/components/sections/hero";
@@ -10,6 +11,7 @@ import { HomeBody } from "@/components/sections/home-body";
 import { getDict, isLang } from "@/content";
 import { EARLY_BIRD, earlyBirdCopy } from "@/content/early-bird";
 import { fill } from "@/content/open-day";
+import { earlyBirdFormSwitch } from "@/lib/early-bird/switch";
 import { pageMetadata } from "@/lib/metadata";
 
 /* La pagina early bird è il sito principale con un'apertura che annuncia
@@ -29,12 +31,14 @@ export default async function EarlyBirdPage({ params }: PageProps<"/[lang]/early
   const t = getDict(lang);
   const eb = earlyBirdCopy[lang];
   const vars = earlyBirdVars(lang);
+  const form = earlyBirdFormSwitch();
   const hero = { ...t.hero, ...eb.hero, eyebrow: fill(eb.hero.eyebrow, vars), titleLines: [...eb.hero.titleLines] };
 
   return (
     <>
       <Hero lang={lang} t={hero} ica={t.ica} ctaHref="#early-bird" top={<Countdown deadline={EARLY_BIRD.deadline} t={eb.countdown} />} />
-      <EarlyBirdConditions t={eb} vars={vars} />
+      <EarlyBirdConditions t={eb} vars={vars} formEnabled={form.enabled} />
+      {form.enabled ? <BookingSection lang={lang} form={form} /> : null}
       <HomeBody lang={lang} t={t} beforeFees={<EarlyBirdBanner t={eb.banner} vars={vars} />} />
     </>
   );

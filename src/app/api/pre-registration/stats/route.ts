@@ -13,5 +13,13 @@ export async function GET(request: Request) {
   const delivered = await sql<{ id: string }[]>`
     select id from preregistration_attempts where kind = 'preregistration' and status = 'delivered' and delivered_at > now() - interval '72 hours'`;
   const { overdue, rejected } = await pendingCounts(sql);
-  return Response.json({ deliveredKeys: delivered.map((r) => r.id), overdue, rejected, generatedAt: new Date().toISOString() });
+  // Early bird: TUTTE le chiavi consegnate, senza finestra (pochi record, di
+  // valore: il CRM le confronta tutte a ogni giro).
+  const ebDelivered = await sql<{ id: string }[]>`select id from preregistration_attempts where kind = 'early-bird' and status = 'delivered'`;
+  const eb = await pendingCounts(sql, "early-bird");
+  return Response.json({
+    deliveredKeys: delivered.map((r) => r.id), overdue, rejected,
+    earlyBird: { deliveredKeys: ebDelivered.map((r) => r.id), overdue: eb.overdue, rejected: eb.rejected, invalid: eb.invalid },
+    generatedAt: new Date().toISOString(),
+  });
 }

@@ -1,7 +1,8 @@
 /* Chiamate al CRM, solo lato server. La chiave sta in CRM_API_KEY (variabile
    di runtime in Coolify, mai nell'immagine né nel bundle del browser). */
 
-export type AttemptKind = "preregistration" | "open-day";
+export type AttemptKind = "preregistration" | "open-day" | "early-bird";
+export const ATTEMPT_KINDS: readonly AttemptKind[] = ["preregistration", "open-day", "early-bird"];
 
 export type CrmOutcome =
   /** `result`: esito dichiarato dal CRM (per l'Open Day: confirmed | waitlist). */
@@ -84,20 +85,58 @@ export async function sendOpenDayRegistration(slug: string, body: unknown): Prom
   }
 }
 
+/** Pre-prenotazione early bird. Successo solo con 201, id della prenotazione,
+ *  causale e contatto, senza dryRun. `result` porta la causale (EB-0007):
+ *  la landing la mostra alla famiglia solo se arriva dal CRM. */
+export async function sendEarlyBird(body: unknown): Promise<CrmOutcome> {
+  try {
+    const { status, json } = await call("POST", "/early-bird-bookings", body);
+    const j = json as Json;
+    const contact = j?.contact as Json;
+    if (status === 201 && !j?.dryRun && typeof j?.bookingId === "string" && typeof j?.code === "string" && typeof contact?.id === "string") {
+      return { status: "delivered", contactId: contact.id, recordId: j.bookingId, result: j.code };
+    }
+    if (status === 400 || status === 409 || status === 422) return { status: "rejected", error: `${status} ${errorCode(json)}` };
+    return { status: "failed", error: `${status} ${errorCode(json) || "risposta inattesa"}`.slice(0, 500) };
+  } catch (error) {
+    return { status: "failed", error: error instanceof Error ? error.message : String(error) };
+  }
+}
+
+/** Un tipo sconosciuto è un errore, mai un'altra destinazione: altrimenti
+ *  finirebbe sull'endpoint sbagliato e fuori da ogni riconciliazione. */
+function unknownKind(kind: never): never {
+  throw new Error(`tipo di tentativo sconosciuto: ${String(kind)}`);
+}
+
 /** Invio di un tentativo salvato, secondo il suo tipo. */
 export function sendAttempt(kind: AttemptKind, payload: unknown): Promise<CrmOutcome> {
-  if (kind === "open-day") {
-    const p = payload as { slug: string; body: unknown };
-    return sendOpenDayRegistration(p.slug, p.body);
+  switch (kind) {
+    case "open-day": {
+      const p = payload as { slug: string; body: unknown };
+      return sendOpenDayRegistration(p.slug, p.body);
+    }
+    case "early-bird":
+      return sendEarlyBird(payload);
+    case "preregistration":
+      return sendPreRegistration(payload);
+    default:
+      return unknownKind(kind);
   }
-  return sendPreRegistration(payload);
 }
+
+const BY_KEY: Record<AttemptKind, string> = {
+  preregistration: "/pre-registrations/by-key/",
+  "open-day": "/events/registrations/by-key/",
+  "early-bird": "/early-bird-bookings/by-key/",
+};
 
 /** Il record esiste davvero nel CRM? true / false / null = non si sa. */
 export async function existsInCrm(idempotencyKey: string, kind: AttemptKind = "preregistration"): Promise<boolean | null> {
+  const base = BY_KEY[kind];
+  if (!base) throw new Error(`tipo di tentativo sconosciuto: ${String(kind)}`);
   try {
-    const path = kind === "open-day" ? `/events/registrations/by-key/${idempotencyKey}` : `/pre-registrations/by-key/${idempotencyKey}`;
-    const { status } = await call("GET", path);
+    const { status } = await call("GET", `${base}${idempotencyKey}`);
     if (status === 200) return true;
     if (status === 404) return false;
     return null;

@@ -126,5 +126,13 @@ async function migrate(sql: Sql) {
       reason  text
     );
     create index if not exists open_day_fallbacks_at on open_day_fallbacks (at);
+
+    -- Early bird (record 2026-11-16-early-bird.md): lo stesso registro, tipo
+    -- «early-bird». «invalid» = invio che non ha superato la validazione della
+    -- landing: si salva comunque (con i campi in errore) perché una famiglia
+    -- respinta in silenzio è una prenotazione persa; aspetta una persona.
+    alter table preregistration_attempts drop constraint if exists preregistration_attempts_status_check;
+    alter table preregistration_attempts add constraint preregistration_attempts_status_check
+      check (status in ('received', 'delivered', 'failed', 'rejected', 'closed', 'invalid'));
   `);
 }

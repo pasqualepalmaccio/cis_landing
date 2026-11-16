@@ -13,3 +13,6 @@ export const earlyBirdVars = (lang: Lang) => {
   };
 };
 export type EarlyBirdVars = ReturnType<typeof earlyBirdVars>;
+
+/** Riempie i segnaposto fra graffe di un testo early bird. */
+export const fillVars = (text: string, vars: Record<string, string | number>) => text.replace(/\{(\w+)\}/g, (whole, k: string) => (k in vars ? String(vars[k]) : whole));

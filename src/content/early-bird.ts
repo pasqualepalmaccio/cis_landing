@@ -10,7 +10,7 @@ import type { Lang } from "./index";
 
    Pre-prenotazione €1.500 confermata dalla scuola il 16/11/2026. Il totale
    di NSAF + iscrizione su cui vale lo sconto non si scrive qui: si calcola
-   dalle rette (src/components/early-bird/amounts.ts), così segue il listino. */
+   dalle rette (src/lib/early-bird/vars.ts), così segue il listino. */
 export const EARLY_BIRD = {
   PREVIEW: true,
   /** Pre-prenotazione per bambino. */

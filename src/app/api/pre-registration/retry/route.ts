@@ -51,6 +51,10 @@ export async function POST(request: Request) {
   const openDay = await pendingCounts(sql, "open-day");
   figures.openDayInRitardo = openDay.overdue;
   figures.openDayRespinte = openDay.rejected;
+  const earlyBird = await pendingCounts(sql, "early-bird");
+  figures.earlyBirdInRitardo = earlyBird.overdue;
+  figures.earlyBirdRespinte = earlyBird.rejected;
+  figures.earlyBirdNonValide = earlyBird.invalid;
 
   const last = await crmLastReconciliation();
   const crmStale = !last || Date.now() - last.getTime() > 2 * HOUR;
@@ -63,6 +67,9 @@ export async function POST(request: Request) {
     crmStale && "il CRM non riconcilia le pre-registrazioni da più di 2 ore",
     openDay.overdue > 0 && `${openDay.overdue} iscrizioni all'Open Day non consegnate da più di 15 minuti`,
     openDay.rejected > 0 && `${openDay.rejected} iscrizioni all'Open Day respinte dal CRM (evento chiuso o dati non validi): le famiglie vanno contattate`,
+    earlyBird.overdue > 0 && `${earlyBird.overdue} pre-prenotazioni early bird non consegnate da più di 15 minuti`,
+    earlyBird.rejected > 0 && `${earlyBird.rejected} pre-prenotazioni early bird respinte dal CRM: le famiglie vanno contattate`,
+    earlyBird.invalid > 0 && `${earlyBird.invalid} invii early bird non validi salvati: controlla i campi e contatta le famiglie`,
   ].filter(Boolean);
   if (problems.length) console.error(`[preregistrazione] job: ${problems.join("; ")}`);
   return Response.json({ ok: problems.length === 0, problems, figures }, { status: problems.length ? 500 : 200 });

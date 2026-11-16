@@ -7,11 +7,13 @@ import { Reveal } from "../motion/reveal";
 import { Rich } from "../rich";
 import { SectionHead } from "../section-head";
 import { CARD } from "../ui/card";
-import type { EarlyBirdVars } from "./amounts";
+import type { EarlyBirdVars } from "@/lib/early-bird/vars";
 
 /* Le condizioni early bird: tre vantaggi, come assicurarseli e il comando
    per prenotare (per ora una mail a info@, finché il modulo non c'è). */
-export function EarlyBirdConditions({ t, vars }: { t: EarlyBirdCopy; vars: EarlyBirdVars }) {
+/* `formEnabled`: con il modulo acceso il comando porta al modulo (#prenota),
+   altrimenti apre la mail a info@. */
+export function EarlyBirdConditions({ t, vars, formEnabled }: { t: EarlyBirdCopy; vars: EarlyBirdVars; formEnabled: boolean }) {
   return (
     <Section id="early-bird" tone="ivory">
       {EARLY_BIRD.PREVIEW ? (
@@ -48,13 +50,13 @@ export function EarlyBirdConditions({ t, vars }: { t: EarlyBirdCopy; vars: Early
         <div className="mt-10 flex flex-col items-center gap-3 text-center">
           {/* Una mail, non un collegamento interno: per questo <a> e non ButtonLink. */}
           <a
-            href={`mailto:info@cis-colico.com?subject=${encodeURIComponent(t.book.subject)}&body=${encodeURIComponent(t.book.body)}`}
+            href={formEnabled ? "#prenota" : `mailto:info@cis-colico.com?subject=${encodeURIComponent(t.book.subject)}&body=${encodeURIComponent(t.book.body)}`}
             className="group inline-flex items-center gap-2 rounded-[4px] bg-action px-7 py-4 font-label text-[13px] font-semibold uppercase tracking-[0.06em] text-white transition-[transform,background-color,box-shadow] duration-300 hover:-translate-y-0.5 hover:bg-action-hover hover:shadow-lift"
           >
             {t.book.cta}
             <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
-          <p className="max-w-md text-sm text-fg-muted">{t.book.note}</p>
+          {formEnabled ? null : <p className="max-w-md text-sm text-fg-muted">{t.book.note}</p>}
         </div>
       </Reveal>
     </Section>

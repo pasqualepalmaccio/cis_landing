@@ -44,13 +44,19 @@ export async function retryDue(sql: Sql, limit = 20): Promise<Record<string, num
   return tally;
 }
 
-/** Ciò che chiede una persona: non consegnati oltre la soglia e respinti.
- *  L'Open Day ha una data fissa: la soglia è 15 minuti, non un'ora. */
-export async function pendingCounts(sql: Sql, kind: AttemptKind = "preregistration"): Promise<{ overdue: number; rejected: number }> {
-  const minutes = kind === "open-day" ? 15 : 60;
-  const [row] = await sql<{ overdue: number; rejected: number }[]>`
+/** Soglia di ritardo per tipo: Open Day ed early bird hanno una data fissa e
+ *  posti contati, quindi 15 minuti; la pre-registrazione un'ora. */
+const OVERDUE_MINUTES: Record<AttemptKind, number> = { preregistration: 60, "open-day": 15, "early-bird": 15 };
+
+/** Ciò che chiede una persona: non consegnati oltre la soglia, respinti dal
+ *  CRM e (per l'early bird) invii non validi salvati per il recupero. */
+export async function pendingCounts(sql: Sql, kind: AttemptKind = "preregistration"): Promise<{ overdue: number; rejected: number; invalid: number }> {
+  const minutes = OVERDUE_MINUTES[kind];
+  if (minutes === undefined) throw new Error(`tipo di tentativo sconosciuto: ${String(kind)}`);
+  const [row] = await sql<{ overdue: number; rejected: number; invalid: number }[]>`
     select count(*) filter (where status in ('received', 'failed') and received_at < now() - make_interval(mins => ${minutes}))::int as overdue,
-           count(*) filter (where status = 'rejected')::int as rejected
+           count(*) filter (where status = 'rejected')::int as rejected,
+           count(*) filter (where status = 'invalid')::int as invalid
     from preregistration_attempts where kind = ${kind}`;
-  return row ?? { overdue: 0, rejected: 0 };
+  return row ?? { overdue: 0, rejected: 0, invalid: 0 };
 }

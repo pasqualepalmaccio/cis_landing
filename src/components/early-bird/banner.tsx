@@ -4,7 +4,7 @@ import type { EarlyBirdCopy } from "@/content/early-bird";
 import { fill } from "@/content/open-day";
 
 import { Container } from "../layout/container";
-import type { EarlyBirdVars } from "./amounts";
+import type { EarlyBirdVars } from "@/lib/early-bird/vars";
 
 /* Richiamo all'offerta subito prima delle rette: chi guarda i prezzi vede
    che per i primi posti valgono condizioni diverse. */
