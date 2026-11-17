@@ -10,8 +10,13 @@ import { COUNTRIES, EXTRA_LANGS, LANG_LEVELS, BUS, ENTRY_YEARS, USAGE, MAX_CHILD
 const values = <T extends { v: string }>(items: readonly T[]) => items.map((i) => i.v) as [string, ...string[]];
 const optionalOf = (items: readonly { v: string }[]) => z.enum(values(items)).nullable().optional();
 
-export const childPayload = z.strictObject({
-  age: z.number().int().min(1).max(18),
+/* Dal 17/11/2026 il modulo chiede l'anno di nascita (decisione della scuola).
+   `age` resta accettato: una pagina aperta prima del rilascio, o servita da
+   una cache, manda ancora l'età, e un 422 qui non salverebbe nemmeno il
+   tentativo. Stessi limiti fissi del CRM, che non dipendono dall'orologio. */
+const childFields = z.strictObject({
+  age: z.number().int().min(1).max(18).optional(),
+  birthYear: z.number().int().min(2005).max(2100).optional(),
   entryYear: z.enum(values(ENTRY_YEARS)),
   futureCity: z.string().trim().min(1).max(100),
   futureCityOther: z.string().trim().max(100).nullable().optional(),
@@ -21,6 +26,7 @@ export const childPayload = z.strictObject({
   extraLangs: z.array(z.enum(values(EXTRA_LANGS))).max(EXTRA_LANGS.length),
   extraUsage: optionalOf(USAGE),
 });
+export const childPayload = childFields.refine((c) => c.age !== undefined || c.birthYear !== undefined, { path: ["birthYear"] });
 
 export const formPayload = z.strictObject({
   parent: z.strictObject({
@@ -55,9 +61,9 @@ export function payloadFromForm(fd: FormData, lang: "it" | "en"): unknown {
   const count = Number(str(fd, "children_count") ?? "1");
   const children = Array.from({ length: count }, (_, i) => {
     const id = (f: string) => `child_${i + 1}_${f}`;
-    const age = str(fd, id("age"));
+    const birthYear = str(fd, id("birth_year"));
     return {
-      age: age === null ? NaN : Number(age),
+      birthYear: birthYear === null ? NaN : Number(birthYear),
       entryYear: str(fd, id("entry_year")),
       futureCity: str(fd, id("future_city")),
       futureCityOther: str(fd, id("future_city_other")),

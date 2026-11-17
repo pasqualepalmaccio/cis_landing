@@ -77,7 +77,7 @@ export const legalIt = {
             {
               title: "Il modulo di pre-registrazione",
               paragraphs: [
-                "Se compili il modulo trattiamo i tuoi dati di contatto (nome, cognome, email, telefono, città) e le informazioni sui tuoi figli che ci dai: età, anno di ingresso, città in cui vivrete, paese della scuola attuale, lingue usate, interesse per il bus. Non chiediamo il nome dei bambini.",
+                "Se compili il modulo trattiamo i tuoi dati di contatto (nome, cognome, email, telefono, città) e le informazioni sui tuoi figli che ci dai: anno di nascita, anno di ingresso, città in cui vivrete, paese della scuola attuale, lingue usate, interesse per il bus. Non chiediamo il nome dei bambini.",
                 "Li usiamo per ricontattarti, su tua richiesta, prima dell'iscrizione e per organizzare l'apertura della scuola in forma aggregata (art. 6.1.b GDPR). Il modulo non è un'iscrizione e non assegna un posto.",
                 "Ti chiediamo di non scrivere informazioni sulla salute dei bambini. Se arrivano lo stesso, le cancelliamo.",
                 "Gli aggiornamenti via email li inviamo solo se li chiedi e confermi l'indirizzo dal link che ricevi (art. 6.1.a GDPR). Puoi disiscriverti da ogni email.",

@@ -9,6 +9,11 @@ import { CITIES, COUNTRIES, ENTRY_YEARS, EXTRA_LANGS, USAGE, type RegistrationCo
 import { control, Field, optionsOf } from "./field";
 import { Select } from "./select";
 
+/** Dall'anno in corso a 18 anni fa, i più giovani in alto. Solo le opzioni:
+ *  i limiti veri sono nel contratto, fissi. */
+const NOW = new Date().getFullYear();
+const BIRTH_YEARS = Array.from({ length: 19 }, (_, i) => String(NOW - i)).map((y) => ({ value: y, label: y }));
+
 export function ChildBlock({ n, lang, t, choose }: { n: number; lang: Lang; t: RegistrationCopy["children"]; choose: string }) {
   const [futureCity, setFutureCity] = useState("");
   const id = (f: string) => `child_${n}_${f}`;
@@ -27,8 +32,8 @@ export function ChildBlock({ n, lang, t, choose }: { n: number; lang: Lang; t: R
         {t.child} {n}
       </h3>
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label={t.age} htmlFor={id("age")} required>
-          <input id={id("age")} name={id("age")} type="number" inputMode="numeric" min={1} max={18} required className={control} />
+        <Field label={t.birthYear} htmlFor={id("birth_year")} required>
+          <Select id={id("birth_year")} name={id("birth_year")} required placeholder={choose} options={BIRTH_YEARS} />
         </Field>
         <Field label={t.entryYear} htmlFor={id("entry_year")} required>
           <Select id={id("entry_year")} name={id("entry_year")} required placeholder={choose} options={optionsOf(ENTRY_YEARS, lang)} />

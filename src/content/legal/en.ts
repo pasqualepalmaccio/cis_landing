@@ -74,7 +74,7 @@ export const legalEn: LegalDict = {
             {
               title: "The pre-registration form",
               paragraphs: [
-                "If you fill in the form, we process your contact details (first and last name, email, phone, town) and the information you give us about your children: age, year of entry, town where you will live, country of their current school, languages used, interest in the bus. We do not ask for the children's names.",
+                "If you fill in the form, we process your contact details (first and last name, email, phone, town) and the information you give us about your children: year of birth, year of entry, town where you will live, country of their current school, languages used, interest in the bus. We do not ask for the children's names.",
                 "We use them to contact you, at your request, before enrolment and to plan the school's opening in aggregate form (Art. 6(1)(b) GDPR). The form is not an enrolment and does not assign a place.",
                 "Please do not include any health information about your children. If it reaches us anyway, we delete it.",
                 "We only send email updates if you ask for them and confirm your address from the link you receive (Art. 6(1)(a) GDPR). You can unsubscribe from every email.",
