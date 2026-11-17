@@ -1,15 +1,17 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-/* La radice sceglie la lingua dal browser: inglese a chi non preferisce
-   l'italiano, italiano a tutti gli altri. */
+/* Gli indirizzi senza lingua scelgono la lingua dal browser: inglese a chi
+   non preferisce l'italiano, italiano a tutti gli altri. Oltre alla radice,
+   gli indirizzi stampati: il QR all'ingresso (/presenza) e l'invito
+   (/meet-and-discover). Gli altri percorsi senza lingua restano 404. */
 export function proxy(request: NextRequest) {
   const accept = request.headers.get("accept-language") ?? "";
   const first = accept.split(",")[0]?.trim().toLowerCase() ?? "";
   const lang = first === "" || first.startsWith("it") ? "it" : "en";
   // La query string resta: gclid, fbclid e utm_* servono ad attribuire le visite dagli annunci.
   const target = request.nextUrl.clone();
-  target.pathname = `/${lang}`;
+  target.pathname = request.nextUrl.pathname === "/" ? `/${lang}` : `/${lang}${request.nextUrl.pathname}`;
   return NextResponse.redirect(target);
 }
 
-export const config = { matcher: "/" };
+export const config = { matcher: ["/", "/presenza", "/meet-and-discover"] };

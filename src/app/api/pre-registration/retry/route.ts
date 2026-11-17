@@ -55,6 +55,9 @@ export async function POST(request: Request) {
   figures.earlyBirdInRitardo = earlyBird.overdue;
   figures.earlyBirdRespinte = earlyBird.rejected;
   figures.earlyBirdNonValide = earlyBird.invalid;
+  const checkIn = await pendingCounts(sql, "check-in");
+  figures.presenzeInRitardo = checkIn.overdue;
+  figures.presenzeRespinte = checkIn.rejected;
 
   const last = await crmLastReconciliation();
   const crmStale = !last || Date.now() - last.getTime() > 2 * HOUR;
@@ -70,6 +73,8 @@ export async function POST(request: Request) {
     earlyBird.overdue > 0 && `${earlyBird.overdue} pre-prenotazioni early bird non consegnate da più di 15 minuti`,
     earlyBird.rejected > 0 && `${earlyBird.rejected} pre-prenotazioni early bird respinte dal CRM: le famiglie vanno contattate`,
     earlyBird.invalid > 0 && `${earlyBird.invalid} invii early bird non validi salvati: controlla i campi e contatta le famiglie`,
+    checkIn.overdue > 0 && `${checkIn.overdue} presenze all'ingresso non consegnate da più di 5 minuti`,
+    checkIn.rejected > 0 && `${checkIn.rejected} presenze all'ingresso respinte dal CRM (evento non pubblicato o dati non validi): quelle persone vanno registrate a mano`,
   ].filter(Boolean);
   if (problems.length) console.error(`[preregistrazione] job: ${problems.join("; ")}`);
   return Response.json({ ok: problems.length === 0, problems, figures }, { status: problems.length ? 500 : 200 });

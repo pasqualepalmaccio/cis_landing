@@ -45,8 +45,9 @@ export async function retryDue(sql: Sql, limit = 20): Promise<Record<string, num
 }
 
 /** Soglia di ritardo per tipo: Open Day ed early bird hanno una data fissa e
- *  posti contati, quindi 15 minuti; la pre-registrazione un'ora. */
-const OVERDUE_MINUTES: Record<AttemptKind, number> = { preregistration: 60, "open-day": 15, "early-bird": 15 };
+ *  posti contati, quindi 15 minuti; la pre-registrazione un'ora; la presenza
+ *  all'ingresso 5 minuti, perché la persona è ancora in sala. */
+const OVERDUE_MINUTES: Record<AttemptKind, number> = { preregistration: 60, "open-day": 15, "early-bird": 15, "check-in": 5 };
 
 /** Ciò che chiede una persona: non consegnati oltre la soglia, respinti dal
  *  CRM e (per l'early bird) invii non validi salvati per il recupero. */

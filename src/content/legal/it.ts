@@ -72,6 +72,16 @@ export const legalIt = {
           "Nel gestionale li vedono solo segreteria e direzione.",
         ],
       },
+      {
+        title: "La registrazione della presenza agli eventi",
+        paragraphs: [
+          "All'ingresso del Meet & Discover CIS puoi inquadrare un QR code e registrare la tua presenza. Trattiamo nome, cognome, email e telefono, e la data e l'ora della registrazione. Sono necessari per registrarti.",
+          "Li usiamo per sapere chi è presente all'evento, anche per la sicurezza della scuola, e dopo l'evento per scriverti una volta e chiederti se vuoi essere ricontattato (legittimo interesse, art. 6.1.f GDPR). Puoi opporti in qualsiasi momento scrivendoci. Senza un tuo consenso non ti mandiamo comunicazioni promozionali.",
+          "Se la tua email è già nel nostro gestionale, ad esempio perché ti eri iscritto all'evento, la presenza si aggiunge alla tua scheda e l'iscrizione risulta presente. Se coincide solo il telefono, non modifichiamo la scheda esistente: ne creiamo una nuova e la segreteria verifica se siete la stessa persona.",
+          "Nome, cognome, email e telefono scritti nel modulo si cancellano dalla registrazione della presenza 12 mesi dopo l'evento. La tua scheda nel gestionale resta finché serve a seguire il tuo interesse per la scuola, e puoi chiederne la cancellazione in qualsiasi momento. Il server del sito tiene una copia tecnica di sicurezza della registrazione, che si svuota 30 giorni dopo che il gestionale l'ha registrata.",
+          "Nel gestionale li vedono solo le persone autorizzate dalla scuola.",
+        ],
+      },
       ...(SUBMISSION_ENABLED
         ? [
             {
@@ -95,6 +105,7 @@ export const legalIt = {
           ...when(TRACKING_ENABLED, "Ricordare la tua scelta sui cookie e conservarne la prova: è un obbligo di legge (art. 6.1.c e art. 7.1 GDPR)."),
           "Gestire la tua iscrizione al Meet & Discover CIS: serve a dare seguito alla tua richiesta (art. 6.1.b GDPR).",
           "Gestire la pre-prenotazione early bird: esecuzione del contratto (art. 6.1.b GDPR) e obblighi contabili e fiscali sul pagamento (art. 6.1.c GDPR).",
+          "Registrare la presenza a un evento e chiederti una volta, dopo, se vuoi essere ricontattato: legittimo interesse (art. 6.1.f GDPR).",
           ...when(Boolean(TRACKING_ENABLED && DECLARED.ga4), "Statistiche di visita: solo con il tuo consenso (art. 6.1.a GDPR)."),
           ...when(Boolean(TRACKING_ENABLED && (DECLARED.googleAds || DECLARED.metaPixel)), "Misurare i nostri annunci e mostrarli a chi ha già visitato il sito (remarketing): solo con il tuo consenso (art. 6.1.a GDPR)."),
           "Mandarti aggiornamenti sulla scuola: solo se li chiedi e confermi l'indirizzo (art. 6.1.a GDPR).",
@@ -130,7 +141,7 @@ export const legalIt = {
         title: "Per quanto tempo",
         paragraphs: [
           "I dati tecnici di navigazione restano nei log del server solo per il tempo necessario alla sicurezza del sito.",
-          "Per l'iscrizione al Meet & Discover CIS, la pre-prenotazione early bird e la pre-registrazione i tempi sono indicati nelle sezioni dedicate.",
+          "Per l'iscrizione al Meet & Discover CIS, la registrazione della presenza, la pre-prenotazione early bird e la pre-registrazione i tempi sono indicati nelle sezioni dedicate.",
           TRACKING_ENABLED
             ? "La durata di ogni cookie è indicata nella cookie policy. Le email restano finché servono a gestire la tua richiesta."
             : "Le email restano finché servono a gestire la tua richiesta.",

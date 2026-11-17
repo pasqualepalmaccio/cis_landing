@@ -6,7 +6,10 @@ import { db } from "@/lib/db";
    («iscrizioni a breve») e lo REGISTRA: il CRM lo legge e allarma se intanto
    l'evento è aperto. Un evento non pubblicato (404) non è un guasto. */
 
-export const OPEN_DAY_SLUG = process.env.OPEN_DAY_SLUG ?? "open-day";
+/** L'evento mostrato da /meet-and-discover e a cui vanno le presenze dal QR.
+ *  Dal 17/11/2026 il vol. 2 (16-17/12); il primo era «open-day». I tentativi
+ *  salvati portano il proprio slug: cambiarlo non sposta quelli in coda. */
+export const OPEN_DAY_SLUG = process.env.OPEN_DAY_SLUG ?? "meet-and-discover-2026-12";
 
 export type PublicSession = { id: string; startsAt: string; endsAt: string; capacity: number; free: number; waitlist: number; started: boolean };
 export type PublicEvent = {

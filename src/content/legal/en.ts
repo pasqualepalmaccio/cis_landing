@@ -69,6 +69,16 @@ export const legalEn: LegalDict = {
           "In the management system only the school office and management can see it.",
         ],
       },
+      {
+        title: "Checking in at events",
+        paragraphs: [
+          "At the entrance to Meet & Discover CIS you can scan a QR code and check in. We process your first and last name, email and phone, and the date and time of your check-in. They are needed to check you in.",
+          "We use them to know who is at the event, also for the school's safety, and after the event to write to you once and ask whether you would like us to contact you (legitimate interest, Art. 6(1)(f) GDPR). You can object at any time by writing to us. We send no promotional messages without your consent.",
+          "If your email is already in our management system, for example because you registered for the event, the check-in is added to your record and your registration is marked as attended. If only the phone number matches, we do not change the existing record: we create a new one and the school office checks whether you are the same person.",
+          "The first and last name, email and phone written in the form are deleted from the check-in record 12 months after the event. Your record in the management system is kept as long as needed to follow up on your interest in the school, and you can ask us to delete it at any time. The website server keeps a technical safety copy of the check-in, emptied 30 days after the management system has recorded it.",
+          "In the management system only people authorised by the school can see them.",
+        ],
+      },
       ...(SUBMISSION_ENABLED
         ? [
             {
@@ -92,6 +102,7 @@ export const legalEn: LegalDict = {
           ...when(TRACKING_ENABLED, "Remembering your cookie choice and keeping proof of it: a legal obligation (Art. 6(1)(c) and Art. 7(1) GDPR)."),
           "Handling your Meet & Discover CIS registration: needed to follow up on your request (Art. 6(1)(b) GDPR).",
           "Handling your early-bird pre-booking: performance of the contract (Art. 6(1)(b) GDPR) and accounting and tax obligations on the payment (Art. 6(1)(c) GDPR).",
+          "Recording your attendance at an event and asking you once, afterwards, whether you would like us to contact you: legitimate interest (Art. 6(1)(f) GDPR).",
           ...when(Boolean(TRACKING_ENABLED && DECLARED.ga4), "Visit statistics: only with your consent (Art. 6(1)(a) GDPR)."),
           ...when(Boolean(TRACKING_ENABLED && (DECLARED.googleAds || DECLARED.metaPixel)), "Measuring our ads and showing them to people who have visited the site (remarketing): only with your consent (Art. 6(1)(a) GDPR)."),
           "Sending you updates about the school: only if you ask for them and confirm your address (Art. 6(1)(a) GDPR).",
@@ -127,7 +138,7 @@ export const legalEn: LegalDict = {
         title: "How long",
         paragraphs: [
           "Technical browsing data stays in the server logs only as long as needed for security.",
-          "For Meet & Discover CIS registrations and pre-registration, the periods are in the dedicated sections.",
+          "For Meet & Discover CIS registrations, event check-ins, early-bird pre-bookings and pre-registration, the periods are in the dedicated sections.",
           TRACKING_ENABLED
             ? "Each cookie's lifetime is listed in the cookie policy. Emails are kept as long as we need them to handle your request."
             : "Emails are kept as long as we need them to handle your request.",

@@ -114,9 +114,10 @@ async function migrate(sql: Sql) {
     -- «closed»: evento chiuso detto al visitatore nel momento dell'invio. È
     -- terminale e non chiede una persona; lo stesso rifiuto arrivato da un
     -- retry resta «rejected», perché alla famiglia nessuno l'ha detto.
-    alter table preregistration_attempts drop constraint if exists preregistration_attempts_status_check;
-    alter table preregistration_attempts add constraint preregistration_attempts_status_check
-      check (status in ('received', 'delivered', 'failed', 'rejected', 'closed'));
+    -- Il vincolo sugli stati si scrive UNA volta sola, in fondo, con l'elenco
+    -- completo: questo schema si riapplica a ogni avvio, e un vincolo
+    -- intermedio più stretto falliva appena esisteva una riga «invalid»,
+    -- lasciando la landing senza database (difetto trovato il 17/11/2026).
 
     -- Volte in cui la pagina dell'Open Day non ha potuto leggere l'evento dal
     -- CRM e ha mostrato il ripiego: il CRM le legge e allarma se l'evento è aperto.

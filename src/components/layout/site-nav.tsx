@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import type { Dict, Lang } from "@/content";
+import { CHECK_IN_PATH } from "@/content/check-in";
 import { EARLY_BIRD_PATH, earlyBirdCopy } from "@/content/early-bird";
 
 import { ButtonLink } from "../ui/button-link";
@@ -17,8 +18,8 @@ import { usePageLinks } from "./use-page-links";
 
 /** Pagine di campagna: chi arriva da un invito resta sulla pagina. Barra con
  *  solo logo e lingua, niente sezioni del sito né «Preiscriviti» (richiesta
- *  della scuola, 06/11; early bird dal 17/11). */
-const FOCUSED = ["/meet-and-discover", EARLY_BIRD_PATH];
+ *  della scuola, 06/11; early bird dal 17/11; presenza dal QR dal 17/11). */
+const FOCUSED = ["/meet-and-discover", EARLY_BIRD_PATH, CHECK_IN_PATH];
 
 export function SiteNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
   const pathname = usePathname();
