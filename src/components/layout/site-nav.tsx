@@ -38,7 +38,7 @@ function FullNav({ lang, t }: { lang: Lang; t: Dict["nav"] }) {
   const [open, setOpen] = useState(false);
   const links = usePageLinks(lang);
   const home = links.section;
-  const cta = links.earlyBird ? earlyBirdCopy[lang].book.cta : t.cta;
+  const cta = links.earlyBird || links.promo ? earlyBirdCopy[lang].book.cta : t.cta;
 
   useMotionValueEvent(scrollY, "change", (y) => {
     const prev = scrollY.getPrevious() ?? 0;

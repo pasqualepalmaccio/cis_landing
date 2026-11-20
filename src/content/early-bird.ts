@@ -27,6 +27,12 @@ export const EARLY_BIRD = {
 export const EARLY_BIRD_PATH = "/early-bird";
 export const BOOKING_ANCHOR = "#prenota";
 
+/** L'offerta è ancora aperta: decide se la home la richiama (banner e
+ *  pulsante della barra, richiesta della scuola del 20/11). */
+export function earlyBirdOpen(now: Date = new Date()): boolean {
+  return now.getTime() <= new Date(EARLY_BIRD.deadline).getTime();
+}
+
 /* I segnaposto fra graffe ({prebooking}, {combined}, {places}) si
    riempiono con gli importi qui sopra, nel formato della lingua. */
 export const earlyBirdCopy = {
