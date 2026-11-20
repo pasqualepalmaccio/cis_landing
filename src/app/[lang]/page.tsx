@@ -18,18 +18,22 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">): Promis
 }
 
 /* Statica: nessun dato a richiesta, si rigenera solo a ogni rilascio.
-   Finché l'offerta early bird è aperta, sotto l'apertura c'è il suo banner
-   (richiesta della scuola, 20/11). Si valuta al build: dopo la scadenza
+   Finché l'offerta early bird è aperta, il comando dell'apertura porta alla
+   sua pagina e sotto l'apertura c'è il suo banner (richiesta della scuola,
+   20/11). L'invito in fondo resta sulla registrazione, per chi entra dal 2028. Si valuta al build: dopo la scadenza
    sparisce al primo rilascio successivo, la barra invece smette subito. */
 export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
   if (!isLang(lang)) notFound();
   const t = getDict(lang);
+  const eb = earlyBirdCopy[lang];
+  const promo = earlyBirdOpen();
+  const ebHref = `/${lang}${EARLY_BIRD_PATH}`;
   return (
     <>
       <JsonLd data={schoolJsonLd(lang, t.meta.description)} />
-      <Hero lang={lang} t={t.hero} ica={t.ica} />
-      {earlyBirdOpen() && <EarlyBirdBanner t={earlyBirdCopy[lang].banner} vars={earlyBirdVars(lang)} href={`/${lang}${EARLY_BIRD_PATH}`} />}
+      <Hero lang={lang} t={promo ? { ...t.hero, cta: eb.hero.cta } : t.hero} ica={t.ica} ctaHref={promo ? ebHref : undefined} />
+      {promo && <EarlyBirdBanner t={eb.banner} vars={earlyBirdVars(lang)} href={ebHref} />}
       <HomeBody lang={lang} t={t} />
     </>
   );

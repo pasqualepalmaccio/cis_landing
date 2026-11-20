@@ -59,6 +59,14 @@ export const earlyBirdCopy = {
       text: "15% sulla retta del primo anno, 50% su NSAF e iscrizione e listino bloccato per cinque anni. Entro il 14 dicembre 2026, solo per i primi {places} posti.",
       link: "Prenota il tuo posto",
     },
+    /* Riquadro in cima alla pagina di registrazione (richiesta della scuola,
+       20/11): l'offerta vale solo per l'ingresso 2027, gli altri anni
+       restano sul modulo di registrazione. */
+    registration: {
+      label: "Ingresso a settembre 2027?",
+      text: "Con l'early bird hai il 15% sulla retta del primo anno e il 50% su NSAF e iscrizione, solo per i primi {places} posti ed entro il 14 dicembre 2026. Se il tuo bambino entra dal 2028, compila il modulo qui sotto.",
+      link: "Prenota con l'early bird",
+    },
     eyebrow: "Early bird",
     title: "Condizioni early bird",
     lead: "Per le famiglie che scelgono per prime CIS, con ingresso a settembre 2027.",
@@ -109,6 +117,11 @@ export const earlyBirdCopy = {
       label: "Early bird",
       text: "15% off first-year tuition, 50% off NSAF and registration and a price list frozen for five years. By 14 December 2026, for the first {places} places only.",
       link: "Book your place",
+    },
+    registration: {
+      label: "Starting in September 2027?",
+      text: "With the early bird offer you get 15% off first-year tuition and 50% off NSAF and registration, for the first {places} places only and by 14 December 2026. If your child starts in 2028 or later, fill in the form below.",
+      link: "Book with the early bird offer",
     },
     eyebrow: "Early bird",
     title: "Early-bird conditions",
