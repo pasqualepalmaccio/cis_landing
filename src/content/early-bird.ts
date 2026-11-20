@@ -95,6 +95,16 @@ export const earlyBirdCopy = {
       subject: "Pre-prenotazione early bird",
       body: "Buongiorno,\nvorrei pre-prenotare un posto early bird per l'ingresso a settembre 2027.\n\nNome e cognome del genitore:\nTelefono:\nNumero di bambini:\nAnno di nascita dei bambini:\n\nGrazie",
     },
+    /* L'invito in fondo alla home finché l'offerta è aperta: l'azione
+       principale è l'early bird, questo resta per chi entra più avanti
+       (richiesta della scuola, 20/11). */
+    interest: {
+      eyebrow: "Pre-registrazione",
+      title: "Entri dal 2028? Pre-registrati",
+      lead: "L'early bird vale per l'ingresso a settembre 2027. Se il tuo bambino inizia più avanti, compila la pre-registrazione: ti scriviamo prima degli altri e hai la precedenza in lista.",
+      cta: "Compila la pre-registrazione",
+      note: "Bastano pochi minuti e non ti impegna a nulla. Non è un'iscrizione.",
+    },
   },
   en: {
     meta: {
@@ -148,6 +158,13 @@ export const earlyBirdCopy = {
       note: "If clicking does not open your email, copy the address above and write to us from your email account.",
       subject: "Early-bird pre-booking",
       body: "Hello,\nI would like to pre-book an early-bird place for entry in September 2027.\n\nParent's full name:\nPhone:\nNumber of children:\nChildren's year of birth:\n\nThank you",
+    },
+    interest: {
+      eyebrow: "Pre-registration",
+      title: "Starting in 2028 or later? Pre-register",
+      lead: "The early-bird offer is for entry in September 2027. If your child starts later, fill in the pre-registration form and we'll write to you before anyone else, with priority on the list.",
+      cta: "Complete your pre-registration",
+      note: "It takes a few minutes and commits you to nothing. It isn't an enrolment.",
     },
   },
 } satisfies Record<Lang, unknown>;
