@@ -35,7 +35,7 @@ L'utente ha fornito l'ID del Pixel (2362216317913250) e ha chiesto tre cose:
   - l'informativa è datata 23/11;
   - `CONSENT_VERSION` non è cambiata, perché finalità e fornitori sono gli stessi e non serve richiedere il consenso.
 - **Verificato sul sito live:** il sito gira sul commit bc0d69b; il codice pubblicato esclude solo `/presenza`; le frasi nuove sono nella cookie policy it e en; senza consenso, su /registrazione, nessuno script Meta e nessuna richiesta a facebook.com.
-- **Non verificato:** il PageView reale su /registrazione dopo il consenso.
+- **Verificato dopo il consenso** (23/11, sera, browser di prova): con la pagina caricata da zero su /it/registrazione e «Accetta tutti», al primo clic parte `facebook.com/tr/?id=2362216317913250&ev=PageView&dl=…/it/registrazione`. Una prima prova non aveva mostrato la richiesta: probabilmente quella scheda aveva ancora la versione precedente della pagina, perché dopo il ricaricamento e un secondo consenso da zero la richiesta è partita. Alla fine il cookie di prova è stato cancellato.
 
 ## Rischi aperti
 - Nessuna riconciliazione automatica fra Lead in Meta e pre-registrazioni nel CRM.
