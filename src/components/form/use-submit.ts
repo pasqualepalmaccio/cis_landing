@@ -3,6 +3,7 @@
 import { useState, useSyncExternalStore, type FormEvent } from "react";
 
 import type { Lang } from "@/content";
+import { trackMetaLead } from "@/lib/consent/meta-lead";
 import { payloadFromForm } from "@/lib/preregistration/payload";
 
 const noop = () => () => {};
@@ -30,6 +31,8 @@ export function useSubmit(lang: Lang) {
         body: JSON.stringify(payloadFromForm(new FormData(e.currentTarget), lang)),
       });
       setState(res.status === 201 ? "delivered" : res.status === 202 ? "queued" : res.status === 422 || res.status === 400 ? "invalid" : "error");
+      // Conversione Meta solo sullo stesso esito che fa dire «registrato».
+      if (res.status === 201) trackMetaLead();
     } catch (error) {
       console.warn("[preregistrazione] invio non riuscito", error);
       setState("error");
