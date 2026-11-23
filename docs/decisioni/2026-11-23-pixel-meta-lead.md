@@ -24,6 +24,19 @@ L'utente ha fornito l'ID del Pixel (2362216317913250) e ha chiesto tre cose:
 - **Con consenso marketing:** caricati `fbevents.js` e la configurazione del Pixel 2362216317913250, inviato `PageView` (`facebook.com/tr?id=2362216317913250&ev=PageView`).
 - **Lead:** compilato (`tsc` e `eslint` puliti) e verificato nel codice pubblicato. **Non verificato end-to-end**, perché richiede una pre-registrazione vera in produzione, che crea un'anagrafica e manda mail. Da fare con una registrazione di prova concordata, controllando in Gestione eventi → Eventi di test.
 
+## Aggiornamento (23/11, sera): PageView anche sulle pagine dei moduli
+- **Richiesta:** Marco ha fatto notare che la campagna atterra su /registrazione e che senza PageView Meta vede le registrazioni ma non le visite. Così mancano il rapporto visite/registrazioni e il pubblico «ha visto il modulo ma non si è registrato». L'utente ha deciso di accenderlo.
+- **Perché era spento:** era una regola prudenziale messa da Claude il 5/11, non una richiesta della scuola. Non era nemmeno coerente, visto che il Lead parte già da quella pagina.
+- **Fatto (commit bc0d69b):**
+  - `NO_PIXEL_PATHS` ora contiene solo `/presenza`, che non riceve traffico dagli annunci;
+  - il PageView parte su /registrazione, /meet-and-discover e /open-day, sempre e solo con il consenso marketing;
+  - gli indirizzi di quelle pagine non contengono dati personali, `autoConfig` è spento e il Pixel non legge i campi;
+  - la cookie policy, in it e en, ora dice che da quelle pagine partono solo la visita e il Lead senza dati;
+  - l'informativa è datata 23/11;
+  - `CONSENT_VERSION` non è cambiata, perché finalità e fornitori sono gli stessi e non serve richiedere il consenso.
+- **Verificato sul sito live:** il sito gira sul commit bc0d69b; il codice pubblicato esclude solo `/presenza`; le frasi nuove sono nella cookie policy it e en; senza consenso, su /registrazione, nessuno script Meta e nessuna richiesta a facebook.com.
+- **Non verificato:** il PageView reale su /registrazione dopo il consenso.
+
 ## Rischi aperti
 - Nessuna riconciliazione automatica fra Lead in Meta e pre-registrazioni nel CRM.
 - Il modulo early bird non manda nessun evento: non è stato richiesto.
