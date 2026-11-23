@@ -272,6 +272,7 @@ export const it = {
       total: "Totale annuo ricorrente",
       totalNote: "escl. NSAF, mensa, bus",
     },
+    siblings: "Fratelli: per il secondo figlio la retta annuale ha il 15% di sconto.",
     tiers: [
       { name: "Nursery – Year 1", ages: "età 3–6", nsaf: 2000, tuition: 10500, registration: 1000 },
       { name: "Year 2 – Year 6", ages: "età 6–11", nsaf: 2000, tuition: 15000, registration: 1000 },

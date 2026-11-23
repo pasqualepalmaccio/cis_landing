@@ -39,6 +39,10 @@ export function Fees({ lang, t }: { lang: Lang; t: Dict["fees"] }) {
         ))}
       </div>
 
+      <Reveal className="mt-6">
+        <p className={`rounded-[20px] border-l-4 border-l-gold-500 px-6 py-4 font-semibold text-heading shadow-float ${CARD}`}>{t.siblings}</p>
+      </Reveal>
+
       {SHOW_SCHEDULE && (
       <Reveal className="mt-8">
         <div className={`rounded-[20px] p-6 shadow-float sm:p-8 ${CARD}`}>

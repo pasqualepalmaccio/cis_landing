@@ -248,6 +248,7 @@ export const en: Dict = {
       total: "Total annual recurring",
       totalNote: "excl. NSAF, meals, bus",
     },
+    siblings: "Siblings: 15% off annual tuition for the second child.",
     tiers: [
       { name: "Nursery – Year 1", ages: "ages 3–6", nsaf: 2000, tuition: 10500, registration: 1000 },
       { name: "Year 2 – Year 6", ages: "ages 6–11", nsaf: 2000, tuition: 15000, registration: 1000 },
