@@ -42,5 +42,9 @@ export const DECLARED = {
 /** Nessun banner senza titolare dichiarato nelle policy (cancello del record). */
 export const TRACKING_ENABLED = OWNER_READY && Object.values(DECLARED).some(Boolean);
 
-/** Pagine dove il Pixel non manda eventi: raccolgono dati sui figli. */
-export const NO_PIXEL_PATHS = ["/registrazione", "/meet-and-discover", "/open-day", "/presenza"];
+/** Pagine dove il Pixel non manda il PageView. Il 23/11 l'utente ha acceso
+ *  il PageView anche sulle pagine dei moduli (registrazione, Meet & Discover,
+ *  Open Day): l'indirizzo non contiene dati personali e autoConfig è spento.
+ *  Resta fuori solo la presenza all'evento, che non riceve traffico dagli
+ *  annunci. docs/decisioni/2026-11-23-pixel-meta-lead.md */
+export const NO_PIXEL_PATHS = ["/presenza"];

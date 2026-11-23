@@ -204,7 +204,7 @@ export const legalIt = {
       ...when(Boolean(TRACKING_ENABLED && (DECLARED.googleAds || DECLARED.metaPixel)), {
         title: "Marketing e remarketing",
         paragraphs: [
-          `Con il tuo consenso usiamo ${[...when(Boolean(DECLARED.googleAds), "Google Ads"), ...when(META, "il Meta Pixel")].join(" e ")} per sapere se una visita arriva da un nostro annuncio e per mostrare i nostri annunci a chi ha già visitato il sito.${META ? " Il Meta Pixel non legge i campi dei moduli e non invia eventi dalle pagine di pre-registrazione e di iscrizione al Meet & Discover CIS." : ""}`,
+          `Con il tuo consenso usiamo ${[...when(Boolean(DECLARED.googleAds), "Google Ads"), ...when(META, "il Meta Pixel")].join(" e ")} per sapere se una visita arriva da un nostro annuncio e per mostrare i nostri annunci a chi ha già visitato il sito.${META ? " Il Meta Pixel non legge i campi dei moduli. Dalle pagine dei moduli manda a Meta solo la visita e, quando la pre-registrazione va a buon fine, un avviso che non contiene niente di quello che hai scritto." : ""}`,
         ],
       }),
       ...when(TRACKING_ENABLED, {

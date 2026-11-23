@@ -196,7 +196,7 @@ export const legalEn: LegalDict = {
       ...when(Boolean(TRACKING_ENABLED && (DECLARED.googleAds || DECLARED.metaPixel)), {
         title: "Marketing and remarketing",
         paragraphs: [
-          `With your consent we use ${[...when(Boolean(DECLARED.googleAds), "Google Ads"), ...when(META, "the Meta Pixel")].join(" and ")} to know whether a visit came from one of our ads and to show our ads to people who have visited the site.${META ? " The Meta Pixel does not read form fields and sends no events from the pre-registration and Meet & Discover CIS registration pages." : ""}`,
+          `With your consent we use ${[...when(Boolean(DECLARED.googleAds), "Google Ads"), ...when(META, "the Meta Pixel")].join(" and ")} to know whether a visit came from one of our ads and to show our ads to people who have visited the site.${META ? " The Meta Pixel does not read form fields. From the form pages it only tells Meta about the visit and, when a pre-registration goes through, sends a signal that contains nothing you typed." : ""}`,
         ],
       }),
       ...when(TRACKING_ENABLED, {
