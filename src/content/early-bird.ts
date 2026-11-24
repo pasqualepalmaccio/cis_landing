@@ -15,6 +15,11 @@ export const EARLY_BIRD = {
   PREVIEW: false,
   /** Modulo di pre-prenotazione acceso (16/11/2026, su richiesta della scuola). */
   FORM: true,
+  /** Il sito richiama l'offerta (banner e pulsanti in home, riquadro in
+   *  registrazione). Acceso il 20/11 su richiesta della scuola, spento il
+   *  24/11 su richiesta di Claudia: la pagina early bird si raggiunge solo
+   *  dal link nella mail. Resta pubblica e raggiungibile all'indirizzo. */
+  SITE_LINKS: false,
   /** Pre-prenotazione per bambino. */
   prebooking: 1500,
   places: 20,
@@ -27,10 +32,10 @@ export const EARLY_BIRD = {
 export const EARLY_BIRD_PATH = "/early-bird";
 export const BOOKING_ANCHOR = "#prenota";
 
-/** L'offerta è ancora aperta: decide se la home la richiama (banner e
- *  pulsante della barra, richiesta della scuola del 20/11). */
-export function earlyBirdOpen(now: Date = new Date()): boolean {
-  return now.getTime() <= new Date(EARLY_BIRD.deadline).getTime();
+/** Il sito richiama l'offerta: solo con SITE_LINKS acceso e fino alla
+ *  scadenza. Decide banner e pulsanti in home e il riquadro in registrazione. */
+export function earlyBirdOnSite(now: Date = new Date()): boolean {
+  return EARLY_BIRD.SITE_LINKS && now.getTime() <= new Date(EARLY_BIRD.deadline).getTime();
 }
 
 /* I segnaposto fra graffe ({prebooking}, {combined}, {places}) si

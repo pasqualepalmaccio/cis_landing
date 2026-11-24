@@ -6,7 +6,7 @@ import { Hero } from "@/components/sections/hero";
 import { HomeBody } from "@/components/sections/home-body";
 import { JsonLd } from "@/components/seo/json-ld";
 import { getDict, isLang } from "@/content";
-import { EARLY_BIRD_PATH, earlyBirdCopy, earlyBirdOpen } from "@/content/early-bird";
+import { EARLY_BIRD_PATH, earlyBirdCopy, earlyBirdOnSite } from "@/content/early-bird";
 import { earlyBirdVars } from "@/lib/early-bird/vars";
 import { pageMetadata } from "@/lib/metadata";
 import { schoolJsonLd } from "@/lib/structured-data";
@@ -18,9 +18,9 @@ export async function generateMetadata({ params }: PageProps<"/[lang]">): Promis
 }
 
 /* Statica: nessun dato a richiesta, si rigenera solo a ogni rilascio.
-   Finché l'offerta early bird è aperta, il comando dell'apertura porta alla
-   sua pagina e sotto l'apertura c'è il suo banner (richiesta della scuola,
-   20/11). L'invito in fondo resta sulla registrazione, ma parla a chi entra
+   Quando il sito richiama l'early bird (EARLY_BIRD.SITE_LINKS, spento il
+   24/11), il comando dell'apertura porta alla sua pagina e sotto l'apertura
+   c'è il suo banner. L'invito in fondo resta sulla registrazione, ma parla a chi entra
    dal 2028 (richiesta della scuola, 20/11). Si valuta al build: dopo la scadenza
    sparisce al primo rilascio successivo, la barra invece smette subito. */
 export default async function HomePage({ params }: PageProps<"/[lang]">) {
@@ -28,7 +28,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
   if (!isLang(lang)) notFound();
   const t = getDict(lang);
   const eb = earlyBirdCopy[lang];
-  const promo = earlyBirdOpen();
+  const promo = earlyBirdOnSite();
   const ebHref = `/${lang}${EARLY_BIRD_PATH}`;
   return (
     <>

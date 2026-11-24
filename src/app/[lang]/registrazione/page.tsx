@@ -7,7 +7,7 @@ import { Container } from "@/components/layout/container";
 import { PageHead } from "@/components/layout/page-head";
 import { Reveal } from "@/components/motion/reveal";
 import { isLang } from "@/content";
-import { EARLY_BIRD_PATH, earlyBirdCopy, earlyBirdOpen } from "@/content/early-bird";
+import { EARLY_BIRD_PATH, earlyBirdCopy, earlyBirdOnSite } from "@/content/early-bird";
 import { registrationCopy } from "@/content/registration";
 import { earlyBirdVars } from "@/lib/early-bird/vars";
 import { pageMetadata } from "@/lib/metadata";
@@ -27,9 +27,9 @@ export default async function RegistrationPage({ params }: PageProps<"/[lang]/re
   return (
     <>
       <PageHead eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
-      {/* Finché l'offerta è aperta, chi entra nel 2027 viene mandato
-          all'early bird; si valuta al build (vedi la home). */}
-      {earlyBirdOpen() && (
+      {/* Quando il sito richiama l'offerta, chi entra nel 2027 viene
+          mandato all'early bird; si valuta al build (vedi la home). */}
+      {earlyBirdOnSite() && (
         <div className="mb-10">
           <EarlyBirdBanner t={earlyBirdCopy[lang].registration} vars={earlyBirdVars(lang)} href={`/${lang}${EARLY_BIRD_PATH}`} />
         </div>
