@@ -262,8 +262,8 @@ export const it = {
   },
   fees: {
     eyebrow: "Costi",
-    title: "Le rette, tutte e subito",
-    lead: "Tre voci, e durante l'anno non se ne aggiungono altre.",
+    title: "Le rette, voce per voce",
+    lead: "NSAF, iscrizione e retta annuale. Mensa, bus e materiali scolastici sono a parte.",
     labels: {
       nsaf: "NSAF",
       nsafNote: "una tantum, all'iscrizione",

@@ -238,8 +238,8 @@ export const en: Dict = {
   },
   fees: {
     eyebrow: "Fees",
-    title: "All the fees, up front",
-    lead: "Three items, and nothing gets added during the year.",
+    title: "Fees, item by item",
+    lead: "NSAF, registration and annual tuition. Meals, bus and school materials are separate.",
     labels: {
       nsaf: "NSAF",
       nsafNote: "one-time, at enrolment",
