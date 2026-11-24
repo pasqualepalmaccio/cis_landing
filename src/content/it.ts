@@ -246,7 +246,6 @@ export const it = {
         items: [
           "Badge sullo scuolabus: un SMS avvisa i genitori quando il figlio sale e scende",
           "Servizio bus facoltativo, a pagamento separato (vedi rette)",
-          "L'autista segnala immediatamente ogni discesa a una fermata non prevista",
         ],
       },
       {

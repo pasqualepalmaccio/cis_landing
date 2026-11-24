@@ -222,7 +222,6 @@ export const en: Dict = {
         items: [
           "Bus badge system: parents get an SMS the moment their child boards and gets off",
           "Optional bus service, charged separately (see fees)",
-          "The driver is alerted immediately if a child exits at the wrong stop",
         ],
       },
       {
