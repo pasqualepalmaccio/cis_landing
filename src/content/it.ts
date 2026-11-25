@@ -65,7 +65,7 @@ export const it = {
       {
         title: "Per i genitori",
         items: [
-          "Orario esteso fino alle 18:30 con sport e laboratori *(facoltativo, a pagamento)*",
+          "Orario esteso fino alle 17:30 con sport e laboratori *(facoltativo, a pagamento)*",
           "Giornate «Un genitore in classe»: passate una mattina a scuola con vostro figlio",
           "Navette dedicate su tutto l'Alto Lago",
         ],

@@ -63,7 +63,7 @@ export const en: Dict = {
       {
         title: "For parents",
         items: [
-          "Extended hours until 18:30 with sport and workshops *(optional, paid)*",
+          "Extended hours until 17:30 with sport and workshops *(optional, paid)*",
           "\"Parent in class\" days: spend a morning at school with your child",
           "Dedicated shuttles across the whole Alto Lago area",
         ],
