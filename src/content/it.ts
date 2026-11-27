@@ -273,8 +273,8 @@ export const it = {
     },
     siblings: "Fratelli: per il secondo figlio la retta annuale ha il 15% di sconto.",
     tiers: [
-      { name: "Nursery – Year 1", ages: "età 3–6", nsaf: 2000, tuition: 10500, registration: 1000 },
-      { name: "Year 2 – Year 6", ages: "età 6–11", nsaf: 2000, tuition: 15000, registration: 1000 },
+      { name: "Nursery – Year 2", ages: "età 3–7", nsaf: 2000, tuition: 10500, registration: 1000 },
+      { name: "Year 3 – Year 6", ages: "età 7–11", nsaf: 2000, tuition: 15000, registration: 1000 },
     ],
     schedule: {
       title: "Piano di pagamento per l'anno scolastico 2027/28",
