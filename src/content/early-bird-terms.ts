@@ -7,7 +7,10 @@ import type { Lang } from "./index";
    modifica del testo alza TERMS_VERSION: la versione e l'impronta del testo
    mostrato restano sulla prenotazione come prova dell'accettazione. */
 
-export const TERMS_VERSION = "2026-11-16";
+/* 2026-11-27: la clausola «Griglia delle rette» segue la nuova griglia
+   (passaggio di fascia in Year 3 invece che in Year 2), decisione della scuola
+   del 27/11. Le prenotazioni precedenti restano con la versione 2026-11-16. */
+export const TERMS_VERSION = "2026-11-27";
 /** Pubblicazione autorizzata il 16/11/2026 con il testo della bozza della
  *  scuola del 13/11, senza revisione legale scritta: rischio accettato e
  *  registrato in docs/decisioni/2026-11-16-early-bird.md. Quando arriva il
